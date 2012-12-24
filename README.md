@@ -1,4 +1,6 @@
-Yogurt3D_v3
-===========
+Yogurt3D Version 3 Beta 1
+=============
 
-Yogurt3D v3
+This is the new version of Yogurt3D. 
+
+The current release can be found in [Yogurt3D Github](http://www.github.com/yogurt3d/Yogurt3D)
