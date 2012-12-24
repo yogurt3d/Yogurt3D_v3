@@ -18,7 +18,7 @@
  
 package com.yogurt3d.core.managers
 {
-	import com.yogurt3d.core.objects.interfaces.IIdentifiableObject;
+	import com.yogurt3d.core.objects.IIdentifiableObject;
 	
 	import flash.utils.Dictionary;
 	import flash.utils.getQualifiedClassName;

@@ -18,10 +18,10 @@
 
 package com.yogurt3d.core.material
 {
-	import com.yogurt3d.core.agalgen.AGALGEN;
-	import com.yogurt3d.core.agalgen.IRegister;
-	import com.yogurt3d.core.cameras.Camera3D;
-	import com.yogurt3d.core.lights.Light;
+	import com.yogurt3d.core.material.agalgen.AGALGEN;
+	import com.yogurt3d.core.material.agalgen.IRegister;
+	import com.yogurt3d.core.sceneobjects.camera.Camera3D;
+	import com.yogurt3d.core.sceneobjects.lights.Light;
 	import com.yogurt3d.core.material.enum.ERegisterShaderType;
 	import com.yogurt3d.core.material.parameters.LightInput;
 	import com.yogurt3d.core.material.parameters.VertexInput;
@@ -30,7 +30,7 @@ package com.yogurt3d.core.material
 	import com.yogurt3d.core.material.pass.Pass;
 	import com.yogurt3d.core.sceneobjects.SceneObjectRenderable;
 	import com.yogurt3d.core.texture.ITexture;
-	import com.yogurt3d.core.utils.Color;
+	import com.yogurt3d.utils.Color;
 	
 	import flash.display3D.Context3D;
 	import flash.geom.Matrix3D;

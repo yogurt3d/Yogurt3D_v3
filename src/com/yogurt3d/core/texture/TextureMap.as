@@ -19,10 +19,9 @@
 package com.yogurt3d.core.texture
 {
 	import com.yogurt3d.core.managers.IDManager;
-	import com.yogurt3d.core.namespaces.YOGURT3D_INTERNAL;
 	import com.yogurt3d.core.objects.EngineObject;
-	import com.yogurt3d.core.utils.MathUtils;
-	import com.yogurt3d.core.utils.MipmapGenerator;
+	import com.yogurt3d.utils.MathUtils;
+	import com.yogurt3d.utils.MipmapGenerator;
 	
 	import flash.display.BitmapData;
 	import flash.display.DisplayObject;
@@ -37,6 +36,7 @@ package com.yogurt3d.core.texture
 	import flash.utils.Dictionary;
 	
 	import org.osflash.signals.natives.NativeSignal;
+	import com.yogurt3d.YOGURT3D_INTERNAL;
 	
 	use namespace YOGURT3D_INTERNAL;
 	/**

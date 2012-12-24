@@ -19,8 +19,8 @@
  
 package com.yogurt3d.core.sceneobjects.transformations
 {
-	import com.yogurt3d.core.utils.MathUtils;
-	import com.yogurt3d.core.utils.MatrixUtils;
+	import com.yogurt3d.utils.MathUtils;
+	import com.yogurt3d.utils.MatrixUtils;
 	
 	import flash.geom.Matrix3D;
 	import flash.geom.Vector3D;

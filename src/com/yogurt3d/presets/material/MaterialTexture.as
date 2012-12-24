@@ -1,12 +1,12 @@
 package com.yogurt3d.presets.material
 {
-	import com.yogurt3d.core.agalgen.AGALGEN;
+	import com.yogurt3d.core.material.agalgen.AGALGEN;
 	import com.yogurt3d.core.material.MaterialBase;
 	import com.yogurt3d.core.material.enum.ERegisterShaderType;
 	import com.yogurt3d.core.material.parameters.FragmentInput;
 	import com.yogurt3d.core.material.parameters.SurfaceOutput;
 	import com.yogurt3d.core.texture.ITexture;
-	import com.yogurt3d.core.utils.TextureMapDefaults;
+	import com.yogurt3d.utils.TextureMapDefaults;
 	
 	public class MaterialTexture extends MaterialBase{
 		

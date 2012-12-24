@@ -20,7 +20,7 @@ package com.yogurt3d.core.render
 {
 	import com.yogurt3d.core.render.base.RenderTargetBase;
 	import com.yogurt3d.core.render.texture.RenderTexture;
-	import com.yogurt3d.core.utils.MathUtils;
+	import com.yogurt3d.utils.MathUtils;
 	
 	import flash.display.BitmapData;
 	

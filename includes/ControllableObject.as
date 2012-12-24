@@ -1,9 +1,10 @@
 // ActionScript file
-import com.yogurt3d.core.objects.interfaces.IController;
+import com.yogurt3d.core.objects.IController;
 import flash.utils.Dictionary;
 import com.yogurt3d.core.managers.DependencyManager;
 import org.swiftsuspenders.Injector;
-import com.yogurt3d.core.namespaces.YOGURT3D_INTERNAL;
+
+import com.yogurt3d.YOGURT3D_INTERNAL;
 
 YOGURT3D_INTERNAL var m_injector:Injector;
 

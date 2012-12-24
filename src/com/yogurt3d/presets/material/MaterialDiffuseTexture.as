@@ -1,7 +1,7 @@
 package com.yogurt3d.presets.material
 {
-	import com.yogurt3d.core.agalgen.AGALGEN;
-	import com.yogurt3d.core.cameras.Camera3D;
+	import com.yogurt3d.core.material.agalgen.AGALGEN;
+	import com.yogurt3d.core.sceneobjects.camera.Camera3D;
 	import com.yogurt3d.core.managers.DeviceStreamManager;
 	import com.yogurt3d.core.material.LightFunctions;
 	import com.yogurt3d.core.material.MaterialBase;
@@ -10,8 +10,8 @@ package com.yogurt3d.presets.material
 	import com.yogurt3d.core.material.parameters.SurfaceOutput;
 	import com.yogurt3d.core.sceneobjects.SceneObjectRenderable;
 	import com.yogurt3d.core.texture.ITexture;
-	import com.yogurt3d.core.utils.Color;
-	import com.yogurt3d.core.utils.TextureMapDefaults;
+	import com.yogurt3d.utils.Color;
+	import com.yogurt3d.utils.TextureMapDefaults;
 	
 	import flash.display3D.Context3D;
 	

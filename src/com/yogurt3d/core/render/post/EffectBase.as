@@ -23,7 +23,7 @@ package com.yogurt3d.core.render.post
 	import com.yogurt3d.core.managers.ProgramManager;
 	import com.yogurt3d.core.material.enum.EBlendMode;
 	import com.yogurt3d.core.material.parameters.ShaderParameters;
-	import com.yogurt3d.core.utils.ShaderUtils;
+	import com.yogurt3d.utils.ShaderUtils;
 	
 	import flash.display3D.Context3D;
 	import flash.display3D.Context3DCompareMode;

@@ -18,7 +18,6 @@
  
  
 package com.yogurt3d.io.managers.loadmanagers {
-	import com.yogurt3d.core.namespaces.YOGURT3D_INTERNAL;
 	import com.yogurt3d.io.cache.GlobalCache;
 	import com.yogurt3d.io.cache.LoadCache;
 	import com.yogurt3d.io.loaders.DataLoader;
@@ -31,6 +30,7 @@ package com.yogurt3d.io.managers.loadmanagers {
 	import flash.events.IOErrorEvent;
 	import flash.events.ProgressEvent;
 	import flash.utils.Dictionary;
+	import com.yogurt3d.YOGURT3D_INTERNAL;
 
 	/**
 	 * 

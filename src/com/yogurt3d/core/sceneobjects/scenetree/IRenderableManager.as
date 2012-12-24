@@ -18,10 +18,10 @@
 
 package com.yogurt3d.core.sceneobjects.scenetree
 {
-	import com.yogurt3d.core.cameras.Camera3D;
-	import com.yogurt3d.core.lights.Light;
+	import com.yogurt3d.core.sceneobjects.camera.Camera3D;
+	import com.yogurt3d.core.sceneobjects.lights.Light;
 	import com.yogurt3d.core.render.renderqueue.RenderQueue;
-	import com.yogurt3d.core.sceneobjects.Scene3D;
+	import com.yogurt3d.core.Scene3D;
 	import com.yogurt3d.core.sceneobjects.SceneObjectRenderable;
 	
 	import flash.utils.Dictionary;

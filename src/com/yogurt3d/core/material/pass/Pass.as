@@ -18,14 +18,14 @@
 
 package com.yogurt3d.core.material.pass
 {
-	import com.yogurt3d.core.agalgen.AGALGEN;
-	import com.yogurt3d.core.agalgen.IRegister;
-	import com.yogurt3d.core.cameras.Camera3D;
+	import com.yogurt3d.core.material.agalgen.AGALGEN;
+	import com.yogurt3d.core.material.agalgen.IRegister;
+	import com.yogurt3d.core.sceneobjects.camera.Camera3D;
 	import com.yogurt3d.core.geoms.SkinnedSubMesh;
 	import com.yogurt3d.core.geoms.SubMesh;
-	import com.yogurt3d.core.geoms.interfaces.IMesh;
-	import com.yogurt3d.core.lights.ELightType;
-	import com.yogurt3d.core.lights.Light;
+	import com.yogurt3d.core.geoms.IMesh;
+	import com.yogurt3d.core.sceneobjects.lights.ELightType;
+	import com.yogurt3d.core.sceneobjects.lights.Light;
 	import com.yogurt3d.core.managers.DeviceStreamManager;
 	import com.yogurt3d.core.managers.MaterialManager;
 	import com.yogurt3d.core.material.MaterialBase;
@@ -37,11 +37,10 @@ package com.yogurt3d.core.material.pass
 	import com.yogurt3d.core.material.parameters.SurfaceOutput;
 	import com.yogurt3d.core.material.parameters.VertexInput;
 	import com.yogurt3d.core.material.parameters.VertexOutput;
-	import com.yogurt3d.core.namespaces.YOGURT3D_INTERNAL;
 	import com.yogurt3d.core.sceneobjects.SceneObjectRenderable;
 	import com.yogurt3d.core.texture.ITexture;
-	import com.yogurt3d.core.utils.Color;
-	import com.yogurt3d.core.utils.ShaderUtils;
+	import com.yogurt3d.utils.Color;
+	import com.yogurt3d.utils.ShaderUtils;
 	
 	import flash.display3D.Context3D;
 	import flash.display3D.Context3DProgramType;
@@ -50,6 +49,7 @@ package com.yogurt3d.core.material.pass
 	import flash.geom.Matrix3D;
 	import flash.utils.ByteArray;
 	import flash.utils.Dictionary;
+	import com.yogurt3d.YOGURT3D_INTERNAL;
 	
 
 	public class Pass
@@ -537,7 +537,7 @@ package com.yogurt3d.core.material.pass
 //			trace( code );
 //			trace("END VERTEX SHADER");
 			
-			return com.yogurt3d.core.utils.ShaderUtils.vertexAssambler.assemble(Context3DProgramType.VERTEX, code, false );
+			return com.yogurt3d.utils.ShaderUtils.vertexAssambler.assemble(Context3DProgramType.VERTEX, code, false );
 		}
 	
 		protected function generateNeededCalculations(_light:Light, _surfaceOutput:SurfaceOutput):String{
@@ -631,7 +631,7 @@ package com.yogurt3d.core.material.pass
 	}
 }
 
-import com.yogurt3d.core.agalgen.IRegister;
+import com.yogurt3d.core.material.agalgen.IRegister;
 import com.yogurt3d.core.material.enum.ERegisterShaderType;
 import com.yogurt3d.core.texture.ITexture;
 

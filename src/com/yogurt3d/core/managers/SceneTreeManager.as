@@ -18,15 +18,14 @@
 
 package com.yogurt3d.core.managers
 {
-	import com.yogurt3d.core.cameras.Camera3D;
-	import com.yogurt3d.core.lights.ELightType;
-	import com.yogurt3d.core.lights.Light;
-	import com.yogurt3d.core.namespaces.YOGURT3D_INTERNAL;
+	import com.yogurt3d.core.sceneobjects.camera.Camera3D;
+	import com.yogurt3d.core.sceneobjects.lights.ELightType;
+	import com.yogurt3d.core.sceneobjects.lights.Light;
 	import com.yogurt3d.core.plugin.Driver;
 	import com.yogurt3d.core.plugin.Kernel;
 	import com.yogurt3d.core.plugin.Server;
 	import com.yogurt3d.core.render.renderqueue.RenderQueue;
-	import com.yogurt3d.core.sceneobjects.Scene3D;
+	import com.yogurt3d.core.Scene3D;
 	import com.yogurt3d.core.sceneobjects.SceneObject;
 	import com.yogurt3d.core.sceneobjects.SceneObjectRenderable;
 	import com.yogurt3d.core.sceneobjects.scenetree.IRenderableManager;
@@ -34,6 +33,7 @@ package com.yogurt3d.core.managers
 	import com.yogurt3d.core.sceneobjects.scenetree.SceneTreePlugins;
 	
 	import flash.utils.Dictionary;
+	import com.yogurt3d.YOGURT3D_INTERNAL;
 	
 
 	/**

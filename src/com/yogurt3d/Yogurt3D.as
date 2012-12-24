@@ -18,9 +18,8 @@
 
 package com.yogurt3d
 {
-	import com.yogurt3d.core.namespaces.YOGURT3D_INTERNAL;
-	import com.yogurt3d.core.utils.Time;
-	import com.yogurt3d.core.viewports.Viewport;
+	import com.yogurt3d.utils.Time;
+	import com.yogurt3d.core.Viewport;
 	import com.yogurt3d.physics.plugin.IYogurt3DPhysicsPlugin;
 	
 	import flash.display.Stage;

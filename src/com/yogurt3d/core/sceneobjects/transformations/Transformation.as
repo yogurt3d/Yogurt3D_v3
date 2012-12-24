@@ -19,18 +19,18 @@
 
 package com.yogurt3d.core.sceneobjects.transformations {
 	import com.yogurt3d.core.managers.IDManager;
-	import com.yogurt3d.core.namespaces.YOGURT3D_INTERNAL;
 	import com.yogurt3d.core.objects.EngineObject;
-	import com.yogurt3d.core.objects.interfaces.IEngineObject;
+	import com.yogurt3d.core.objects.IEngineObject;
 	import com.yogurt3d.core.sceneobjects.SceneObject;
-	import com.yogurt3d.core.utils.MathUtils;
-	import com.yogurt3d.core.utils.MatrixUtils;
+	import com.yogurt3d.utils.MathUtils;
+	import com.yogurt3d.utils.MatrixUtils;
 	
 	import flash.geom.Matrix3D;
 	import flash.geom.Orientation3D;
 	import flash.geom.Vector3D;
 	
 	import org.osflash.signals.Signal;
+	import com.yogurt3d.YOGURT3D_INTERNAL;
 	
 	/**
 	 * 

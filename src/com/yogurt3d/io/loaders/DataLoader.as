@@ -18,7 +18,6 @@
  
  
 package com.yogurt3d.io.loaders {
-	import com.yogurt3d.core.namespaces.YOGURT3D_INTERNAL;
 	import com.yogurt3d.io.loaders.interfaces.ILoader;
 	
 	import flash.events.Event;
@@ -27,6 +26,7 @@ package com.yogurt3d.io.loaders {
 	import flash.events.ProgressEvent;
 	import flash.net.URLLoader;
 	import flash.net.URLRequest;
+	import com.yogurt3d.YOGURT3D_INTERNAL;
 
 	/**
 	 * 

@@ -20,7 +20,13 @@ package com.yogurt3d.core.sceneobjects
 {
 	public class Sound3D extends SceneObject
 	{
-		public function Sound3D(_initInternals:Boolean=true)
+		/**
+		 *  
+		 * @param source can be a string or a sound object
+		 * @param _initInternals
+		 * 
+		 */
+		public function Sound3D(source:Object, loadNow:Boolean = true, _initInternals:Boolean=true)
 		{
 			super(_initInternals);
 		}

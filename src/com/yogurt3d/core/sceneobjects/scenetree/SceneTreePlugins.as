@@ -21,9 +21,9 @@ package com.yogurt3d.core.sceneobjects.scenetree
 	import com.yogurt3d.core.plugin.Kernel;
 	import com.yogurt3d.core.plugin.Plugin;
 	import com.yogurt3d.core.plugin.Server;
-	import com.yogurt3d.core.sceneobjects.scenetree.octree.OcTreeSceneTreeManagerDriver;
-	import com.yogurt3d.core.sceneobjects.scenetree.quad.QuadSceneTreeManagerDriver;
-	import com.yogurt3d.core.sceneobjects.scenetree.simple.SimpleSceneTreeManagerDriver;
+	import com.yogurt3d.presets.scene.octree.OcTreeSceneTreeManagerDriver;
+	import com.yogurt3d.presets.scene.quad.QuadSceneTreeManagerDriver;
+	import com.yogurt3d.presets.scene.simple.SimpleSceneTreeManagerDriver;
 
 	[Plugin]
 	public class SceneTreePlugins extends Plugin

@@ -18,9 +18,9 @@
 
 package com.yogurt3d.core.render.renderer
 {
-	import com.yogurt3d.core.cameras.Camera3D;
+	import com.yogurt3d.core.sceneobjects.camera.Camera3D;
 	import com.yogurt3d.core.managers.DeviceStreamManager;
-	import com.yogurt3d.core.sceneobjects.Scene3D;
+	import com.yogurt3d.core.Scene3D;
 	
 	import flash.display3D.Context3D;
 	import flash.display3D.Context3DVertexBufferFormat;

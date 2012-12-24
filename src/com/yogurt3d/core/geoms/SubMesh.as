@@ -19,10 +19,9 @@
 package com.yogurt3d.core.geoms
 {
 	import com.yogurt3d.core.managers.IDManager;
-	import com.yogurt3d.core.namespaces.YOGURT3D_INTERNAL;
 	import com.yogurt3d.core.objects.EngineObject;
-	import com.yogurt3d.core.objects.interfaces.IEngineObject;
-	import com.yogurt3d.core.utils.MeshUtils;
+	import com.yogurt3d.core.objects.IEngineObject;
+	import com.yogurt3d.utils.MeshUtils;
 	import com.yogurt3d.core.volumes.AxisAlignedBoundingBox;
 	import com.yogurt3d.core.volumes.BoundingSphere;
 	
@@ -31,6 +30,7 @@ package com.yogurt3d.core.geoms
 	import flash.display3D.VertexBuffer3D;
 	import flash.geom.Vector3D;
 	import flash.utils.Dictionary;
+	import com.yogurt3d.YOGURT3D_INTERNAL;
 	
 	use namespace YOGURT3D_INTERNAL;
 	/**

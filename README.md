@@ -8,6 +8,12 @@ The current release can be found in [Yogurt3D Github](http://www.github.com/yogu
 ## Compiling Yogurt3D
 There 2 two different options to compile Yogurt3D with.
 
+#### External Dependencies
+They can be found under /libs folder
+* [as3-signals](https://github.com/robertpenner/as3-signals)
+* [swift-suspenders](https://github.com/tschneidereit/SwiftSuspenders)
+* [As3 Zip](http://nochump.com/blog/archives/15)
+
 ### Debug
 Add -load-config+=y3d_config_debug.xml to your compiler option.
 * Y3DCONFIG::TRACE = true

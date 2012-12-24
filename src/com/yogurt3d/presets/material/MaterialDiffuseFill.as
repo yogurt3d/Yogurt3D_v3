@@ -1,12 +1,12 @@
 package com.yogurt3d.presets.material
 {
-	import com.yogurt3d.core.agalgen.AGALGEN;
-	import com.yogurt3d.core.agalgen.IRegister;
+	import com.yogurt3d.core.material.agalgen.AGALGEN;
+	import com.yogurt3d.core.material.agalgen.IRegister;
 	import com.yogurt3d.core.material.MaterialBase;
 	import com.yogurt3d.core.material.enum.ERegisterShaderType;
 	import com.yogurt3d.core.material.parameters.FragmentInput;
 	import com.yogurt3d.core.material.parameters.SurfaceOutput;
-	import com.yogurt3d.core.utils.Color;
+	import com.yogurt3d.utils.Color;
 
 	public class MaterialDiffuseFill extends MaterialBase{
 		

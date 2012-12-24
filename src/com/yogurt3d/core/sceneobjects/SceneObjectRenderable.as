@@ -1,18 +1,19 @@
 package com.yogurt3d.core.sceneobjects
 {
-	import com.yogurt3d.core.geoms.interfaces.IMesh;
+	import com.yogurt3d.core.geoms.IMesh;
 	import com.yogurt3d.core.managers.IDManager;
 	import com.yogurt3d.core.material.MaterialBase;
-	import com.yogurt3d.core.namespaces.YOGURT3D_INTERNAL;
-	import com.yogurt3d.core.objects.interfaces.IEngineObject;
+	import com.yogurt3d.core.objects.IEngineObject;
 	import com.yogurt3d.core.render.texture.base.RenderTextureTargetBase;
 	import com.yogurt3d.core.sceneobjects.transformations.Transformation;
-	import com.yogurt3d.core.utils.MatrixUtils;
-	import com.yogurt3d.core.viewports.Viewport;
+	import com.yogurt3d.utils.MatrixUtils;
+	import com.yogurt3d.core.Viewport;
 	import com.yogurt3d.core.volumes.AxisAlignedBoundingBox;
 	
 	import flash.geom.Matrix3D;
 	import flash.geom.Utils3D;
+	import com.yogurt3d.core.Scene3D;
+	import com.yogurt3d.YOGURT3D_INTERNAL;
 
 	public class SceneObjectRenderable extends SceneObject
 	{

@@ -19,7 +19,7 @@
 package com.yogurt3d.presets.effects
 {
 	import com.yogurt3d.core.render.post.PostProcessingEffectBase;
-	import com.yogurt3d.core.utils.Color;
+	import com.yogurt3d.utils.Color;
 	
 	import flash.display3D.Context3DProgramType;
 	
@@ -70,8 +70,8 @@ package com.yogurt3d.presets.effects
 import com.adobe.AGALMiniAssembler;
 import com.yogurt3d.core.render.post.EffectBase;
 import com.yogurt3d.core.render.post.PostProcessingEffectBase;
-import com.yogurt3d.core.utils.Color;
-import com.yogurt3d.core.utils.ShaderUtils;
+import com.yogurt3d.utils.Color;
+import com.yogurt3d.utils.ShaderUtils;
 
 import flash.display3D.Context3DProgramType;
 import flash.display3D.textures.TextureBase;

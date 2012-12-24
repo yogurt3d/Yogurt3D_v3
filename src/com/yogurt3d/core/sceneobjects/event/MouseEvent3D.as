@@ -17,15 +17,15 @@
 */
 package com.yogurt3d.core.sceneobjects.event {
 	
-	import com.yogurt3d.core.cameras.Camera3D;
-	import com.yogurt3d.core.cameras.Ray;
-	import com.yogurt3d.core.namespaces.YOGURT3D_INTERNAL;
+	import com.yogurt3d.core.sceneobjects.camera.Camera3D;
+	import com.yogurt3d.core.sceneobjects.camera.Ray;
 	import com.yogurt3d.core.sceneobjects.SceneObject;
 	import com.yogurt3d.core.sceneobjects.SceneObjectRenderable;
-	import com.yogurt3d.core.viewports.Viewport;
+	import com.yogurt3d.core.Viewport;
 	
 	import flash.events.Event;
 	import flash.geom.Vector3D;
+	import com.yogurt3d.YOGURT3D_INTERNAL;
 	
 	/**
 	 * 

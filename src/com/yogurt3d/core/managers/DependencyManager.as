@@ -19,8 +19,8 @@
 package com.yogurt3d.core.managers
 {
 	import com.yogurt3d.core.objects.EngineObject;
-	import com.yogurt3d.core.objects.interfaces.IController;
-	import com.yogurt3d.core.objects.interfaces.IEngineObject;
+	import com.yogurt3d.core.objects.IController;
+	import com.yogurt3d.core.objects.IEngineObject;
 	import com.yogurt3d.core.sceneobjects.SceneObject;
 	
 	import org.swiftsuspenders.Injector;

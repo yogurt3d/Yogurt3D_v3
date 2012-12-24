@@ -20,9 +20,9 @@
 package com.yogurt3d.presets.sceneobjects
 {
 	import com.yogurt3d.core.managers.IDManager;
-	import com.yogurt3d.core.namespaces.YOGURT3D_INTERNAL;
 	import com.yogurt3d.core.sceneobjects.SceneObjectRenderable;
 	import com.yogurt3d.presets.geometry.Sprite3D;
+	import com.yogurt3d.YOGURT3D_INTERNAL;
 	
 	public class Sprite3DSceneObject extends SceneObjectRenderable
 	{

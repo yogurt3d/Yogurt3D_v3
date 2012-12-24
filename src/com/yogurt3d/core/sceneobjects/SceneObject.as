@@ -18,17 +18,16 @@
 
 
 package com.yogurt3d.core.sceneobjects {
-	import com.yogurt3d.core.cameras.Camera3D;
-	import com.yogurt3d.core.lights.Light;
+	import com.yogurt3d.core.sceneobjects.camera.Camera3D;
+	import com.yogurt3d.core.sceneobjects.lights.Light;
 	import com.yogurt3d.core.managers.IDManager;
 	import com.yogurt3d.core.managers.SceneTreeManager;
-	import com.yogurt3d.core.namespaces.YOGURT3D_INTERNAL;
 	import com.yogurt3d.core.objects.EngineObject;
-	import com.yogurt3d.core.objects.interfaces.IEngineObject;
+	import com.yogurt3d.core.objects.IEngineObject;
 	import com.yogurt3d.core.sceneobjects.event.MouseEvent3D;
 	import com.yogurt3d.core.sceneobjects.transformations.Transformation;
-	import com.yogurt3d.core.viewports.EAabbDrawMode;
-	import com.yogurt3d.core.viewports.Viewport;
+	import com.yogurt3d.core.enums.EAabbDrawMode;
+	import com.yogurt3d.core.Viewport;
 	import com.yogurt3d.core.volumes.AxisAlignedBoundingBox;
 	import com.yogurt3d.core.volumes.BoundingSphere;
 	
@@ -37,6 +36,8 @@ package com.yogurt3d.core.sceneobjects {
 	import flash.geom.Vector3D;
 	
 	import org.osflash.signals.Signal;
+	import com.yogurt3d.core.Scene3D;
+	import com.yogurt3d.YOGURT3D_INTERNAL;
 	
 	/**
 	 * <strong>SceneObject</strong> interface abstract type.

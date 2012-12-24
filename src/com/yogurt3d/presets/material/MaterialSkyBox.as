@@ -1,8 +1,8 @@
 package com.yogurt3d.presets.material
 {
-	import com.yogurt3d.core.agalgen.IRegister;
-	import com.yogurt3d.core.cameras.Camera3D;
-	import com.yogurt3d.core.lights.Light;
+	import com.yogurt3d.core.material.agalgen.IRegister;
+	import com.yogurt3d.core.sceneobjects.camera.Camera3D;
+	import com.yogurt3d.core.sceneobjects.lights.Light;
 	import com.yogurt3d.core.material.MaterialBase;
 	import com.yogurt3d.core.material.enum.EBlendMode;
 	import com.yogurt3d.core.material.enum.ERegisterShaderType;
@@ -41,9 +41,9 @@ package com.yogurt3d.presets.material
 		}
 	}
 }
-import com.yogurt3d.core.agalgen.IRegister;
-import com.yogurt3d.core.cameras.Camera3D;
-import com.yogurt3d.core.lights.Light;
+import com.yogurt3d.core.material.agalgen.IRegister;
+import com.yogurt3d.core.sceneobjects.camera.Camera3D;
+import com.yogurt3d.core.sceneobjects.lights.Light;
 import com.yogurt3d.core.material.enum.EBlendMode;
 import com.yogurt3d.core.material.enum.ERegisterShaderType;
 import com.yogurt3d.core.material.parameters.ConstantFunctions;
@@ -53,7 +53,7 @@ import com.yogurt3d.core.material.parameters.VertexOutput;
 import com.yogurt3d.core.material.pass.Pass;
 import com.yogurt3d.core.sceneobjects.SceneObjectRenderable;
 import com.yogurt3d.core.texture.CubeTextureMap;
-import com.yogurt3d.core.utils.ShaderUtils;
+import com.yogurt3d.utils.ShaderUtils;
 
 import flash.display3D.Context3D;
 import flash.display3D.Context3DCompareMode;

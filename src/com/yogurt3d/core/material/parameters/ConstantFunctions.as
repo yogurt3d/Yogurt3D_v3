@@ -18,8 +18,8 @@
 
 package com.yogurt3d.core.material.parameters
 {
-	import com.yogurt3d.core.cameras.Camera3D;
-	import com.yogurt3d.core.lights.Light;
+	import com.yogurt3d.core.sceneobjects.camera.Camera3D;
+	import com.yogurt3d.core.sceneobjects.lights.Light;
 	
 	import flash.geom.Matrix3D;
 	import flash.geom.Vector3D;

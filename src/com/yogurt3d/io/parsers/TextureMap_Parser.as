@@ -18,7 +18,6 @@
 
 package com.yogurt3d.io.parsers
 {
-	import com.yogurt3d.core.namespaces.YOGURT3D_INTERNAL;
 	import com.yogurt3d.core.texture.CubeTextureMap;
 	import com.yogurt3d.core.texture.TextureMap;
 	import com.yogurt3d.io.parsers.interfaces.IParser;
@@ -28,6 +27,7 @@ package com.yogurt3d.io.parsers
 	import flash.display.DisplayObject;
 	import flash.utils.ByteArray;
 	import flash.utils.Endian;
+	import com.yogurt3d.YOGURT3D_INTERNAL;
 	
 	public class TextureMap_Parser implements IParser
 	{

@@ -18,7 +18,7 @@
 
 package com.yogurt3d.core.material.enum
 {
-	import com.yogurt3d.core.utils.Enum;
+	import com.yogurt3d.utils.Enum;
 
 	public class ERegisterType extends Enum
 	{
