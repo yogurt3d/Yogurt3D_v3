@@ -77,6 +77,9 @@
 				<exclude name="overviews.xml"/>
 		    </zipfileset>
 		</zip>
+		
+	</target>
+    <target name="zip" depends="doc">
 		<echo message="Backing up SWC file into rar"/>
 		<zip destfile="${basedir}/bin/${ant.project.name}_${YOGURT3D_VERSION}_src.zip"  update="true">
 			<zipfileset dir="${basedir}/bin" prefix="bin">
@@ -90,11 +93,8 @@
 				<include name="*.swc"/>
 			</zipfileset>
 		</zip>
-		<copy file="${basedir}/bin/${ant.project.name}_${YOGURT3D_VERSION}_debug.swc" tofile="${basedir}/bin/${ant.project.name}.swc"/>
-		
 	</target>
-
-	<target name="post-cleanup" depends="doc">
+	<target name="post-cleanup" depends="zip">
 		<delete failonerror="false">
 			<fileset dir="${basedir}/bin">
 				<include name="${ant.project.name}_${YOGURT3D_VERSION}_debug.swc"/>
