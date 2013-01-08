@@ -55,6 +55,7 @@ package com.yogurt3d.presets.effects
 	}
 }
 import com.adobe.AGALMiniAssembler;
+import com.yogurt3d.core.Scene3D;
 import com.yogurt3d.core.render.post.EffectBase;
 import com.yogurt3d.core.render.post.PostProcessingEffectBase;
 import com.yogurt3d.utils.ShaderUtils;
@@ -100,7 +101,7 @@ internal class FilterRadialBlur extends EffectBase
 		m_sampleDist = value;
 	}
 	
-	public override function setEffectParameters(_rect:Rectangle, _sampler:TextureBase):void{
+	public override function setEffectParameters(_rect:Rectangle, _sampler:TextureBase, _scene:Scene3D):void{
 		device.setTextureAt( 0, _sampler);
 		
 		device.setProgramConstantsFromVector(Context3DProgramType.FRAGMENT, 0,  Vector.<Number>([-0.08,-0.05,-0.03,-0.02]));
@@ -126,7 +127,7 @@ internal class FilterRadialBlur extends EffectBase
 			
 			"div ft1.xy ft1.xy ft1.z",//dir = dir/dist; 
 			
-			"tex ft0 v0 fs0<2d,clamp,nearest>",//color = texture2D(tex,uv); 
+			"tex ft0 v0 fs0<2d,wrap,linear>",//color = texture2D(tex,uv); 
 			"mov ft2 ft0\n"
 				
 		].join("\n");
@@ -137,7 +138,7 @@ internal class FilterRadialBlur extends EffectBase
 			code += "mul ft3.xy ft3.xy fc3.x\n";//dir * samples[i] * sampleDist 
 			code += "add ft3.xy ft3.xy v0.xy\n";//uv + dir * samples[i] * sampleDist
 			
-			code += "tex ft4 ft3.xy fs0<2d,clamp,nearest>\n";//texture2D( tex, uv + dir * samples[i] * sampleDist );
+			code += "tex ft4 ft3.xy fs0<2d,wrap,linear>\n";//texture2D( tex, uv + dir * samples[i] * sampleDist );
 			
 			code += "add ft2 ft2 ft4\n";
 		}

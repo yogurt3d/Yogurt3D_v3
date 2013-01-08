@@ -19,18 +19,18 @@
 
 package com.yogurt3d.core.sceneobjects.lights
 {
-	import com.yogurt3d.core.sceneobjects.camera.frustum.Frustum;
-	import com.yogurt3d.core.render.renderqueue.RenderQueue;
+	import com.yogurt3d.YOGURT3D_INTERNAL;
 	import com.yogurt3d.core.Scene3D;
+	import com.yogurt3d.core.render.renderqueue.RenderQueue;
 	import com.yogurt3d.core.sceneobjects.SceneObject;
+	import com.yogurt3d.core.sceneobjects.camera.frustum.Frustum;
+	import com.yogurt3d.core.volumes.BoundingSphere;
 	import com.yogurt3d.utils.Color;
 	import com.yogurt3d.utils.MathUtils;
 	import com.yogurt3d.utils.MatrixUtils;
-	import com.yogurt3d.core.volumes.BoundingSphere;
 	
 	import flash.geom.Matrix3D;
 	import flash.geom.Vector3D;
-	import com.yogurt3d.YOGURT3D_INTERNAL;
 	
 	use namespace YOGURT3D_INTERNAL;
 	

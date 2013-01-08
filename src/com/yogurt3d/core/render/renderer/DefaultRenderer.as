@@ -18,12 +18,12 @@
 
 package com.yogurt3d.core.render.renderer
 {
-	import com.yogurt3d.core.sceneobjects.camera.Camera3D;
+	import com.yogurt3d.core.Scene3D;
 	import com.yogurt3d.core.material.MaterialBase;
 	import com.yogurt3d.core.render.renderqueue.RenderQueue;
 	import com.yogurt3d.core.render.renderqueue.RenderQueueNode;
-	import com.yogurt3d.core.Scene3D;
 	import com.yogurt3d.core.sceneobjects.SceneObjectRenderable;
+	import com.yogurt3d.core.sceneobjects.camera.Camera3D;
 	
 	import flash.display3D.Context3D;
 	import flash.geom.Rectangle;

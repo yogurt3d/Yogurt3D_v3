@@ -18,9 +18,9 @@
 
 package com.yogurt3d.core.material.parameters
 {
+	import com.yogurt3d.YOGURT3D_INTERNAL;
 	import com.yogurt3d.core.material.agalgen.AGALGEN;
 	import com.yogurt3d.core.material.agalgen.IRegister;
-	import com.yogurt3d.YOGURT3D_INTERNAL;
 	
 	public class VertexInput
 	{

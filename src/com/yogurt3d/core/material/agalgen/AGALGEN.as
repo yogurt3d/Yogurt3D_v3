@@ -18,6 +18,7 @@
 
 package com.yogurt3d.core.material.agalgen
 {
+	
 	import com.yogurt3d.core.material.enum.ERegisterType;
 	
 	import flash.utils.Dictionary;

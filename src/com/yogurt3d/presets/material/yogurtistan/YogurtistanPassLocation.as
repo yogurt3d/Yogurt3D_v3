@@ -1,11 +1,10 @@
 package com.yogurt3d.presets.material.yogurtistan
 {
-	import com.yogurt3d.core.material.agalgen.IRegister;
-	import com.yogurt3d.core.sceneobjects.camera.Camera3D;
-	import com.yogurt3d.core.geoms.SubMesh;
+	import com.yogurt3d.YOGURT3D_INTERNAL;
 	import com.yogurt3d.core.geoms.IMesh;
-	import com.yogurt3d.core.sceneobjects.lights.Light;
+	import com.yogurt3d.core.geoms.SubMesh;
 	import com.yogurt3d.core.material.Y3DProgram;
+	import com.yogurt3d.core.material.agalgen.IRegister;
 	import com.yogurt3d.core.material.enum.EBlendMode;
 	import com.yogurt3d.core.material.enum.ERegisterShaderType;
 	import com.yogurt3d.core.material.parameters.FragmentInput;
@@ -13,6 +12,8 @@ package com.yogurt3d.presets.material.yogurtistan
 	import com.yogurt3d.core.material.parameters.VertexOutput;
 	import com.yogurt3d.core.material.pass.Pass;
 	import com.yogurt3d.core.sceneobjects.SceneObjectRenderable;
+	import com.yogurt3d.core.sceneobjects.camera.Camera3D;
+	import com.yogurt3d.core.sceneobjects.lights.Light;
 	import com.yogurt3d.core.texture.CubeTextureMap;
 	import com.yogurt3d.core.texture.TextureMap;
 	import com.yogurt3d.utils.Color;
@@ -28,7 +29,6 @@ package com.yogurt3d.presets.material.yogurtistan
 	import flash.geom.Matrix3D;
 	import flash.geom.Vector3D;
 	import flash.utils.ByteArray;
-	import com.yogurt3d.YOGURT3D_INTERNAL;
 
 	public class YogurtistanPassLocation extends Pass
 	{

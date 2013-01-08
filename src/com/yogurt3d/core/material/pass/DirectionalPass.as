@@ -18,20 +18,20 @@
 
 package com.yogurt3d.core.material.pass
 {
-	import com.yogurt3d.core.sceneobjects.camera.Camera3D;
+	import com.yogurt3d.YOGURT3D_INTERNAL;
+	import com.yogurt3d.core.geoms.IMesh;
 	import com.yogurt3d.core.geoms.SkinnedSubMesh;
 	import com.yogurt3d.core.geoms.SubMesh;
-	import com.yogurt3d.core.geoms.IMesh;
-	import com.yogurt3d.core.sceneobjects.lights.Light;
 	import com.yogurt3d.core.managers.DeviceStreamManager;
 	import com.yogurt3d.core.material.Y3DProgram;
 	import com.yogurt3d.core.material.enum.EBlendMode;
 	import com.yogurt3d.core.sceneobjects.SceneObjectRenderable;
+	import com.yogurt3d.core.sceneobjects.camera.Camera3D;
+	import com.yogurt3d.core.sceneobjects.lights.Light;
 	
 	import flash.display3D.Context3D;
 	import flash.display3D.Context3DVertexBufferFormat;
 	import flash.display3D.VertexBuffer3D;
-	import com.yogurt3d.YOGURT3D_INTERNAL;
 	
 	public class DirectionalPass extends Pass
 	{

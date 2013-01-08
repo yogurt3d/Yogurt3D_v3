@@ -78,6 +78,7 @@ package com.yogurt3d.presets.effects
 
 
 import com.adobe.AGALMiniAssembler;
+import com.yogurt3d.core.Scene3D;
 import com.yogurt3d.core.render.post.EffectBase;
 import com.yogurt3d.utils.MathUtils;
 import com.yogurt3d.utils.ShaderUtils;
@@ -143,7 +144,7 @@ internal class FilterDotScreen extends EffectBase
 		m_centerX = value;
 	}
 	
-	public override function setEffectParameters(_rect:Rectangle, _sampler:TextureBase):void{
+	public override function setEffectParameters(_rect:Rectangle, _sampler:TextureBase, _scene:Scene3D):void{
 		device.setTextureAt( 0, _sampler);
 	
 		var width:uint = MathUtils.getClosestPowerOfTwo(_rect.width);
@@ -163,7 +164,7 @@ internal class FilterDotScreen extends EffectBase
 		return ShaderUtils.fragmentAssambler.assemble( AGALMiniAssembler.FRAGMENT,
 			
 			[
-				"tex ft0 v0 fs0<2d,clamp,nearest>", // get render to texture
+				"tex ft0 v0 fs0<2d,wrap,linear>", // get render to texture
 				
 				"add ft1.x ft0.x ft0.y",
 				"add ft1.x ft1.x ft0.z",

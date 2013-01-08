@@ -18,10 +18,10 @@
 
 package com.yogurt3d.utils
 {
-	import com.yogurt3d.core.sceneobjects.camera.Camera3D;
+	import com.yogurt3d.core.Scene3D;
 	import com.yogurt3d.core.render.post.PostProcessingEffectBase;
 	import com.yogurt3d.core.render.texture.RenderTexture;
-	import com.yogurt3d.core.Scene3D;
+	import com.yogurt3d.core.sceneobjects.camera.Camera3D;
 	
 	import flash.display3D.Context3D;
 	import flash.display3D.Context3DTextureFormat;
@@ -108,7 +108,7 @@ package com.yogurt3d.utils
 					}
 						
 					// render
-					post.effects[j].render(device, post);
+					post.effects[j].render(device, scene, post);
 					
 					if(  i != m_list.length - 1){
 						lastTexture = tempTarget;
@@ -137,6 +137,7 @@ package com.yogurt3d.utils
 				}
 				if( rtt.overrideToBack ){
 					m_list.splice( i, 0, value );
+					return;
 				}
 			}
 			m_list.splice( i, 0, value );
@@ -151,6 +152,7 @@ package com.yogurt3d.utils
 					return;
 				}
 			}
+			m_list.splice( i, 0, value );
 		}
 		
 		private function $addToBack( value:PostProcessingEffectBase ):void{
@@ -162,6 +164,7 @@ package com.yogurt3d.utils
 					return;
 				}
 			}
+			m_list.splice( i, 0, value );
 		}
 	}
 }

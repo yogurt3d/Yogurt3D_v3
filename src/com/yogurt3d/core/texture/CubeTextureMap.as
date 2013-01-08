@@ -18,6 +18,7 @@
 
 package com.yogurt3d.core.texture
 {
+	import com.yogurt3d.YOGURT3D_INTERNAL;
 	import com.yogurt3d.core.texture.base.ETextureType;
 	import com.yogurt3d.core.texture.base.TextureMapBase;
 	import com.yogurt3d.utils.MipmapGenerator;
@@ -30,7 +31,6 @@ package com.yogurt3d.core.texture
 	import flash.display3D.textures.CubeTexture;
 	import flash.display3D.textures.TextureBase;
 	import flash.utils.ByteArray;
-	import com.yogurt3d.YOGURT3D_INTERNAL;
 
 	public class CubeTextureMap extends TextureMapBase
 	{

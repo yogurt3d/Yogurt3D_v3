@@ -19,6 +19,8 @@
 
 package com.yogurt3d.core.objects
 {
+	
+
 	/**
 	 * Defines common methods for <strong>Yogurt3D Engine</strong> objects.
 	 * 

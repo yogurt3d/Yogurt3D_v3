@@ -18,6 +18,7 @@
 
 
 package com.yogurt3d.core.sceneobjects.transformations {
+	import com.yogurt3d.YOGURT3D_INTERNAL;
 	import com.yogurt3d.core.managers.IDManager;
 	import com.yogurt3d.core.objects.EngineObject;
 	import com.yogurt3d.core.objects.IEngineObject;
@@ -30,7 +31,6 @@ package com.yogurt3d.core.sceneobjects.transformations {
 	import flash.geom.Vector3D;
 	
 	import org.osflash.signals.Signal;
-	import com.yogurt3d.YOGURT3D_INTERNAL;
 	
 	/**
 	 * 

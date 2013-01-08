@@ -18,8 +18,8 @@
 
 package com.yogurt3d.core.render.renderqueue
 {
-	import com.yogurt3d.core.sceneobjects.SceneObjectRenderable;
 	import com.yogurt3d.YOGURT3D_INTERNAL;
+	import com.yogurt3d.core.sceneobjects.SceneObjectRenderable;
 
 	public class SubRenderQueue
 	{
@@ -64,7 +64,8 @@ package com.yogurt3d.core.render.renderqueue
 			while( head )
 			{
 				tmp = head.next;
-				m_pool.object = head;
+				if(head.scn != null)
+					m_pool.object = head;
 				head = tmp;
 			}
 			head = null;

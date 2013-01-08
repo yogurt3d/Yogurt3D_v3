@@ -18,6 +18,7 @@
 
 package com.yogurt3d.io.parsers
 {
+	import com.yogurt3d.YOGURT3D_INTERNAL;
 	import com.yogurt3d.core.texture.CubeTextureMap;
 	import com.yogurt3d.core.texture.TextureMap;
 	import com.yogurt3d.io.parsers.interfaces.IParser;
@@ -27,7 +28,6 @@ package com.yogurt3d.io.parsers
 	import flash.display.DisplayObject;
 	import flash.utils.ByteArray;
 	import flash.utils.Endian;
-	import com.yogurt3d.YOGURT3D_INTERNAL;
 	
 	public class TextureMap_Parser implements IParser
 	{
@@ -109,19 +109,23 @@ package com.yogurt3d.io.parsers
 				texture = new TextureMap();
 				texture.YOGURT3D_INTERNAL::m_compressed = false;
 				texture.bitmapData = _value.bitmapData;
+			//	texture.displayObject = _value;
 				texture.mipmap = m_mipmap;
+			//	trace(" Texture Parser: Bitmap");
 				return texture;
 			}else if( _value is BitmapData ){
 				texture = new TextureMap();
 				texture.YOGURT3D_INTERNAL::m_compressed = false;
 				texture.bitmapData = _value as BitmapData;
 				texture.mipmap = m_mipmap;
+			//	trace(" Texture Parser: BitmapData");
 				return texture;
 			}else if( _value is DisplayObject ){
 				texture = new TextureMap();
 				texture.YOGURT3D_INTERNAL::m_compressed = false;
 				texture.displayObject = _value;
 				texture.mipmap = m_mipmap;
+			//	trace(" Texture Parser: Display Object");
 				return texture;
 			}
 		}

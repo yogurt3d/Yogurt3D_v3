@@ -18,14 +18,16 @@
 
 package com.yogurt3d.core
 {
+
+	
+	import com.yogurt3d.YOGURT3D_INTERNAL;
 	import com.yogurt3d.Yogurt3D;
-	import com.yogurt3d.core.sceneobjects.camera.Camera3D;
-	import com.yogurt3d.core.managers.IDManager;
 	import com.yogurt3d.core.managers.InputManager;
 	import com.yogurt3d.core.managers.PickManager;
 	import com.yogurt3d.core.objects.IEngineObject;
 	import com.yogurt3d.core.render.BackBufferRenderTarget;
 	import com.yogurt3d.core.render.base.RenderTargetBase;
+	import com.yogurt3d.core.sceneobjects.camera.Camera3D;
 	
 	import flash.display.Sprite;
 	import flash.display3D.Context3D;
@@ -36,7 +38,6 @@ package com.yogurt3d.core
 	import flash.text.TextField;
 	
 	import org.osflash.signals.PrioritySignal;
-	import com.yogurt3d.YOGURT3D_INTERNAL;
 	
 	public class Viewport extends Sprite implements IEngineObject
 	{
