@@ -18,6 +18,7 @@
 
 package com.yogurt3d.core.sceneobjects.camera.frustum{
 	
+	import com.yogurt3d.YOGURT3D_INTERNAL;
 	import com.yogurt3d.core.sceneobjects.transformations.Transformation;
 	import com.yogurt3d.utils.MathUtils;
 	import com.yogurt3d.utils.MatrixUtils;
@@ -27,7 +28,6 @@ package com.yogurt3d.core.sceneobjects.camera.frustum{
 	
 	import flash.geom.Matrix3D;
 	import flash.geom.Vector3D;
-	import com.yogurt3d.YOGURT3D_INTERNAL;
 	
 	//import com.yogurt3d.core.namespaces.YOGURT3D_INTERNAL;
 	//

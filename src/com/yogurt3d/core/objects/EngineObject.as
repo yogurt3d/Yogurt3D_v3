@@ -21,8 +21,8 @@
 package com.yogurt3d.core.objects {
 	import avmplus.getQualifiedClassName;
 	
-	import com.yogurt3d.core.managers.IDManager;
 	import com.yogurt3d.YOGURT3D_INTERNAL;
+	import com.yogurt3d.core.managers.IDManager;
 	
 	/**
 	 * <strong>IEngineObject</strong> interface abstract type.

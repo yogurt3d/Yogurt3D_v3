@@ -20,8 +20,6 @@ package com.yogurt3d.core.material
 {
 	import com.yogurt3d.core.material.agalgen.AGALGEN;
 	import com.yogurt3d.core.material.agalgen.IRegister;
-	import com.yogurt3d.core.sceneobjects.camera.Camera3D;
-	import com.yogurt3d.core.sceneobjects.lights.Light;
 	import com.yogurt3d.core.material.enum.ERegisterShaderType;
 	import com.yogurt3d.core.material.parameters.LightInput;
 	import com.yogurt3d.core.material.parameters.VertexInput;
@@ -29,6 +27,8 @@ package com.yogurt3d.core.material
 	import com.yogurt3d.core.material.pass.BasePass;
 	import com.yogurt3d.core.material.pass.Pass;
 	import com.yogurt3d.core.sceneobjects.SceneObjectRenderable;
+	import com.yogurt3d.core.sceneobjects.camera.Camera3D;
+	import com.yogurt3d.core.sceneobjects.lights.Light;
 	import com.yogurt3d.core.texture.ITexture;
 	import com.yogurt3d.utils.Color;
 	

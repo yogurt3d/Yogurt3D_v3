@@ -103,6 +103,7 @@ package com.yogurt3d.presets.effects
 	}
 }
 import com.adobe.AGALMiniAssembler;
+import com.yogurt3d.core.Scene3D;
 import com.yogurt3d.core.render.post.EffectBase;
 import com.yogurt3d.core.render.post.PostProcessingEffectBase;
 import com.yogurt3d.core.texture.TextureMap;
@@ -204,7 +205,7 @@ internal class FilterNightVision extends EffectBase
 		m_noise = value;
 	}
 	
-	public override function setEffectParameters(_rect:Rectangle, _sampler:TextureBase):void{
+	public override function setEffectParameters(_rect:Rectangle, _sampler:TextureBase, _scene:Scene3D):void{
 		device.setTextureAt( 0, _sampler);
 		device.setTextureAt(1, m_noise.getTextureForDevice(device));
 		device.setTextureAt(2, m_mask.getTextureForDevice(device));

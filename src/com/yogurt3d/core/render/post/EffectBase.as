@@ -20,6 +20,7 @@ package com.yogurt3d.core.render.post
 {
 	
 	import com.adobe.AGALMiniAssembler;
+	import com.yogurt3d.core.Scene3D;
 	import com.yogurt3d.core.managers.ProgramManager;
 	import com.yogurt3d.core.material.enum.EBlendMode;
 	import com.yogurt3d.core.material.parameters.ShaderParameters;
@@ -46,7 +47,7 @@ package com.yogurt3d.core.render.post
 		}
 		
 		
-		public function render(_device:Context3D, 
+		public function render(_device:Context3D, _scene:Scene3D,
 							   _post:PostProcessingEffectBase):void{
 			var program:Program3D;
 			device = _device;
@@ -67,7 +68,7 @@ package com.yogurt3d.core.render.post
 			device.setDepthTest( false, Context3DCompareMode.ALWAYS );
 			device.setCulling( Context3DTriangleFace.NONE );
 			
-			setEffectParameters(_post.drawRect, _post.sampler);
+			setEffectParameters(_post.drawRect, _post.sampler, _scene);
 			
 			// render
 			_post.renderer.render(device);
@@ -81,7 +82,7 @@ package com.yogurt3d.core.render.post
 		
 		public function clean():void{}
 		
-		public function setEffectParameters(_rect:Rectangle, _sampler:TextureBase):void{}
+		public function setEffectParameters(_rect:Rectangle, _sampler:TextureBase, _scene:Scene3D):void{}
 		
 		public function getVertexProgram():ByteArray{
 			return ShaderUtils.vertexAssambler.assemble( AGALMiniAssembler.VERTEX, 

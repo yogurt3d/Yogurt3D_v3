@@ -18,13 +18,13 @@
 
 package com.yogurt3d.core.material.pass
 {
-	import com.yogurt3d.core.material.agalgen.IRegister;
-	import com.yogurt3d.core.sceneobjects.lights.Light;
 	import com.yogurt3d.core.material.MaterialBase;
+	import com.yogurt3d.core.material.agalgen.IRegister;
 	import com.yogurt3d.core.material.enum.EBlendMode;
 	import com.yogurt3d.core.material.enum.ERegisterShaderType;
 	import com.yogurt3d.core.material.parameters.FragmentInput;
 	import com.yogurt3d.core.material.parameters.LightInput;
+	import com.yogurt3d.core.sceneobjects.lights.Light;
 	import com.yogurt3d.utils.ShaderUtils;
 	
 	import flash.display3D.Context3DCompareMode;

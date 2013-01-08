@@ -18,9 +18,9 @@
 
 package com.yogurt3d.core.sceneobjects.camera
 {
+	import com.yogurt3d.core.Viewport;
 	import com.yogurt3d.core.geoms.SubMesh;
 	import com.yogurt3d.core.sceneobjects.SceneObjectRenderable;
-	import com.yogurt3d.core.Viewport;
 	import com.yogurt3d.core.volumes.BoundingSphere;
 	
 	import flash.geom.Matrix3D;

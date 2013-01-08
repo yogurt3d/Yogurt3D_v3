@@ -18,8 +18,7 @@
 
 package com.yogurt3d.core
 {
-	import com.yogurt3d.core.sceneobjects.camera.Camera3D;
-	import com.yogurt3d.core.sceneobjects.lights.Light;
+	import com.yogurt3d.YOGURT3D_INTERNAL;
 	import com.yogurt3d.core.managers.IDManager;
 	import com.yogurt3d.core.managers.MaterialManager;
 	import com.yogurt3d.core.managers.SceneTreeManager;
@@ -27,14 +26,17 @@ package com.yogurt3d.core
 	import com.yogurt3d.core.render.post.PostProcessingEffectBase;
 	import com.yogurt3d.core.render.renderqueue.RenderQueue;
 	import com.yogurt3d.core.render.renderqueue.RenderQueueNode;
+	import com.yogurt3d.core.render.texture.RenderDepthTexture;
+	import com.yogurt3d.core.render.texture.RenderSceneTexture;
 	import com.yogurt3d.core.render.texture.base.RenderTextureTargetBase;
-	import com.yogurt3d.utils.Color;
-	import com.yogurt3d.utils.PPPriorityList;
-	import com.yogurt3d.utils.RTTPriorityList;
 	import com.yogurt3d.core.sceneobjects.SceneObject;
 	import com.yogurt3d.core.sceneobjects.SceneObjectRenderable;
 	import com.yogurt3d.core.sceneobjects.SkyBox;
-	import com.yogurt3d.YOGURT3D_INTERNAL;
+	import com.yogurt3d.core.sceneobjects.camera.Camera3D;
+	import com.yogurt3d.core.sceneobjects.lights.Light;
+	import com.yogurt3d.utils.Color;
+	import com.yogurt3d.utils.PPPriorityList;
+	import com.yogurt3d.utils.RTTPriorityList;
 	
 	public class Scene3D extends EngineObject
 	{
@@ -43,7 +45,9 @@ package com.yogurt3d.core
 		public static const OCTREE_SCENE		:String = "OcTreeSceneTreeManagerDriver";
 		
 		public var renderTargets				:RTTPriorityList;
-		public var postProcesses				:PPPriorityList;
+		private var m_postProcesses				:PPPriorityList;
+		
+		private var m_enableDepthRendering		:Boolean;
 				
 		private var m_skyBox					:SkyBox;
 		
@@ -59,23 +63,70 @@ package com.yogurt3d.core
 		
 		use namespace YOGURT3D_INTERNAL;
 		
-		
+		private var m_depthRenderer:RenderDepthTexture;
+		private var m_sceneRenderer:RenderSceneTexture;
+		// TODO: Render Scene
 		public function Scene3D(_sceneTreeManagerDriver:String = "SimpleSceneTreeManagerDriver", args:Object = null, _initInternals:Boolean = true)
 		{
 			renderTargets = new RTTPriorityList();
-			postProcesses = new PPPriorityList();
+			m_postProcesses = new PPPriorityList();
 			m_driver = _sceneTreeManagerDriver;
 			m_renderQueue = new RenderQueue();
 			m_args = args;
+			//renderTargets.add(new RenderDepthTexture());
 			super(_initInternals);
 		}
-	
+
+		public function get sceneRenderer():RenderSceneTexture
+		{
+			return m_sceneRenderer;
+		}
+
+		public function set sceneRenderer(value:RenderSceneTexture):void
+		{
+			m_sceneRenderer = value;
+		}
+
+		public function get depthRenderer():RenderDepthTexture
+		{
+			return m_depthRenderer;
+		}
+
+		public function set depthRenderer(value:RenderDepthTexture):void
+		{
+			m_depthRenderer = value;
+		}
+		
+		public function get postEffects():PPPriorityList{
+			return m_postProcesses;
+		}
+
+		public function addPostEffect(_effect:PostProcessingEffectBase):void{
+			if(_effect.needsDepth)
+				enableDepthRendering = true;
+//			else
+//				enableDepthRendering = false; // TODO
+			
+			if(_effect.needOriginalScene){
+				if(m_sceneRenderer == null)
+					renderTargets.add(m_sceneRenderer = new RenderSceneTexture());
+				else{
+					if(m_sceneRenderer){
+						// remove depth renderer
+					}
+					//m_sceneRenderer = null;
+				}
+			}
+			
+			m_postProcesses.add(_effect);
+		}
+		
 		public function removeAllPostEffects():void{
-			postProcesses.removeAll();
+			m_postProcesses.removeAll();
 		}
 		
 		public function removePostEffect(_effect:PostProcessingEffectBase):void{
-			postProcesses.remove(_effect);
+			m_postProcesses.remove(_effect);
 		}
 		
 		/**
@@ -183,7 +234,6 @@ package com.yogurt3d.core
 		 * */
 		public function removeChild(_value:SceneObject):SceneObject
 		{
-		
 			SceneTreeManager.removeChild(_value, m_rootObject);
 			return _value;
 		}
@@ -312,14 +362,27 @@ package com.yogurt3d.core
 		}
 		public function set skyBox(_value:SkyBox):void
 		{
-//			if( m_skyBox != null )
-//			{
-//				//remove from scene
-//				removeChild( m_skyBox );
-//			}
 			m_skyBox = _value;
-//			if( m_skyBox )
-//				SceneTreeManager.addChild( m_skyBox, m_rootObject , 1000);
+		}
+			
+		public function get enableDepthRendering():Boolean
+		{
+			return m_enableDepthRendering;
+		}
+		
+		public function set enableDepthRendering(value:Boolean):void
+		{
+			m_enableDepthRendering = value;
+			if(value){
+				if(m_depthRenderer == null)
+					renderTargets.add(m_depthRenderer = new RenderDepthTexture());
+			}else{
+				if(m_depthRenderer){
+					// remove depth renderer
+				}
+				m_depthRenderer = null;
+			
+			}
 		}
 		
 		YOGURT3D_INTERNAL function addRenderTarget( value:RenderTextureTargetBase ):void{

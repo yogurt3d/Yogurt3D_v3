@@ -33,22 +33,24 @@ package com.yogurt3d.core.render
 		public override function render():void{
 			
 			device.enableErrorChecking = true;
+			
 			//trace("[BackBufferRenderTarget][render] start");
 			if(!m_newBackBufferRect.equals( m_currentBackBufferRect ) )
 			{
 				device.configureBackBuffer( m_newBackBufferRect.width, m_newBackBufferRect.height, 16, true );
 				m_currentBackBufferRect.copyFrom( m_newBackBufferRect );
 			}
-			
+			// TODO
+			//device.clear(scene.sceneColor.r, scene.sceneColor.g, scene.sceneColor.b, scene.sceneColor.a);
 			if( scene.renderTargets.length != 0 )
 			{// if scene contains render targets
 				// render RTT's
-				scene.renderTargets.updateAll(device);
+				scene.renderTargets.updateAll(device, scene, camera, drawRect);
 				// set render to backbuffer
 				device.setRenderToBackBuffer();
 			}
 			
-			if( scene.postProcesses.length > 0 )
+			if( scene.postEffects.length > 0 )
 			{// if scene contains post processing effects
 				if( m_renderTexture == null )
 				{
@@ -65,7 +67,7 @@ package com.yogurt3d.core.render
 				
 				//VertexStreamManager.instance.cleanVertexBuffers(device);
 				// send rtt to postprocessing effects
-				scene.postProcesses.updateAll( device,scene,camera,m_renderTexture.drawRect,m_renderTexture);
+				scene.postEffects.updateAll( device, scene, camera, m_renderTexture.drawRect, m_renderTexture);
 			}else{ // if the scene does not contain and post processing effects
 				// clear backbuffer
 				device.clear(scene.sceneColor.r, scene.sceneColor.g, scene.sceneColor.b, scene.sceneColor.a);

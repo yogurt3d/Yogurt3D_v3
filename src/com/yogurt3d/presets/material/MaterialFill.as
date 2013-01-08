@@ -1,8 +1,7 @@
 package com.yogurt3d.presets.material
 {
-	import com.yogurt3d.core.material.agalgen.AGALGEN;
-	import com.yogurt3d.core.material.agalgen.IRegister;
 	import com.yogurt3d.core.material.MaterialBase;
+	import com.yogurt3d.core.material.agalgen.AGALGEN;
 	import com.yogurt3d.core.material.enum.ERegisterShaderType;
 	import com.yogurt3d.core.material.parameters.FragmentInput;
 	import com.yogurt3d.core.material.parameters.SurfaceOutput;

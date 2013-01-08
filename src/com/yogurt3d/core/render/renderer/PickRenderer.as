@@ -18,21 +18,22 @@
  
 package com.yogurt3d.core.render.renderer
 {
-	import com.yogurt3d.core.sceneobjects.camera.Camera3D;
+	import com.yogurt3d.YOGURT3D_INTERNAL;
+	import com.yogurt3d.core.Scene3D;
+	import com.yogurt3d.core.Viewport;
+	import com.yogurt3d.core.geoms.IMesh;
 	import com.yogurt3d.core.geoms.SkeletalAnimatedMesh;
 	import com.yogurt3d.core.geoms.SkinnedSubMesh;
 	import com.yogurt3d.core.geoms.SubMesh;
-	import com.yogurt3d.core.geoms.IMesh;
 	import com.yogurt3d.core.managers.DeviceStreamManager;
 	import com.yogurt3d.core.managers.MaterialManager;
 	import com.yogurt3d.core.material.Y3DProgram;
 	import com.yogurt3d.core.objects.EngineObject;
 	import com.yogurt3d.core.render.renderqueue.RenderQueue;
 	import com.yogurt3d.core.render.renderqueue.RenderQueueNode;
-	import com.yogurt3d.core.Scene3D;
 	import com.yogurt3d.core.sceneobjects.SceneObjectRenderable;
+	import com.yogurt3d.core.sceneobjects.camera.Camera3D;
 	import com.yogurt3d.utils.MatrixUtils;
-	import com.yogurt3d.core.Viewport;
 	
 	import flash.display.BitmapData;
 	import flash.display3D.Context3D;
@@ -47,7 +48,6 @@ package com.yogurt3d.core.render.renderer
 	import flash.geom.Matrix3D;
 	import flash.geom.Rectangle;
 	import flash.geom.Vector3D;
-	import com.yogurt3d.YOGURT3D_INTERNAL;
 
 	/**
 	 * 
@@ -411,14 +411,14 @@ package com.yogurt3d.core.render.renderer
 	
 	}
 }
-import com.yogurt3d.core.material.agalgen.IRegister;
-import com.yogurt3d.core.sceneobjects.lights.Light;
 import com.yogurt3d.core.material.Y3DProgram;
+import com.yogurt3d.core.material.agalgen.IRegister;
 import com.yogurt3d.core.material.parameters.FragmentInput;
 import com.yogurt3d.core.material.parameters.VertexInput;
 import com.yogurt3d.core.material.parameters.VertexOutput;
 import com.yogurt3d.core.material.pass.Pass;
 import com.yogurt3d.core.sceneobjects.SceneObjectRenderable;
+import com.yogurt3d.core.sceneobjects.lights.Light;
 import com.yogurt3d.utils.ShaderUtils;
 
 import flash.display3D.Context3D;
@@ -602,6 +602,6 @@ class PassHitTriangle extends Pass{
 //		trace(gen.printCode(code));
 //		trace("END PICK MANAGER FRAGMENT");
 		
-		return ShaderUtils.vertexAssambler.assemble(Context3DProgramType.FRAGMENT, code, false );
+		return ShaderUtils.fragmentAssambler.assemble(Context3DProgramType.FRAGMENT, code, false );
 	}
 }

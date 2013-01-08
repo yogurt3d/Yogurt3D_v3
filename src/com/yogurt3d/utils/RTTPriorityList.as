@@ -18,9 +18,12 @@
 
 package com.yogurt3d.utils
 {
+	import com.yogurt3d.core.Scene3D;
 	import com.yogurt3d.core.render.texture.base.RenderTextureTargetBase;
+	import com.yogurt3d.core.sceneobjects.camera.Camera3D;
 	
 	import flash.display3D.Context3D;
+	import flash.geom.Rectangle;
 
 	public class RTTPriorityList
 	{
@@ -54,13 +57,18 @@ package com.yogurt3d.utils
 		public function removeByIndex( value:uint ):void{
 			m_list.splice( value, 1 );
 		}
-		public function updateAll( device:Context3D ):void{
+		
+		public function updateAll( device:Context3D , scene:Scene3D, camera:Camera3D, _drawRect:Rectangle):void{
 			for( var i:int = 0; i < m_list.length; i++ )
 			{
 				var rtt:RenderTextureTargetBase = m_list[i];
 				if( rtt.autoUpdate )
 				{
 					rtt.device = device;
+					rtt.scene = scene;
+					rtt.camera = camera;
+					rtt.drawRect.width = MathUtils.getClosestPowerOfTwo(_drawRect.width);
+					rtt.drawRect.height = MathUtils.getClosestPowerOfTwo(_drawRect.height);
 					rtt.render();
 				}
 			}
@@ -77,6 +85,7 @@ package com.yogurt3d.utils
 				}
 				if( rtt.overrideToBack ){
 					m_list.splice( i, 0, value );
+					return;
 				}
 			}
 			m_list.splice( i, 0, value );
@@ -91,6 +100,8 @@ package com.yogurt3d.utils
 					return;
 				}
 			}
+			
+			m_list.splice( i, 0, value );
 		}
 		
 		private function $addToBack( value:RenderTextureTargetBase ):void{
@@ -102,6 +113,7 @@ package com.yogurt3d.utils
 					return;
 				}
 			}
+			m_list.splice( i, 0, value );
 		}
 	}
 }

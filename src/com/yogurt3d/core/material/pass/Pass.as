@@ -18,18 +18,16 @@
 
 package com.yogurt3d.core.material.pass
 {
-	import com.yogurt3d.core.material.agalgen.AGALGEN;
-	import com.yogurt3d.core.material.agalgen.IRegister;
-	import com.yogurt3d.core.sceneobjects.camera.Camera3D;
+	import com.yogurt3d.YOGURT3D_INTERNAL;
+	import com.yogurt3d.core.geoms.IMesh;
 	import com.yogurt3d.core.geoms.SkinnedSubMesh;
 	import com.yogurt3d.core.geoms.SubMesh;
-	import com.yogurt3d.core.geoms.IMesh;
-	import com.yogurt3d.core.sceneobjects.lights.ELightType;
-	import com.yogurt3d.core.sceneobjects.lights.Light;
 	import com.yogurt3d.core.managers.DeviceStreamManager;
 	import com.yogurt3d.core.managers.MaterialManager;
 	import com.yogurt3d.core.material.MaterialBase;
 	import com.yogurt3d.core.material.Y3DProgram;
+	import com.yogurt3d.core.material.agalgen.AGALGEN;
+	import com.yogurt3d.core.material.agalgen.IRegister;
 	import com.yogurt3d.core.material.enum.ERegisterShaderType;
 	import com.yogurt3d.core.material.parameters.FragmentInput;
 	import com.yogurt3d.core.material.parameters.LightInput;
@@ -38,6 +36,9 @@ package com.yogurt3d.core.material.pass
 	import com.yogurt3d.core.material.parameters.VertexInput;
 	import com.yogurt3d.core.material.parameters.VertexOutput;
 	import com.yogurt3d.core.sceneobjects.SceneObjectRenderable;
+	import com.yogurt3d.core.sceneobjects.camera.Camera3D;
+	import com.yogurt3d.core.sceneobjects.lights.ELightType;
+	import com.yogurt3d.core.sceneobjects.lights.Light;
 	import com.yogurt3d.core.texture.ITexture;
 	import com.yogurt3d.utils.Color;
 	import com.yogurt3d.utils.ShaderUtils;
@@ -49,7 +50,6 @@ package com.yogurt3d.core.material.pass
 	import flash.geom.Matrix3D;
 	import flash.utils.ByteArray;
 	import flash.utils.Dictionary;
-	import com.yogurt3d.YOGURT3D_INTERNAL;
 	
 
 	public class Pass

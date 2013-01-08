@@ -32,12 +32,35 @@ package com.yogurt3d.core.render.post
 		
 		private var m_sampler				:TextureBase;
 		
+		private var m_needsDepth			:Boolean = false;
+		private var m_needOriginalScene		:Boolean = false;
+		
 		public function PostProcessingEffectBase()
 		{
 			renderer = new PostProcessRenderer();
 			effects = new Vector.<EffectBase>();
 		}
 		
+		public function get needOriginalScene():Boolean
+		{
+			return m_needOriginalScene;
+		}
+
+		public function set needOriginalScene(value:Boolean):void
+		{
+			m_needOriginalScene = value;
+		}
+
+		public function get needsDepth():Boolean
+		{
+			return m_needsDepth;
+		}
+
+		public function set needsDepth(value:Boolean):void
+		{
+			m_needsDepth = value;
+		}
+
 		/**
 		 * This is the previos screen to be used as a sampler\n
 		 * This will be set before render is called

@@ -19,6 +19,7 @@
 package com.yogurt3d.core.objects
 {
 	
+	
 	public class Controller implements IController
 	{
 		

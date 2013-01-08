@@ -19,8 +19,8 @@
 package com.yogurt3d.presets.cameras
 {
 	import com.yogurt3d.Yogurt3D;
-	import com.yogurt3d.core.sceneobjects.camera.Camera3D;
 	import com.yogurt3d.core.sceneobjects.SceneObject;
+	import com.yogurt3d.core.sceneobjects.camera.Camera3D;
 	
 	import flash.display.DisplayObject;
 	import flash.events.MouseEvent;
