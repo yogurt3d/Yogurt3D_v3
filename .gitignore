@@ -1,3 +1,17 @@
+############### MAC OS IGNORE
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+
+# Thumbnails
+._*
+
+# Files that might appear on external disk
+.Spotlight-V100
+.Trashes
+
+############### BINARY IGNORE
 # Build and Release Folders
 bin/
 bin-debug/
@@ -6,9 +20,13 @@ bin-release/
 # Other files and folders
 .settings/
 
+############### FLASH BUILDER IGNORE
 .actionScriptProperties
 .flexLibProperties
 .project
-# Project files, i.e. `.project`, `.actionScriptProperties` and `.flexProperties`
-# should NOT be excluded as they contain compiler settings and other important
-# information for Eclipse / Flash Builder.
+
+############### INTELLIJ BUILDER IGNORE
+*.iml
+*.ipr
+*.iws
+.idea/
