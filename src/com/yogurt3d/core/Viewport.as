@@ -122,14 +122,22 @@ package com.yogurt3d.core
 		}
 		
 		private function onParentResize( event:Event ):void{
+		 	
+//			if (stage == null || m_device == null || m_device.driverInfo == "Disposed") {
+//				return;
+//			}
+			
 			if( stage.stageWidth == 0 || stage.stageHeight == 0 )
 			{
 				return;
 			}
 			width = stage.stageWidth ;
 			height = stage.stageHeight ;
+				
 			if( camera )
 				camera.frustum.setProjectionPerspective( camera.frustum.fov, width/height, camera.frustum.near, camera.frustum.far );
+			
+			//m_device.configureBackBuffer(width, height, 0, false);
 		}
 		
 		public function get onSizeChange():PrioritySignal
@@ -309,11 +317,11 @@ package com.yogurt3d.core
 			}
 			scene.preRender( camera );
 			
-			if( m_pickingEnabled )
-			{
-				m_pickManager.update( scene, camera );
-			}
-			
+//			if( m_pickingEnabled )
+//			{
+//				m_pickManager.update( scene, camera );
+//			}
+//			
 			m_currentRenderTarget.render();
 			scene.postRender();
 //			
@@ -371,7 +379,13 @@ package com.yogurt3d.core
 		}
 		
 		public function dispose():void{
+			removeEventListener(Event.ADDED_TO_STAGE, onAddedToStage );
+			removeEventListener(Event.REMOVED_FROM_STAGE, onRemovedFromStage );
+			
 			IDManager.removeObject(this);	
+			
+			Yogurt3D.deregisterViewport(this);
+			
 		}
 		
 		public function disposeDeep():void{

@@ -40,6 +40,26 @@ package com.yogurt3d.core.material.enum
 			m_blendDestination = destination;
 		}
 		
+		public function get blendDestination():String
+		{
+			return m_blendDestination;
+		}
+
+		public function set blendDestination(value:String):void
+		{
+			m_blendDestination = value;
+		}
+
+		public function get blendSource():String
+		{
+			return m_blendSource;
+		}
+
+		public function set blendSource(value:String):void
+		{
+			m_blendSource = value;
+		}
+
 		public function setToDevice(device:Context3D):Boolean{
 			if( m_blendSource != "" )
 			{

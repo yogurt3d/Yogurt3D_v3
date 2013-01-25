@@ -58,6 +58,14 @@ package com.yogurt3d.core.managers
 			m_programDict[matClass][passClass][meshType] = program;
 		}
 		
+		public function uncacheProgram(material:MaterialBase, pass:Pass):void{
+//			trace("UNCACHE PROGRAM");
+//			var matClass:Class = Object(material).constructor;
+//			var passClass:Class = Object(pass).constructor;
+//			
+//			m_programDict[matClass][passClass] =  null;
+		}
+		
 		public function hasProgram(material:MaterialBase, pass:Pass, meshType:String):Boolean{
 			var matClass:Class = Object(material).constructor;
 			var passClass:Class = Object(pass).constructor;

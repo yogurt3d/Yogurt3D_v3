@@ -72,25 +72,35 @@ package com.yogurt3d.core.render.renderqueue
 		
 		public function addRenderable( scnObj:SceneObjectRenderable ):void{
 			if(scnObj == null || scnObj.visible == false || scnObj.material == null ) return;
+			
 			if( !m_renderLayerSubQueueIndex.hasOwnProperty(scnObj.renderLayer ) )
 			{
 				addSubRenderQueue(new SubRenderQueue(), scnObj.renderLayer);
+				//trace("if 1: addSubRenderQueue");
 			}
+			
 			if( scnObj.renderLayer != 0 )
 			{
 				var layerIndex:int = m_renderLayerSubQueueIndex[scnObj.renderLayer];
 				var queue:SubRenderQueue = m_subQueues[layerIndex];
 				queue.addRenderable( scnObj );
+				
+				//trace("if 2: addSubRenderQueue", m_subQueues[layerIndex]);
 			}else{
 				var mat:MaterialBase = scnObj.material;
 				if(mat.transparent )
 				{
 					m_alpha.addRenderable(scnObj);
-				}else if( mat.cutOff )
+				//	trace("if 3: Material Transparency");
+				}else 
+					if( mat.cutOff )
 				{
 					m_alphakill.addRenderable(scnObj);
+				//	trace("if 4: Alpha Kill");
 				}else{
 					m_opaque.addRenderable(scnObj);
+					
+				//	trace("if 5: Opaque");
 				}
 			}
 		}

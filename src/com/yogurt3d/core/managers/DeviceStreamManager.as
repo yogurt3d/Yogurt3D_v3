@@ -83,6 +83,19 @@ package com.yogurt3d.core.managers
 				device.setTextureAt( --m_lastMarkS, null );
 			}
 		}
+		
+		[Inline]
+		public function clearAllTextures( device:Context3D ):void{
+			device.setTextureAt( 0, null );
+			device.setTextureAt( 1, null );
+			device.setTextureAt( 2, null );
+			device.setTextureAt( 3, null );
+			device.setTextureAt( 4, null );
+			device.setTextureAt( 5, null );
+			device.setTextureAt( 6, null );
+			device.setTextureAt( 7, null );
+			
+		}
 		/*public function cleanVertexBuffers(device:Context3D):void{
 			if( m_contextBufferAllocation[device] > -1 )
 			{

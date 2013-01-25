@@ -22,6 +22,7 @@ package com.yogurt3d.core.material
 	import com.yogurt3d.core.material.agalgen.IRegister;
 	import com.yogurt3d.core.material.enum.ERegisterShaderType;
 	import com.yogurt3d.core.material.parameters.LightInput;
+	import com.yogurt3d.core.material.parameters.ShaderParameters;
 	import com.yogurt3d.core.material.parameters.VertexInput;
 	import com.yogurt3d.core.material.parameters.VertexOutput;
 	import com.yogurt3d.core.material.pass.BasePass;
@@ -53,6 +54,17 @@ package com.yogurt3d.core.material
 			if(_initInternals)
 				m_basePass = new BasePass();
 			//m_directionalPass = new DirectionalPass();
+		}
+		
+		public function get params():ShaderParameters{
+			if(m_basePass)
+				return m_basePass.surfaceParams;
+			return null;
+		}
+		
+		public function disposeDeep():void{
+			if(m_basePass)
+				m_basePass.disposeDeep(this);
 		}
 		
 		public function get basePass():Pass

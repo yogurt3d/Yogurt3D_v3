@@ -19,6 +19,7 @@
 package com.yogurt3d.core.render.renderer
 {
 	import com.yogurt3d.YOGURT3D_INTERNAL;
+	import com.yogurt3d.Yogurt3D;
 	import com.yogurt3d.core.Scene3D;
 	import com.yogurt3d.core.Viewport;
 	import com.yogurt3d.core.geoms.IMesh;
@@ -42,7 +43,6 @@ package com.yogurt3d.core.render.renderer
 	import flash.display3D.Context3DProgramType;
 	import flash.display3D.Context3DTriangleFace;
 	import flash.display3D.Context3DVertexBufferFormat;
-	import flash.display3D.Program3D;
 	import flash.display3D.VertexBuffer3D;
 	import flash.events.Event;
 	import flash.geom.Matrix3D;
@@ -57,6 +57,9 @@ package com.yogurt3d.core.render.renderer
  	 **/
 	public class PickRenderer extends EngineObject implements IRenderer
 	{
+		private static var m_materialManager		:MaterialManager 	  = MaterialManager.instance;
+		private var vsManager						:DeviceStreamManager  = DeviceStreamManager.instance;	
+		
 		private var m_initialized					:Boolean 		= false;
 		private var m_viewMatrix					:Matrix3D		= new Matrix3D();
 		private var m_modelViewMatrix				:Matrix3D		= new Matrix3D();
@@ -67,14 +70,7 @@ package com.yogurt3d.core.render.renderer
 	
 		private var m_bitmapData					:BitmapData;
 		
-		private var vsManager						:DeviceStreamManager = DeviceStreamManager.instance;
-		
-		private var m_boneDataDirty					:Boolean = false;
-		
-		private var m_lastProgram					:Program3D = null;
-		
 		private var m_viewportData					:Vector.<Number> = new Vector.<Number>( 4, true );
-		
 		private var m_boundScale					:Vector.<Number> = new Vector.<Number>( 4, true );
 		private var m_boundOffset					:Vector.<Number> = new Vector.<Number>( 4, true );
 		
@@ -83,13 +79,12 @@ package com.yogurt3d.core.render.renderer
 		
 		private var m_lastHit						:SceneObjectRenderable;
 		private var m_localHitPosition				:Vector3D;
+		private var m_viewport						:Viewport;
 		
-		private var m_lastVertexBufferLength		:uint = 0;
-		protected static var m_materialManager:MaterialManager = MaterialManager.instance;
-		
-		public function PickRenderer(_initInternals:Boolean=true)
+		public function PickRenderer(_viewport:Viewport, _initInternals:Boolean=true)
 		{
 			super(_initInternals);
+			m_viewport = _viewport;
 		}
 		
 		public function get localHitPosition():Vector3D
@@ -157,27 +152,31 @@ package com.yogurt3d.core.render.renderer
 			var originalBoneIndex:uint;
 			
 			var renderableCount:uint = 0;
-			
+			device = Viewport.YOGURT3D_INTERNAL::m_pickDevice;
+					
 			// foe each renderable object loop
 			var _renderableSet:RenderQueue = _scene.getRenderableSet();
 			if(_renderableSet)
 				renderableCount = _renderableSet.getRenderableCount();
 					
 			m_lastHit = null;
-			
-			device = Viewport.YOGURT3D_INTERNAL::m_pickDevice;
+				
+			m_viewport.stage.stage3Ds[3].x = -50;
+			m_viewport.stage.stage3Ds[3].y = -50;
+			//m_viewport.stage.stage3Ds[3].addEventListener( Event.CONTEXT3D_CREATE, initHandler );
 			
 			if( !m_initialized)
 			{
-				device.configureBackBuffer(50,50,0,true);
-				device.setScissorRectangle( new Rectangle( 0,0,1,1 ) );
+				device.configureBackBuffer(50, 50, 0, true);
 				m_initialized = true;
 			}
 			
 			// clean buffer
-			device.clear(0,0,0,0);
 			
+			device.clear(0,0,0,0);
+			device.setScissorRectangle( new Rectangle( 0,0,1,1 ) );
 			device.setCulling( Context3DTriangleFace.FRONT );
+			
 			// disable blending
 			device.setBlendFactors( "one", "zero");
 			device.setColorMask( true, true, true, true);
@@ -284,9 +283,7 @@ package com.yogurt3d.core.render.renderer
 			var green:uint 	= (selectedIndexColor>>8) & 0xFF;
 			var blue:uint 	= (selectedIndexColor) & 0xFF;
 			var selectedIndex:uint = (( red / 8.0 )) +  (( green / 8.0 ) << 5) +  (( blue / 8.0 ) << 10);
-			
-	//		trace("Selected ",selectedIndex);
-			
+						
 			if( selectedIndex != 0 && 
 				selectedIndex <= renderableCount && 
 				_renderableSet && 
@@ -295,14 +292,12 @@ package com.yogurt3d.core.render.renderer
 				(_renderableSet.getNodeAt( selectedIndex - 1).scn).interactive ){
 				
 				m_lastHit = _renderableSet.getNodeAt( selectedIndex - 1).scn;
-//			/	trace("Selected ",selectedIndex, m_lastHit);
 				
 			}else{
 				m_lastHit = null;
 			}
 			
-			m_lastProgram = null;
-			
+	
 			// if an object is picked
 			if( m_lastHit )
 			{
@@ -405,8 +400,10 @@ package com.yogurt3d.core.render.renderer
 				localHitPosition.y = ((col >> 8)  & 0xFF) / (scY*255) - offsY;
 				localHitPosition.z = (col 		  & 0xFF) / (scZ*255) - offsZ;
 			}	
-			
+	
 			device.present();
+			
+			//device.configureBackBuffer( rec0t.width, rect.height, 16, true);
 		}
 	
 	}
@@ -443,27 +440,6 @@ class PassHitObject extends Pass{
 		gen.createFC("SIndex");
 	}
 	
-//	public override function getProgram(device:Context3D, _object:SceneObjectRenderable, _light:Light ):Y3DProgram{
-//		if( m_program == null )
-//		{
-//			if( !m_materialManager.hasProgram( _object.material, this, _object.geometry.type ) )
-//			{
-//				m_program = new Y3DProgram();
-//				trace("PASS", _object.material,  _object.geometry.type);
-//				m_program.fragment = getFragmentShader(_light);
-//				m_program.vertex = getVertexShader( (_object.geometry.type.indexOf("AnimatedGPUMesh") != -1));
-//				m_program.program = device.createProgram();
-//				m_program.program.upload( m_program.vertex, m_program.fragment );	
-//				m_materialManager.cacheProgram(_object.material, this, _object.geometry.type, m_program);
-//			}else{
-//				m_program = m_materialManager.getProgram(_object.material, this, _object.geometry.type);
-//				getFragmentShader(_light);
-//				getVertexShader((_object.geometry.type.indexOf("AnimatedGPUMesh") != -1));
-//			}
-//		}
-//		return m_program;
-//	}
-//	
 	public override function getVertexShader(isSkeletal:Boolean):ByteArray{
 		var input:VertexInput = m_vertexInput = new VertexInput(gen);
 		var out:VertexOutput = m_vertexOutput;
@@ -524,7 +500,7 @@ class PassHitObject extends Pass{
 //		trace(gen.printCode(code));
 //		trace("END PICK MANAGER FRAGMENT");
 		
-		return ShaderUtils.vertexAssambler.assemble(Context3DProgramType.FRAGMENT, code, false );
+		return ShaderUtils.fragmentAssambler.assemble(Context3DProgramType.FRAGMENT, code, false );
 	}
 }
 

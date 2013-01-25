@@ -38,5 +38,11 @@ package com.yogurt3d.utils
 				_vec1.w + _t * (_vec2.w - _vec1.w)
 			);
 		}
+		
+		public static function lerpNumeric( _t:Number, value:Number, value2:Number ):Number{
+		
+	
+			return value + (_t * (value2 - value));
+		}
 	}
 }

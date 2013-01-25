@@ -77,16 +77,16 @@ package com.yogurt3d.core.material.pass
 			
 			code += generateNeededCalculations(_light, surfaceOutput);
 			
-			code += ambient + surface + light;
-			
-			code += gen.code("add", gen.FT["result"].xyz, gen.FT["result"].xyz, resultAmb.xyz);
+			//code += ambient + surface + light;
+			code += surface + light;
+			//code += gen.code("add", gen.FT["result"].xyz, gen.FT["result"].xyz, resultAmb.xyz);
 			
 			code += "\n//Move result to output\n";
 			code += "mov oc " + gen.FT["result"];
 			
-//			trace("FRAGMENT SHADER");
-//			trace(code);
-//			trace("END FRAGMENT SHADER");
+			trace("[Base Pass] FRAGMENT SHADER");
+			trace(code);
+			trace("[Base Pass] END FRAGMENT SHADER");
 			
 			return ShaderUtils.vertexAssambler.assemble(Context3DProgramType.FRAGMENT, code, false );
 	
