@@ -11,6 +11,17 @@ Icon
 .Spotlight-V100
 .Trashes
 
+
+############### WINDOWS IGNORE
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
 ############### BINARY IGNORE
 # Build and Release Folders
 bin/
