@@ -35,7 +35,7 @@ package com.yogurt3d.core.managers
 			
 			if( registeredPrograms[_key] == null )
 			{
-				trace("[Y3D_WARNING] MaterialManager@geteffectProgram: Registering "+_key);	
+				//trace("[Y3D_WARNING] MaterialManager@geteffectProgram: Registering "+_key);	
 				//	_pass.setSurfaceFuncConst(m_surfaceParams ,m_surfaceAttrib);
 				registeredPrograms[_key] = {vert:_effect.getVertexProgram(), frag:_effect.getFragmentProgram()};
 				

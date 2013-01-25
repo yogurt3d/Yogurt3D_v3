@@ -179,6 +179,10 @@ package com.yogurt3d.core.material.pass
 			m_shininess = _value;
 		}
 		
+		public function disposeDeep(_materialBase:MaterialBase):void{
+			m_materialManager.uncacheProgram(_materialBase, this);
+		}
+		
 		public function getProgram(device:Context3D, _object:SceneObjectRenderable, _light:Light ):Y3DProgram{
 			if( m_program == null || !m_materialManager.hasProgram( _object.material, this, _object.geometry.type ))
 			{
@@ -626,7 +630,7 @@ package com.yogurt3d.core.material.pass
 //			trace(code);
 //			trace("END FRAGMENT SHADER");
 			
-			return ShaderUtils.vertexAssambler.assemble(Context3DProgramType.FRAGMENT, code, false );
+			return ShaderUtils.fragmentAssambler.assemble(Context3DProgramType.FRAGMENT, code, false );
 		}
 	}
 }

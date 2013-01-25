@@ -25,8 +25,8 @@ package com.yogurt3d.presets.material
 					
 			createConstantFromVector( ERegisterShaderType.FRAGMENT, "color", Vector.<Number>([_colorVec[0], _colorVec[1], _colorVec[2], _opacity]) );
 			
-			ambientColor = new Color(0,0,0,1);
-			emissiveColor = new Color(0,0,0,1);
+			ambientColor = new Color(0,0,0,0);
+			emissiveColor = new Color(0,0,0,0);
 		}
 		
 		private function mySurfaceFunction( surfaceInput:FragmentInput, surfaceOutput:SurfaceOutput, gen:AGALGEN ):String{

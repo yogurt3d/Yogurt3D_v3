@@ -640,8 +640,8 @@ package com.yogurt3d.core.material.agalgen
 							_mask:String="linear", 
 							_mipMap:Boolean=false, 
 							_checkTransParent:Boolean=false, 
-							_isTransparent:Boolean=false, _alphaApp:String=null) :String{
-			var _target:String, _samp:String, _uv:String;
+							_isTransparent:Boolean=false, _alpha:*=null) :String{
+			var _target:String, _samp:String, _uv:String, _alphaApp:String;
 			
 			if(_targetReg is IRegister)
 				_target = _targetReg.toString();
@@ -657,6 +657,11 @@ package com.yogurt3d.core.material.agalgen
 				_uv = _uvReg.toString();
 			else if(_sampler)
 				_uv = _uvReg;
+			
+			if(_alpha && _alpha is IRegister)
+				_alphaApp = _alpha.toString();
+			else if(_alpha)
+				_alphaApp = _alpha;
 			
 			
 			var _tmp:String;

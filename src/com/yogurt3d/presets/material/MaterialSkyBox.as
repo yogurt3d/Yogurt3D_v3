@@ -143,7 +143,7 @@ class SkyBoxPass extends Pass{
 		
 //		trace(code + "\n");
 		
-		return ShaderUtils.vertexAssambler.assemble(Context3DProgramType.FRAGMENT, code, false );
+		return ShaderUtils.fragmentAssambler.assemble(Context3DProgramType.FRAGMENT, code, false );
 	}
 
 }

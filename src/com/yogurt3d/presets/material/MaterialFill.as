@@ -6,6 +6,10 @@ package com.yogurt3d.presets.material
 	import com.yogurt3d.core.material.parameters.FragmentInput;
 	import com.yogurt3d.core.material.parameters.SurfaceOutput;
 	import com.yogurt3d.utils.Color;
+	
+	import flash.display3D.Context3DBlendFactor;
+	import flash.display3D.Context3DCompareMode;
+	import flash.display3D.Context3DTriangleFace;
 
 	public class MaterialFill extends MaterialBase{
 		
@@ -18,12 +22,21 @@ package com.yogurt3d.presets.material
 			surfaceFunction = mySurfaceFunction;
 			vertexFunction = emptyFunction;
 			
+			params.writeDepth		= true;
+			params.blendEnabled 	= true;
+			params.blendMode.blendSource = Context3DBlendFactor.SOURCE_ALPHA;
+			params.blendMode.blendDestination = Context3DBlendFactor.ONE_MINUS_SOURCE_ALPHA;
+			params.culling = Context3DTriangleFace.NONE;
+			
+			
 			var _colorVec:Vector.<Number> = new Vector.<Number>;
 			_colorVec[0] = (_color >> 16 & 255 ) / 255;
 			_colorVec[1] = (_color >> 8 & 255) / 255;
 			_colorVec[2] = (_color & 255) / 255;
-					
+			
 			createConstantFromVector( ERegisterShaderType.FRAGMENT, "color", Vector.<Number>([_colorVec[0], _colorVec[1], _colorVec[2], _opacity]) );
+
+			 opacity = _opacity;
 		}
 		
 		private function mySurfaceFunction( surfaceInput:FragmentInput, surfaceOutput:SurfaceOutput, gen:AGALGEN ):String{
@@ -54,6 +67,8 @@ package com.yogurt3d.presets.material
 		
 		public function set opacity( value:Number ):void{
 			getConstantVec("color")[3] = value;
+			transparent = (value < 1.0);
+			
 		}
 		
 	}

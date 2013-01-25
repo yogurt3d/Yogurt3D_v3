@@ -67,7 +67,7 @@ package com.yogurt3d.core.managers
 			
 			if( !m_pickRenderer )
 			{
-				m_pickRenderer = new PickRenderer();
+				m_pickRenderer = new PickRenderer(_viewport);
 			}
 			
 			m_viewport = _viewport;
@@ -162,7 +162,7 @@ package com.yogurt3d.core.managers
 				event.camera = m_lastCamera;
 				event.viewport = m_viewport;
 				
-				trace("[Pick Manager] Double Clicked", m_currentObject);
+				//trace("[Pick Manager] Double Clicked", m_currentObject);
 				m_currentObject.onMouseDoubleClick.dispatch( event );
 			}
 		}

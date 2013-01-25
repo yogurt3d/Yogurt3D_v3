@@ -237,7 +237,7 @@ package com.yogurt3d.presets.scene.quad
 				
 				camera.frustum.boundingSphere.YOGURT3D_INTERNAL::m_center = camera.transformation.matrixGlobal.transformVector(camera.frustum.m_bSCenterOrginal);
 				
-				s_quadTreeByScene[_scene].list = listOfVisibilityTesterByScene[_scene][_camera];
+			//	s_quadTreeByScene[_scene].list = listOfVisibilityTesterByScene[_scene][_camera];
 				
 				s_quadTreeByScene[_scene].visibilityProcess( _camera, _renderQueue );
 			}
@@ -297,7 +297,7 @@ package com.yogurt3d.presets.scene.quad
 			if(_index != -1)
 			{
 				_renderableObjectsByScene.splice(_index, 1);
-				SceneTreeManager.s_renSetIlluminatorLightIndexes[_scene][_child] = null;
+			//	SceneTreeManager.s_renSetIlluminatorLightIndexes[_scene][_child] = null;
 			}
 			
 			if(_renderableObjectsByScene.length == 0)
