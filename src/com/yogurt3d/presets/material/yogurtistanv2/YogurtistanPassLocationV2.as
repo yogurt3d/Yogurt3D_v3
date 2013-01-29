@@ -161,13 +161,8 @@ package com.yogurt3d.presets.material.yogurtistanv2
 		protected override function preRender(device:Context3D, _object:SceneObjectRenderable, _camera:Camera3D):void{
 			
 			m_currentCamera = _camera;
-			
-			var m:Matrix3D = new Matrix3D();
-			m.copyFrom( _camera.transformation.matrixGlobal );
-			m.invert();
-			m.append( _camera.frustum.projectionMatrix );
 						
-			device.setProgramConstantsFromMatrix(Context3DProgramType.VERTEX, gen.VC["ViewProjection"].index, m, true );
+			device.setProgramConstantsFromMatrix(Context3DProgramType.VERTEX, gen.VC["ViewProjection"].index, m_currentCamera.viewProjectionMatrix, true );
 			device.setProgramConstantsFromMatrix(Context3DProgramType.VERTEX, gen.VC["Model"].index, _object.transformation.matrixGlobal, true );
 			
 			m_vsManager.markTexture(device);

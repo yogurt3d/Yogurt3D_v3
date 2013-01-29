@@ -37,8 +37,10 @@ package com.yogurt3d.core
 	import com.yogurt3d.utils.Color;
 	import com.yogurt3d.utils.PPPriorityList;
 	import com.yogurt3d.utils.RTTPriorityList;
-	
-	public class Scene3D extends EngineObject
+
+import flash.geom.Matrix3D;
+
+public class Scene3D extends EngineObject
 	{
 		public static const SIMPLE_SCENE		:String = "SimpleSceneTreeManagerDriver";
 		public static const QUAD_SCENE			:String = "QuadSceneTreeManagerDriver";
@@ -162,6 +164,12 @@ package com.yogurt3d.core
 		
 		public function preRender(_activeCamera:Camera3D):void
 		{
+            var m:Matrix3D = _activeCamera.viewProjectionMatrix;
+            m.identity();
+            m.copyFrom( _activeCamera.transformation.matrixGlobal );
+            m.invert();
+            m.append( _activeCamera.frustum.projectionMatrix );
+
 			SceneTreeManager.clearSceneFrameData( this, _activeCamera);
 			m_renderQueue.clear();
 			SceneTreeManager.getSceneRenderableSet(this,_activeCamera, m_renderQueue);

@@ -94,11 +94,6 @@ class SkyBoxPass extends Pass{
 	}
 	
 	protected override function preRender(device:Context3D, _object:SceneObjectRenderable, _camera:Camera3D):void{
-		var m:Matrix3D = new Matrix3D();
-		m.copyFrom( _camera.transformation.matrixGlobal );
-		m.invert();
-		m.append( _camera.frustum.projectionMatrix );
-		
 		m_currentCamera = _camera;
 		m_vsManager.markTexture(device);
 		uploadConstants(device);

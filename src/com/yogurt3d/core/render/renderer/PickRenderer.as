@@ -61,7 +61,6 @@ package com.yogurt3d.core.render.renderer
 		private var vsManager						:DeviceStreamManager  = DeviceStreamManager.instance;	
 		
 		private var m_initialized					:Boolean 		= false;
-		private var m_viewMatrix					:Matrix3D		= new Matrix3D();
 		private var m_modelViewMatrix				:Matrix3D		= new Matrix3D();
 		private var m_tempMatrix					:Matrix3D 		= MatrixUtils.TEMP_MATRIX;
 		
@@ -191,10 +190,6 @@ package com.yogurt3d.core.render.renderer
 			// upload the viewport data
 			device.setProgramConstantsFromVector( Context3DProgramType.VERTEX, shader.gen.VC["Viewport"].index, m_viewportData, 1 );
 			
-			m_viewMatrix.copyFrom( _camera.transformation.matrixGlobal );
-			m_viewMatrix.invert();
-			m_viewMatrix.append(_camera.frustum.projectionMatrix);
-			
 			var head:RenderQueueNode = _renderableSet.getHead();
 			for(var i:int = 0;  head != null; i++, head = head.next )
 			{
@@ -206,7 +201,7 @@ package com.yogurt3d.core.render.renderer
 				
 				// calculate model view prrojection matrix
 				m_modelViewMatrix.copyFrom( _renderableObject.transformation.matrixGlobal );	
-				m_modelViewMatrix.append( m_viewMatrix );
+				m_modelViewMatrix.append( _camera.viewProjectionMatrix );
 				
 				// upload modelViewProjectionMatrix
 				device.setProgramConstantsFromMatrix( Context3DProgramType.VERTEX, shader.gen.VC["MVP"].index, m_modelViewMatrix, true );
@@ -338,7 +333,7 @@ package com.yogurt3d.core.render.renderer
 				m_boundOffset[0] = offsX = -min.x;	m_boundOffset[1] = offsY = -min.y;	m_boundOffset[2] = offsZ = -min.z;
 				
 				m_modelViewMatrix.copyFrom( _renderableObject.transformation.matrixGlobal );
-				m_modelViewMatrix.append( m_viewMatrix );
+				m_modelViewMatrix.append( _camera.viewProjectionMatrix );
 
 				device.setDepthTest( false, Context3DCompareMode.ALWAYS );
 				device.setProgramConstantsFromMatrix(Context3DProgramType.VERTEX, shaderTriangle.gen.VC["ModelView"].index, m_modelViewMatrix, true);

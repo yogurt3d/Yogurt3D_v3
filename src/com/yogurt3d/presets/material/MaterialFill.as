@@ -26,7 +26,7 @@ package com.yogurt3d.presets.material
 			params.blendEnabled 	= true;
 			params.blendMode.blendSource = Context3DBlendFactor.SOURCE_ALPHA;
 			params.blendMode.blendDestination = Context3DBlendFactor.ONE_MINUS_SOURCE_ALPHA;
-			params.culling = Context3DTriangleFace.NONE;
+			params.culling = Context3DTriangleFace.FRONT;
 			
 			
 			var _colorVec:Vector.<Number> = new Vector.<Number>;

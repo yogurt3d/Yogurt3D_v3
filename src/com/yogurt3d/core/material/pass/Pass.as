@@ -285,15 +285,10 @@ package com.yogurt3d.core.material.pass
 		
 		
 		protected function preRender(device:Context3D, _object:SceneObjectRenderable, _camera:Camera3D):void{
-			var m:Matrix3D = new Matrix3D();
-			m.copyFrom( _camera.transformation.matrixGlobal );
-			m.invert();
-			m.append( _camera.frustum.projectionMatrix );
-			
 			m_currentCamera = _camera;
 			
 			device.setProgramConstantsFromMatrix(Context3DProgramType.VERTEX, gen.VC["Model"].index, _object.transformation.matrixGlobal, true );
-			device.setProgramConstantsFromMatrix(Context3DProgramType.VERTEX, gen.VC["ViewProjection"].index, m, true );
+			device.setProgramConstantsFromMatrix(Context3DProgramType.VERTEX, gen.VC["ViewProjection"].index, m_currentCamera.viewProjectionMatrix, true );
 			m_vsManager.markTexture(device);
 			uploadConstants(device);
 			m_vsManager.sweepTexture(device);
@@ -318,11 +313,11 @@ package com.yogurt3d.core.material.pass
 				{
 					device.setProgramConstantsFromMatrix( value.type.value, value.register.index, MatrixConstant(value).matrix, true );
 					
-				//	trace("Matrix Type", value.register.id);
+					//trace("Matrix Type", value.register.id);
 				}else if( value is VectorConstant )
 				{
 					device.setProgramConstantsFromVector( value.type.value, value.register.index, VectorConstant(value).vec );
-				//	trace("Vector Type", value.register.id, VectorConstant(value).vec );
+					//trace("Vector Type", value.register.id, VectorConstant(value).vec );
 				}else if( value is TextureConstant )
 				{
 					var texConst:TextureConstant = value as TextureConstant;
@@ -331,7 +326,7 @@ package com.yogurt3d.core.material.pass
 				}else if( value is VectorFunctionConstant )
 				{
 					device.setProgramConstantsFromVector( value.type.value, value.register.index, VectorFunctionConstant(value).callFunction(m_currentLight, m_currentCamera) );
-			//		trace("Vector Func Type", value);
+					//trace("Vector Func Type", value);
 				}else if( value is MatrixFunctionConstant )
 				{
 					device.setProgramConstantsFromMatrix( value.type.value, value.register.index, MatrixFunctionConstant(value).callFunction(m_currentLight, m_currentCamera), MatrixFunctionConstant(value).transposed);

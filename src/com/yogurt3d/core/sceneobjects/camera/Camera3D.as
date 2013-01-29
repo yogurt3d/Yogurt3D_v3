@@ -22,18 +22,23 @@ package com.yogurt3d.core.sceneobjects.camera
 	import com.yogurt3d.core.managers.IDManager;
 	import com.yogurt3d.core.sceneobjects.SceneObject;
 	import com.yogurt3d.core.sceneobjects.camera.frustum.Frustum;
-	
-	import flash.geom.Vector3D;
+
+import flash.geom.Matrix3D;
+
+import flash.geom.Vector3D;
 	
 	public class Camera3D extends SceneObject
 	{
 		private var m_frustum :Frustum;
 		
 		use namespace YOGURT3D_INTERNAL;
+
+        public var viewProjectionMatrix:Matrix3D;
 		
 		public function Camera3D(_initInternals:Boolean = true)
 		{
 			super(_initInternals);
+            viewProjectionMatrix = new Matrix3D();
 		}
 		
 		public function get frustum():Frustum
