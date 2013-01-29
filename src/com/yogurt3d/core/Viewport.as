@@ -317,10 +317,10 @@ package com.yogurt3d.core
 			}
 			scene.preRender( camera );
 			
-//			if( m_pickingEnabled )
-//			{
-//				m_pickManager.update( scene, camera );
-//			}
+			if( m_pickingEnabled )
+			{
+				m_pickManager.update( scene, camera );
+			}
 //			
 			m_currentRenderTarget.render();
 			scene.postRender();
