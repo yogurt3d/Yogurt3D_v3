@@ -29,6 +29,13 @@ package com.yogurt3d.core.render.renderqueue
 
 	public class RenderQueue extends EngineObject
 	{
+        public static const OVERLAY:int = 3000;
+        public static const ALPHA:int = 2000;
+        public static const CUTOFF:int = 1000;
+        public static const OPAQUE:int = 0;
+        public static const BACKGROUND:int = -4000;
+
+
 		private var m_subQueues						:Vector.<SubRenderQueue>;
 		private var m_renderLayerSubQueueIndex		:Dictionary;
 		
@@ -92,8 +99,7 @@ package com.yogurt3d.core.render.renderqueue
 				{
 					m_alpha.addRenderable(scnObj);
 				//	trace("if 3: Material Transparency");
-				}else 
-					if( mat.cutOff )
+				}else if( mat.cutOff )
 				{
 					m_alphakill.addRenderable(scnObj);
 				//	trace("if 4: Alpha Kill");
@@ -120,12 +126,12 @@ package com.yogurt3d.core.render.renderqueue
 				m_renderLayerSubQueueIndex[m_subQueues[i].YOGURT3D_INTERNAL::index] = i;
 			}
 		}
-		
+
 		protected override function initInternals():void{
 			m_renderLayerSubQueueIndex = new Dictionary();
 			m_subQueues = new Vector.<SubRenderQueue>();
 		}
-		
+
 		public function getNodeAt( index:uint ):RenderQueueNode{
 			if(index != 0){
 				for( var i:int = 0, count:uint = 0; (count = m_subQueues[i].count) < index; i++, index -= count ){}
@@ -134,26 +140,30 @@ package com.yogurt3d.core.render.renderqueue
 			else
 				return getHead();
 		}
-		
+
 		public function getHead():RenderQueueNode{
 			var head:RenderQueueNode;
-			for( var i:int = 0; i < m_subQueues.length - 1; i++ )
+            var prev:SubRenderQueue;
+			for( var i:int = 0; i < m_subQueues.length; i++ )
 			{
 				if( m_subQueues[i].count > 0 )
 				{
-					m_subQueues[i].YOGURT3D_INTERNAL::tail.next = m_subQueues[i+1].YOGURT3D_INTERNAL::head;
-					if( head == null )
-					{
-						head = m_subQueues[i].YOGURT3D_INTERNAL::head;
-					}
+                    if( head == null )
+                    {
+                        head = m_subQueues[i].YOGURT3D_INTERNAL::head;
+                        prev = m_subQueues[i];
+                        continue;
+                    }
+                    prev.YOGURT3D_INTERNAL::tail.next = m_subQueues[i].YOGURT3D_INTERNAL::head;
+                    prev = m_subQueues[i];
 				}
 			}
 			return head;
 		}
-		
+
 		public function getRenderableCount():uint{
 			var c:uint = 0;
-			for( var i:int = 0; i < m_subQueues.length - 1; i++ )
+			for( var i:int = 0; i < m_subQueues.length; i++ )
 			{
 				c+=m_subQueues[i].count;
 			}
