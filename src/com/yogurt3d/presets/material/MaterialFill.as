@@ -2,7 +2,8 @@ package com.yogurt3d.presets.material
 {
 	import com.yogurt3d.core.material.MaterialBase;
 	import com.yogurt3d.core.material.agalgen.AGALGEN;
-	import com.yogurt3d.core.material.enum.ERegisterShaderType;
+import com.yogurt3d.core.material.enum.EBlendMode;
+import com.yogurt3d.core.material.enum.ERegisterShaderType;
 	import com.yogurt3d.core.material.parameters.FragmentInput;
 	import com.yogurt3d.core.material.parameters.SurfaceOutput;
 	import com.yogurt3d.utils.Color;
@@ -24,8 +25,7 @@ package com.yogurt3d.presets.material
 			
 			params.writeDepth		= true;
 			params.blendEnabled 	= true;
-			params.blendMode.blendSource = Context3DBlendFactor.SOURCE_ALPHA;
-			params.blendMode.blendDestination = Context3DBlendFactor.ONE_MINUS_SOURCE_ALPHA;
+			params.blendMode = EBlendMode.ALPHA;
 			params.culling = Context3DTriangleFace.FRONT;
 			
 			

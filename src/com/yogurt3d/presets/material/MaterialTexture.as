@@ -29,8 +29,7 @@ package com.yogurt3d.presets.material
 			params.depthFunction 	= Context3DCompareMode.LESS;
 			params.writeDepth		= true;
 			params.blendEnabled 	= true;
-			params.blendMode.blendSource = Context3DBlendFactor.ONE;
-			params.blendMode.blendDestination = Context3DBlendFactor.ONE_MINUS_SOURCE_ALPHA;
+			params.blendMode = EBlendMode.PRE_ALPHA;
 			params.culling = Context3DTriangleFace.FRONT;
 			
 			ambientColor = new Color(0,0,0,1);
@@ -44,7 +43,7 @@ package com.yogurt3d.presets.material
 			var temp:IRegister = gen.createFT( "temp1",4);
 			var str:String = 
 				["\n\n//****SurfaceFunction START****/",
-					gen.tex( temp, surfaceInput.uvMain, getConstant("colorMap"), "2d", "wrap", "linear", (texture as TextureMap).mipmap, true, (texture as TextureMap).transparent, getConstant("opacity").y),
+					gen.tex( temp, surfaceInput.uvMain, getConstant("colorMap"), "2d", "wrap", "linear", (texture as TextureMap).mipmap, false, (texture as TextureMap).transparent, getConstant("opacity").y),
 					gen.code("mul", temp.w, temp.w, getConstant("opacity").x),
 					gen.code("mov",surfaceOutput.Albedo, temp.xyz),
 					gen.code("mov",surfaceOutput.Alpha, temp.w),

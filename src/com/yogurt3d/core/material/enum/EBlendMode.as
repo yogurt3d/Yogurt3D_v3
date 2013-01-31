@@ -33,7 +33,8 @@ package com.yogurt3d.core.material.enum
 		public static const NORMAL	 	 	:EBlendMode = new EBlendMode(Context3DBlendFactor.ONE, Context3DBlendFactor.ZERO);
 		public static const MULTIPLY   		:EBlendMode = new EBlendMode(Context3DBlendFactor.ZERO, Context3DBlendFactor.SOURCE_COLOR);
 		public static const ADD   		 	:EBlendMode = new EBlendMode(Context3DBlendFactor.ONE, Context3DBlendFactor.ONE);
-		public static const ALPHA        	:EBlendMode = new EBlendMode(Context3DBlendFactor.SOURCE_ALPHA, Context3DBlendFactor.ONE_MINUS_SOURCE_ALPHA);
+        public static const ALPHA        	:EBlendMode = new EBlendMode(Context3DBlendFactor.SOURCE_ALPHA, Context3DBlendFactor.ONE_MINUS_SOURCE_ALPHA);
+        public static const PRE_ALPHA       :EBlendMode = new EBlendMode(Context3DBlendFactor.ONE, Context3DBlendFactor.ONE_MINUS_SOURCE_ALPHA);
 		
 		public function EBlendMode(source:String, destination:String ){
 			m_blendSource = source;
@@ -45,19 +46,9 @@ package com.yogurt3d.core.material.enum
 			return m_blendDestination;
 		}
 
-		public function set blendDestination(value:String):void
-		{
-			m_blendDestination = value;
-		}
-
 		public function get blendSource():String
 		{
 			return m_blendSource;
-		}
-
-		public function set blendSource(value:String):void
-		{
-			m_blendSource = value;
 		}
 
 		public function setToDevice(device:Context3D):Boolean{

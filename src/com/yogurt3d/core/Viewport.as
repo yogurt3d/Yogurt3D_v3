@@ -78,7 +78,7 @@ package com.yogurt3d.core
 		public function Viewport( _width:uint = 800, _height:uint = 600)
 		{
 			super();
-			
+
 			m_onPositionChange = new PrioritySignal(Viewport);
 			m_onSizeChange = new PrioritySignal(Viewport);
 			m_onDeviceCreated = new PrioritySignal(Viewport);
