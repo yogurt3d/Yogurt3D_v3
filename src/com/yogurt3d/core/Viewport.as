@@ -124,21 +124,26 @@ public class Viewport extends Sprite implements IEngineObject
 		
 		private function onParentResize( event:Event ):void{
 		 	
-//			if (stage == null || m_device == null || m_device.driverInfo == "Disposed") {
-//				return;
-//			}
-			
-			if( stage.stageWidth == 0 || stage.stageHeight == 0 )
-			{
+			if (stage == null) {
 				return;
 			}
-			width = stage.stageWidth ;
-			height = stage.stageHeight ;
-				
-			if( camera )
-				camera.frustum.setProjectionPerspective( camera.frustum.fov, width/height, camera.frustum.near, camera.frustum.far );
-			
-			//m_device.configureBackBuffer(width, height, 0, false);
+
+            if(stage.stageWidth < 50 )
+            {
+                width = 50;
+            }else{
+                width = stage.stageWidth ;
+            }
+            if(stage.stageHeight < 50 )
+            {
+                height = 50;
+            }else{
+                height = stage.stageHeight ;
+            }
+
+            if( camera )
+                camera.frustum.setProjectionPerspective( camera.frustum.fov, width/height, camera.frustum.near, camera.frustum.far );
+
 		}
 		
 		public function get onSizeChange():PrioritySignal
@@ -175,6 +180,7 @@ public class Viewport extends Sprite implements IEngineObject
 			super.x = value;
 			var global:Point = this.localToGlobal(new Point());
 			stage.stage3Ds[ m_viewportID ].x = global.x;
+
 			calculateMatrix();
 			m_onPositionChange.dispatch(this);
 		}
@@ -189,9 +195,7 @@ public class Viewport extends Sprite implements IEngineObject
 		
 		public override function set width( value:Number ):void{
             if( value < 50 ) value = 50;
-			if( m_currentRenderTarget is BackBufferRenderTarget ){
-				BackBufferRenderTarget(m_currentRenderTarget).drawRect.width = value;
-			}
+			m_currentRenderTarget.drawRect.width = value;
 			m_width = value;
 			calculateMatrix();
 			drawBackground();
@@ -200,9 +204,7 @@ public class Viewport extends Sprite implements IEngineObject
 		
 		public override function set height( value:Number ):void{
             if( value < 50 ) value = 50;
-			if( m_currentRenderTarget is BackBufferRenderTarget ){
-				BackBufferRenderTarget(m_currentRenderTarget).drawRect.height = value;
-			}
+			m_currentRenderTarget.drawRect.height = value;
 			m_height = value;
 			calculateMatrix();
 			drawBackground();
@@ -310,10 +312,18 @@ public class Viewport extends Sprite implements IEngineObject
 		
 		public function update():void{
 			if( !isDeviceCreated || !m_renderingEnabled ) return;
-			
-//			Y3DCONFIG::RENDER_LOOP_TRACE{
-//				trace("\t[Viewport][update] start [w:", width, ", h:", height, "]");
-//			}
+
+            var global:Point = this.localToGlobal(new Point());
+
+            if( stage.stage3Ds[ m_viewportID ].y != global.y || stage.stage3Ds[ m_viewportID ].x != global.x )
+            {
+                stage.stage3Ds[ m_viewportID ].x = global.x;
+                stage.stage3Ds[ m_viewportID ].y = global.y;
+            }
+
+			Y3DCONFIG::RENDER_LOOP_TRACE{
+				trace("\t[Viewport][update] start [w:", width, ", h:", height, "]");
+			}
 			
 			Y3DCONFIG::DEBUG{
 				m_device.enableErrorChecking = true;
@@ -327,10 +337,10 @@ public class Viewport extends Sprite implements IEngineObject
 //			
 			m_currentRenderTarget.render();
 			scene.postRender();
-//			
-//			Y3DCONFIG::RENDER_LOOP_TRACE{
-//				trace("\t[Viewport][update] end");
-//			}
+
+			Y3DCONFIG::RENDER_LOOP_TRACE{
+				trace("\t[Viewport][update] end");
+			}
 		}
 		
 		public function pause():void{

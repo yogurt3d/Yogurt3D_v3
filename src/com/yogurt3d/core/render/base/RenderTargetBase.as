@@ -41,6 +41,8 @@ public class RenderTargetBase
 		protected var m_newBackBufferRect			:Rectangle;
 		
 		public var autoUpdate						:Boolean = false;
+
+        public var antiAliasing                     :uint = 16;
 		
 		public function RenderTargetBase()
 		{
