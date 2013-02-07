@@ -1,8 +1,8 @@
 package com.yogurt3d.utils
 {
-	import flash.geom.Vector3D;
+import flash.geom.Vector3D;
 
-	public class MathUtils
+public class MathUtils
 	{
 		public static const DEG_TO_RAD								:Number				= Math.PI / 180.0;
 		public static const RAD_TO_DEG								:Number				= 180.0 / Math.PI;		

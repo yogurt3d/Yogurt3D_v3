@@ -18,11 +18,11 @@
 
 package com.yogurt3d.core.material.enum
 {
-	import com.yogurt3d.utils.Enum;
-	
-	import flash.display3D.Context3DProgramType;
+import com.yogurt3d.utils.Enum;
 
-	public class ERegisterShaderType extends Enum
+import flash.display3D.Context3DProgramType;
+
+public class ERegisterShaderType extends Enum
 	{
 		{initEnum(ERegisterShaderType);}		
 		

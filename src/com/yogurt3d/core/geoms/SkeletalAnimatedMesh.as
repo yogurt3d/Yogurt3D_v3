@@ -18,17 +18,16 @@
 
 package com.yogurt3d.core.geoms
 {
-	
-	import com.yogurt3d.YOGURT3D_INTERNAL;
-	import com.yogurt3d.core.animation.SkinController;
-	import com.yogurt3d.core.objects.EngineObject;
-	import com.yogurt3d.core.objects.IController;
-	import com.yogurt3d.core.objects.IEngineObject;
-	import com.yogurt3d.core.volumes.AxisAlignedBoundingBox;
-	import com.yogurt3d.core.volumes.BoundingSphere;
-	
-	
-	use namespace YOGURT3D_INTERNAL;
+
+import com.yogurt3d.YOGURT3D_INTERNAL;
+import com.yogurt3d.core.animation.SkinController;
+import com.yogurt3d.core.objects.EngineObject;
+import com.yogurt3d.core.objects.IController;
+import com.yogurt3d.core.objects.IEngineObject;
+import com.yogurt3d.core.volumes.AxisAlignedBoundingBox;
+import com.yogurt3d.core.volumes.BoundingSphere;
+
+use namespace YOGURT3D_INTERNAL;
 	/**
 	 * 
 	 * 

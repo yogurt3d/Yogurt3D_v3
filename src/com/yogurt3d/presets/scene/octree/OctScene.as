@@ -18,9 +18,9 @@
 
 package com.yogurt3d.presets.scene.octree
 {
-	import com.yogurt3d.core.Scene3D;
-	
-	public class OctScene extends Scene3D
+import com.yogurt3d.core.Scene3D;
+
+public class OctScene extends Scene3D
 	{
 		public function OctScene( minX:Number, minY:Number, minZ:Number, maxX:Number,maxY:Number, maxZ:Number, maxDepth:uint = 3, preAllocateNodes:Boolean = true,  _initInternals:Boolean=true)
 		{

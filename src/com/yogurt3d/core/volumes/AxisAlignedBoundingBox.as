@@ -18,15 +18,15 @@
  
  
 package com.yogurt3d.core.volumes {
-	import com.yogurt3d.YOGURT3D_INTERNAL;
-	import com.yogurt3d.core.managers.IDManager;
-	import com.yogurt3d.core.objects.EngineObject;
-	import com.yogurt3d.core.objects.IEngineObject;
-	import com.yogurt3d.core.sceneobjects.transformations.Transformation;
-	
-	import flash.geom.Vector3D;
-	
-	use namespace YOGURT3D_INTERNAL;
+import com.yogurt3d.YOGURT3D_INTERNAL;
+import com.yogurt3d.core.managers.IDManager;
+import com.yogurt3d.core.objects.EngineObject;
+import com.yogurt3d.core.objects.IEngineObject;
+import com.yogurt3d.core.sceneobjects.transformations.Transformation;
+
+import flash.geom.Vector3D;
+
+use namespace YOGURT3D_INTERNAL;
 	/**
 	 * 
 	 * 

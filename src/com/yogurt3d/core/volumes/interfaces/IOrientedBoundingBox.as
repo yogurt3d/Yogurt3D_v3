@@ -19,9 +19,9 @@
  
 package com.yogurt3d.core.volumes.interfaces
 {
-	import com.yogurt3d.core.objects.IEngineObject;
-	
-	/**
+import com.yogurt3d.core.objects.IEngineObject;
+
+/**
 	 * 
 	 * 
  	 * @author Yogurt3D Engine Core Team

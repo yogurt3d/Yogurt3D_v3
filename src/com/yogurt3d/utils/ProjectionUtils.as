@@ -18,9 +18,9 @@
 
 package com.yogurt3d.utils
 {
-	import flash.geom.Matrix3D;
+import flash.geom.Matrix3D;
 
-	/**
+/**
 	 * 
 	 * 
  	 * @author Yogurt3D Engine Core Team

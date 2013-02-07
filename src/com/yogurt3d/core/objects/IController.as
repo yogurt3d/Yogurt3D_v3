@@ -18,9 +18,7 @@
 
 package com.yogurt3d.core.objects
 {
-	import org.swiftsuspenders.Injector;
-	
-	/**
+/**
 	 * Interface for all controllers
 	 * 
 	 * @author Yogurt3D Engine Core Team

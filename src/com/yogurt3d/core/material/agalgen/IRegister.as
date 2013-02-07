@@ -18,9 +18,9 @@
 
 package com.yogurt3d.core.material.agalgen
 {
-	import com.yogurt3d.core.material.enum.ERegisterShaderType;
+import com.yogurt3d.core.material.enum.ERegisterShaderType;
 
-	public interface IRegister
+public interface IRegister
 	{
 		function get index()			:int;
 		function get id()				:String;

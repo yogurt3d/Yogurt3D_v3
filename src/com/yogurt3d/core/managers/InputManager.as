@@ -18,17 +18,17 @@
 
 package com.yogurt3d.core.managers
 {
-	import com.yogurt3d.Yogurt3D;
-	import com.yogurt3d.YOGURT3D_INTERNAL;
-	
-	import flash.display.Stage;
-	import flash.events.KeyboardEvent;
-	import flash.events.MouseEvent;
-	import flash.utils.Dictionary;
-	
-	import org.osflash.signals.natives.NativeSignal;
-	
-	public class InputManager
+import com.yogurt3d.YOGURT3D_INTERNAL;
+import com.yogurt3d.Yogurt3D;
+
+import flash.display.Stage;
+import flash.events.KeyboardEvent;
+import flash.events.MouseEvent;
+import flash.utils.Dictionary;
+
+import org.osflash.signals.natives.NativeSignal;
+
+public class InputManager
 	{
 		private static var m_keyDown			:NativeSignal;
 		private static var m_keyUp				:NativeSignal;

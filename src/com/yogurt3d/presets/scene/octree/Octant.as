@@ -17,11 +17,11 @@
 */
 package com.yogurt3d.presets.scene.octree
 {
-	import com.yogurt3d.core.sceneobjects.SceneObjectRenderable;
-	
-	import flash.geom.Vector3D;
-	
-	public class Octant
+import com.yogurt3d.core.sceneobjects.SceneObjectRenderable;
+
+import flash.geom.Vector3D;
+
+public class Octant
 	{
 		public var m_isUpdated					:Boolean;
 

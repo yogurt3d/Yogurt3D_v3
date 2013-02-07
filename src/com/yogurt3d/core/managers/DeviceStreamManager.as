@@ -18,12 +18,12 @@
 
 package com.yogurt3d.core.managers
 {
-	import flash.display3D.Context3D;
-	import flash.display3D.VertexBuffer3D;
-	import flash.display3D.textures.TextureBase;
-	import flash.utils.Dictionary;
+import flash.display3D.Context3D;
+import flash.display3D.VertexBuffer3D;
+import flash.display3D.textures.TextureBase;
+import flash.utils.Dictionary;
 
-	public final class DeviceStreamManager
+public final class DeviceStreamManager
 	{
 		private static var m_instance				:DeviceStreamManager;
 		

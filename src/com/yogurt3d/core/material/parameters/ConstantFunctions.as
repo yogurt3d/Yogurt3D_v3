@@ -18,13 +18,13 @@
 
 package com.yogurt3d.core.material.parameters
 {
-	import com.yogurt3d.core.sceneobjects.camera.Camera3D;
-	import com.yogurt3d.core.sceneobjects.lights.Light;
-	
-	import flash.geom.Matrix3D;
-	import flash.geom.Vector3D;
+import com.yogurt3d.core.sceneobjects.camera.Camera3D;
+import com.yogurt3d.core.sceneobjects.lights.Light;
 
-	public class ConstantFunctions
+import flash.geom.Matrix3D;
+import flash.geom.Vector3D;
+
+public class ConstantFunctions
 	{
 		
 		public static function LIGHT_COLOR(_light:Light, _camera:Camera3D):Vector.<Number>{

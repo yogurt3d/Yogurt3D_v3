@@ -18,18 +18,18 @@
 
 package com.yogurt3d.io.loaders
 {
-	import com.yogurt3d.io.parsers.TextureMap_Parser;
-	import com.yogurt3d.io.parsers.Y3D_Parser;
-	import com.yogurt3d.io.parsers.YOA_Parser;
-	
-	import flash.utils.ByteArray;
-	import flash.utils.Dictionary;
-	import flash.utils.IDataInput;
-	
-	import nochump.util.zip.ZipEntry;
-	import nochump.util.zip.ZipFile;
+import com.yogurt3d.io.parsers.TextureMap_Parser;
+import com.yogurt3d.io.parsers.Y3D_Parser;
+import com.yogurt3d.io.parsers.YOA_Parser;
 
-	public class CompressedFile extends ZipFile
+import flash.utils.ByteArray;
+import flash.utils.Dictionary;
+import flash.utils.IDataInput;
+
+import nochump.util.zip.ZipEntry;
+import nochump.util.zip.ZipFile;
+
+public class CompressedFile extends ZipFile
 	{
 		private var m_internalCache:Dictionary;
 		

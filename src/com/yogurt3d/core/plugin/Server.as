@@ -18,9 +18,7 @@
 
 package com.yogurt3d.core.plugin
 {
-	import flash.utils.Dictionary;
-
-	public class Server
+public class Server
 	{
 		private var m_name					:String;
 		

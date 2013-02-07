@@ -18,11 +18,9 @@
 
 package com.yogurt3d.presets.effects
 {
-	import com.yogurt3d.core.render.post.PostProcessingEffectBase;
-	
-	import flash.display3D.Context3DProgramType;
-	
-	public class EffectGreyScale extends PostProcessingEffectBase
+import com.yogurt3d.core.render.post.PostProcessingEffectBase;
+
+public class EffectGreyScale extends PostProcessingEffectBase
 	{
 		
 		public function EffectGreyScale()
@@ -32,10 +30,10 @@ package com.yogurt3d.presets.effects
 		}
 	}
 }
+
 import com.adobe.AGALMiniAssembler;
 import com.yogurt3d.core.Scene3D;
 import com.yogurt3d.core.render.post.EffectBase;
-import com.yogurt3d.core.render.post.PostProcessingEffectBase;
 import com.yogurt3d.utils.ShaderUtils;
 
 import flash.display3D.Context3DProgramType;

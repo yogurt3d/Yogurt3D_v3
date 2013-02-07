@@ -18,14 +18,14 @@
 
 package com.yogurt3d.core.render.texture.base
 {
-	import com.yogurt3d.core.render.base.RenderTargetBase;
-	import com.yogurt3d.core.texture.ITexture;
-	
-	import flash.display3D.Context3D;
-	import flash.display3D.textures.TextureBase;
-	import flash.utils.Dictionary;
-	
-	public class RenderTextureTargetBase extends RenderTargetBase implements ITexture
+import com.yogurt3d.core.render.base.RenderTargetBase;
+import com.yogurt3d.core.texture.ITexture;
+
+import flash.display3D.Context3D;
+import flash.display3D.textures.TextureBase;
+import flash.utils.Dictionary;
+
+public class RenderTextureTargetBase extends RenderTargetBase implements ITexture
 	{
 		public var overrideToFront				:Boolean = false;
 		public var overrideToBack				:Boolean = false;

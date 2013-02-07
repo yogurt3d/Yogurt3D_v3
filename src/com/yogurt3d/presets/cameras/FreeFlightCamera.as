@@ -18,15 +18,15 @@
 
 package com.yogurt3d.presets.cameras
 {
-	import com.yogurt3d.Yogurt3D;
-	import com.yogurt3d.core.sceneobjects.camera.Camera3D;
-	
-	import flash.display.DisplayObject;
-	import flash.events.Event;
-	import flash.events.KeyboardEvent;
-	import flash.events.MouseEvent;
-	
-	public class FreeFlightCamera extends Camera3D
+import com.yogurt3d.Yogurt3D;
+import com.yogurt3d.core.sceneobjects.camera.Camera3D;
+
+import flash.display.DisplayObject;
+import flash.events.Event;
+import flash.events.KeyboardEvent;
+import flash.events.MouseEvent;
+
+public class FreeFlightCamera extends Camera3D
 	{
 		
 		private var m_isCtrlDown:Boolean;

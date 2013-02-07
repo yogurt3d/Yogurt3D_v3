@@ -18,27 +18,28 @@
 
 package com.yogurt3d.core.texture
 {
-	import com.yogurt3d.core.managers.IDManager;
-	import com.yogurt3d.YOGURT3D_INTERNAL;
-	import com.yogurt3d.core.objects.EngineObject;
-	import com.yogurt3d.utils.MathUtils;
-	import com.yogurt3d.utils.MipmapGenerator;
-	
-	import flash.display.BitmapData;
-	import flash.display.DisplayObject;
-	import flash.display.Loader;
-	import flash.display.LoaderInfo;
-	import flash.display3D.Context3D;
-	import flash.display3D.Context3DTextureFormat;
-	import flash.display3D.textures.Texture;
-	import flash.display3D.textures.TextureBase;
-	import flash.events.Event;
-	import flash.utils.ByteArray;
-	import flash.utils.Dictionary;
-	
-	import org.osflash.signals.natives.NativeSignal;
-	
-	use namespace YOGURT3D_INTERNAL;
+import com.yogurt3d.YOGURT3D_INTERNAL;
+import com.yogurt3d.core.managers.IDManager;
+import com.yogurt3d.core.objects.EngineObject;
+import com.yogurt3d.utils.MathUtils;
+import com.yogurt3d.utils.MipmapGenerator;
+
+import flash.display.Bitmap;
+import flash.display.BitmapData;
+import flash.display.DisplayObject;
+import flash.display.Loader;
+import flash.display.LoaderInfo;
+import flash.display3D.Context3D;
+import flash.display3D.Context3DTextureFormat;
+import flash.display3D.textures.Texture;
+import flash.display3D.textures.TextureBase;
+import flash.events.Event;
+import flash.utils.ByteArray;
+import flash.utils.Dictionary;
+
+import org.osflash.signals.natives.NativeSignal;
+
+use namespace YOGURT3D_INTERNAL;
 	/**
 	 * 
 	 * 
@@ -433,7 +434,15 @@ package com.yogurt3d.core.texture
 		}
 		
 		override public function disposeDeep():void{
-			dispose();
+            if( m_displayObject && m_displayObject is Bitmap )
+            {
+                Bitmap(m_displayObject).bitmapData.dispose();
+            }
+            if( m_bitmapData )
+            {
+                m_bitmapData.dispose()
+            }
+            dispose();
 		}
 		
 		override public function dispose():void{
@@ -449,7 +458,7 @@ package com.yogurt3d.core.texture
 			}
 			if( m_bitmapData )
 			{
-				m_bitmapData.dispose();
+				//m_bitmapData.dispose();
 				m_bitmapData = null;
 			}
 			

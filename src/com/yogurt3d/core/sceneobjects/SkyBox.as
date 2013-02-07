@@ -19,12 +19,12 @@
  
 package com.yogurt3d.core.sceneobjects
 {
-	import com.yogurt3d.core.geoms.Mesh;
-	import com.yogurt3d.core.geoms.SubMesh;
-	import com.yogurt3d.core.texture.CubeTextureMap;
-	import com.yogurt3d.presets.material.MaterialSkyBox;
+import com.yogurt3d.core.geoms.Mesh;
+import com.yogurt3d.core.geoms.SubMesh;
+import com.yogurt3d.core.texture.CubeTextureMap;
+import com.yogurt3d.presets.material.MaterialSkyBox;
 
-	/**
+/**
 	 * 
 	 * 
  	 * @author Yogurt3D Engine Core Team

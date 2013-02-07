@@ -18,12 +18,10 @@
 
 package com.yogurt3d.presets.effects
 {
-	import com.yogurt3d.core.render.post.PostProcessingEffectBase;
-	import com.yogurt3d.core.texture.TextureMap;
-	
-	import flash.display3D.Context3DProgramType;
-	
-	public class EffectNightVision extends PostProcessingEffectBase
+import com.yogurt3d.core.render.post.PostProcessingEffectBase;
+import com.yogurt3d.core.texture.TextureMap;
+
+public class EffectNightVision extends PostProcessingEffectBase
 	{
 		private var m_filter:FilterNightVision;
 		public function EffectNightVision(_noise:TextureMap, 
@@ -102,10 +100,10 @@ package com.yogurt3d.presets.effects
 		}
 	}
 }
+
 import com.adobe.AGALMiniAssembler;
 import com.yogurt3d.core.Scene3D;
 import com.yogurt3d.core.render.post.EffectBase;
-import com.yogurt3d.core.render.post.PostProcessingEffectBase;
 import com.yogurt3d.core.texture.TextureMap;
 import com.yogurt3d.utils.ShaderUtils;
 

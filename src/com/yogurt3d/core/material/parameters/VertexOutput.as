@@ -18,12 +18,12 @@
 
 package com.yogurt3d.core.material.parameters
 {
-	import com.yogurt3d.core.material.agalgen.AGALGEN;
-	import com.yogurt3d.core.material.agalgen.IRegister;
-	
-	import flash.utils.Dictionary;
-	
-	public class VertexOutput
+import com.yogurt3d.core.material.agalgen.AGALGEN;
+import com.yogurt3d.core.material.agalgen.IRegister;
+
+import flash.utils.Dictionary;
+
+public class VertexOutput
 	{
 		private var m_customvarying					:Dictionary;
 		

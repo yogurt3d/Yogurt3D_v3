@@ -18,16 +18,16 @@
 
 package com.yogurt3d.presets.cameras
 {
-	import com.yogurt3d.Yogurt3D;
-	import com.yogurt3d.core.sceneobjects.SceneObject;
-	import com.yogurt3d.core.sceneobjects.camera.Camera3D;
-	
-	import flash.display.DisplayObject;
-	import flash.events.MouseEvent;
-	import flash.geom.Matrix3D;
-	import flash.geom.Vector3D;
-	
-	public class TargetCamera extends Camera3D
+import com.yogurt3d.Yogurt3D;
+import com.yogurt3d.core.sceneobjects.SceneObject;
+import com.yogurt3d.core.sceneobjects.camera.Camera3D;
+
+import flash.display.DisplayObject;
+import flash.events.MouseEvent;
+import flash.geom.Matrix3D;
+import flash.geom.Vector3D;
+
+public class TargetCamera extends Camera3D
 	{
 		private var m_rotX:Number = 0;
 		private var m_rotY:Number = 0;

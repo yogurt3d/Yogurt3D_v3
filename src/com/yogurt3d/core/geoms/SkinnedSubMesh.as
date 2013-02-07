@@ -18,15 +18,15 @@
 
 package com.yogurt3d.core.geoms
 {
-	import com.yogurt3d.core.managers.IDManager;
-	import com.yogurt3d.YOGURT3D_INTERNAL;
-	import com.yogurt3d.utils.MeshUtils;
-	
-	import flash.display3D.Context3D;
-	import flash.display3D.VertexBuffer3D;
-	import flash.utils.Dictionary;
-	
-	use namespace YOGURT3D_INTERNAL;
+import com.yogurt3d.YOGURT3D_INTERNAL;
+import com.yogurt3d.core.managers.IDManager;
+import com.yogurt3d.utils.MeshUtils;
+
+import flash.display3D.Context3D;
+import flash.display3D.VertexBuffer3D;
+import flash.utils.Dictionary;
+
+use namespace YOGURT3D_INTERNAL;
 	/**
 	 * 
 	 * 

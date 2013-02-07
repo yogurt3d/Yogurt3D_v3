@@ -18,11 +18,9 @@
 
 package com.yogurt3d.presets.effects
 {
-	import com.yogurt3d.core.render.post.PostProcessingEffectBase;
-	
-	import flash.display3D.Context3DProgramType;
-	
-	public class EffectSharpen extends PostProcessingEffectBase
+import com.yogurt3d.core.render.post.PostProcessingEffectBase;
+
+public class EffectSharpen extends PostProcessingEffectBase
 	{
 
 		public function EffectSharpen()
@@ -32,10 +30,10 @@ package com.yogurt3d.presets.effects
 		}
 	}
 }
+
 import com.adobe.AGALMiniAssembler;
 import com.yogurt3d.core.Scene3D;
 import com.yogurt3d.core.render.post.EffectBase;
-import com.yogurt3d.core.render.post.PostProcessingEffectBase;
 import com.yogurt3d.utils.MathUtils;
 import com.yogurt3d.utils.ShaderUtils;
 

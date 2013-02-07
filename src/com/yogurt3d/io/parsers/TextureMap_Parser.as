@@ -18,18 +18,18 @@
 
 package com.yogurt3d.io.parsers
 {
-	import com.yogurt3d.YOGURT3D_INTERNAL;
-	import com.yogurt3d.core.texture.CubeTextureMap;
-	import com.yogurt3d.core.texture.TextureMap;
-	import com.yogurt3d.io.parsers.interfaces.IParser;
-	
-	import flash.display.Bitmap;
-	import flash.display.BitmapData;
-	import flash.display.DisplayObject;
-	import flash.utils.ByteArray;
-	import flash.utils.Endian;
-	
-	public class TextureMap_Parser implements IParser
+import com.yogurt3d.YOGURT3D_INTERNAL;
+import com.yogurt3d.core.texture.CubeTextureMap;
+import com.yogurt3d.core.texture.TextureMap;
+import com.yogurt3d.io.parsers.interfaces.IParser;
+
+import flash.display.Bitmap;
+import flash.display.BitmapData;
+import flash.display.DisplayObject;
+import flash.utils.ByteArray;
+import flash.utils.Endian;
+
+public class TextureMap_Parser implements IParser
 	{
 		private var m_mipmap:Boolean = false;
 		public function TextureMap_Parser(_mipmap:Boolean=false)

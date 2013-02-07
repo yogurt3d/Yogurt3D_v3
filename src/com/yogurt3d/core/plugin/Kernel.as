@@ -18,9 +18,9 @@
 
 package com.yogurt3d.core.plugin
 {
-	import flash.utils.Dictionary;
+import flash.utils.Dictionary;
 
-	public class Kernel
+public class Kernel
 	{
 		private static var m_instance:Kernel;
 		

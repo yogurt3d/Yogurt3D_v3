@@ -18,23 +18,22 @@
 
 package com.yogurt3d.core.animation
 {
-	import com.yogurt3d.Yogurt3D;
-	import com.yogurt3d.core.animation.SkeletalAnimationData;
-	import com.yogurt3d.core.animation.event.AnimationEvent;
-	import com.yogurt3d.core.geoms.Bone;
-	import com.yogurt3d.core.geoms.SkeletalAnimatedMesh;
-	import com.yogurt3d.YOGURT3D_INTERNAL;
-	import com.yogurt3d.core.objects.Controller;
-	import com.yogurt3d.core.sceneobjects.transformations.Quaternion;
-	import com.yogurt3d.utils.MathUtils;
-	import com.yogurt3d.utils.Time;
-	
-	import flash.events.Event;
-	import flash.events.EventDispatcher;
-	import flash.events.IEventDispatcher;
-	import flash.utils.Dictionary;
-	
-	use namespace YOGURT3D_INTERNAL;
+import com.yogurt3d.YOGURT3D_INTERNAL;
+import com.yogurt3d.Yogurt3D;
+import com.yogurt3d.core.animation.event.AnimationEvent;
+import com.yogurt3d.core.geoms.Bone;
+import com.yogurt3d.core.geoms.SkeletalAnimatedMesh;
+import com.yogurt3d.core.objects.Controller;
+import com.yogurt3d.core.sceneobjects.transformations.Quaternion;
+import com.yogurt3d.utils.MathUtils;
+import com.yogurt3d.utils.Time;
+
+import flash.events.Event;
+import flash.events.EventDispatcher;
+import flash.events.IEventDispatcher;
+import flash.utils.Dictionary;
+
+use namespace YOGURT3D_INTERNAL;
 	
 	/**
 	 * This Event is dispatched when a loop ends. This event is not triggered on infinite loops. 

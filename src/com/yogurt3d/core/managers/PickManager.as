@@ -18,21 +18,21 @@
  
 package com.yogurt3d.core.managers
 {
-	import com.yogurt3d.YOGURT3D_INTERNAL;
-	import com.yogurt3d.core.Scene3D;
-	import com.yogurt3d.core.Viewport;
-	import com.yogurt3d.core.render.renderer.PickRenderer;
-	import com.yogurt3d.core.sceneobjects.SceneObjectRenderable;
-	import com.yogurt3d.core.sceneobjects.camera.Camera3D;
-	import com.yogurt3d.core.sceneobjects.event.MouseEvent3D;
-	import com.yogurt3d.utils.Time;
-	
-	import flash.events.MouseEvent;
-	import flash.geom.Vector3D;
-	import flash.ui.Mouse;
-	import flash.ui.MouseCursor;
-	
-	use namespace YOGURT3D_INTERNAL;
+import com.yogurt3d.YOGURT3D_INTERNAL;
+import com.yogurt3d.core.Scene3D;
+import com.yogurt3d.core.Viewport;
+import com.yogurt3d.core.render.renderer.PickRenderer;
+import com.yogurt3d.core.sceneobjects.SceneObjectRenderable;
+import com.yogurt3d.core.sceneobjects.camera.Camera3D;
+import com.yogurt3d.core.sceneobjects.event.MouseEvent3D;
+import com.yogurt3d.utils.Time;
+
+import flash.events.MouseEvent;
+import flash.geom.Vector3D;
+import flash.ui.Mouse;
+import flash.ui.MouseCursor;
+
+use namespace YOGURT3D_INTERNAL;
 	/**
 	 * This class is responsible for the mouse interactions. You will never have to create this class by your own. The Viewport creates it when you set the <i>pickEnable</i> to true. 
 	 * 
@@ -45,7 +45,7 @@ package com.yogurt3d.core.managers
 		
 		public var updateTime							:uint 			= 40;
 		
-		private static var m_pickRenderer				:PickRenderer;
+		private var m_pickRenderer				        :PickRenderer;
 		
 		private var m_viewport							:Viewport;
 		

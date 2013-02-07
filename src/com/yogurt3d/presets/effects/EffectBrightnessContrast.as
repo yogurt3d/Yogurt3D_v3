@@ -18,11 +18,9 @@
 
 package com.yogurt3d.presets.effects
 {
-	import com.yogurt3d.core.render.post.PostProcessingEffectBase;
-	
-	import flash.display3D.Context3DProgramType;
-	
-	public class EffectBrightnessContrast extends PostProcessingEffectBase
+import com.yogurt3d.core.render.post.PostProcessingEffectBase;
+
+public class EffectBrightnessContrast extends PostProcessingEffectBase
 	{	
 		private var m_filter:FilterBrightnessContrast;
 		

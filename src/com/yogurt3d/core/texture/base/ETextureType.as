@@ -18,9 +18,9 @@
 
 package com.yogurt3d.core.texture.base
 {
-	import com.yogurt3d.utils.Enum;
-	
-	public class ETextureType extends Enum
+import com.yogurt3d.utils.Enum;
+
+public class ETextureType extends Enum
 	{
 		{initEnum(ETextureType);}	
 		

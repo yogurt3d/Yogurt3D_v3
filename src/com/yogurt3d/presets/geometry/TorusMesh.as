@@ -17,13 +17,11 @@
  */
 package com.yogurt3d.presets.geometry
 {
-	import flash.geom.*;
-	
-	import com.yogurt3d.core.geoms.Mesh;
-	import com.yogurt3d.core.geoms.SubMesh;
-	import com.yogurt3d.core.managers.IDManager;
-	
-	public class TorusMesh extends Mesh
+import com.yogurt3d.core.geoms.Mesh;
+import com.yogurt3d.core.geoms.SubMesh;
+import com.yogurt3d.core.managers.IDManager;
+
+public class TorusMesh extends Mesh
 	{
 	
 		public function TorusMesh(_radius:Number  = 100.0, _tubeRadius:Number = 40.0, _segmentsR:uint = 8, 

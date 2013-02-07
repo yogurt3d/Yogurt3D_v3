@@ -18,11 +18,10 @@
 
 package com.yogurt3d.presets.scene.quad
 {
-	import com.yogurt3d.core.sceneobjects.scenetree.IRenderableManager;
-	import com.yogurt3d.core.sceneobjects.scenetree.SceneTreeManagerDriver;
-	
-	
-	public class QuadSceneTreeManagerDriver extends SceneTreeManagerDriver
+import com.yogurt3d.core.sceneobjects.scenetree.IRenderableManager;
+import com.yogurt3d.core.sceneobjects.scenetree.SceneTreeManagerDriver;
+
+public class QuadSceneTreeManagerDriver extends SceneTreeManagerDriver
 	{
 		public function QuadSceneTreeManagerDriver()
 		{

@@ -18,20 +18,20 @@
 
 package com.yogurt3d.presets.scene.quad
 {
-	import com.yogurt3d.core.sceneobjects.camera.Camera3D;
-	import com.yogurt3d.core.sceneobjects.camera.frustum.Frustum;
-	import com.yogurt3d.core.sceneobjects.lights.Light;
-	import com.yogurt3d.core.managers.SceneTreeManager;
-	import com.yogurt3d.core.render.renderqueue.RenderQueue;
-	import com.yogurt3d.core.Scene3D;
-	import com.yogurt3d.core.sceneobjects.SceneObjectRenderable;
-	import com.yogurt3d.core.volumes.AxisAlignedBoundingBox;
-	
-	import flash.geom.Vector3D;
-	import flash.utils.Dictionary;
-	import com.yogurt3d.YOGURT3D_INTERNAL;
-	
-	use namespace YOGURT3D_INTERNAL;
+import com.yogurt3d.YOGURT3D_INTERNAL;
+import com.yogurt3d.core.Scene3D;
+import com.yogurt3d.core.managers.SceneTreeManager;
+import com.yogurt3d.core.render.renderqueue.RenderQueue;
+import com.yogurt3d.core.sceneobjects.SceneObjectRenderable;
+import com.yogurt3d.core.sceneobjects.camera.Camera3D;
+import com.yogurt3d.core.sceneobjects.camera.frustum.Frustum;
+import com.yogurt3d.core.sceneobjects.lights.Light;
+import com.yogurt3d.core.volumes.AxisAlignedBoundingBox;
+
+import flash.geom.Vector3D;
+import flash.utils.Dictionary;
+
+use namespace YOGURT3D_INTERNAL;
 	
 	public class QuadTree
 	{

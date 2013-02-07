@@ -18,25 +18,25 @@
 
 package com.yogurt3d.core
 {
-	import com.yogurt3d.YOGURT3D_INTERNAL;
-	import com.yogurt3d.core.managers.IDManager;
-	import com.yogurt3d.core.managers.MaterialManager;
-	import com.yogurt3d.core.managers.SceneTreeManager;
-	import com.yogurt3d.core.objects.EngineObject;
-	import com.yogurt3d.core.render.post.PostProcessingEffectBase;
-	import com.yogurt3d.core.render.renderqueue.RenderQueue;
-	import com.yogurt3d.core.render.renderqueue.RenderQueueNode;
-	import com.yogurt3d.core.render.texture.RenderDepthTexture;
-	import com.yogurt3d.core.render.texture.RenderSceneTexture;
-	import com.yogurt3d.core.render.texture.base.RenderTextureTargetBase;
-	import com.yogurt3d.core.sceneobjects.SceneObject;
-	import com.yogurt3d.core.sceneobjects.SceneObjectRenderable;
-	import com.yogurt3d.core.sceneobjects.SkyBox;
-	import com.yogurt3d.core.sceneobjects.camera.Camera3D;
-	import com.yogurt3d.core.sceneobjects.lights.Light;
-	import com.yogurt3d.utils.Color;
-	import com.yogurt3d.utils.PPPriorityList;
-	import com.yogurt3d.utils.RTTPriorityList;
+import com.yogurt3d.YOGURT3D_INTERNAL;
+import com.yogurt3d.core.managers.IDManager;
+import com.yogurt3d.core.managers.MaterialManager;
+import com.yogurt3d.core.managers.SceneTreeManager;
+import com.yogurt3d.core.objects.EngineObject;
+import com.yogurt3d.core.render.post.PostProcessingEffectBase;
+import com.yogurt3d.core.render.renderqueue.RenderQueue;
+import com.yogurt3d.core.render.renderqueue.RenderQueueNode;
+import com.yogurt3d.core.render.texture.RenderDepthTexture;
+import com.yogurt3d.core.render.texture.RenderSceneTexture;
+import com.yogurt3d.core.render.texture.base.RenderTextureTargetBase;
+import com.yogurt3d.core.sceneobjects.SceneObject;
+import com.yogurt3d.core.sceneobjects.SceneObjectRenderable;
+import com.yogurt3d.core.sceneobjects.SkyBox;
+import com.yogurt3d.core.sceneobjects.camera.Camera3D;
+import com.yogurt3d.core.sceneobjects.lights.Light;
+import com.yogurt3d.utils.Color;
+import com.yogurt3d.utils.PPPriorityList;
+import com.yogurt3d.utils.RTTPriorityList;
 
 import flash.geom.Matrix3D;
 

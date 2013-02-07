@@ -18,9 +18,9 @@
 
 package com.yogurt3d.core.objects
 {
-	import org.swiftsuspenders.Injector;
-	
-	public interface IControllable
+import org.swiftsuspenders.Injector;
+
+public interface IControllable
 	{
 		function get injector()												:Injector;
 		function addComponent(name:String, controllerClass:Class, ... p)	:IController;

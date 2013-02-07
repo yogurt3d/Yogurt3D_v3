@@ -18,11 +18,11 @@
 
 package com.yogurt3d.core.material.parameters
 {
-	import com.yogurt3d.YOGURT3D_INTERNAL;
-	import com.yogurt3d.core.material.agalgen.AGALGEN;
-	import com.yogurt3d.core.material.agalgen.IRegister;
-	
-	public class SurfaceOutput
+import com.yogurt3d.YOGURT3D_INTERNAL;
+import com.yogurt3d.core.material.agalgen.AGALGEN;
+import com.yogurt3d.core.material.agalgen.IRegister;
+
+public class SurfaceOutput
 	{
 		use namespace YOGURT3D_INTERNAL;
 		

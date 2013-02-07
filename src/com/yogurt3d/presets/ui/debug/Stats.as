@@ -18,17 +18,17 @@
 
 package com.yogurt3d.presets.ui.debug{
 
-	import com.yogurt3d.core.Viewport;
-	
-	import flash.display.Sprite;
-	import flash.events.Event;
-	import flash.events.MouseEvent;
-	import flash.system.System;
-	import flash.text.StyleSheet;
-	import flash.text.TextField;
-	import flash.utils.getTimer;
+import com.yogurt3d.core.Viewport;
 
-	public class Stats extends Sprite {	
+import flash.display.Sprite;
+import flash.events.Event;
+import flash.events.MouseEvent;
+import flash.system.System;
+import flash.text.StyleSheet;
+import flash.text.TextField;
+import flash.utils.getTimer;
+
+public class Stats extends Sprite {
 
 		public const WIDTH : uint = 92;
 		public const HEIGHT : uint = 72;

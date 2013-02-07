@@ -24,9 +24,9 @@
 
 package com.yogurt3d.utils
 {
-	import com.adobe.AGALMiniAssembler;
-	
-	/**
+import com.adobe.AGALMiniAssembler;
+
+/**
 	 * 
 	 * 
 	 * @author Yogurt3D Engine Core Team

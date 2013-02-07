@@ -18,11 +18,9 @@
 
 package com.yogurt3d.presets.effects
 {
-	import com.yogurt3d.core.render.post.PostProcessingEffectBase;
-	
-	import flash.display3D.Context3DProgramType;
-	
-	public class EffectDOF extends PostProcessingEffectBase
+import com.yogurt3d.core.render.post.PostProcessingEffectBase;
+
+public class EffectDOF extends PostProcessingEffectBase
 	{
 		private var blur0:FilterDOFBlur0;
 		private var blur1:FilterDOFBlur1;
@@ -134,6 +132,7 @@ package com.yogurt3d.presets.effects
 
 	}
 }
+
 import com.adobe.AGALMiniAssembler;
 import com.yogurt3d.core.Scene3D;
 import com.yogurt3d.core.render.post.EffectBase;
@@ -144,7 +143,6 @@ import flash.display3D.textures.TextureBase;
 import flash.geom.Rectangle;
 import flash.utils.ByteArray;
 import flash.utils.Dictionary;
-
 
 internal class FilterDOFCombine extends EffectBase
 {

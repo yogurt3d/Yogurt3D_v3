@@ -18,12 +18,10 @@
 
 package com.yogurt3d.core.material.parameters
 {
-	import com.yogurt3d.core.material.agalgen.AGALGEN;
-	import com.yogurt3d.core.material.agalgen.IRegister;
-	
+import com.yogurt3d.core.material.agalgen.AGALGEN;
+import com.yogurt3d.core.material.agalgen.IRegister;
 
-
-	public class FragmentInput extends VertexOutput
+public class FragmentInput extends VertexOutput
 	{
 		
 		public function FragmentInput(gen:AGALGEN)

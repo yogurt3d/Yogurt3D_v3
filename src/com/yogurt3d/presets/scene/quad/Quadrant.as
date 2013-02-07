@@ -17,11 +17,11 @@
 */
 package com.yogurt3d.presets.scene.quad
 {
-	import com.yogurt3d.core.sceneobjects.SceneObjectRenderable;
-	
-	import flash.geom.Vector3D;
-	
-	public class Quadrant
+import com.yogurt3d.core.sceneobjects.SceneObjectRenderable;
+
+import flash.geom.Vector3D;
+
+public class Quadrant
 	{
 		public var m_parentNode				:QuadNode = null;
 		

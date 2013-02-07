@@ -19,13 +19,12 @@
 
 package com.yogurt3d.core.material.parameters
 {
-	import com.yogurt3d.core.material.enum.EBlendMode;
-	
-	import flash.display3D.Context3DCompareMode;
-	import flash.display3D.Context3DTriangleFace;
-	import flash.display3D.textures.Texture;
+import com.yogurt3d.core.material.enum.EBlendMode;
 
-	/**
+import flash.display3D.Context3DCompareMode;
+import flash.display3D.Context3DTriangleFace;
+
+/**
 	 * 
 	 * 
 	 * @author Yogurt3D Engine Core Team

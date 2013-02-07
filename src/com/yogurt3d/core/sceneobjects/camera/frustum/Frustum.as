@@ -17,19 +17,19 @@
 */
 
 package com.yogurt3d.core.sceneobjects.camera.frustum{
-	
-	import com.yogurt3d.YOGURT3D_INTERNAL;
-	import com.yogurt3d.core.sceneobjects.transformations.Transformation;
-	import com.yogurt3d.utils.MathUtils;
-	import com.yogurt3d.utils.MatrixUtils;
-	import com.yogurt3d.utils.ProjectionUtils;
-	import com.yogurt3d.core.volumes.AxisAlignedBoundingBox;
-	import com.yogurt3d.core.volumes.BoundingSphere;
-	
-	import flash.geom.Matrix3D;
-	import flash.geom.Vector3D;
-	
-	//import com.yogurt3d.core.namespaces.YOGURT3D_INTERNAL;
+
+import com.yogurt3d.YOGURT3D_INTERNAL;
+import com.yogurt3d.core.sceneobjects.transformations.Transformation;
+import com.yogurt3d.core.volumes.AxisAlignedBoundingBox;
+import com.yogurt3d.core.volumes.BoundingSphere;
+import com.yogurt3d.utils.MathUtils;
+import com.yogurt3d.utils.MatrixUtils;
+import com.yogurt3d.utils.ProjectionUtils;
+
+import flash.geom.Matrix3D;
+import flash.geom.Vector3D;
+
+//import com.yogurt3d.core.namespaces.YOGURT3D_INTERNAL;
 	//
 	//
 	

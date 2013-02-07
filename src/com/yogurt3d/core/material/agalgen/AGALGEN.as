@@ -18,12 +18,12 @@
 
 package com.yogurt3d.core.material.agalgen
 {
-	
-	import com.yogurt3d.core.material.enum.ERegisterType;
-	
-	import flash.utils.Dictionary;
 
-	public class AGALGEN
+import com.yogurt3d.core.material.enum.ERegisterType;
+
+import flash.utils.Dictionary;
+
+public class AGALGEN
 	{
 		private static const REGCOUNT				:uint 			= 128;
 		

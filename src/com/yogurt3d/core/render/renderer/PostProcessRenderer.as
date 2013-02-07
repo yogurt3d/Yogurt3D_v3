@@ -18,18 +18,18 @@
 
 package com.yogurt3d.core.render.renderer
 {
-	import com.yogurt3d.core.Scene3D;
-	import com.yogurt3d.core.managers.DeviceStreamManager;
-	import com.yogurt3d.core.sceneobjects.camera.Camera3D;
-	
-	import flash.display3D.Context3D;
-	import flash.display3D.Context3DVertexBufferFormat;
-	import flash.display3D.IndexBuffer3D;
-	import flash.display3D.VertexBuffer3D;
-	import flash.geom.Rectangle;
-	import flash.utils.Dictionary;
-	
-	public class PostProcessRenderer implements IRenderer
+import com.yogurt3d.core.Scene3D;
+import com.yogurt3d.core.managers.DeviceStreamManager;
+import com.yogurt3d.core.sceneobjects.camera.Camera3D;
+
+import flash.display3D.Context3D;
+import flash.display3D.Context3DVertexBufferFormat;
+import flash.display3D.IndexBuffer3D;
+import flash.display3D.VertexBuffer3D;
+import flash.geom.Rectangle;
+import flash.utils.Dictionary;
+
+public class PostProcessRenderer implements IRenderer
 	{
 		private static var m_vertexBuffer:Dictionary;
 		private static var m_indiceBuffer:Dictionary;

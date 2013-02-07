@@ -18,14 +18,14 @@
 
 package com.yogurt3d.core.animation
 {
-	import flash.geom.Vector3D;
-	import flash.utils.Dictionary;
-	
-	import com.yogurt3d.core.managers.IDManager;
-	import com.yogurt3d.core.objects.EngineObject;
-	import com.yogurt3d.core.sceneobjects.transformations.Quaternion;
-	
-	/**
+import com.yogurt3d.core.managers.IDManager;
+import com.yogurt3d.core.objects.EngineObject;
+import com.yogurt3d.core.sceneobjects.transformations.Quaternion;
+
+import flash.geom.Vector3D;
+import flash.utils.Dictionary;
+
+/**
 	  * Data file containing an animation. 
 	  * This file stores bone orientation data for each bone at each frame.
 	  * It also defines the animations frameRate.<br/>

@@ -17,11 +17,11 @@
  */
 package com.yogurt3d.presets.sceneobjects
 {
-	import com.yogurt3d.core.managers.IDManager;
-	import com.yogurt3d.YOGURT3D_INTERNAL;
-	import com.yogurt3d.presets.geometry.TorusKnotMesh;
-	
-	public class TorusKnotSceneObject extends TorusSceneObject
+import com.yogurt3d.YOGURT3D_INTERNAL;
+import com.yogurt3d.core.managers.IDManager;
+import com.yogurt3d.presets.geometry.TorusKnotMesh;
+
+public class TorusKnotSceneObject extends TorusSceneObject
 	{
 	
 		YOGURT3D_INTERNAL var m_heightScale 	: Number;

@@ -18,15 +18,15 @@
 
 package com.yogurt3d.core.render.base
 {
-	import com.yogurt3d.core.Scene3D;
-	import com.yogurt3d.core.render.renderer.DefaultRenderer;
-	import com.yogurt3d.core.render.renderer.IRenderer;
-	import com.yogurt3d.core.sceneobjects.camera.Camera3D;
-	
-	import flash.display3D.Context3D;
-	import flash.geom.Rectangle;
+import com.yogurt3d.core.Scene3D;
+import com.yogurt3d.core.render.renderer.DefaultRenderer;
+import com.yogurt3d.core.render.renderer.IRenderer;
+import com.yogurt3d.core.sceneobjects.camera.Camera3D;
 
-	public class RenderTargetBase
+import flash.display3D.Context3D;
+import flash.geom.Rectangle;
+
+public class RenderTargetBase
 	{
 		protected var m_scene						:Scene3D;
 		

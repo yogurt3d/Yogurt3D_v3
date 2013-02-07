@@ -18,21 +18,21 @@
 
 package com.yogurt3d.core.material.pass
 {
-	import com.yogurt3d.core.material.MaterialBase;
-	import com.yogurt3d.core.material.agalgen.IRegister;
-	import com.yogurt3d.core.material.enum.EBlendMode;
-	import com.yogurt3d.core.material.enum.ERegisterShaderType;
-	import com.yogurt3d.core.material.parameters.FragmentInput;
-	import com.yogurt3d.core.material.parameters.LightInput;
-	import com.yogurt3d.core.sceneobjects.lights.Light;
-	import com.yogurt3d.utils.ShaderUtils;
-	
-	import flash.display3D.Context3DCompareMode;
-	import flash.display3D.Context3DProgramType;
-	import flash.display3D.Context3DTriangleFace;
-	import flash.utils.ByteArray;
+import com.yogurt3d.core.material.MaterialBase;
+import com.yogurt3d.core.material.agalgen.IRegister;
+import com.yogurt3d.core.material.enum.EBlendMode;
+import com.yogurt3d.core.material.enum.ERegisterShaderType;
+import com.yogurt3d.core.material.parameters.FragmentInput;
+import com.yogurt3d.core.material.parameters.LightInput;
+import com.yogurt3d.core.sceneobjects.lights.Light;
+import com.yogurt3d.utils.ShaderUtils;
 
-	public class BasePass extends Pass
+import flash.display3D.Context3DCompareMode;
+import flash.display3D.Context3DProgramType;
+import flash.display3D.Context3DTriangleFace;
+import flash.utils.ByteArray;
+
+public class BasePass extends Pass
 	{
 		public function BasePass()
 		{
@@ -84,9 +84,9 @@ package com.yogurt3d.core.material.pass
 			code += "\n//Move result to output\n";
 			code += "mov oc " + gen.FT["result"];
 			
-			trace("[Base Pass] FRAGMENT SHADER");
-			trace(code);
-			trace("[Base Pass] END FRAGMENT SHADER");
+			//trace("[Base Pass] FRAGMENT SHADER");
+			//trace(code);
+			//trace("[Base Pass] END FRAGMENT SHADER");
 			
 			return ShaderUtils.vertexAssambler.assemble(Context3DProgramType.FRAGMENT, code, false );
 	

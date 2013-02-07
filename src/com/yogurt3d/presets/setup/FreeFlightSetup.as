@@ -18,15 +18,15 @@
 
 package com.yogurt3d.presets.setup
 {
-	import com.yogurt3d.YOGURT3D_INTERNAL;
-	import com.yogurt3d.core.Scene;
-	import com.yogurt3d.core.Scene3D;
-	import com.yogurt3d.core.Viewport;
-	import com.yogurt3d.presets.cameras.FreeFlightCamera;
-	
-	import flash.display.DisplayObjectContainer;
+import com.yogurt3d.YOGURT3D_INTERNAL;
+import com.yogurt3d.core.Scene;
+import com.yogurt3d.core.Scene3D;
+import com.yogurt3d.core.Viewport;
+import com.yogurt3d.presets.cameras.FreeFlightCamera;
 
-	public class FreeFlightSetup extends SetupBase
+import flash.display.DisplayObjectContainer;
+
+public class FreeFlightSetup extends SetupBase
 	{
 		public function FreeFlightSetup(_parent:DisplayObjectContainer)
 		{

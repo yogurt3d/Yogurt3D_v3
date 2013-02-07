@@ -1,13 +1,13 @@
 package com.yogurt3d.presets.material
 {
-	import com.yogurt3d.core.material.MaterialBase;
-	import com.yogurt3d.core.sceneobjects.SceneObjectRenderable;
-	import com.yogurt3d.core.sceneobjects.camera.Camera3D;
-	import com.yogurt3d.core.sceneobjects.lights.Light;
-	
-	import flash.display3D.Context3D;
+import com.yogurt3d.core.material.MaterialBase;
+import com.yogurt3d.core.sceneobjects.SceneObjectRenderable;
+import com.yogurt3d.core.sceneobjects.camera.Camera3D;
+import com.yogurt3d.core.sceneobjects.lights.Light;
 
-	public class MaterialDepth extends MaterialBase
+import flash.display3D.Context3D;
+
+public class MaterialDepth extends MaterialBase
 	{
 		private var m_pass:PassDepth;
 		public function MaterialDepth()
@@ -58,7 +58,6 @@ import flash.display3D.Context3D;
 import flash.display3D.Context3DProgramType;
 import flash.display3D.Context3DVertexBufferFormat;
 import flash.display3D.VertexBuffer3D;
-import flash.geom.Matrix3D;
 import flash.utils.ByteArray;
 
 class PassDepth extends Pass{
@@ -199,9 +198,9 @@ class PassDepth extends Pass{
 			].join("\n");
 		}
 		
-		trace("VERTEX .....");
-		trace(gen.printCode(code));
-		trace(".....");
+		//trace("VERTEX .....");
+		//trace(gen.printCode(code));
+		//trace(".....");
 		return ShaderUtils.vertexAssambler.assemble(Context3DProgramType.VERTEX, code, false );
 		
 	}
@@ -233,9 +232,9 @@ class PassDepth extends Pass{
 	//		(m_type == "normalDepth")?"mov oc ft0":(m_type == "depth")?"mov oc ft0.zwzw":"mov oc fc0.xyxy"
 		].join("\n");
 		
-		trace("FRAGMENT .....");
-		trace(gen.printCode(code));
-		trace(".....");
+		//trace("FRAGMENT .....");
+		//trace(gen.printCode(code));
+		//trace(".....");
 		return ShaderUtils.fragmentAssambler.assemble(Context3DProgramType.FRAGMENT, code, false );
 	
 	}

@@ -18,16 +18,15 @@
 
 package com.yogurt3d.core.render.renderqueue
 {
-	import com.yogurt3d.Yogurt3D;
-	import com.yogurt3d.core.managers.IDManager;
-	import com.yogurt3d.core.material.MaterialBase;
-	import com.yogurt3d.YOGURT3D_INTERNAL;
-	import com.yogurt3d.core.objects.EngineObject;
-	import com.yogurt3d.core.sceneobjects.SceneObjectRenderable;
-	
-	import flash.utils.Dictionary;
+import com.yogurt3d.YOGURT3D_INTERNAL;
+import com.yogurt3d.core.managers.IDManager;
+import com.yogurt3d.core.material.MaterialBase;
+import com.yogurt3d.core.objects.EngineObject;
+import com.yogurt3d.core.sceneobjects.SceneObjectRenderable;
 
-	public class RenderQueue extends EngineObject
+import flash.utils.Dictionary;
+
+public class RenderQueue extends EngineObject
 	{
         public static const OVERLAY:int = 3000;
         public static const ALPHA:int = 2000;

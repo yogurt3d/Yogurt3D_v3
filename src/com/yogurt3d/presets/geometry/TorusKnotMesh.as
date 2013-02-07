@@ -17,13 +17,13 @@
  */
 package com.yogurt3d.presets.geometry
 {
-	import flash.geom.*;
-	
-	import com.yogurt3d.core.geoms.Mesh;
-	import com.yogurt3d.core.geoms.SubMesh;
-	import com.yogurt3d.core.managers.IDManager;
-	
-	public class TorusKnotMesh extends Mesh
+import com.yogurt3d.core.geoms.Mesh;
+import com.yogurt3d.core.geoms.SubMesh;
+import com.yogurt3d.core.managers.IDManager;
+
+import flash.geom.*;
+
+public class TorusKnotMesh extends Mesh
 	{
 		public function TorusKnotMesh(_radius:Number  = 100.0, _tubeRadius:Number = 40.0, _segmentsR:uint = 8, 
 								  _segmentsT:uint = 6, _yUp:Boolean = false, _p:uint = 2, _q:uint = 3,_heightScale:Number = 1)

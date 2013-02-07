@@ -19,11 +19,11 @@
  
 package com.yogurt3d.core.volumes.interfaces
 {
-	import com.yogurt3d.core.objects.IEngineObject;
-	
-	import flash.geom.Vector3D;
+import com.yogurt3d.core.objects.IEngineObject;
 
-	/**
+import flash.geom.Vector3D;
+
+/**
 	 * 
 	 * 
  	 * @author Yogurt3D Engine Core Team

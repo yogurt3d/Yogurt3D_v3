@@ -18,11 +18,9 @@
 
 package com.yogurt3d.presets.effects
 {
-	import com.yogurt3d.core.render.post.PostProcessingEffectBase;
-	
-	import flash.display3D.Context3DProgramType;
-	
-	public class EffectDream extends PostProcessingEffectBase
+import com.yogurt3d.core.render.post.PostProcessingEffectBase;
+
+public class EffectDream extends PostProcessingEffectBase
 	{
 		
 		public function EffectDream()
@@ -32,6 +30,7 @@ package com.yogurt3d.presets.effects
 		}
 	}
 }
+
 import com.adobe.AGALMiniAssembler;
 import com.yogurt3d.core.Scene3D;
 import com.yogurt3d.core.render.post.EffectBase;
@@ -41,7 +40,6 @@ import flash.display3D.Context3DProgramType;
 import flash.display3D.textures.TextureBase;
 import flash.geom.Rectangle;
 import flash.utils.ByteArray;
-
 
 internal class FilterDream extends EffectBase
 {

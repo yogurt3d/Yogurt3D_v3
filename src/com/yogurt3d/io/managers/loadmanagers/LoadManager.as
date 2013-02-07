@@ -18,21 +18,21 @@
  
  
 package com.yogurt3d.io.managers.loadmanagers {
-	import com.yogurt3d.YOGURT3D_INTERNAL;
-	import com.yogurt3d.io.cache.GlobalCache;
-	import com.yogurt3d.io.cache.LoadCache;
-	import com.yogurt3d.io.loaders.DataLoader;
-	import com.yogurt3d.io.loaders.interfaces.ILoader;
-	import com.yogurt3d.io.parsers.TextureMap_Parser;
-	import com.yogurt3d.io.parsers.interfaces.IParser;
-	
-	import flash.events.Event;
-	import flash.events.EventDispatcher;
-	import flash.events.IOErrorEvent;
-	import flash.events.ProgressEvent;
-	import flash.utils.Dictionary;
+import com.yogurt3d.YOGURT3D_INTERNAL;
+import com.yogurt3d.io.cache.GlobalCache;
+import com.yogurt3d.io.cache.LoadCache;
+import com.yogurt3d.io.loaders.DataLoader;
+import com.yogurt3d.io.loaders.interfaces.ILoader;
+import com.yogurt3d.io.parsers.TextureMap_Parser;
+import com.yogurt3d.io.parsers.interfaces.IParser;
 
-	/**
+import flash.events.Event;
+import flash.events.EventDispatcher;
+import flash.events.IOErrorEvent;
+import flash.events.ProgressEvent;
+import flash.utils.Dictionary;
+
+/**
 	 * 
 	 * 
  	 * @author Yogurt3D Engine Core Team

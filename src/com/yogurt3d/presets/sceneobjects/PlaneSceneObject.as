@@ -19,12 +19,12 @@
  
 package com.yogurt3d.presets.sceneobjects
 {
-	import com.yogurt3d.core.managers.IDManager;
-	import com.yogurt3d.YOGURT3D_INTERNAL;
-	import com.yogurt3d.core.sceneobjects.SceneObjectRenderable;
-	import com.yogurt3d.presets.geometry.PlaneMesh;
+import com.yogurt3d.YOGURT3D_INTERNAL;
+import com.yogurt3d.core.managers.IDManager;
+import com.yogurt3d.core.sceneobjects.SceneObjectRenderable;
+import com.yogurt3d.presets.geometry.PlaneMesh;
 
-	/**
+/**
 	 * 
 	 * 
  	 * @author Yogurt3D Engine Core Team

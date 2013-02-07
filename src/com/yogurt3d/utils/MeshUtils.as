@@ -20,10 +20,11 @@
 package com.yogurt3d.utils
 {
 
-	
-	import flash.geom.Vector3D;
-	import flash.utils.ByteArray;
-	/**
+
+import flash.geom.Vector3D;
+import flash.utils.ByteArray;
+
+/**
 	 * 
 	 * 
  	 * @author Yogurt3D Engine Core Team

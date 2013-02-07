@@ -19,11 +19,11 @@
 
 package com.yogurt3d.core.sceneobjects.interfaces
 {
-	import com.yogurt3d.core.sceneobjects.camera.Camera;
-	
-	import flash.display3D.Context3D;
+import com.yogurt3d.core.sceneobjects.camera.Camera;
 
-	/**
+import flash.display3D.Context3D;
+
+/**
 	 * 
 	 * 
 	 * @author Yogurt3D Engine Core Team

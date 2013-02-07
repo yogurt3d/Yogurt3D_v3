@@ -18,10 +18,10 @@
 
 package com.yogurt3d.core.render.renderqueue
 {
-	import com.yogurt3d.YOGURT3D_INTERNAL;
-	import com.yogurt3d.core.sceneobjects.SceneObjectRenderable;
+import com.yogurt3d.YOGURT3D_INTERNAL;
+import com.yogurt3d.core.sceneobjects.SceneObjectRenderable;
 
-	public class SubRenderQueue
+public class SubRenderQueue
 	{
 		use namespace YOGURT3D_INTERNAL;
 		

@@ -18,17 +18,17 @@
  
  
 package com.yogurt3d.io.loaders {
-	import com.yogurt3d.YOGURT3D_INTERNAL;
-	import com.yogurt3d.io.loaders.interfaces.ILoader;
-	
-	import flash.events.Event;
-	import flash.events.EventDispatcher;
-	import flash.events.IOErrorEvent;
-	import flash.events.ProgressEvent;
-	import flash.net.URLLoader;
-	import flash.net.URLRequest;
+import com.yogurt3d.YOGURT3D_INTERNAL;
+import com.yogurt3d.io.loaders.interfaces.ILoader;
 
-	/**
+import flash.events.Event;
+import flash.events.EventDispatcher;
+import flash.events.IOErrorEvent;
+import flash.events.ProgressEvent;
+import flash.net.URLLoader;
+import flash.net.URLRequest;
+
+/**
 	 * 
 	 * 
  	 * @author Yogurt3D Engine Core Team

@@ -16,18 +16,18 @@
 * License along with this library. If not, see <http://www.yogurt3d.com/yogurt3d/downloads/yogurt3d-click-through-agreement.html>. 
 */
 package com.yogurt3d.core.sceneobjects.event {
-	
-	import com.yogurt3d.YOGURT3D_INTERNAL;
-	import com.yogurt3d.core.Viewport;
-	import com.yogurt3d.core.sceneobjects.SceneObject;
-	import com.yogurt3d.core.sceneobjects.SceneObjectRenderable;
-	import com.yogurt3d.core.sceneobjects.camera.Camera3D;
-	import com.yogurt3d.core.sceneobjects.camera.Ray;
-	
-	import flash.events.Event;
-	import flash.geom.Vector3D;
-	
-	/**
+
+import com.yogurt3d.YOGURT3D_INTERNAL;
+import com.yogurt3d.core.Viewport;
+import com.yogurt3d.core.sceneobjects.SceneObject;
+import com.yogurt3d.core.sceneobjects.SceneObjectRenderable;
+import com.yogurt3d.core.sceneobjects.camera.Camera3D;
+import com.yogurt3d.core.sceneobjects.camera.Ray;
+
+import flash.events.Event;
+import flash.geom.Vector3D;
+
+/**
 	 * 
 	 * 
 	 * @author Yogurt3D Engine Core Team

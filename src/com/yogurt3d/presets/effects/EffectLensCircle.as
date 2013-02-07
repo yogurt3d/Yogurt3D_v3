@@ -18,11 +18,9 @@
 
 package com.yogurt3d.presets.effects
 {
-	import com.yogurt3d.core.render.post.PostProcessingEffectBase;
-	
-	import flash.display3D.Context3DProgramType;
-	
-	public class EffectLensCircle extends PostProcessingEffectBase
+import com.yogurt3d.core.render.post.PostProcessingEffectBase;
+
+public class EffectLensCircle extends PostProcessingEffectBase
 	{
 		private var m_filter:FilterLensCircle;
 		public function EffectLensCircle(_lensX:Number=0.45, _lensY:Number=0.38, _centerX:Number=0.5, _centerY:Number=0.5)
@@ -65,10 +63,10 @@ package com.yogurt3d.presets.effects
 		}
 	}
 }
+
 import com.adobe.AGALMiniAssembler;
 import com.yogurt3d.core.Scene3D;
 import com.yogurt3d.core.render.post.EffectBase;
-import com.yogurt3d.core.render.post.PostProcessingEffectBase;
 import com.yogurt3d.utils.ShaderUtils;
 
 import flash.display3D.Context3DProgramType;

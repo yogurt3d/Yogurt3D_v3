@@ -18,15 +18,15 @@
 
 package com.yogurt3d.core.sceneobjects.lights
 {
-	import com.yogurt3d.core.sceneobjects.SceneObjectRenderable;
-	import com.yogurt3d.utils.Color;
-	import com.yogurt3d.utils.MathUtils;
-	import com.yogurt3d.presets.material.MaterialFill;
-	import com.yogurt3d.presets.sceneobjects.ConeSceneObject;
-	import com.yogurt3d.presets.sceneobjects.CylinderSceneObject;
-	import com.yogurt3d.presets.sceneobjects.SphereSceneObject;
-	
-	/**
+import com.yogurt3d.core.sceneobjects.SceneObjectRenderable;
+import com.yogurt3d.presets.material.MaterialFill;
+import com.yogurt3d.presets.sceneobjects.ConeSceneObject;
+import com.yogurt3d.presets.sceneobjects.CylinderSceneObject;
+import com.yogurt3d.presets.sceneobjects.SphereSceneObject;
+import com.yogurt3d.utils.Color;
+import com.yogurt3d.utils.MathUtils;
+
+/**
 	 * 
 	 * 
 	 * @author Yogurt3D Engine Core Team

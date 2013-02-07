@@ -18,14 +18,13 @@
 
 package com.yogurt3d.core.render
 {
-	import com.yogurt3d.core.render.base.RenderTargetBase;
-	import com.yogurt3d.core.render.texture.RenderTexture;
-	import com.yogurt3d.utils.MathUtils;
-	
-	import flash.display.BitmapData;
-	import flash.display3D.Context3DClearMask;
-	
-	public class BackBufferRenderTarget extends RenderTargetBase
+import com.yogurt3d.core.render.base.RenderTargetBase;
+import com.yogurt3d.core.render.texture.RenderTexture;
+import com.yogurt3d.utils.MathUtils;
+
+import flash.display.BitmapData;
+
+public class BackBufferRenderTarget extends RenderTargetBase
 	{	
 		private var m_renderTexture				:RenderTexture;
 		

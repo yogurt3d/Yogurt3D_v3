@@ -18,10 +18,10 @@
 
 package com.yogurt3d.core.texture
 {
-	import flash.display3D.Context3D;
-	import flash.display3D.textures.TextureBase;
-	
-	public interface ITexture
+import flash.display3D.Context3D;
+import flash.display3D.textures.TextureBase;
+
+public interface ITexture
 	{
 		/**
 		 * This method is called by the renderer to fetch the Texture object. 

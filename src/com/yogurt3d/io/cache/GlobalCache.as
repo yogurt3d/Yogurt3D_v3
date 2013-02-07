@@ -19,10 +19,11 @@
  
 package com.yogurt3d.io.cache
 {
-	import com.yogurt3d.YOGURT3D_INTERNAL;
-	
-	import flash.utils.Dictionary;
-	/**
+import com.yogurt3d.YOGURT3D_INTERNAL;
+
+import flash.utils.Dictionary;
+
+/**
 	 * 
 	 * 
  	 * @author Yogurt3D Engine Core Team

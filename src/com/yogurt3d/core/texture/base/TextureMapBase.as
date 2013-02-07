@@ -18,14 +18,14 @@
 
 package com.yogurt3d.core.texture.base
 {
-	import com.yogurt3d.YOGURT3D_INTERNAL;
-	import com.yogurt3d.core.texture.ITexture;
-	
-	import flash.display3D.Context3D;
-	import flash.display3D.textures.TextureBase;
-	import flash.utils.Dictionary;
+import com.yogurt3d.YOGURT3D_INTERNAL;
+import com.yogurt3d.core.texture.ITexture;
 
-	public class TextureMapBase implements ITexture
+import flash.display3D.Context3D;
+import flash.display3D.textures.TextureBase;
+import flash.utils.Dictionary;
+
+public class TextureMapBase implements ITexture
 	{
 		use namespace YOGURT3D_INTERNAL;
 		

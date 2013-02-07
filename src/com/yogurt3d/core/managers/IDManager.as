@@ -18,12 +18,12 @@
  
 package com.yogurt3d.core.managers
 {
-	import com.yogurt3d.core.objects.IIdentifiableObject;
-	
-	import flash.utils.Dictionary;
-	import flash.utils.getQualifiedClassName;
+import com.yogurt3d.core.objects.IIdentifiableObject;
 
-	/**
+import flash.utils.Dictionary;
+import flash.utils.getQualifiedClassName;
+
+/**
 	 * 
 	 * 
  	 * @author Yogurt3D Engine Core Team

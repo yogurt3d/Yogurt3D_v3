@@ -1,21 +1,21 @@
 package com.yogurt3d.core.sceneobjects
 {
-	import com.yogurt3d.YOGURT3D_INTERNAL;
-	import com.yogurt3d.core.Scene3D;
-	import com.yogurt3d.core.Viewport;
-	import com.yogurt3d.core.geoms.IMesh;
-	import com.yogurt3d.core.managers.IDManager;
-	import com.yogurt3d.core.material.MaterialBase;
-	import com.yogurt3d.core.objects.IEngineObject;
-	import com.yogurt3d.core.render.texture.base.RenderTextureTargetBase;
-	import com.yogurt3d.core.sceneobjects.transformations.Transformation;
-	import com.yogurt3d.core.volumes.AxisAlignedBoundingBox;
-	import com.yogurt3d.utils.MatrixUtils;
-	
-	import flash.geom.Matrix3D;
-	import flash.geom.Utils3D;
+import com.yogurt3d.YOGURT3D_INTERNAL;
+import com.yogurt3d.core.Scene3D;
+import com.yogurt3d.core.Viewport;
+import com.yogurt3d.core.geoms.IMesh;
+import com.yogurt3d.core.managers.IDManager;
+import com.yogurt3d.core.material.MaterialBase;
+import com.yogurt3d.core.objects.IEngineObject;
+import com.yogurt3d.core.render.texture.base.RenderTextureTargetBase;
+import com.yogurt3d.core.sceneobjects.transformations.Transformation;
+import com.yogurt3d.core.volumes.AxisAlignedBoundingBox;
+import com.yogurt3d.utils.MatrixUtils;
 
-	public class SceneObjectRenderable extends SceneObject
+import flash.geom.Matrix3D;
+import flash.geom.Utils3D;
+
+public class SceneObjectRenderable extends SceneObject
 	{
 		use namespace YOGURT3D_INTERNAL;
 		
@@ -198,11 +198,10 @@ package com.yogurt3d.core.sceneobjects
 				m_geometry.disposeDeep();
 				m_geometry = null;
 			}
-			
-			// TODO
+
 			if( m_material )
 			{
-				//m_material.disposeDeep();
+				m_material.disposeDeep();
 				m_material = null;
 			}
 			super.disposeDeep();

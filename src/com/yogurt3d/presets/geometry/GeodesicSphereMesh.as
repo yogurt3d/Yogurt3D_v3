@@ -25,13 +25,11 @@
 
 package com.yogurt3d.presets.geometry
 {
-	import com.yogurt3d.core.geoms.Mesh;
-	import com.yogurt3d.core.geoms.SubMesh;
-	import com.yogurt3d.core.managers.IDManager;
-	
-	import flash.geom.*;
-	
-	public class GeodesicSphereMesh extends Mesh
+import com.yogurt3d.core.geoms.Mesh;
+import com.yogurt3d.core.geoms.SubMesh;
+import com.yogurt3d.core.managers.IDManager;
+
+public class GeodesicSphereMesh extends Mesh
 	{
 		
 		public function GeodesicSphereMesh(_radius:Number  = 100.0, _fractures:Number = 2.0)

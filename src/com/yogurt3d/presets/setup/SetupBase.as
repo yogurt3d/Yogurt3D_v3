@@ -18,14 +18,14 @@
 
 package com.yogurt3d.presets.setup
 {
-	import com.yogurt3d.YOGURT3D_INTERNAL;
-	import com.yogurt3d.core.Scene3D;
-	import com.yogurt3d.core.Viewport;
-	import com.yogurt3d.core.sceneobjects.camera.Camera3D;
-	
-	import flash.display.DisplayObjectContainer;
-	
-	public class SetupBase
+import com.yogurt3d.YOGURT3D_INTERNAL;
+import com.yogurt3d.core.Scene3D;
+import com.yogurt3d.core.Viewport;
+import com.yogurt3d.core.sceneobjects.camera.Camera3D;
+
+import flash.display.DisplayObjectContainer;
+
+public class SetupBase
 	{
 		private var m_viewport			:Viewport;
 		

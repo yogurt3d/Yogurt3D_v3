@@ -18,15 +18,15 @@
 
 package com.yogurt3d.core.sceneobjects.scenetree
 {
-	import com.yogurt3d.core.Scene3D;
-	import com.yogurt3d.core.render.renderqueue.RenderQueue;
-	import com.yogurt3d.core.sceneobjects.SceneObjectRenderable;
-	import com.yogurt3d.core.sceneobjects.camera.Camera3D;
-	import com.yogurt3d.core.sceneobjects.lights.Light;
-	
-	import flash.utils.Dictionary;
-	
-	public interface IRenderableManager
+import com.yogurt3d.core.Scene3D;
+import com.yogurt3d.core.render.renderqueue.RenderQueue;
+import com.yogurt3d.core.sceneobjects.SceneObjectRenderable;
+import com.yogurt3d.core.sceneobjects.camera.Camera3D;
+import com.yogurt3d.core.sceneobjects.lights.Light;
+
+import flash.utils.Dictionary;
+
+public interface IRenderableManager
 	{
 		function addChild(_child:SceneObjectRenderable, _scene:Scene3D, index:int = -1):void;
 		function removeChildFromTree(_child:SceneObjectRenderable, _scene:Scene3D):void;

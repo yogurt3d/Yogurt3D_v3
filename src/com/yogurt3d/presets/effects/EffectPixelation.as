@@ -18,11 +18,9 @@
 
 package com.yogurt3d.presets.effects
 {
-	import com.yogurt3d.core.render.post.PostProcessingEffectBase;
-	
-	import flash.display3D.Context3DProgramType;
-	
-	public class EffectPixelation extends PostProcessingEffectBase
+import com.yogurt3d.core.render.post.PostProcessingEffectBase;
+
+public class EffectPixelation extends PostProcessingEffectBase
 	{
 		private var m_filter:FilterPixelation;
 		public function EffectPixelation(_pixelWidth:Number=15.0, _pixelHeight:Number=10.0)
@@ -49,10 +47,10 @@ package com.yogurt3d.presets.effects
 		}
 	}
 }
+
 import com.adobe.AGALMiniAssembler;
 import com.yogurt3d.core.Scene3D;
 import com.yogurt3d.core.render.post.EffectBase;
-import com.yogurt3d.core.render.post.PostProcessingEffectBase;
 import com.yogurt3d.utils.MathUtils;
 import com.yogurt3d.utils.ShaderUtils;
 

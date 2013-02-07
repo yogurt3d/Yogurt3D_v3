@@ -18,8 +18,9 @@
  
  
 package com.yogurt3d.io.loaders.interfaces {
-	import flash.events.IEventDispatcher;
-	/**
+import flash.events.IEventDispatcher;
+
+/**
 	 * 
 	 * 
  	 * @author Yogurt3D Engine Core Team

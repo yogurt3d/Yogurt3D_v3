@@ -18,13 +18,13 @@
 
 package com.yogurt3d.core.managers
 {
-	import com.yogurt3d.core.render.post.EffectBase;
-	
-	import flash.display3D.Context3D;
-	import flash.display3D.Program3D;
-	import flash.utils.Dictionary;
+import com.yogurt3d.core.render.post.EffectBase;
 
-	public class ProgramManager
+import flash.display3D.Context3D;
+import flash.display3D.Program3D;
+import flash.utils.Dictionary;
+
+public class ProgramManager
 	{
 		public static var registeredPrograms		:Dictionary 	= new Dictionary();
 		

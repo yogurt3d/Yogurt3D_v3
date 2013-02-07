@@ -18,14 +18,14 @@
 
 package com.yogurt3d.utils
 {
-	import com.yogurt3d.core.texture.CubeTextureMap;
-	import com.yogurt3d.core.texture.ITexture;
-	import com.yogurt3d.core.texture.TextureMap;
-	
-	import flash.display.BitmapData;
-	import flash.display.Sprite;
+import com.yogurt3d.core.texture.CubeTextureMap;
+import com.yogurt3d.core.texture.ITexture;
+import com.yogurt3d.core.texture.TextureMap;
 
-	public class TextureMapDefaults
+import flash.display.BitmapData;
+import flash.display.Sprite;
+
+public class TextureMapDefaults
 	{
 		private static var m_checkerBoard		:ITexture;
 		private static var m_white				:TextureMap;

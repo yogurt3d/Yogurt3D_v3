@@ -18,17 +18,17 @@
 
 package com.yogurt3d.presets.scene.simple
 {
-	import com.yogurt3d.core.sceneobjects.camera.Camera3D;
-	import com.yogurt3d.core.sceneobjects.lights.Light;
-	import com.yogurt3d.core.managers.SceneTreeManager;
-	import com.yogurt3d.core.render.renderqueue.RenderQueue;
-	import com.yogurt3d.core.Scene3D;
-	import com.yogurt3d.core.sceneobjects.SceneObjectRenderable;
-	import com.yogurt3d.core.sceneobjects.scenetree.IRenderableManager;
-	
-	import flash.utils.Dictionary;
-	
-	public class SimpleSceneTreeManager implements IRenderableManager
+import com.yogurt3d.core.Scene3D;
+import com.yogurt3d.core.managers.SceneTreeManager;
+import com.yogurt3d.core.render.renderqueue.RenderQueue;
+import com.yogurt3d.core.sceneobjects.SceneObjectRenderable;
+import com.yogurt3d.core.sceneobjects.camera.Camera3D;
+import com.yogurt3d.core.sceneobjects.lights.Light;
+import com.yogurt3d.core.sceneobjects.scenetree.IRenderableManager;
+
+import flash.utils.Dictionary;
+
+public class SimpleSceneTreeManager implements IRenderableManager
 	{
 		private static var s_renderableObjectsByScene		:Dictionary;
 		

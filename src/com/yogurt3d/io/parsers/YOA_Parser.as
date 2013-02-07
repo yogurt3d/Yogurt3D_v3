@@ -19,17 +19,17 @@
 
 package com.yogurt3d.io.parsers
 {
-	import com.yogurt3d.core.animation.SkeletalAnimationData;
-	import com.yogurt3d.core.sceneobjects.transformations.Quaternion;
-	import com.yogurt3d.io.parsers.interfaces.IParser;
-	
-	import flash.geom.Matrix3D;
-	import flash.geom.Orientation3D;
-	import flash.geom.Vector3D;
-	import flash.utils.ByteArray;
-	import flash.utils.Endian;
-	
-	/**
+import com.yogurt3d.core.animation.SkeletalAnimationData;
+import com.yogurt3d.core.sceneobjects.transformations.Quaternion;
+import com.yogurt3d.io.parsers.interfaces.IParser;
+
+import flash.geom.Matrix3D;
+import flash.geom.Orientation3D;
+import flash.geom.Vector3D;
+import flash.utils.ByteArray;
+import flash.utils.Endian;
+
+/**
 	 * 
 	 * 
 	 * @author Yogurt3D Engine Core Team

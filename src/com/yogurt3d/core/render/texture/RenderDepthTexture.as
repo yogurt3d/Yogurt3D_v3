@@ -18,14 +18,14 @@
 
 package com.yogurt3d.core.render.texture
 {
-	import com.yogurt3d.core.render.renderer.DepthRenderer;
-	import com.yogurt3d.core.render.texture.base.RenderTextureTargetBase;
-	
-	import flash.display3D.Context3D;
-	import flash.display3D.Context3DTextureFormat;
-	import flash.display3D.textures.TextureBase;
-	
-	public class RenderDepthTexture extends RenderTextureTargetBase
+import com.yogurt3d.core.render.renderer.DepthRenderer;
+import com.yogurt3d.core.render.texture.base.RenderTextureTargetBase;
+
+import flash.display3D.Context3D;
+import flash.display3D.Context3DTextureFormat;
+import flash.display3D.textures.TextureBase;
+
+public class RenderDepthTexture extends RenderTextureTargetBase
 	{
 		public function RenderDepthTexture()
 		{

@@ -18,9 +18,9 @@
 
 package com.yogurt3d.core.sceneobjects.lights
 {
-	import com.yogurt3d.utils.Enum;
-	
-	public class EShadowType extends Enum
+import com.yogurt3d.utils.Enum;
+
+public class EShadowType extends Enum
 	{
 		{initEnum(EShadowType);}	
 		

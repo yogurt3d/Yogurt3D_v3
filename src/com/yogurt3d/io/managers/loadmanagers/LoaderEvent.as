@@ -18,12 +18,12 @@
  
  
 package com.yogurt3d.io.managers.loadmanagers {
-	import com.yogurt3d.io.loaders.interfaces.ILoader;
-	
-	import flash.events.Event;
-	import flash.events.ProgressEvent;
-	
-	/**
+import com.yogurt3d.io.loaders.interfaces.ILoader;
+
+import flash.events.Event;
+import flash.events.ProgressEvent;
+
+/**
 	 * 
 	 * 
  	 * @author Yogurt3D Engine Core Team

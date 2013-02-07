@@ -18,41 +18,40 @@
 
 package com.yogurt3d.core.material.pass
 {
-	import com.yogurt3d.YOGURT3D_INTERNAL;
-	import com.yogurt3d.core.geoms.IMesh;
-	import com.yogurt3d.core.geoms.SkinnedSubMesh;
-	import com.yogurt3d.core.geoms.SubMesh;
-	import com.yogurt3d.core.managers.DeviceStreamManager;
-	import com.yogurt3d.core.managers.MaterialManager;
-	import com.yogurt3d.core.material.MaterialBase;
-	import com.yogurt3d.core.material.Y3DProgram;
-	import com.yogurt3d.core.material.agalgen.AGALGEN;
-	import com.yogurt3d.core.material.agalgen.IRegister;
-	import com.yogurt3d.core.material.enum.ERegisterShaderType;
-	import com.yogurt3d.core.material.parameters.FragmentInput;
-	import com.yogurt3d.core.material.parameters.LightInput;
-	import com.yogurt3d.core.material.parameters.ShaderParameters;
-	import com.yogurt3d.core.material.parameters.SurfaceOutput;
-	import com.yogurt3d.core.material.parameters.VertexInput;
-	import com.yogurt3d.core.material.parameters.VertexOutput;
-	import com.yogurt3d.core.sceneobjects.SceneObjectRenderable;
-	import com.yogurt3d.core.sceneobjects.camera.Camera3D;
-	import com.yogurt3d.core.sceneobjects.lights.ELightType;
-	import com.yogurt3d.core.sceneobjects.lights.Light;
-	import com.yogurt3d.core.texture.ITexture;
-	import com.yogurt3d.utils.Color;
-	import com.yogurt3d.utils.ShaderUtils;
-	
-	import flash.display3D.Context3D;
-	import flash.display3D.Context3DProgramType;
-	import flash.display3D.Context3DVertexBufferFormat;
-	import flash.display3D.VertexBuffer3D;
-	import flash.geom.Matrix3D;
-	import flash.utils.ByteArray;
-	import flash.utils.Dictionary;
-	
+import com.yogurt3d.YOGURT3D_INTERNAL;
+import com.yogurt3d.core.geoms.IMesh;
+import com.yogurt3d.core.geoms.SkinnedSubMesh;
+import com.yogurt3d.core.geoms.SubMesh;
+import com.yogurt3d.core.managers.DeviceStreamManager;
+import com.yogurt3d.core.managers.MaterialManager;
+import com.yogurt3d.core.material.MaterialBase;
+import com.yogurt3d.core.material.Y3DProgram;
+import com.yogurt3d.core.material.agalgen.AGALGEN;
+import com.yogurt3d.core.material.agalgen.IRegister;
+import com.yogurt3d.core.material.enum.ERegisterShaderType;
+import com.yogurt3d.core.material.parameters.FragmentInput;
+import com.yogurt3d.core.material.parameters.LightInput;
+import com.yogurt3d.core.material.parameters.ShaderParameters;
+import com.yogurt3d.core.material.parameters.SurfaceOutput;
+import com.yogurt3d.core.material.parameters.VertexInput;
+import com.yogurt3d.core.material.parameters.VertexOutput;
+import com.yogurt3d.core.sceneobjects.SceneObjectRenderable;
+import com.yogurt3d.core.sceneobjects.camera.Camera3D;
+import com.yogurt3d.core.sceneobjects.lights.ELightType;
+import com.yogurt3d.core.sceneobjects.lights.Light;
+import com.yogurt3d.core.texture.ITexture;
+import com.yogurt3d.utils.Color;
+import com.yogurt3d.utils.ShaderUtils;
 
-	public class Pass
+import flash.display3D.Context3D;
+import flash.display3D.Context3DProgramType;
+import flash.display3D.Context3DVertexBufferFormat;
+import flash.display3D.VertexBuffer3D;
+import flash.geom.Matrix3D;
+import flash.utils.ByteArray;
+import flash.utils.Dictionary;
+
+public class Pass
 	{
 		public var lightFunction				:Function 		= MaterialBase.Lambert;
 		public var surfaceFunction				:Function 		= MaterialBase.emptyFunction;
@@ -262,9 +261,11 @@ package com.yogurt3d.core.material.pass
 					m_vsManager.setStream( _device,  m_vertexInput.YOGURT3D_INTERNAL::m_uvMain.index, subMesh.getUVBufferByContext3D(_device),0, Context3DVertexBufferFormat.FLOAT_2);
 				}
 				if( m_vertexInput.YOGURT3D_INTERNAL::m_uvSecond )
-				{
-					m_vsManager.setStream( _device,  m_vertexInput.YOGURT3D_INTERNAL::m_uvSecond.index, subMesh.getUV2BufferByContext3D(_device),0, Context3DVertexBufferFormat.FLOAT_2);
-				}
+				{   if( subMesh.uvt2 && subMesh.uvt2.length > 0)
+					    m_vsManager.setStream( _device,  m_vertexInput.YOGURT3D_INTERNAL::m_uvSecond.index, subMesh.getUV2BufferByContext3D(_device),0, Context3DVertexBufferFormat.FLOAT_2);
+				    else
+                        m_vsManager.setStream( _device,  m_vertexInput.YOGURT3D_INTERNAL::m_uvSecond.index, subMesh.getUVBufferByContext3D(_device),0, Context3DVertexBufferFormat.FLOAT_2);
+                }
 				if( m_vertexInput.YOGURT3D_INTERNAL::m_boneData )
 				{
 					var skinnedSubmesh:SkinnedSubMesh = subMesh as SkinnedSubMesh;
@@ -522,12 +523,18 @@ package com.yogurt3d.core.material.pass
 				code += "\n// move worldpos to varying\n";
 				code += gen.code("mov", out.worldPos, worldPos);
 			}
-			if( out.uvMain )
-			{
-				code += "\n// add uv shift code here\n"
-				code += "// move uv to varying\n";
-				code += gen.code("mov", out.uvMain, input.uvMain )+"\n";
-			}
+            if( out.uvMain )
+            {
+                code += "\n// add uv shift code here\n"
+                code += "// move uv to varying\n";
+                code += gen.code("mov", out.uvMain, input.uvMain )+"\n";
+            }
+            if( out.uvSecond )
+            {
+                code += "\n// add uv shift code here\n"
+                code += "// move uv to varying\n";
+                code += gen.code("mov", out.uvSecond, input.uvSecond )+"\n";
+            }
 			code+="\n// Calculate and Output screen pos\n";
 			code+=gen.code("m44",screenPos, worldPos, gen.VC["ViewProjection"])+"\n";
 			code+=gen.code("mov","op", screenPos)+"\n";
@@ -536,7 +543,7 @@ package com.yogurt3d.core.material.pass
 //			trace( code );
 //			trace("END VERTEX SHADER");
 			
-			return com.yogurt3d.utils.ShaderUtils.vertexAssambler.assemble(Context3DProgramType.VERTEX, code, false );
+			return ShaderUtils.vertexAssambler.assemble(Context3DProgramType.VERTEX, code, false );
 		}
 	
 		protected function generateNeededCalculations(_light:Light, _surfaceOutput:SurfaceOutput):String{

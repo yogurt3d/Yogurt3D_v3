@@ -18,10 +18,10 @@
 
 package com.yogurt3d.presets.scene.simple
 {
-	import com.yogurt3d.core.sceneobjects.scenetree.IRenderableManager;
-	import com.yogurt3d.core.sceneobjects.scenetree.SceneTreeManagerDriver;
-	
-	public class SimpleSceneTreeManagerDriver extends SceneTreeManagerDriver
+import com.yogurt3d.core.sceneobjects.scenetree.IRenderableManager;
+import com.yogurt3d.core.sceneobjects.scenetree.SceneTreeManagerDriver;
+
+public class SimpleSceneTreeManagerDriver extends SceneTreeManagerDriver
 	{
 		public function SimpleSceneTreeManagerDriver()
 		{

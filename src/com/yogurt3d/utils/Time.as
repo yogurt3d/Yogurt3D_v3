@@ -18,9 +18,9 @@
 
 package com.yogurt3d.utils
 {
-	import com.yogurt3d.YOGURT3D_INTERNAL;
-	
-	public class Time
+import com.yogurt3d.YOGURT3D_INTERNAL;
+
+public class Time
 	{
 		YOGURT3D_INTERNAL static var m_time				:uint = 0;
 		YOGURT3D_INTERNAL static var m_timeSeconds		:Number = 0;

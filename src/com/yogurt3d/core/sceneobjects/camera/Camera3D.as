@@ -18,16 +18,15 @@
 
 package com.yogurt3d.core.sceneobjects.camera
 {
-	import com.yogurt3d.YOGURT3D_INTERNAL;
-	import com.yogurt3d.core.managers.IDManager;
-	import com.yogurt3d.core.sceneobjects.SceneObject;
-	import com.yogurt3d.core.sceneobjects.camera.frustum.Frustum;
+import com.yogurt3d.YOGURT3D_INTERNAL;
+import com.yogurt3d.core.managers.IDManager;
+import com.yogurt3d.core.sceneobjects.SceneObject;
+import com.yogurt3d.core.sceneobjects.camera.frustum.Frustum;
 
 import flash.geom.Matrix3D;
-
 import flash.geom.Vector3D;
-	
-	public class Camera3D extends SceneObject
+
+public class Camera3D extends SceneObject
 	{
 		private var m_frustum :Frustum;
 		

@@ -18,12 +18,9 @@
 
 package com.yogurt3d.presets.effects
 {
-	import com.yogurt3d.core.render.post.PostProcessingEffectBase;
-	
-	import flash.display3D.Context3DProgramType;
-	import flash.geom.Vector3D;
-	
-	public class EffectHueSaturation extends PostProcessingEffectBase
+import com.yogurt3d.core.render.post.PostProcessingEffectBase;
+
+public class EffectHueSaturation extends PostProcessingEffectBase
 	{
 		private var m_filter:FilterHueSaturation;
 		
@@ -56,10 +53,10 @@ package com.yogurt3d.presets.effects
 		}
 	}
 }
+
 import com.adobe.AGALMiniAssembler;
 import com.yogurt3d.core.Scene3D;
 import com.yogurt3d.core.render.post.EffectBase;
-import com.yogurt3d.core.render.post.PostProcessingEffectBase;
 import com.yogurt3d.utils.ShaderUtils;
 
 import flash.display3D.Context3DProgramType;

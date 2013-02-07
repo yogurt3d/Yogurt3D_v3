@@ -18,17 +18,17 @@
 
 package com.yogurt3d.utils
 {
-	import com.yogurt3d.core.Scene3D;
-	import com.yogurt3d.core.render.post.PostProcessingEffectBase;
-	import com.yogurt3d.core.render.texture.RenderTexture;
-	import com.yogurt3d.core.sceneobjects.camera.Camera3D;
-	
-	import flash.display3D.Context3D;
-	import flash.display3D.Context3DTextureFormat;
-	import flash.display3D.textures.TextureBase;
-	import flash.geom.Rectangle;
-	
-	public class PPPriorityList
+import com.yogurt3d.core.Scene3D;
+import com.yogurt3d.core.render.post.PostProcessingEffectBase;
+import com.yogurt3d.core.render.texture.RenderTexture;
+import com.yogurt3d.core.sceneobjects.camera.Camera3D;
+
+import flash.display3D.Context3D;
+import flash.display3D.Context3DTextureFormat;
+import flash.display3D.textures.TextureBase;
+import flash.geom.Rectangle;
+
+public class PPPriorityList
 	{
 		private var m_list:Vector.<PostProcessingEffectBase>;
 		

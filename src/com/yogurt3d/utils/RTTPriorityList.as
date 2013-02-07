@@ -18,14 +18,14 @@
 
 package com.yogurt3d.utils
 {
-	import com.yogurt3d.core.Scene3D;
-	import com.yogurt3d.core.render.texture.base.RenderTextureTargetBase;
-	import com.yogurt3d.core.sceneobjects.camera.Camera3D;
-	
-	import flash.display3D.Context3D;
-	import flash.geom.Rectangle;
+import com.yogurt3d.core.Scene3D;
+import com.yogurt3d.core.render.texture.base.RenderTextureTargetBase;
+import com.yogurt3d.core.sceneobjects.camera.Camera3D;
 
-	public class RTTPriorityList
+import flash.display3D.Context3D;
+import flash.geom.Rectangle;
+
+public class RTTPriorityList
 	{
 		private var m_list:Vector.<RenderTextureTargetBase>;
 		

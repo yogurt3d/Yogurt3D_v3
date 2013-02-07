@@ -18,14 +18,14 @@
 
 package com.yogurt3d.core.sceneobjects.scenetree
 {
-	import com.yogurt3d.core.plugin.Kernel;
-	import com.yogurt3d.core.plugin.Plugin;
-	import com.yogurt3d.core.plugin.Server;
-	import com.yogurt3d.presets.scene.octree.OcTreeSceneTreeManagerDriver;
-	import com.yogurt3d.presets.scene.quad.QuadSceneTreeManagerDriver;
-	import com.yogurt3d.presets.scene.simple.SimpleSceneTreeManagerDriver;
+import com.yogurt3d.core.plugin.Kernel;
+import com.yogurt3d.core.plugin.Plugin;
+import com.yogurt3d.core.plugin.Server;
+import com.yogurt3d.presets.scene.octree.OcTreeSceneTreeManagerDriver;
+import com.yogurt3d.presets.scene.quad.QuadSceneTreeManagerDriver;
+import com.yogurt3d.presets.scene.simple.SimpleSceneTreeManagerDriver;
 
-	[Plugin]
+[Plugin]
 	public class SceneTreePlugins extends Plugin
 	{
 		public static const SERVERNAME:String = "sceneTreeManagerServer";

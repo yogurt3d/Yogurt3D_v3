@@ -19,12 +19,12 @@
  
 package com.yogurt3d.core.volumes.interfaces
 {
-	import com.yogurt3d.core.objects.IEngineObject;
-	import com.yogurt3d.core.volumes.AxisAlignedBoundingBox;
-	
-	import flash.geom.Matrix3D;
+import com.yogurt3d.core.objects.IEngineObject;
+import com.yogurt3d.core.volumes.AxisAlignedBoundingBox;
 
-	/**
+import flash.geom.Matrix3D;
+
+/**
 	 * 
 	 * 
  	 * @author Yogurt3D Engine Core Team
@@ -38,7 +38,7 @@ package com.yogurt3d.core.volumes.interfaces
 		function get extent():Vector.<Number>;
 		
 		function update( _transformation:Matrix3D ):void;
-		function intersectAABB( _aabb:com.yogurt3d.core.volumes.AxisAlignedBoundingBox ):Boolean;
+		function intersectAABB( _aabb:AxisAlignedBoundingBox ):Boolean;
 		function intersectRay( _rayStartPoint:Vector.<Number>, _rayDirection:Vector.<Number>, _intersectionPointAndDistance:Vector.<Number> ):Boolean;
 	}
 }

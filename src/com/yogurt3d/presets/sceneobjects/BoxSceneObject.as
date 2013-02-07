@@ -19,12 +19,12 @@
  
 package com.yogurt3d.presets.sceneobjects
 {
-	import com.yogurt3d.core.managers.IDManager;
-	import com.yogurt3d.YOGURT3D_INTERNAL;
-	import com.yogurt3d.core.sceneobjects.SceneObjectRenderable;
-	import com.yogurt3d.presets.geometry.BoxMesh;
-	
-	public class BoxSceneObject extends SceneObjectRenderable
+import com.yogurt3d.YOGURT3D_INTERNAL;
+import com.yogurt3d.core.managers.IDManager;
+import com.yogurt3d.core.sceneobjects.SceneObjectRenderable;
+import com.yogurt3d.presets.geometry.BoxMesh;
+
+public class BoxSceneObject extends SceneObjectRenderable
 	{
 		YOGURT3D_INTERNAL var m_width				:Number;
 		YOGURT3D_INTERNAL var m_height				:Number;

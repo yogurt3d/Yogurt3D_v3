@@ -18,21 +18,21 @@
 
 package com.yogurt3d.core.texture
 {
-	import com.yogurt3d.YOGURT3D_INTERNAL;
-	import com.yogurt3d.core.texture.base.ETextureType;
-	import com.yogurt3d.core.texture.base.TextureMapBase;
-	import com.yogurt3d.utils.MipmapGenerator;
-	
-	import flash.display.Bitmap;
-	import flash.display.BitmapData;
-	import flash.display.DisplayObject;
-	import flash.display3D.Context3D;
-	import flash.display3D.Context3DTextureFormat;
-	import flash.display3D.textures.CubeTexture;
-	import flash.display3D.textures.TextureBase;
-	import flash.utils.ByteArray;
+import com.yogurt3d.YOGURT3D_INTERNAL;
+import com.yogurt3d.core.texture.base.ETextureType;
+import com.yogurt3d.core.texture.base.TextureMapBase;
+import com.yogurt3d.utils.MipmapGenerator;
 
-	public class CubeTextureMap extends TextureMapBase
+import flash.display.Bitmap;
+import flash.display.BitmapData;
+import flash.display.DisplayObject;
+import flash.display3D.Context3D;
+import flash.display3D.Context3DTextureFormat;
+import flash.display3D.textures.CubeTexture;
+import flash.display3D.textures.TextureBase;
+import flash.utils.ByteArray;
+
+public class CubeTextureMap extends TextureMapBase
 	{
 		use namespace YOGURT3D_INTERNAL;
 		

@@ -16,10 +16,9 @@
  * License along with this library. If not, see <http://www.yogurt3d.com/yogurt3d/downloads/yogurt3d-click-through-agreement.html>. 
  */
 package com.yogurt3d.core.animation.event {
-	import flash.events.Event;
+import flash.events.Event;
 
-	
-	/**
+/**
 	  * 
 	  * 
  	  * @author Yogurt3D Engine Core Team

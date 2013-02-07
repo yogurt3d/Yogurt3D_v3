@@ -19,10 +19,9 @@
  
  
 package com.yogurt3d.core.geoms {
-	import com.yogurt3d.YOGURT3D_INTERNAL;
-	
-	
-	use namespace YOGURT3D_INTERNAL;	
+import com.yogurt3d.YOGURT3D_INTERNAL;
+
+use namespace YOGURT3D_INTERNAL;
 	/**
 	 * 
 	 * 

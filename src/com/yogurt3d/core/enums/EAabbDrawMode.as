@@ -18,9 +18,9 @@
 
 package com.yogurt3d.core.enums
 {
-	import com.yogurt3d.utils.Enum;
-	
-	/**
+import com.yogurt3d.utils.Enum;
+
+/**
 	 * 
 	 * 
 	 * @author Yogurt3D Engine Core Team

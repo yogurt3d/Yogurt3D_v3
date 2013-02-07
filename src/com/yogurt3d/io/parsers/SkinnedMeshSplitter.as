@@ -19,15 +19,15 @@
 
 package com.yogurt3d.io.parsers
 {
-	import com.yogurt3d.core.geoms.Bone;
-	import com.yogurt3d.core.geoms.SkeletalAnimatedMeshBase;
-	import com.yogurt3d.core.geoms.SkinnedSubMesh;
-	import com.yogurt3d.core.geoms.SubMesh;
-	import com.yogurt3d.YOGURT3D_INTERNAL;
-	
-	import flash.utils.Dictionary;
-	
-	use namespace YOGURT3D_INTERNAL;
+import com.yogurt3d.YOGURT3D_INTERNAL;
+import com.yogurt3d.core.geoms.Bone;
+import com.yogurt3d.core.geoms.SkeletalAnimatedMeshBase;
+import com.yogurt3d.core.geoms.SkinnedSubMesh;
+import com.yogurt3d.core.geoms.SubMesh;
+
+import flash.utils.Dictionary;
+
+use namespace YOGURT3D_INTERNAL;
 	/**
 	 * AIM: partitioning the mesh into smaller pieces that shares the same bone.
 	 * 
@@ -239,11 +239,7 @@ package com.yogurt3d.io.parsers
 						"Vertex Count:", base.vertexCount);
 				}
 			}
-import flash.utils.Dictionary;
-
-			
-			
-			var mesh:SkeletalAnimatedMeshBase = new SkeletalAnimatedMeshBase();
+            var mesh:SkeletalAnimatedMeshBase = new SkeletalAnimatedMeshBase();
 			var list:Vector.<SubMesh> = mesh.subMeshList;
 			var plen:uint = partitionList.length;
 			for( i= 0; i < plen; i++)

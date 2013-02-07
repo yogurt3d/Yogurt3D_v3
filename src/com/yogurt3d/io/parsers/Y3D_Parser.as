@@ -18,21 +18,21 @@
 
 
 package com.yogurt3d.io.parsers {
-	import com.yogurt3d.core.geoms.Bone;
-	import com.yogurt3d.core.geoms.Mesh;
-	import com.yogurt3d.core.geoms.SkeletalAnimatedMesh;
-	import com.yogurt3d.core.geoms.SkeletalAnimatedMeshBase;
-	import com.yogurt3d.core.geoms.SkinnedSubMesh;
-	import com.yogurt3d.core.geoms.SubMesh;
-	import com.yogurt3d.core.sceneobjects.transformations.Quaternion;
-	import com.yogurt3d.io.parsers.interfaces.IParser;
-	
-	import flash.geom.Vector3D;
-	import flash.utils.ByteArray;
-	import flash.utils.Dictionary;
-	import flash.utils.Endian;
-	
-	/**
+import com.yogurt3d.core.geoms.Bone;
+import com.yogurt3d.core.geoms.Mesh;
+import com.yogurt3d.core.geoms.SkeletalAnimatedMesh;
+import com.yogurt3d.core.geoms.SkeletalAnimatedMeshBase;
+import com.yogurt3d.core.geoms.SkinnedSubMesh;
+import com.yogurt3d.core.geoms.SubMesh;
+import com.yogurt3d.core.sceneobjects.transformations.Quaternion;
+import com.yogurt3d.io.parsers.interfaces.IParser;
+
+import flash.geom.Vector3D;
+import flash.utils.ByteArray;
+import flash.utils.Dictionary;
+import flash.utils.Endian;
+
+/**
 	 * 
 	 * 
 	 * @author Yogurt3D Engine Core Team

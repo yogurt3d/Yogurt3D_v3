@@ -18,12 +18,12 @@
 
 package com.yogurt3d.core.render.post
 {
-	import com.yogurt3d.core.render.base.RenderTargetBase;
-	import com.yogurt3d.core.render.renderer.PostProcessRenderer;
-	
-	import flash.display3D.textures.TextureBase;
-	
-	public class PostProcessingEffectBase extends RenderTargetBase
+import com.yogurt3d.core.render.base.RenderTargetBase;
+import com.yogurt3d.core.render.renderer.PostProcessRenderer;
+
+import flash.display3D.textures.TextureBase;
+
+public class PostProcessingEffectBase extends RenderTargetBase
 	{
 		public var overrideToFront			:Boolean = false;
 		public var overrideToBack			:Boolean = false;

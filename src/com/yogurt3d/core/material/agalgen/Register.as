@@ -18,10 +18,10 @@
 
 package com.yogurt3d.core.material.agalgen
 {
-	import com.yogurt3d.core.material.enum.ERegisterShaderType;
-	import com.yogurt3d.core.material.enum.ERegisterType;
+import com.yogurt3d.core.material.enum.ERegisterShaderType;
+import com.yogurt3d.core.material.enum.ERegisterType;
 
-	public class Register implements IRegister
+public class Register implements IRegister
 	{
 		private var m_read				:Boolean = true;
 		private var m_write				:Boolean = true;

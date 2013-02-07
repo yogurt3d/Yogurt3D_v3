@@ -1,21 +1,14 @@
 package com.yogurt3d.presets.material
 {
-	import com.yogurt3d.core.material.MaterialBase;
-	import com.yogurt3d.core.material.enum.EBlendMode;
-	import com.yogurt3d.core.material.enum.ERegisterShaderType;
-	import com.yogurt3d.core.material.parameters.ConstantFunctions;
-	import com.yogurt3d.core.material.parameters.VertexInput;
-	import com.yogurt3d.core.material.parameters.VertexOutput;
-	import com.yogurt3d.core.sceneobjects.SceneObjectRenderable;
-	import com.yogurt3d.core.sceneobjects.camera.Camera3D;
-	import com.yogurt3d.core.sceneobjects.lights.Light;
-	import com.yogurt3d.core.texture.CubeTextureMap;
-	
-	import flash.display3D.Context3D;
-	import flash.display3D.Context3DCompareMode;
-	import flash.display3D.Context3DTriangleFace;
+import com.yogurt3d.core.material.MaterialBase;
+import com.yogurt3d.core.sceneobjects.SceneObjectRenderable;
+import com.yogurt3d.core.sceneobjects.camera.Camera3D;
+import com.yogurt3d.core.sceneobjects.lights.Light;
+import com.yogurt3d.core.texture.CubeTextureMap;
 
-	public class MaterialSkyBox extends MaterialBase
+import flash.display3D.Context3D;
+
+public class MaterialSkyBox extends MaterialBase
 	{
 		private var m_pass:SkyBoxPass;
 		public function MaterialSkyBox(_texture:CubeTextureMap)
@@ -40,6 +33,7 @@ package com.yogurt3d.presets.material
 		}
 	}
 }
+
 import com.yogurt3d.core.material.agalgen.IRegister;
 import com.yogurt3d.core.material.enum.EBlendMode;
 import com.yogurt3d.core.material.enum.ERegisterShaderType;
@@ -58,7 +52,6 @@ import flash.display3D.Context3D;
 import flash.display3D.Context3DCompareMode;
 import flash.display3D.Context3DProgramType;
 import flash.display3D.Context3DTriangleFace;
-import flash.geom.Matrix3D;
 import flash.utils.ByteArray;
 
 class SkyBoxPass extends Pass{

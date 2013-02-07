@@ -18,14 +18,14 @@
 
 package com.yogurt3d.core.managers
 {
-	import com.yogurt3d.core.material.MaterialBase;
-	import com.yogurt3d.core.material.Y3DProgram;
-	import com.yogurt3d.core.material.pass.Pass;
-	import com.yogurt3d.YOGURT3D_INTERNAL;
-	
-	import flash.utils.Dictionary;
+import com.yogurt3d.YOGURT3D_INTERNAL;
+import com.yogurt3d.core.material.MaterialBase;
+import com.yogurt3d.core.material.Y3DProgram;
+import com.yogurt3d.core.material.pass.Pass;
 
-	public class MaterialManager
+import flash.utils.Dictionary;
+
+public class MaterialManager
 	{
 		private static var m_instance			:MaterialManager;
 		private var m_programDict				:Dictionary;

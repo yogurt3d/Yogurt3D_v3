@@ -19,27 +19,28 @@
 package com.yogurt3d.core
 {
 
-	
-	import com.yogurt3d.YOGURT3D_INTERNAL;
-	import com.yogurt3d.Yogurt3D;
-	import com.yogurt3d.core.managers.InputManager;
-	import com.yogurt3d.core.managers.PickManager;
-	import com.yogurt3d.core.objects.IEngineObject;
-	import com.yogurt3d.core.render.BackBufferRenderTarget;
-	import com.yogurt3d.core.render.base.RenderTargetBase;
-	import com.yogurt3d.core.sceneobjects.camera.Camera3D;
-	
-	import flash.display.Sprite;
-	import flash.display3D.Context3D;
-	import flash.events.ErrorEvent;
-	import flash.events.Event;
-	import flash.geom.Matrix3D;
-	import flash.geom.Point;
-	import flash.text.TextField;
-	
-	import org.osflash.signals.PrioritySignal;
-	
-	public class Viewport extends Sprite implements IEngineObject
+
+import com.yogurt3d.Yogurt3D;
+import com.yogurt3d.core.managers.InputManager;
+import com.yogurt3d.core.managers.PickManager;
+import com.yogurt3d.core.objects.IEngineObject;
+import com.yogurt3d.core.render.BackBufferRenderTarget;
+import com.yogurt3d.core.render.base.RenderTargetBase;
+import com.yogurt3d.core.sceneobjects.camera.Camera3D;
+
+import flash.display.Sprite;
+import flash.display3D.Context3D;
+import flash.events.ErrorEvent;
+import flash.events.Event;
+import flash.geom.Matrix3D;
+import flash.geom.Point;
+import flash.text.TextField;
+
+import org.osflash.signals.PrioritySignal;
+
+import com.yogurt3d.YOGURT3D_INTERNAL;
+
+public class Viewport extends Sprite implements IEngineObject
 	{
 		use namespace YOGURT3D_INTERNAL;
 		
@@ -187,6 +188,7 @@ package com.yogurt3d.core
 		}
 		
 		public override function set width( value:Number ):void{
+            if( value < 50 ) value = 50;
 			if( m_currentRenderTarget is BackBufferRenderTarget ){
 				BackBufferRenderTarget(m_currentRenderTarget).drawRect.width = value;
 			}
@@ -197,6 +199,7 @@ package com.yogurt3d.core
 		}
 		
 		public override function set height( value:Number ):void{
+            if( value < 50 ) value = 50;
 			if( m_currentRenderTarget is BackBufferRenderTarget ){
 				BackBufferRenderTarget(m_currentRenderTarget).drawRect.height = value;
 			}

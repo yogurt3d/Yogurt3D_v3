@@ -18,12 +18,10 @@
 
 package com.yogurt3d.presets.effects
 {
-	import com.yogurt3d.core.render.post.PostProcessingEffectBase;
-	import com.yogurt3d.core.texture.TextureMap;
-	
-	import flash.display3D.Context3DProgramType;
-	
-	public class EffectColorGrading extends PostProcessingEffectBase
+import com.yogurt3d.core.render.post.PostProcessingEffectBase;
+import com.yogurt3d.core.texture.TextureMap;
+
+public class EffectColorGrading extends PostProcessingEffectBase
 	{
 		private var m_filter:FilterColorGrading;
 		public function EffectColorGrading(_colorGradient:TextureMap)
@@ -41,6 +39,7 @@ package com.yogurt3d.presets.effects
 		}
 	}
 }
+
 import com.adobe.AGALMiniAssembler;
 import com.yogurt3d.core.Scene3D;
 import com.yogurt3d.core.render.post.EffectBase;

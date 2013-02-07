@@ -18,14 +18,14 @@
 
 package com.yogurt3d.core.render.texture
 {
-	import com.yogurt3d.core.render.texture.base.RenderTextureTargetBase;
-	
-	import flash.display3D.Context3D;
-	import flash.display3D.Context3DTextureFormat;
-	import flash.display3D.textures.TextureBase;
-	import flash.utils.Dictionary;
-	
-	public class RenderTexture extends RenderTextureTargetBase
+import com.yogurt3d.core.render.texture.base.RenderTextureTargetBase;
+
+import flash.display3D.Context3D;
+import flash.display3D.Context3DTextureFormat;
+import flash.display3D.textures.TextureBase;
+import flash.utils.Dictionary;
+
+public class RenderTexture extends RenderTextureTargetBase
 	{
 		private var m_textureDict:Dictionary;
 		

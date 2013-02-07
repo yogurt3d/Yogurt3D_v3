@@ -19,12 +19,9 @@
 
 
 package com.yogurt3d.core.objects {
-	import avmplus.getQualifiedClassName;
-	
-	import com.yogurt3d.YOGURT3D_INTERNAL;
-	import com.yogurt3d.core.managers.IDManager;
-	
-	/**
+import avmplus.getQualifiedClassName;
+
+/**
 	 * <strong>IEngineObject</strong> interface abstract type.
 	 * @author Yogurt3D Engine Core Team
 	 * @company Yogurt3D Corp.
@@ -90,6 +87,7 @@ package com.yogurt3d.core.objects {
 		public function dispose():void
 		{
 			IDManager.removeObject(this);
+            removeAllController();
 		}
 		
 		public function disposeDeep():void

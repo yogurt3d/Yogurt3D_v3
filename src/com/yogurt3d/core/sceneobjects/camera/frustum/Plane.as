@@ -18,10 +18,10 @@
 
 package com.yogurt3d.core.sceneobjects.camera.frustum
 {
-	
-	import flash.geom.Vector3D;
-	
-	public class Plane
+
+import flash.geom.Vector3D;
+
+public class Plane
 	{   
 		public static const BEHIND    		:int = 0;
 		public static const FRONT    		:int = 1;

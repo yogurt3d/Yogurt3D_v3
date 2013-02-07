@@ -18,24 +18,24 @@
 
 package com.yogurt3d.core.render.post
 {
-	
-	import com.adobe.AGALMiniAssembler;
-	import com.yogurt3d.core.Scene3D;
-	import com.yogurt3d.core.managers.ProgramManager;
-	import com.yogurt3d.core.material.enum.EBlendMode;
-	import com.yogurt3d.core.material.parameters.ShaderParameters;
-	import com.yogurt3d.utils.ShaderUtils;
-	
-	import flash.display3D.Context3D;
-	import flash.display3D.Context3DCompareMode;
-	import flash.display3D.Context3DTriangleFace;
-	import flash.display3D.Program3D;
-	import flash.display3D.textures.TextureBase;
-	import flash.geom.Rectangle;
-	import flash.utils.ByteArray;
-	import flash.utils.getQualifiedClassName;
-	
-	public class EffectBase
+
+import com.adobe.AGALMiniAssembler;
+import com.yogurt3d.core.Scene3D;
+import com.yogurt3d.core.managers.ProgramManager;
+import com.yogurt3d.core.material.enum.EBlendMode;
+import com.yogurt3d.core.material.parameters.ShaderParameters;
+import com.yogurt3d.utils.ShaderUtils;
+
+import flash.display3D.Context3D;
+import flash.display3D.Context3DCompareMode;
+import flash.display3D.Context3DTriangleFace;
+import flash.display3D.Program3D;
+import flash.display3D.textures.TextureBase;
+import flash.geom.Rectangle;
+import flash.utils.ByteArray;
+import flash.utils.getQualifiedClassName;
+
+public class EffectBase
 	{
 		private var m_device						:Context3D;
 		private var m_params						:ShaderParameters;

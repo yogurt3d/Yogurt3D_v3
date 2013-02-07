@@ -1,18 +1,16 @@
 package com.yogurt3d.presets.material
 {
-	import com.yogurt3d.core.material.MaterialBase;
-	import com.yogurt3d.core.material.agalgen.AGALGEN;
+import com.yogurt3d.core.material.MaterialBase;
+import com.yogurt3d.core.material.agalgen.AGALGEN;
 import com.yogurt3d.core.material.enum.EBlendMode;
 import com.yogurt3d.core.material.enum.ERegisterShaderType;
-	import com.yogurt3d.core.material.parameters.FragmentInput;
-	import com.yogurt3d.core.material.parameters.SurfaceOutput;
-	import com.yogurt3d.utils.Color;
-	
-	import flash.display3D.Context3DBlendFactor;
-	import flash.display3D.Context3DCompareMode;
-	import flash.display3D.Context3DTriangleFace;
+import com.yogurt3d.core.material.parameters.FragmentInput;
+import com.yogurt3d.core.material.parameters.SurfaceOutput;
+import com.yogurt3d.utils.Color;
 
-	public class MaterialFill extends MaterialBase{
+import flash.display3D.Context3DTriangleFace;
+
+public class MaterialFill extends MaterialBase{
 		
 		private var m_color:Color;
 		

@@ -18,9 +18,9 @@
 
 package com.yogurt3d.core.render.texture
 {
-	import com.yogurt3d.core.render.texture.base.RenderTextureTargetBase;
+import com.yogurt3d.core.render.texture.base.RenderTextureTargetBase;
 
-	public class RenderCubeTexture extends RenderTextureTargetBase
+public class RenderCubeTexture extends RenderTextureTargetBase
 	{
 		public function RenderCubeTexture()
 		{

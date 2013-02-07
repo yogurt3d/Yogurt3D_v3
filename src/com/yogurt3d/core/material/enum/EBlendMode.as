@@ -18,12 +18,12 @@
 
 package com.yogurt3d.core.material.enum
 {
-	import com.yogurt3d.utils.Enum;
-	
-	import flash.display3D.Context3D;
-	import flash.display3D.Context3DBlendFactor;
-	
-	public class EBlendMode extends Enum
+import com.yogurt3d.utils.Enum;
+
+import flash.display3D.Context3D;
+import flash.display3D.Context3DBlendFactor;
+
+public class EBlendMode extends Enum
 	{
 		{initEnum(EBlendMode);}		
 		

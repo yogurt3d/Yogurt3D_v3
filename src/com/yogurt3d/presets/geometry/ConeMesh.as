@@ -19,11 +19,11 @@
  
 package com.yogurt3d.presets.geometry
 {
-	import com.yogurt3d.core.geoms.Mesh;
-	import com.yogurt3d.core.geoms.SubMesh;
-	import com.yogurt3d.core.managers.IDManager;
+import com.yogurt3d.core.geoms.Mesh;
+import com.yogurt3d.core.geoms.SubMesh;
+import com.yogurt3d.core.managers.IDManager;
 
-	/**
+/**
 	 * 
 	 * 
  	 * @author Yogurt3D Engine Core Team

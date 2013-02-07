@@ -18,13 +18,13 @@
 
 package com.yogurt3d.physics
 {
-	import com.yogurt3d.Yogurt3D;
-	import com.yogurt3d.core.objects.Controller;
-	import com.yogurt3d.core.sceneobjects.SceneObject;
-	import com.yogurt3d.physics.objects.PhysicsObjectBase;
-	import com.yogurt3d.physics.plugin.IYogurt3DPhysicsPlugin;
-	
-	public class ColliderComponent extends Controller
+import com.yogurt3d.Yogurt3D;
+import com.yogurt3d.core.objects.Controller;
+import com.yogurt3d.core.sceneobjects.SceneObject;
+import com.yogurt3d.physics.objects.PhysicsObjectBase;
+import com.yogurt3d.physics.plugin.IYogurt3DPhysicsPlugin;
+
+public class ColliderComponent extends Controller
 	{
 		[Inject]
 		public var sceneObject:SceneObject;

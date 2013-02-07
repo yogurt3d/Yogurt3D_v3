@@ -17,15 +17,15 @@
  */
 
 package com.yogurt3d.io.loaders {
-	import com.yogurt3d.io.loaders.interfaces.ILoader;
-	
-	import flash.display.Loader;
-	import flash.events.Event;
-	import flash.events.EventDispatcher;
-	import flash.events.ProgressEvent;
-	import flash.net.URLRequest;
+import com.yogurt3d.io.loaders.interfaces.ILoader;
 
-	public class DisplayObjectLoader extends EventDispatcher implements ILoader 
+import flash.display.Loader;
+import flash.events.Event;
+import flash.events.EventDispatcher;
+import flash.events.ProgressEvent;
+import flash.net.URLRequest;
+
+public class DisplayObjectLoader extends EventDispatcher implements ILoader
 	{
 		private var m_loader			:Loader;
 		private var m_urlRequest		:URLRequest;

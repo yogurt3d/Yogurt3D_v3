@@ -17,11 +17,11 @@
 */
 package com.yogurt3d.presets.scene.octree
 {
-	import com.yogurt3d.core.volumes.AxisAlignedBoundingBox;
-	
-	import flash.geom.Vector3D;
-	
-	public class OctNode
+import com.yogurt3d.core.volumes.AxisAlignedBoundingBox;
+
+import flash.geom.Vector3D;
+
+public class OctNode
 	{
 		public var m_sumChildren				:int;
 		

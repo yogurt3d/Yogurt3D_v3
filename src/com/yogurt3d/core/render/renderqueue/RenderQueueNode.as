@@ -18,9 +18,9 @@
 
 package com.yogurt3d.core.render.renderqueue
 {
-	import com.yogurt3d.core.sceneobjects.SceneObjectRenderable;
+import com.yogurt3d.core.sceneobjects.SceneObjectRenderable;
 
-	public class RenderQueueNode
+public class RenderQueueNode
 	{
 		public var scn			:SceneObjectRenderable;
 		

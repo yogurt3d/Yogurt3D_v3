@@ -18,15 +18,15 @@
 
 package com.yogurt3d.core.managers
 {
-	import com.yogurt3d.core.objects.EngineObject;
-	import com.yogurt3d.core.objects.IController;
-	import com.yogurt3d.core.objects.IEngineObject;
-	import com.yogurt3d.core.sceneobjects.SceneObject;
-	
-	import org.swiftsuspenders.Injector;
-	import org.swiftsuspenders.mapping.InjectionMapping;
-	
-	public class DependencyManager
+import com.yogurt3d.core.objects.EngineObject;
+import com.yogurt3d.core.objects.IController;
+import com.yogurt3d.core.objects.IEngineObject;
+import com.yogurt3d.core.sceneobjects.SceneObject;
+
+import org.swiftsuspenders.Injector;
+import org.swiftsuspenders.mapping.InjectionMapping;
+
+public class DependencyManager
 	{
 		private static var m_injector:Injector = new Injector();
 		/*{

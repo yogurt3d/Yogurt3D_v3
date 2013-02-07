@@ -4,9 +4,9 @@
  */
 package com.yogurt3d.utils
 {
-	import flash.utils.*;
-	
-	public /*abstract*/ class Enum
+import flash.utils.*;
+
+public /*abstract*/ class Enum
 	{
 		public function get Name()  :String { return _name; }
 		public function get Index() :int    { return _index; }
@@ -85,7 +85,7 @@ package com.yogurt3d.utils
 			}
 			
 			// process constants
-			var type :XML = flash.utils.describeType(i_type);
+			var type :XML = describeType(i_type);
 			for each (var constant :XML in type.constant)
 			{
 				// this will fail to coerce if the type isn't inherited from Enum
@@ -116,6 +116,7 @@ package com.yogurt3d.utils
 		private static var _enumDb	  :Object = {};	// typename -> EnumConstants
 	}
 }
+
 import com.yogurt3d.utils.Enum;
 
 // private support class

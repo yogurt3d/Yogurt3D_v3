@@ -18,9 +18,9 @@
 
 package com.yogurt3d.core.enums
 {
-	import com.yogurt3d.utils.Enum;
+import com.yogurt3d.utils.Enum;
 
-	public class EViewportAntialiasing extends Enum
+public class EViewportAntialiasing extends Enum
 	{
 		private var m_value:uint;
 		

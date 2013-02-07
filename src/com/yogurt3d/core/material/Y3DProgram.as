@@ -18,10 +18,10 @@
 
 package com.yogurt3d.core.material
 {
-	import flash.display3D.Program3D;
-	import flash.utils.ByteArray;
+import flash.display3D.Program3D;
+import flash.utils.ByteArray;
 
-	public class Y3DProgram
+public class Y3DProgram
 	{
 		public var vertex		:ByteArray;
 		public var fragment		:ByteArray;

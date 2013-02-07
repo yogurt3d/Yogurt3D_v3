@@ -18,12 +18,12 @@
 
 package com.yogurt3d.utils
 {
-	import flash.display.*;
-	import flash.display3D.textures.CubeTexture;
-	import flash.display3D.textures.Texture;
-	import flash.geom.*;
-	
-	public class MipmapGenerator
+import flash.display.*;
+import flash.display3D.textures.CubeTexture;
+import flash.display3D.textures.Texture;
+import flash.geom.*;
+
+public class MipmapGenerator
 	{
 		private static var _matrix : Matrix = new Matrix();
 		private static var _rect : Rectangle = new Rectangle();

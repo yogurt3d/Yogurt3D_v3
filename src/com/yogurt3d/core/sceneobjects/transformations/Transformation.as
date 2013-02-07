@@ -18,21 +18,21 @@
 
 
 package com.yogurt3d.core.sceneobjects.transformations {
-	import com.yogurt3d.YOGURT3D_INTERNAL;
-	import com.yogurt3d.core.managers.IDManager;
-	import com.yogurt3d.core.objects.EngineObject;
-	import com.yogurt3d.core.objects.IEngineObject;
-	import com.yogurt3d.core.sceneobjects.SceneObject;
-	import com.yogurt3d.utils.MathUtils;
-	import com.yogurt3d.utils.MatrixUtils;
-	
-	import flash.geom.Matrix3D;
-	import flash.geom.Orientation3D;
-	import flash.geom.Vector3D;
-	
-	import org.osflash.signals.Signal;
-	
-	/**
+import com.yogurt3d.YOGURT3D_INTERNAL;
+import com.yogurt3d.core.managers.IDManager;
+import com.yogurt3d.core.objects.EngineObject;
+import com.yogurt3d.core.objects.IEngineObject;
+import com.yogurt3d.core.sceneobjects.SceneObject;
+import com.yogurt3d.utils.MathUtils;
+import com.yogurt3d.utils.MatrixUtils;
+
+import flash.geom.Matrix3D;
+import flash.geom.Orientation3D;
+import flash.geom.Vector3D;
+
+import org.osflash.signals.Signal;
+
+/**
 	 * 
 	 * 
 	 * @author Yogurt3D Engine Core Team
@@ -211,7 +211,7 @@ package com.yogurt3d.core.sceneobjects.transformations {
 		
 		/**
 		 * Returns a new Vector3D object containing local position. <br/>
-		 * If value in the Vector3D object is changed it does nor effect the transformation.
+		 * If value in the Vector3D object is changed it does not effect the transformation.
 		 * @return 
 		 * 
 		 */
@@ -286,7 +286,51 @@ package com.yogurt3d.core.sceneobjects.transformations {
 			
 			invalidate();
 		}
-		
+
+        public function setTranslation(x:Number, y:Number, z:Number):void{
+            m_x = x;
+            m_y = y;
+            m_z = z;
+
+            invalidate();
+        }
+        public function setTranslationFromVector3D(value:Vector3D):void{
+            m_x = value.x;
+            m_y = value.y;
+            m_z = value.z;
+
+            invalidate();
+        }
+
+        public function setRotation(rx:Number, ry:Number, rz:Number):void{
+            m_rotation.x = rx % 360;
+            m_rotation.y = ry % 360;
+            m_rotation.z = rz % 360;
+
+            invalidate();
+        }
+        public function setRotationFromVector3D(value:Vector3D):void{
+            m_rotation.x = value.x % 360;
+            m_rotation.y = value.y % 360;
+            m_rotation.z = value.z % 360;
+
+            invalidate();
+        }
+        public function setScale(sx:Number, sy:Number, sz:Number):void{
+            m_scale.x = sx;
+            m_scale.y = sy;
+            m_scale.z = sz;
+
+            invalidate();
+        }
+        public function setScaleFromVector3D(value:Vector3D):void{
+            m_scale.x = value.x;
+            m_scale.y = value.y;
+            m_scale.z = value.z;
+
+            invalidate();
+        }
+
 		/**
 		 * Move the object along it's local axises (axises after rotation is applied) 
 		 * @param x Translation along local x axis

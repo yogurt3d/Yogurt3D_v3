@@ -18,9 +18,9 @@
 
 package com.yogurt3d.presets.scene.quad
 {
-	import com.yogurt3d.core.Scene3D;
-	
-	public class QuadScene extends Scene3D
+import com.yogurt3d.core.Scene3D;
+
+public class QuadScene extends Scene3D
 	{
 		public function QuadScene( minX:Number, minY:Number, minZ:Number, maxX:Number,maxY:Number, maxZ:Number,  _initInternals:Boolean=true)
 		{

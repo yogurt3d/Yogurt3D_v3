@@ -18,17 +18,17 @@
 
 package com.yogurt3d.presets.geometry
 {
-	import com.yogurt3d.YOGURT3D_INTERNAL;
-	import com.yogurt3d.core.geoms.IMesh;
-	import com.yogurt3d.core.geoms.Mesh;
-	import com.yogurt3d.core.geoms.SubMesh;
-	import com.yogurt3d.utils.MatrixUtils;
-	
-	import flash.geom.Matrix3D;
-	import flash.geom.Vector3D;
-	import flash.utils.Dictionary;
-	
-	public class WireMesh extends Mesh
+import com.yogurt3d.YOGURT3D_INTERNAL;
+import com.yogurt3d.core.geoms.IMesh;
+import com.yogurt3d.core.geoms.Mesh;
+import com.yogurt3d.core.geoms.SubMesh;
+import com.yogurt3d.utils.MatrixUtils;
+
+import flash.geom.Matrix3D;
+import flash.geom.Vector3D;
+import flash.utils.Dictionary;
+
+public class WireMesh extends Mesh
 	{
 		private var p1:Vector3D = new Vector3D();
 		private var p2:Vector3D = new Vector3D();

@@ -18,10 +18,10 @@
 
 package com.yogurt3d.physics.plugin
 {
-	import com.yogurt3d.core.sceneobjects.SceneObject;
-	import com.yogurt3d.physics.objects.PhysicsObjectBase;
+import com.yogurt3d.core.sceneobjects.SceneObject;
+import com.yogurt3d.physics.objects.PhysicsObjectBase;
 
-	public interface IYogurt3DPhysicsPlugin
+public interface IYogurt3DPhysicsPlugin
 	{
 		/**
 		 * 
