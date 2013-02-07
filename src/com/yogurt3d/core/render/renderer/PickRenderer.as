@@ -228,7 +228,7 @@ import flash.geom.Vector3D;
 					// get program
 					if( program != m_materialManager.YOGURT3D_INTERNAL::m_lastProgram)
 					{
-						device.setProgram( program.program);
+						device.setProgram( program.getDeviceProgram(device));
 						m_materialManager.YOGURT3D_INTERNAL::m_lastProgram = program;
 					}
 					
@@ -348,7 +348,7 @@ import flash.geom.Vector3D;
 					// get program
 					if( program != m_materialManager.YOGURT3D_INTERNAL::m_lastProgram)
 					{
-						device.setProgram( program.program);
+						device.setProgram( program.getDeviceProgram(device));
 						m_materialManager.YOGURT3D_INTERNAL::m_lastProgram = program;
 					}
 				

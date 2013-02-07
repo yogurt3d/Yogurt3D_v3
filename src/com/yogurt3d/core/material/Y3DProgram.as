@@ -18,16 +18,29 @@
 
 package com.yogurt3d.core.material
 {
+import flash.display3D.Context3D;
 import flash.display3D.Program3D;
 import flash.utils.ByteArray;
+import flash.utils.Dictionary;
 
 public class Y3DProgram
 	{
 		public var vertex		:ByteArray;
 		public var fragment		:ByteArray;
 		
-		public var program		:Program3D;
+		private var m_program		:Dictionary;
 		
-		public function Y3DProgram(){}
+		public function Y3DProgram(){
+            m_program = new Dictionary(true);
+        }
+        public function getDeviceProgram(device:Context3D):Program3D{
+            if( m_program[device] == null)
+            {
+                m_program[device] = device.createProgram();
+                m_program[device].upload(vertex,fragment);
+            }
+
+            return  m_program[device];
+        }
 	}
 }

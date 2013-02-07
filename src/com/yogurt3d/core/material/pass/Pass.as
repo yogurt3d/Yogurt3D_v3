@@ -191,8 +191,6 @@ public class Pass
 				//	trace("PASS CREATED", _object.material, this,  _object.geometry.type);
 					m_program.fragment = getFragmentShader(_light);
 					m_program.vertex = getVertexShader( (_object.geometry.type.indexOf("AnimatedGPUMesh") != -1));
-					m_program.program = device.createProgram();
-					m_program.program.upload( m_program.vertex, m_program.fragment );	
 					m_materialManager.cacheProgram(_object.material, this, _object.geometry.type, m_program);
 				}else{
 			//		trace("PASS GET PROGRAM", _object.material, this,  _object.geometry.type);
@@ -224,7 +222,7 @@ public class Pass
 			
 			if( program != m_materialManager.YOGURT3D_INTERNAL::m_lastProgram)
 			{
-				_device.setProgram( program.program );
+				_device.setProgram( program.getDeviceProgram(_device) );
 				m_materialManager.YOGURT3D_INTERNAL::m_lastProgram = program;
 			}
 			

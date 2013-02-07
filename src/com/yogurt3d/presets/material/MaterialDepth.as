@@ -100,7 +100,7 @@ class PassDepth extends Pass{
 		
 		if( program != m_materialManager.YOGURT3D_INTERNAL::m_lastProgram)
 		{
-			_device.setProgram( program.program );
+			_device.setProgram( program.getDeviceProgram(_device) );
 			m_materialManager.YOGURT3D_INTERNAL::m_lastProgram = program;
 		}
 		
