@@ -306,7 +306,10 @@ public class Scene3D extends EngineObject
 				skyBox.dispose();
 				skyBox = null;
 			}
-			
+
+            if(m_renderQueue)
+                m_renderQueue.clear();
+
 			super.dispose();
 		}
 		

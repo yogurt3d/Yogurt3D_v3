@@ -55,5 +55,9 @@ package com.yogurt3d.core.render.renderqueue
 		//	trace("RenderQueuPool [r]", m_len);
 			m_pool[m_len++] = value;
 		}
+
+        public function get len():uint{
+            return m_len;
+        }
 	}
 }
