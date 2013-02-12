@@ -96,7 +96,7 @@ class PassDepth extends Pass{
 	public override function render(_object:SceneObjectRenderable, _light:Light, _device:Context3D, _camera:Camera3D):void{
 		m_currentLight = _light;
 		
-		var program:Y3DProgram = getProgram(_device, _object, _light);
+		var program:Y3DProgram = getProgram(_object, _light);
 		
 		if( program != m_materialManager.YOGURT3D_INTERNAL::m_lastProgram)
 		{

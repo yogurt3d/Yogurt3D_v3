@@ -182,7 +182,7 @@ public class Pass
 			m_materialManager.uncacheProgram(_materialBase, this);
 		}
 		
-		public function getProgram(device:Context3D, _object:SceneObjectRenderable, _light:Light ):Y3DProgram{
+		public function getProgram(_object:SceneObjectRenderable, _light:Light ):Y3DProgram{
 			if( m_program == null || !m_materialManager.hasProgram( _object.material, this, _object.geometry.type ))
 			{
 				if( !m_materialManager.hasProgram( _object.material, this, _object.geometry.type ) )
@@ -218,7 +218,7 @@ public class Pass
 			
 			m_currentLight = _light;
 			
-			var program:Y3DProgram = getProgram(_device, _object, _light);
+			var program:Y3DProgram = getProgram(_object, _light);
 			
 			if( program != m_materialManager.YOGURT3D_INTERNAL::m_lastProgram)
 			{

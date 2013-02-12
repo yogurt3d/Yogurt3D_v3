@@ -242,7 +242,7 @@ public class Viewport extends Sprite implements IEngineObject
 			if( m_pickDevice == null )
 			{
 				stage.stage3Ds[3].addEventListener(Event.CONTEXT3D_CREATE, onPickContextCreated );
-				stage.stage3Ds[3].addEventListener(ErrorEvent.ERROR, onError );
+				//stage.stage3Ds[3].addEventListener(ErrorEvent.ERROR, onError );
 				stage.stage3Ds[3].requestContext3D();
 			}
 			
@@ -266,22 +266,29 @@ public class Viewport extends Sprite implements IEngineObject
 			stage.stage3Ds[m_viewportID].removeEventListener(ErrorEvent.ERROR, arguments.callee );
 			
 			viewports.push(m_viewportID);
-			
+			trace("Context Error");
+
+            m_device = null;
+
 			var text:TextField = new TextField();
-			text.text = "Add wmode=\"direct\" to params.";
+			text.text = "Add wmode=\"direct\" to params. Or Decive has become unavailable";
 			text.width = 600;
 			addChild( text );
 		}
 		
 		private function onPickContextCreated( _event:Event ):void{
 			m_pickDevice = stage.stage3Ds[3].context3D;
+            m_pickManager = new PickManager(this);
+            trace("onPickContextCreated");
 		}
 		
 		private function onContextCreated( _event:Event ):void{
+            trace("onContextCreated");
 			if( stage )
 			{
 				m_device = stage.stage3Ds[m_viewportID].context3D;
 				m_currentRenderTarget.device = m_device;
+                width += 0.1;
 				m_onDeviceCreated.dispatch(this);
 			}else{
 				m_device = null;

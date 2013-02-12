@@ -45,7 +45,7 @@ public class DirectionalPass extends Pass
 			// handle base pass
 			var _vsManager:DeviceStreamManager = DeviceStreamManager.instance;
 			m_currentLight = _light;
-			var program:Y3DProgram = getProgram(_device, _object, _light);
+			var program:Y3DProgram = getProgram(_object, _light);
 			_device.setProgram( program.getDeviceProgram(_device) );
 			EBlendMode.ADD.setToDevice(_device);
 			_device.setColorMask( m_surfaceParams.colorMaskR, m_surfaceParams.colorMaskG, m_surfaceParams.colorMaskB, m_surfaceParams.colorMaskA);

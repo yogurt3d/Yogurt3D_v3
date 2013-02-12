@@ -223,7 +223,7 @@ import flash.geom.Vector3D;
 					_submesh = _renderableObject.geometry.subMeshList[subMeshIndex];
 					
 					// get program// Hit Object
-					program = shader.getProgram( device, _renderableObject, null );
+					program = shader.getProgram( _renderableObject, null );
 				
 					// get program
 					if( program != m_materialManager.YOGURT3D_INTERNAL::m_lastProgram)
@@ -269,7 +269,7 @@ import flash.geom.Vector3D;
 			
 			// draw single pixel to bitmap
 			device.drawToBitmapData( m_bitmapData );
-			
+
 			// get selection color code
 			var selectedIndexColor:uint = m_bitmapData.getPixel( 0,0 );
 			// find selected object index
@@ -344,7 +344,7 @@ import flash.geom.Vector3D;
 				{
 					_submesh = _renderableObject.geometry.subMeshList[subMeshIndex];
 					
-					program = shaderTriangle.getProgram( device, _renderableObject, null );
+					program = shaderTriangle.getProgram( _renderableObject, null );
 					// get program
 					if( program != m_materialManager.YOGURT3D_INTERNAL::m_lastProgram)
 					{
