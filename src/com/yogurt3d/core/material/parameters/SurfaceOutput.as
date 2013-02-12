@@ -55,7 +55,7 @@ public class SurfaceOutput
 		public function get Normal():IRegister{
 			if( m_normal == null )
 			{
-				m_normal = m_gen.createFT("normal", 3 );
+				m_normal = m_gen.createFT("normal", 4 );
 			}
 			return m_normal;
 		}
