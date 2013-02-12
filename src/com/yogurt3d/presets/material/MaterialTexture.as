@@ -28,13 +28,13 @@ public class MaterialTexture extends MaterialBase{
 			params.depthFunction 	= Context3DCompareMode.LESS;
 			params.writeDepth		= true;
 			params.blendEnabled 	= true;
-			params.blendMode = EBlendMode.PRE_ALPHA;
+			params.blendMode = EBlendMode.ALPHA;
 			params.culling = Context3DTriangleFace.FRONT;
 			
 			ambientColor = new Color(0,0,0,1);
 			emissiveColor = new Color(0,0,0,1);
 			
-			createConstantFromVector( ERegisterShaderType.FRAGMENT, "opacity", Vector.<Number>([1.0, 0.2, 0, 0]) );
+			createConstantFromVector( ERegisterShaderType.FRAGMENT, "opacity", Vector.<Number>([_opacity, 0.2, 0, 0]) );
             createConstantFromTexture( "colorMap", (texture)?texture:TextureMapDefaults.CHECKER_BOARD );
             createConstantFromTexture( "lightMap", TextureMapDefaults.WHITE );
 		}
@@ -46,7 +46,8 @@ public class MaterialTexture extends MaterialBase{
 				["\n\n//****SurfaceFunction START****/",
                     gen.tex( temp, surfaceInput.uvMain, getConstant("colorMap"), "2d", "wrap", "linear", (texture as TextureMap).mipmap, false, (texture as TextureMap).transparent, getConstant("opacity").y),
                     gen.tex( temp2, surfaceInput.uvSecond, getConstant("lightMap"), "2d", "wrap", "linear", (lightMap as TextureMap).mipmap, false, (lightMap as TextureMap).transparent, getConstant("opacity").y),
-					gen.code("mul", temp,temp,temp2),
+					gen.code("mul", temp, temp, temp2),
+				//	gen.code("mov", temp.w, getConstant("opacity").x),
                     gen.code("mul", temp.w, temp.w, getConstant("opacity").x),
 					gen.code("mov",surfaceOutput.Albedo, temp.xyz),
 					gen.code("mov",surfaceOutput.Alpha, temp.w),

@@ -537,9 +537,9 @@ public class Pass
 			code+=gen.code("m44",screenPos, worldPos, gen.VC["ViewProjection"])+"\n";
 			code+=gen.code("mov","op", screenPos)+"\n";
 			
-//			trace("VERTEX SHADER");
-//			trace( code );
-//			trace("END VERTEX SHADER");
+			trace("[Pass]VERTEX SHADER");
+			trace(code);
+			trace("[Pass]END VERTEX SHADER");
 			
 			return ShaderUtils.vertexAssambler.assemble(Context3DProgramType.VERTEX, code, false );
 		}
@@ -551,7 +551,7 @@ public class Pass
 			{
 				result += "// move normal from varying to temp\n";
 				result += "mov " + _surfaceOutput.YOGURT3D_INTERNAL::m_normal + " " + FragmentInput(m_vertexOutput).normal + "\n";
-				result += "nrm " + _surfaceOutput.YOGURT3D_INTERNAL::m_normal + " " + _surfaceOutput.YOGURT3D_INTERNAL::m_normal + "\n"
+				result += "nrm " + _surfaceOutput.YOGURT3D_INTERNAL::m_normal.xyz + " " + _surfaceOutput.YOGURT3D_INTERNAL::m_normal.xyz + "\n"
 			}
 			if( _surfaceOutput.YOGURT3D_INTERNAL::m_lightColor )
 			{
@@ -626,9 +626,9 @@ public class Pass
 			code += "\n//Move result to output\n";
 			code += "mov oc " + gen.FT["result"];
 			
-//			trace("FRAGMENT SHADER");
-//			trace(code);
-//			trace("END FRAGMENT SHADER");
+			trace("[Pass]FRAGMENT SHADER");
+			trace(code);
+			trace("[Pass]END FRAGMENT SHADER");
 			
 			return ShaderUtils.fragmentAssambler.assemble(Context3DProgramType.FRAGMENT, code, false );
 		}
