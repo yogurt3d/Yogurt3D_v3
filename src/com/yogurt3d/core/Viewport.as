@@ -90,6 +90,11 @@ public class Viewport extends Sprite implements IEngineObject
 			addEventListener(Event.REMOVED_FROM_STAGE, onRemovedFromStage );
 			height = _height;
 			width = _width;
+
+            trackObject();
+            YOGURT3D_INTERNAL::m_injector = new Injector();
+            injector.parentInjector = DependencyManager.injector;
+            m_controllerDict = new Dictionary();
 		}
 		
 		public function get device():Context3D
@@ -121,6 +126,11 @@ public class Viewport extends Sprite implements IEngineObject
 				onParentResize( null );
 			}
 		}
+
+        protected function trackObject():void
+        {
+            IDManager.trackObject(this, Viewport);
+        }
 		
 		private function onParentResize( event:Event ):void{
 		 	
@@ -301,7 +311,7 @@ public class Viewport extends Sprite implements IEngineObject
 			}
 		}
 		
-		private function drawBackground():void{
+		YOGURT3D_INTERNAL function drawBackground():void{
 			if( m_width > 0 && m_height > 0 )
 			{
 				graphics.clear();
