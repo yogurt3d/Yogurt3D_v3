@@ -178,17 +178,22 @@ public class Viewport extends Sprite implements IEngineObject
 		
 		public override function set x( value:Number ):void{
 			super.x = value;
-			var global:Point = this.localToGlobal(new Point());
-			stage.stage3Ds[ m_viewportID ].x = global.x;
-
+			if( stage )
+			{
+				var global:Point = this.localToGlobal(new Point());
+				stage.stage3Ds[ m_viewportID ].x = global.x;
+			}
 			calculateMatrix();
 			m_onPositionChange.dispatch(this);
 		}
 		
 		public override function set y( value:Number ):void{
 			super.y = value;
-			var global:Point = this.localToGlobal(new Point());
-			stage.stage3Ds[ m_viewportID ].y = global.y;
+			if( stage )
+			{
+				var global:Point = this.localToGlobal(new Point());
+				stage.stage3Ds[ m_viewportID ].y = global.y;
+			}
 			calculateMatrix();
 			m_onPositionChange.dispatch(this);
 		}
@@ -320,16 +325,16 @@ public class Viewport extends Sprite implements IEngineObject
 		public function update():void{
 			if( !isDeviceCreated || !m_renderingEnabled ) return;
 
-            var global:Point = this.localToGlobal(new Point());
-
-            if( stage.stage3Ds[ m_viewportID ].y != global.y || stage.stage3Ds[ m_viewportID ].x != global.x )
-            {
-                stage.stage3Ds[ m_viewportID ].x = global.x;
-                stage.stage3Ds[ m_viewportID ].y = global.y;
-            }
-
 			Y3DCONFIG::RENDER_LOOP_TRACE{
 				trace("\t[Viewport][update] start [w:", width, ", h:", height, "]");
+			}
+			
+			var global:Point = this.localToGlobal(new Point());
+			
+			if( stage.stage3Ds[ m_viewportID ].y != global.y || stage.stage3Ds[ m_viewportID ].x != global.x )
+			{
+				stage.stage3Ds[ m_viewportID ].x = global.x;
+				stage.stage3Ds[ m_viewportID ].y = global.y;
 			}
 			
 			Y3DCONFIG::DEBUG{
@@ -341,7 +346,7 @@ public class Viewport extends Sprite implements IEngineObject
 			{
 				m_pickManager.update( scene, camera );
 			}
-//			
+			
 			m_currentRenderTarget.render();
 			scene.postRender();
 
