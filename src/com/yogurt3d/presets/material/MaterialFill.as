@@ -31,6 +31,9 @@ public class MaterialFill extends MaterialBase{
 			_colorVec[0] = (_color >> 16 & 255 ) / 255;
 			_colorVec[1] = (_color >> 8 & 255) / 255;
 			_colorVec[2] = (_color & 255) / 255;
+
+            m_color = new Color(1,1,1,1);
+            m_color.setColorUint(0xFF000000|_color);
 			
 			createConstantFromVector( ERegisterShaderType.FRAGMENT, "color", Vector.<Number>([_colorVec[0], _colorVec[1], _colorVec[2], _opacity]) );
 
