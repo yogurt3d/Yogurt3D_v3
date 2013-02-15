@@ -234,8 +234,9 @@ public class Scene3D extends EngineObject
 				// if value is null exit function
 				return;
 			}
-			SceneTreeManager.addChild(_value, m_rootObject);
-		}
+			//SceneTreeManager.addChild(_value, m_rootObject);
+            m_rootObject.addChild( _value);
+        }
 		
 		/**
 		 * @inheritDoc
