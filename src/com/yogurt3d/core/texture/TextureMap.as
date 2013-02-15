@@ -447,7 +447,9 @@ use namespace YOGURT3D_INTERNAL;
 		
 		override public function dispose():void{
 			disposeGPU();
-			
+			if( m_tempBitmap){
+                m_tempBitmap.dispose();
+            }
 			if( m_displayObject )
 			{
 				m_displayObject = null;
@@ -470,7 +472,7 @@ use namespace YOGURT3D_INTERNAL;
 			{
 				_texture.dispose();
 			}
-			m_context3DMap = new Dictionary();;
+			m_context3DMap = new Dictionary();
 		}
 		
 		override protected function trackObject():void
