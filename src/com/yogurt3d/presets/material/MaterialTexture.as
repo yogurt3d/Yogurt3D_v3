@@ -28,7 +28,7 @@ public class MaterialTexture extends MaterialBase{
 			params.depthFunction 	= Context3DCompareMode.LESS;
 			params.writeDepth		= true;
 			params.blendEnabled 	= true;
-			params.blendMode = EBlendMode.ALPHA;
+			params.blendMode = EBlendMode.PRE_ALPHA;
 			params.culling = Context3DTriangleFace.FRONT;
 			
 			ambientColor = new Color(0,0,0,1);
