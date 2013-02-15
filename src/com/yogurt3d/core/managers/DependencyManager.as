@@ -43,7 +43,9 @@ public class DependencyManager
 			}else if( sceneObject is EngineObject ){
 				sceneObject.injector.map(EngineObject).toValue(sceneObject);
 				sceneObject.injector.map(Object(sceneObject).constructor).toValue(sceneObject);
-			}			
+			}else{
+                sceneObject.injector.map(Object(sceneObject).constructor).toValue(sceneObject);
+            }
 			sceneObject.injector.injectInto( script );
 			
 			script.initialize();
