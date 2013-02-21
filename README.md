@@ -34,7 +34,7 @@ There is an attached ant file which compiles as both release and debug. It also 
     
     
 ### Simple Scene Setup
-::
+:::
     package {
     
         import com.yogurt3d.core.Scene3D;
@@ -71,4 +71,4 @@ There is an attached ant file which compiles as both release and debug. It also 
             }
         }
     }
-::
+:::
