@@ -113,8 +113,8 @@ public class TargetCamera extends Camera3D
 		}
 		
 		private function onMouseMoveEvent( event:MouseEvent ):void{
-			var _offsetX:Number 	= m_mouseLastX - event.localX;
-			var _offsetY:Number 	= m_mouseLastY - event.localY;
+			var _offsetX:Number 	= m_mouseLastX - event.stageX;
+			var _offsetY:Number 	= m_mouseLastY - event.stageY;
 			
 			if (event.buttonDown && mouseControlEnabled )
 			{
@@ -122,8 +122,8 @@ public class TargetCamera extends Camera3D
 				rotX += _offsetY ;
 			}
 			
-			m_mouseLastX 	= event.localX;
-			m_mouseLastY 	= event.localY;
+			m_mouseLastX 	= event.stageX;
+			m_mouseLastY 	= event.stageY;
 		}
 		
 		
