@@ -34,7 +34,7 @@ There is an attached ant file which compiles as both release and debug. It also 
     
     
 ### Simple Scene Setup
-'''as3
+'''
 package {
 
     import com.yogurt3d.core.Scene3D;
