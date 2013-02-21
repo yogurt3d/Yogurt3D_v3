@@ -15,19 +15,33 @@ Details on creating for first scene can be found [here](https://github.com/yogur
 
 ##ROADMAP
 [ ] Material Revision Revision
+
     Refactoring of material and rendering systems.
+    
 [ ] Bullet Integration
+
     Integration for Bullet Physics Engine.
+    
 [ ] Particle Engine Integration
+
     Particle support for Yogurt3D
+    
 [ ] Shadows
+
     Cascaded directional, point and spot light shadows.
+    
 [ ] Controller System Test And Samples
+
     Creating a large set of controller examples, basic and hierarhical
+    
 [ ] Documentation
+
     Adding pages to wiki, generating, ASDoc and examples
+    
 [ ] Build Scripts for Maven
+
     Creating a maven script to create nightly builds.
+    
     
 ##Motivation
 ##Documentation
