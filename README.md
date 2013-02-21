@@ -35,6 +35,7 @@ There is an attached ant file which compiles as both release and debug. It also 
     
 ## Using Yogurt3D
 ### Simple Scene Setup
+```actionscript
     import com.yogurt3d.core.Scene3D;
     import com.yogurt3d.core.Viewport;
     import com.yogurt3d.presets.material.MaterialFill;
@@ -66,3 +67,4 @@ There is an attached ant file which compiles as both release and debug. It also 
             this.addChild( viewport );
         }
     }
+```
