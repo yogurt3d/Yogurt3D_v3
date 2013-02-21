@@ -7,6 +7,12 @@ The current release (v2.1) can be found in [Yogurt3D Github](http://www.github.c
 
 Check out our wiki page [Yogurt3D Wiki](https://github.com/yogurt3d/Yogurt3D_v3/wiki)
 
+## COMPILING
+Details on compiling can be found [here](https://github.com/yogurt3d/Yogurt3D_v3/wiki/Compiling-Yogurt3D).
+
+## SETUP
+Details on creating for first scene can be found [here](https://github.com/yogurt3d/Yogurt3D_v3/wiki/Simple-Scene).
+
 ##ROADMAP
 [ ] Material Revision Revision
     Refactoring of material and rendering systems.
