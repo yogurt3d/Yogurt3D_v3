@@ -46,13 +46,12 @@ package com.yogurt3d.core.sceneobjects
 		 * 
 		 */
 		private function onAdded(scnObj:SceneObject, scn:Scene3D):void{
+			//Start sound
 			Yogurt3D.onFrameStart.add(draw);
-			trace("onAdded");
 		}
 		private function onRemoved(scnObj:SceneObject, scn:Scene3D):void{
+			//Stop sound
 			Yogurt3D.onFrameStart.remove(draw);
-			// stop sound
-			trace("onRemoved");
 		}
 		
 		private function soundPlayEvent(e:Event = null):Boolean
@@ -66,7 +65,6 @@ package com.yogurt3d.core.sceneobjects
 				_soundChannel = null;
 				return false;
 			}
-			
 			_currLoop--;
 			
 			return true;
@@ -86,7 +84,8 @@ package com.yogurt3d.core.sceneobjects
 				
 				if ( volume > 0 ) {
 					if ( !_soundChannel && soundPlayEvent() == false ) return;
-				} else 
+				} 
+				else 
 				{
 					if ( reactivate ) _currLoop = _loops;
 					if ( _soundChannel ) _soundChannel.stop();
@@ -103,6 +102,6 @@ package com.yogurt3d.core.sceneobjects
 				_soundTransform.pan += ( pan - _soundTransform.pan ) * smooth;
 				
 				_soundChannel.soundTransform = _soundTransform;
-				}
+		}
 	}
 }
