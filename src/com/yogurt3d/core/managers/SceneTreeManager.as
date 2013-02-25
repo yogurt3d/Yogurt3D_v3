@@ -492,6 +492,7 @@ import flash.utils.Dictionary;
 					//} else {
 						//addChildIntoSceneSet(_child, _scene);
 					//}
+						_child.onAddedToScene.dispatch( SceneObject(_child), _scene );
 				}
 			}
 			

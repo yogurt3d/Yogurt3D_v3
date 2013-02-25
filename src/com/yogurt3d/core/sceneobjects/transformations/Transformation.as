@@ -236,6 +236,15 @@ import org.osflash.signals.Signal;
 			return matrixGlobal.position.clone();
 		}
 		
+		public function globalToLocal(vector_1:Vector3D, vector_2:Vector3D):void
+		{
+			var _matrix:Matrix3D = MatrixUtils.TEMP_MATRIX;
+			_matrix.copyFrom(matrixGlobal);
+			_matrix.invert();
+			_matrix.appendTranslation(vector_1.x,vector_1.y,vector_1.z);
+			
+			vector_2.copyFrom(_matrix.position);
+		}
 		
 		/**
 		 * Position of object along x axis of parent
