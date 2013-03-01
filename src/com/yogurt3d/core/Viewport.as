@@ -133,28 +133,29 @@ public class Viewport extends Sprite implements IEngineObject
         }
 		
 		private function onParentResize( event:Event ):void{
-		 	
-			if (stage == null) {
-				return;
-			}
 
-            if(stage.stageWidth < 50 )
+            if (stage == null) {
+                return;
+            }
+
+            if(parent.width < 50 )
             {
                 width = 50;
             }else{
-                width = stage.stageWidth ;
+                width = parent.width;
             }
-            if(stage.stageHeight < 50 )
+            if(parent.height < 50 )
             {
                 height = 50;
             }else{
-                height = stage.stageHeight ;
+                height = parent.height ;
             }
 
             if( camera )
                 camera.frustum.setProjectionPerspective( camera.frustum.fov, width/height, camera.frustum.near, camera.frustum.far );
 
-		}
+
+        }
 		
 		public function get onSizeChange():PrioritySignal
 		{
