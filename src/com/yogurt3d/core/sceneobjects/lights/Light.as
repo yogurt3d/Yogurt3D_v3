@@ -24,7 +24,8 @@ import com.yogurt3d.core.Scene3D;
 import com.yogurt3d.core.render.renderqueue.RenderQueue;
 import com.yogurt3d.core.sceneobjects.SceneObject;
 import com.yogurt3d.core.sceneobjects.camera.frustum.Frustum;
-import com.yogurt3d.core.volumes.BoundingSphere;
+    import com.yogurt3d.core.sceneobjects.transformations.Transformation;
+    import com.yogurt3d.core.volumes.BoundingSphere;
 import com.yogurt3d.utils.Color;
 import com.yogurt3d.utils.MathUtils;
 import com.yogurt3d.utils.MatrixUtils;
@@ -63,7 +64,11 @@ use namespace YOGURT3D_INTERNAL;
 		private var m_innerConeAngle	: Number;
 		private var m_outerConeAngle	: Number;
 		private var m_coneAngles		: Vector.<Number>;
-		
+
+        private var m_directionVector   :Vector.<Number> = new Vector.<Number>(4,true);
+
+        private static var negz:Vector3D = new Vector3D(0,0,-1,1);
+
 		YOGURT3D_INTERNAL var m_renderQueue:RenderQueue;
 		
 		/**
@@ -85,9 +90,23 @@ use namespace YOGURT3D_INTERNAL;
 			intensity 				= _intensity;
 			
 			m_renderQueue = new RenderQueue();
-			
+
+
+
 			super( true );
+
+            transformation.onChange.add(onTransformationChange);
 		}
+        private function onTransformationChange(trans:Transformation):void{
+            var _dir:Vector3D = transformation.matrixGlobal.deltaTransformVector( negz );
+            _dir.negate();
+            _dir.normalize();
+
+
+            m_directionVector[0] = _dir.x;
+            m_directionVector[1] = _dir.y;
+            m_directionVector[2] = _dir.z;
+        }
 		
 		public function get shadows():EShadowType
 		{
@@ -252,12 +271,7 @@ use namespace YOGURT3D_INTERNAL;
 		 */		
 		public function get directionVector():Vector.<Number>
 		{
-			var _dir:Vector3D = transformation.matrixGlobal.deltaTransformVector( new Vector3D(0,0,-1,1) );
-			_dir.negate();
-			_dir.normalize();
-			
-			
-			return Vector.<Number>([_dir.x, _dir.y, _dir.z, 1]);
+			return m_directionVector
 		}
 		/**
 		 * @inheritDoc
