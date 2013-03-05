@@ -92,11 +92,11 @@ use namespace YOGURT3D_INTERNAL;
 			
 			if ( depth < m_maxDepth )
 			{
+                var min:Vector3D = new Vector3D;
+                var max:Vector3D = new Vector3D;
+
 				for(var i:int = 0; i < 4; i++)
 				{
-					var min:Vector3D = new Vector3D;
-					var max:Vector3D = new Vector3D;
-					
 					switch(i)
 					{
 						case 0:
