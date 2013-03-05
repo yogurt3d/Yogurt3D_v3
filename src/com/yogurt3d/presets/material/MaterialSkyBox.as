@@ -102,12 +102,12 @@ class SkyBoxPass extends Pass{
 		var vt0:IRegister = gen.createVT("vt0", 4);
 				
 		var code:String = [
-			"\n\n//****Vertex Function START****/"+ "\n",
+			//"\n\n//****Vertex Function START****/"+ "\n",
 			gen.code("m44", "op", input.vertexpos, vc1),
 			gen.code("nrm", vt0.xyz, input.vertexpos.xyz),
 			gen.code("mov", vt0.w, vc0.x),
-			gen.code("mov", out.uvMain, vt0),
-			"//****Vertex Function END****/\n\n"
+			gen.code("mov", out.uvMain, vt0)
+			//"//****Vertex Function END****/\n\n"
 		].join("\n");
 		
 //		trace(code + "\n");
@@ -123,10 +123,10 @@ class SkyBoxPass extends Pass{
 		
 		var tmp:IRegister = gen.createFT("tmp", 4);
 		code += [
-			"//****Fragment START****/",
+			//"//****Fragment START****/",
 			gen.tex( tmp, m_vertexOutput.uvMain, getConstant("skyTex"),"cube","clamp","linear"),
-			gen.code("mov", "oc" , tmp),
-			"//****Fragment END****/"+ "\n"
+			gen.code("mov", "oc" , tmp)
+			//"//****Fragment END****/"+ "\n"
 		].join("\n");
 		
 //		trace(code + "\n");
