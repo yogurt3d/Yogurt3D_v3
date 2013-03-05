@@ -133,16 +133,16 @@ public class Viewport extends Sprite implements IEngineObject
         }
 		
 		private function onParentResize( event:Event ):void{
-		 	
-			if (stage == null) {
-				return;
-			}
+
+            if (stage == null) {
+                return;
+            }
 
             if(parent.width < 50 )
             {
                 width = 50;
             }else{
-                width = parent.width ;
+                width = parent.width;
             }
             if(parent.height < 50 )
             {
@@ -154,7 +154,8 @@ public class Viewport extends Sprite implements IEngineObject
             if( camera )
                 camera.frustum.setProjectionPerspective( camera.frustum.fov, width/height, camera.frustum.near, camera.frustum.far );
 
-		}
+
+        }
 		
 		public function get onSizeChange():PrioritySignal
 		{

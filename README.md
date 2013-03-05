@@ -1,33 +1,48 @@
 Yogurt3D Version 3 Beta 1
 =============
 
-This is the new version of Yogurt3D. 
+This is the **new** version of **Yogurt3D**. 
 
-The current release can be found in [Yogurt3D Github](http://www.github.com/yogurt3d/Yogurt3D)
+The current release (v2.1) can be found in [Yogurt3D Github](http://www.github.com/yogurt3d/Yogurt3D)
 
-## Compiling Yogurt3D
-There 2 two different options to compile Yogurt3D with.
+Check out our wiki page [Yogurt3D Wiki](https://github.com/yogurt3d/Yogurt3D_v3/wiki)
 
-#### External Dependencies
-They can be found under /libs folder
-* [as3-signals](https://github.com/robertpenner/as3-signals)
-* [swift-suspenders](https://github.com/tschneidereit/SwiftSuspenders)
-* [As3 Zip](http://nochump.com/blog/archives/15)
+## COMPILING
+Details on compiling can be found [here](https://github.com/yogurt3d/Yogurt3D_v3/wiki/Compiling-Yogurt3D).
 
-### Debug
-Add -load-config+=y3d_config_debug.xml to your compiler option.
-* Y3DCONFIG::TRACE = true
-* Y3DCONFIG::DEBUG = true
-* Y3DCONFIG::RELEASE = false
-* Y3DCONFIG::RENDER_LOOP_TRACE = false
+## SETUP
+Details on creating for first scene can be found [here](https://github.com/yogurt3d/Yogurt3D_v3/wiki/Simple-Scene).
 
-### Release
-Add -load-config+=y3d_config_debug.xml to your compiler option.
-* Y3DCONFIG::TRACE = false
-* Y3DCONFIG::DEBUG = false
-* Y3DCONFIG::RELEASE = true
-* Y3DCONFIG::RENDER_LOOP_TRACE = false
+##ROADMAP
+* **Material Revision Revision**
 
-### Ant Build
-There is an attached ant file which compiles as both release and debug. It also attaches an asdoc.
-    ant build.xml
+    Refactoring of material and rendering systems.
+    
+* **Bullet Integration**
+
+    Integration for Bullet Physics Engine.
+    
+* **Particle Engine Integration**
+
+    Particle support for Yogurt3D
+    
+* **Shadows**
+
+    Cascaded directional, point and spot light shadows.
+    
+* **Controller System Test And Samples**
+
+    Creating a large set of controller examples, basic and hierarhical
+    
+* **Documentation**
+
+    Adding pages to wiki, generating, ASDoc and examples
+    
+* **Build Scripts for Maven**
+
+    Creating a maven script to create nightly builds.
+    
+    
+##Motivation
+##Documentation
+##LICENSE
