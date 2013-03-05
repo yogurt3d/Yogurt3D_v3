@@ -145,10 +145,6 @@ import flash.geom.Vector3D;
 			var vec:Vector3D = ray.getIntersectPoint( target3d );
 			if( vec )
 			{
-				/*var matrix:Matrix3D = MatrixUtils.TEMP_MATRIX;
-				matrix.copyFrom( target3d.transformation.matrixGlobal );
-				matrix.invert();
-				vec = matrix.transformVector( vec );*/
 				m_intersection = vec;
 			}
 		}
