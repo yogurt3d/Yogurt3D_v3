@@ -32,11 +32,14 @@ public final class DeviceStreamManager
 		
 		private var m_lastMarkVB					:int;
 		private var m_lastMarkS						:int;
-		
+
+        private var m_textures:Dictionary;
+
 		public function DeviceStreamManager(enforcer:SingletonEnforcer)
 		{
 			m_contextBufferAllocation = new Dictionary();
 			m_contextSamplerAllocation = new Dictionary();
+            m_textures = new Dictionary();
 		}
 		
 		public static function get instance():DeviceStreamManager{
@@ -80,7 +83,9 @@ public final class DeviceStreamManager
 		public function sweepTexture( device:Context3D ):void{
 			while( m_contextSamplerAllocation[device] < m_lastMarkS && m_lastMarkS > 0 )
 			{
+
 				device.setTextureAt( --m_lastMarkS, null );
+                m_textures[m_lastMarkS] = null;
 			}
 		}
 		
@@ -94,7 +99,16 @@ public final class DeviceStreamManager
 			device.setTextureAt( 5, null );
 			device.setTextureAt( 6, null );
 			device.setTextureAt( 7, null );
-			
+            m_textures[0] = null;
+            m_textures[1] = null;
+            m_textures[2] = null;
+            m_textures[3] = null;
+            m_textures[4] = null;
+            m_textures[5] = null;
+            m_textures[6] = null;
+            m_textures[7] = null;
+
+
 		}
 		/*public function cleanVertexBuffers(device:Context3D):void{
 			if( m_contextBufferAllocation[device] > -1 )
@@ -121,7 +135,10 @@ public final class DeviceStreamManager
 			{
 				m_contextSamplerAllocation[_context3d] = index+1;
 			}
-			_context3d.setTextureAt( index, texture );
+            if( m_textures[index] != texture){
+                _context3d.setTextureAt( index, texture );
+                m_textures[index] = texture;
+            }
 		}
 	}
 }
