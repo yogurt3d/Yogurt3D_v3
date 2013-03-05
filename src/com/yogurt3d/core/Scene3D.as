@@ -352,6 +352,8 @@ public class Scene3D extends EngineObject
 			super.initInternals();
 			
 			m_rootObject 		= new SceneObject();
+
+            m_rootObject.m_injector.parentInjector = this.injector;
 			
 			m_sceneColor = new Color(1,1,1,1);
 			
