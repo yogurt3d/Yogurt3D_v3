@@ -22,7 +22,8 @@ import com.yogurt3d.YOGURT3D_INTERNAL;
 import com.yogurt3d.core.Scene3D;
 import com.yogurt3d.core.Viewport;
 import com.yogurt3d.core.enums.EAabbDrawMode;
-import com.yogurt3d.core.managers.IDManager;
+    import com.yogurt3d.core.managers.DependencyManager;
+    import com.yogurt3d.core.managers.IDManager;
 import com.yogurt3d.core.managers.SceneTreeManager;
 import com.yogurt3d.core.objects.EngineObject;
 import com.yogurt3d.core.objects.IEngineObject;
@@ -464,7 +465,9 @@ import org.osflash.signals.Signal;
 			SceneTreeManager.addChild(_value, this);
 			
 			_value.transformation.onChange.add( seekChildTransformationChange );
-			
+
+            _value.m_injector.parentInjector = this.injector;
+
 			m_aabb = null;
 			m_boundingSphere = null;
 			
@@ -528,7 +531,9 @@ import org.osflash.signals.Signal;
 				_value.transformation.onChange.remove( seekChildTransformationChange );
 			
 			SceneTreeManager.removeChild(_value, this);
-			
+
+            _value.m_injector.parentInjector = DependencyManager.injector;
+
 			m_reinitboundingVolumes = true;
 			
 		}
@@ -538,7 +543,7 @@ import org.osflash.signals.Signal;
 		 * */
 		public function removeChildBySystemID(_value:String):void
 		{
-			SceneTreeManager.removeChildBySystemID(_value, this);
+            removeChild(IDManager.getObjectBySystemID(_value) as SceneObject);
 		}
 		
 		/**
@@ -546,7 +551,7 @@ import org.osflash.signals.Signal;
 		 * */
 		public function removeChildByUserID(_value:String):void
 		{
-			SceneTreeManager.removeChildByUserID(_value, this);
+            removeChild(IDManager.getObjectByUserID(_value) as SceneObject);
 		}
 		
 		/**
