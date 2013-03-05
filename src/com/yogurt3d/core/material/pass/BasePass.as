@@ -84,9 +84,9 @@ public class BasePass extends Pass
 			code += "\n//Move result to output\n";
 			code += "mov oc " + gen.FT["result"];
 			
-			trace("[Base Pass] FRAGMENT SHADER");
-			trace(code);
-			trace("[Base Pass] END FRAGMENT SHADER");
+//			trace("[Base Pass] FRAGMENT SHADER");
+//			trace(code);
+//			trace("[Base Pass] END FRAGMENT SHADER");
 			
 			return ShaderUtils.vertexAssambler.assemble(Context3DProgramType.FRAGMENT, code, false );
 	

@@ -537,9 +537,9 @@ public class Pass
 			code+=gen.code("m44",screenPos, worldPos, gen.VC["ViewProjection"])+"\n";
 			code+=gen.code("mov","op", screenPos)+"\n";
 			
-			trace("[Pass]VERTEX SHADER");
-			trace(code);
-			trace("[Pass]END VERTEX SHADER");
+//			trace("[Pass]VERTEX SHADER");
+//			trace(code);
+//			trace("[Pass]END VERTEX SHADER");
 			
 			return ShaderUtils.vertexAssambler.assemble(Context3DProgramType.VERTEX, code, false );
 		}
@@ -626,9 +626,9 @@ public class Pass
 			code += "\n//Move result to output\n";
 			code += "mov oc " + gen.FT["result"];
 			
-			trace("[Pass]FRAGMENT SHADER");
-			trace(code);
-			trace("[Pass]END FRAGMENT SHADER");
+//			trace("[Pass]FRAGMENT SHADER");
+//			trace(code);
+//			trace("[Pass]END FRAGMENT SHADER");
 			
 			return ShaderUtils.fragmentAssambler.assemble(Context3DProgramType.FRAGMENT, code, false );
 		}
