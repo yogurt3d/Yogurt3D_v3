@@ -28,7 +28,9 @@ import com.yogurt3d.core.render.BackBufferRenderTarget;
 import com.yogurt3d.core.render.base.RenderTargetBase;
 import com.yogurt3d.core.sceneobjects.camera.Camera3D;
 
-import flash.display.Sprite;
+    import flash.display.DisplayObject;
+
+    import flash.display.Sprite;
 import flash.display3D.Context3D;
 import flash.events.ErrorEvent;
 import flash.events.Event;
@@ -75,7 +77,10 @@ public class Viewport extends Sprite implements IEngineObject
 		YOGURT3D_INTERNAL var m_pickManager				:PickManager;
 	
 		YOGURT3D_INTERNAL static  var m_pickDevice		:Context3D;
-		
+
+        public var orientationEnabled                   :Boolean = false;
+        private var m_orientation                          :String = "default";
+
 		public function Viewport( _width:uint = 800, _height:uint = 600)
 		{
 			super();
@@ -134,22 +139,36 @@ public class Viewport extends Sprite implements IEngineObject
 		
 		private function onParentResize( event:Event ):void{
 
-            if (stage == null) {
+            if (stage == null || parent == null) {
                 return;
             }
-
-            if(parent.width < 50 )
+            var _parentWidth:Number;
+            var _parentHeight:Number;
+//            trace( "stage", stage.stageWidth, stage.stageHeight );
+//            trace( "stage", stage.width, stage.height );
+//            trace( "parent", parent.width, parent.height );
+            if( orientationEnabled && (orientation == "default"|| orientation == "upsideDown") ){
+                _parentWidth = (stage == parent.parent )? stage.stageWidth : parent.width;
+                _parentHeight = (stage == parent.parent )? stage.stageHeight : parent.height;
+                //trace("O", _parentWidth,_parentHeight,stage == parent );
+            }else{
+                _parentWidth = (stage == parent.parent )? stage.stageWidth : parent.width;
+                _parentHeight = (stage == parent.parent )? stage.stageHeight : parent.height;
+                //trace("D", _parentWidth,_parentHeight,stage == parent );
+            }
+            if(_parentWidth < 50 )
             {
                 width = 50;
             }else{
-                width = parent.width;
+                width = _parentWidth;
             }
             if(parent.height < 50 )
             {
                 height = 50;
             }else{
-                height = parent.height ;
+                height = _parentHeight;
             }
+
 
             if( camera )
                 camera.frustum.setProjectionPerspective( camera.frustum.fov, width/height, camera.frustum.near, camera.frustum.far );
@@ -254,8 +273,7 @@ public class Viewport extends Sprite implements IEngineObject
 			stage.stage3Ds[m_viewportID].addEventListener(Event.CONTEXT3D_CREATE, onContextCreated );
 			stage.stage3Ds[m_viewportID].addEventListener(ErrorEvent.ERROR, onError );
 			stage.stage3Ds[m_viewportID].requestContext3D();
-			
-			if( m_pickDevice == null )
+			if( m_pickDevice == null &&stage.stage3Ds.length>1 )
 			{
 				stage.stage3Ds[3].addEventListener(Event.CONTEXT3D_CREATE, onPickContextCreated );
 				//stage.stage3Ds[3].addEventListener(ErrorEvent.ERROR, onError );
@@ -269,7 +287,7 @@ public class Viewport extends Sprite implements IEngineObject
 			
 			if( m_autoResize )
 			{
-				stage.addEventListener( Event.RESIZE, onParentResize );
+				parent.addEventListener( Event.RESIZE, onParentResize );
 				onParentResize( null );
 			}
 		}
@@ -432,5 +450,14 @@ public class Viewport extends Sprite implements IEngineObject
 		public function disposeGPU():void{
 			scene.disposeGPU();
 		}
-	}
+
+    public function get orientation():String {
+        return m_orientation;
+    }
+
+    public function set orientation(value:String):void {
+        m_orientation = value;
+        onParentResize(null);
+    }
+}
 }

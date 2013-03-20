@@ -23,10 +23,16 @@ import com.yogurt3d.core.sceneobjects.camera.Camera3D;
 
 import flash.display.DisplayObject;
 import flash.events.Event;
-import flash.events.KeyboardEvent;
+    import flash.events.GestureEvent;
+    import flash.events.KeyboardEvent;
 import flash.events.MouseEvent;
+    import flash.events.TouchEvent;
+    import flash.events.TransformGestureEvent;
+    import flash.system.Capabilities;
+    import flash.system.TouchscreenType;
+    import flash.ui.Multitouch;
 
-public class FreeFlightCamera extends Camera3D
+    public class FreeFlightCamera extends Camera3D
 	{
 		
 		private var m_isCtrlDown:Boolean;
@@ -41,7 +47,7 @@ public class FreeFlightCamera extends Camera3D
 		private var m_mouseLastY:Number;
 		
 		private var m_viewport:DisplayObject;
-		
+
 		public function FreeFlightCamera(_viewport:DisplayObject, _initInternals:Boolean=true)
 		{
 			super(_initInternals);
@@ -57,7 +63,16 @@ public class FreeFlightCamera extends Camera3D
 					_e.target.stage.addEventListener(KeyboardEvent.KEY_UP, 		onKeyUp );
 				});
 			}
-			_viewport.addEventListener(MouseEvent.MOUSE_MOVE, 	onMouseMoveEvent );
+            if( Multitouch.supportsGestureEvents){
+                _viewport.addEventListener(TransformGestureEvent.GESTURE_ZOOM , 	onGestureZoom );
+                _viewport.addEventListener(TransformGestureEvent.GESTURE_PAN , 	onGesturePan );
+                _viewport.addEventListener(TransformGestureEvent.GESTURE_SWIPE , 	onGestureSwipe );
+            } else{
+                _viewport.addEventListener(MouseEvent.MOUSE_MOVE, 	onMouseMoveEvent );
+                _viewport.addEventListener(MouseEvent.MOUSE_WHEEL, 	onMouseWheelEvent );
+            }
+
+
 			
 			m_viewport = _viewport;
 			
@@ -67,30 +82,49 @@ public class FreeFlightCamera extends Camera3D
 		public function updateWithTimeInfo():void{
 			if( m_leftKey  )
 			{
-				moveLocalX( -1  );
+				moveLocalX( -5  );
 			}
 			if( m_rightKey )
 			{
-				moveLocalX( 1  );
+				moveLocalX( 5  );
 			}
 			if( m_downKey )
 			{
-				moveLocalZ( 1  );
+				moveLocalZ(5  );
 			}
 			if( m_upKey  )
 			{
-				moveLocalZ( -1  );
+				moveLocalZ( -5  );
 			}
 		}
-		
-		
-		public function moveLocalX( _value:Number ):void{
-			transformation.moveAlongLocal( _value,0,0 );
-		}
+
+
+        public function moveLocalX( _value:Number ):void{
+            transformation.moveAlongLocal( _value,0,0 );
+        }
+        public function moveLocalY( _value:Number ):void{
+            transformation.moveAlongLocal( 0,_value,0 );
+        }
 		public function moveLocalZ( _value:Number ):void{
 			transformation.moveAlongLocal( 0,0,_value );
 		}
-		
+
+        protected function onMouseWheelEvent(event:MouseEvent):void{
+            moveLocalZ(event.delta  );
+        }
+        protected function onGestureZoom(event:TransformGestureEvent):void{
+            moveLocalZ((1-event.scaleY)*10  );
+        }
+        protected function onGesturePan(event:TransformGestureEvent):void{
+            moveLocalX(-event.offsetX  );
+            moveLocalY(event.offsetY  );
+        }
+        protected function onGestureSwipe(event:TransformGestureEvent):void{
+            transformation.rotationY += event.offsetX ;
+            transformation.rotationX += event.offsetY ;
+        }
+
+
 		protected function onMouseMoveEvent(event:MouseEvent):void
 		{
 			var _offsetX:Number 	= m_mouseLastX - event.localX;

@@ -43,7 +43,7 @@ use namespace YOGURT3D_INTERNAL;
 	{
 		private var m_lastUpdateTime					:uint 			= 0;
 		
-		public var updateTime							:uint 			= 40;
+		public var updateTime							:uint 			= 66;
 		
 		private var m_pickRenderer				        :PickRenderer;
 		
