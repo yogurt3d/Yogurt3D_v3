@@ -1,3 +1,15 @@
+/*
+ * Copyright (c) 2013. Yogurt Computing Tech.
+ *
+ * This file is part of Yogurtistan. Any usage of this file
+ * outside of Yogurtistan violates it's license. Do not use
+ * it in any other application without proper approval.
+ *
+ * Module: Yogurt3D_v3
+ * File: MaterialTextureCutOff.as
+ * Changes:
+ */
+
 package com.yogurt3d.presets.material
 {
 import com.yogurt3d.core.material.MaterialBase;
@@ -24,7 +36,9 @@ public class MaterialTextureCutOff extends MaterialBase{
 			lightFunction = NoLight;
 			surfaceFunction = mySurfaceFunction;
 			vertexFunction = emptyFunction;
-			
+
+            cutOff = true;
+
 			params.depthFunction 	= Context3DCompareMode.LESS;
 			params.writeDepth		= true;
 			params.blendEnabled 	= true;
@@ -44,8 +58,8 @@ public class MaterialTextureCutOff extends MaterialBase{
             var temp2:IRegister = gen.createFT( "temp2",4);
 			var str:String = 
 				["\n\n//****SurfaceFunction START****/",
-                    gen.tex( temp, surfaceInput.uvMain, getConstant("colorMap"), "2d", "wrap", "linear", (texture as TextureMap).mipmap, false, (texture as TextureMap).transparent, getConstant("opacity").y),
-                    gen.tex( temp2, surfaceInput.uvSecond, getConstant("lightMap"), "2d", "wrap", "linear", (lightMap as TextureMap).mipmap, false, (lightMap as TextureMap).transparent, getConstant("opacity").y),
+                    gen.tex( temp, surfaceInput.uvMain, getConstant("colorMap"), "2d", "wrap", "linear", (texture as TextureMap).mipmap, false, true, getConstant("opacity").y),
+                    gen.tex( temp2, surfaceInput.uvSecond, getConstant("lightMap"), "2d", "wrap", "linear", (lightMap as TextureMap).mipmap, false, true, getConstant("opacity").y),
 					gen.code("mul", temp, temp, temp2),
 				//	gen.code("mov", temp.w, getConstant("opacity").x),
                     gen.code("mul", temp.w, temp.w, getConstant("opacity").x),
@@ -58,14 +72,22 @@ public class MaterialTextureCutOff extends MaterialBase{
             gen.destroyFT("temp2");
 			return str;
 		}
-		
-		public function get opacity():Number{
-			return getConstantVec("opacity")[0];
-		}
-		
-		public function set opacity( value:Number ):void{
-			getConstantVec("opacity")[0] = value;
-		}
+
+        public function get opacity():Number{
+            return getConstantVec("opacity")[0];
+        }
+
+        public function set opacity( value:Number ):void{
+            getConstantVec("opacity")[0] = value;
+        }
+
+        public function get cutOffOffset():Number{
+            return getConstantVec("opacity")[1];
+        }
+
+        public function set cutOffOffset( value:Number ):void{
+            getConstantVec("opacity")[1] = value;
+        }
 
         public function get texture():ITexture {
             return getConstantTex("colorMap");
