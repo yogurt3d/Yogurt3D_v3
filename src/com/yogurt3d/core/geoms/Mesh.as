@@ -76,15 +76,24 @@ use namespace YOGURT3D_INTERNAL;
 		{
 			super(_initInternals);
 		}
-		
-		public function get triangleCount():int{
-			var total:uint = 0;
-			for( var i:int = 0; i < m_subMeshList.length; i++)
-			{
-				total += m_subMeshList[i].triangleCount;
-			}
-			return total;
-		}
+
+        public function get triangleCount():int{
+            var total:uint = 0;
+            for( var i:int = 0; i < m_subMeshList.length; i++)
+            {
+                total += m_subMeshList[i].triangleCount;
+            }
+            return total;
+        }
+
+        public function get vertexCount():int{
+            var total:uint = 0;
+            for( var i:int = 0; i < m_subMeshList.length; i++)
+            {
+                total += m_subMeshList[i].vertexCount;
+            }
+            return total;
+        }
 		
 		override protected function trackObject():void
 		{
