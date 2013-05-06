@@ -173,7 +173,7 @@ import flash.geom.Vector3D;
 			
 			device.clear(0,0,0,0);
 			device.setScissorRectangle( new Rectangle( 0,0,1,1 ) );
-			device.setCulling( Context3DTriangleFace.FRONT );
+            vsManager.setCullMode(device, Context3DTriangleFace.FRONT );
 			
 			// disable blending
 			device.setBlendFactors( "one", "zero");

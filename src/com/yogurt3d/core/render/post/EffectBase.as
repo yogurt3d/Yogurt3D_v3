@@ -21,7 +21,8 @@ package com.yogurt3d.core.render.post
 
 import com.adobe.AGALMiniAssembler;
 import com.yogurt3d.core.Scene3D;
-import com.yogurt3d.core.managers.ProgramManager;
+    import com.yogurt3d.core.managers.DeviceStreamManager;
+    import com.yogurt3d.core.managers.ProgramManager;
 import com.yogurt3d.core.material.enum.EBlendMode;
 import com.yogurt3d.core.material.parameters.ShaderParameters;
 import com.yogurt3d.utils.ShaderUtils;
@@ -66,7 +67,7 @@ public class EffectBase
 			
 			device.setColorMask(true,true,true,false);
 			device.setDepthTest( false, Context3DCompareMode.ALWAYS );
-			device.setCulling( Context3DTriangleFace.NONE );
+            DeviceStreamManager.instance.setCullMode(device, Context3DTriangleFace.NONE );
 			
 			setEffectParameters(_post.drawRect, _post.sampler, _scene);
 			

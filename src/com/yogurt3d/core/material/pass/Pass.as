@@ -231,7 +231,7 @@ package com.yogurt3d.core.material.pass
 
             _device.setColorMask( m_surfaceParams.colorMaskR, m_surfaceParams.colorMaskG, m_surfaceParams.colorMaskB, m_surfaceParams.colorMaskA);
             _device.setDepthTest( m_surfaceParams.writeDepth, m_surfaceParams.depthFunction );
-            _device.setCulling( m_surfaceParams.culling );
+            m_vsManager.setCullMode(_device,m_surfaceParams.culling );
 
             preRender(_device, _object, _camera);
 
