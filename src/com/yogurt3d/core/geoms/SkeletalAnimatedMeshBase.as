@@ -79,6 +79,8 @@ use namespace YOGURT3D_INTERNAL;
 				{
 					bones[i].dispose();
 				}
+                if(!bones.fixed)
+                    bones.length = 0;
 				bones = null;
 			}
 			super.disposeDeep();
