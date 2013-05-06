@@ -33,9 +33,9 @@ public class BackBufferRenderTarget extends RenderTargetBase
 		public override function render():void{
 			
 			//trace("[BackBufferRenderTarget][render] start");
-			if(!m_newBackBufferRect.equals( m_currentBackBufferRect ) )
+			if(!m_newBackBufferRect.equals( m_currentBackBufferRect ) || antiAliasingDirty )
 			{
-				device.configureBackBuffer( m_newBackBufferRect.width, m_newBackBufferRect.height, antiAliasing, true );
+				device.configureBackBuffer( m_newBackBufferRect.width, m_newBackBufferRect.height, antiAliasing.value, true );
 				m_currentBackBufferRect.copyFrom( m_newBackBufferRect );
 			}
 			// TODO

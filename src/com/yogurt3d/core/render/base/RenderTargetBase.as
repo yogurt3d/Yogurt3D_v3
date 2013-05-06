@@ -19,7 +19,8 @@
 package com.yogurt3d.core.render.base
 {
 import com.yogurt3d.core.Scene3D;
-import com.yogurt3d.core.render.renderer.DefaultRenderer;
+    import com.yogurt3d.core.enums.EViewportAntialiasing;
+    import com.yogurt3d.core.render.renderer.DefaultRenderer;
 import com.yogurt3d.core.render.renderer.IRenderer;
 import com.yogurt3d.core.sceneobjects.camera.Camera3D;
 
@@ -42,15 +43,26 @@ public class RenderTargetBase
 		
 		public var autoUpdate						:Boolean = false;
 
-        public var antiAliasing                     :uint = 16;
-		
+        private var m_antiAliasing                     :EViewportAntialiasing = EViewportAntialiasing.VERY_HIGH_ALIASING;
+
+        protected var antiAliasingDirty             :Boolean = true;
+
 		public function RenderTargetBase()
 		{
 			m_renderer = new DefaultRenderer();
 			m_newBackBufferRect = new Rectangle();
 			m_currentBackBufferRect = new Rectangle();
 		}
-		
+
+        public function get antiAliasing():EViewportAntialiasing {
+            return m_antiAliasing;
+        }
+
+        public function set antiAliasing(value:EViewportAntialiasing):void {
+            m_antiAliasing = value;
+            antiAliasingDirty = true;
+        }
+
 		public function get drawRect():Rectangle{
 			return m_newBackBufferRect;
 		}
@@ -105,5 +117,7 @@ public class RenderTargetBase
 			//trace("[RenderTargetBase][render] end");
 			
 		}
-	}
+
+
+}
 }
