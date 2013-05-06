@@ -21,7 +21,8 @@ package com.yogurt3d.core
 
 
 import com.yogurt3d.Yogurt3D;
-import com.yogurt3d.core.managers.InputManager;
+    import com.yogurt3d.core.enums.EViewportAntialiasing;
+    import com.yogurt3d.core.managers.InputManager;
 import com.yogurt3d.core.managers.PickManager;
 import com.yogurt3d.core.objects.IEngineObject;
 import com.yogurt3d.core.render.BackBufferRenderTarget;
@@ -101,7 +102,14 @@ public class Viewport extends Sprite implements IEngineObject
             injector.parentInjector = DependencyManager.injector;
             m_controllerDict = new Dictionary();
 		}
-		
+
+        public function get aliasing():EViewportAntialiasing{
+            return m_currentRenderTarget.antiAliasing;
+        }
+        public function set aliasing(value:EViewportAntialiasing):void{
+            m_currentRenderTarget.antiAliasing = value;
+        }
+
 		public function get device():Context3D
 		{
 			return m_device;
