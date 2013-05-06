@@ -462,13 +462,37 @@ use namespace YOGURT3D_INTERNAL;
 			}
 			
 			disposeGPU();
-			
-			m_vertices			= null;
-			m_indices			= null;
-			m_normals			= null;
-			m_uvt				= null;
-			m_uvt_2				= null;
-			m_tangents			= null;
+			if(m_vertices ){
+                if(!m_vertices.fixed)
+                    m_vertices.length = 0;
+			    m_vertices			= null;
+            }
+            if(m_indices){
+                if(!m_indices.fixed)
+                    m_indices.length = 0;
+			    m_indices			= null;
+            }
+            if(m_normals){
+                if(!m_normals.fixed)
+                    m_normals.length = 0;
+			    m_normals			= null;
+            }
+            if(m_uvt){
+                if(!m_uvt.fixed)
+                    m_uvt.length = 0;
+                m_uvt				= null;
+            }
+            if(m_uvt_2){
+                if(!m_uvt_2.fixed)
+                    m_uvt_2.length = 0;
+			    m_uvt_2				= null;
+            }
+            if(m_tangents){
+                if(!m_tangents.fixed)
+                    m_tangents.length = 0;
+                m_tangents			= null;
+            }
+
 		}
 		
 		public override function disposeDeep():void{
