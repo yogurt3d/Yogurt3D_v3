@@ -29,7 +29,8 @@ import com.yogurt3d.io.parsers.interfaces.IParser;
 
 import flash.geom.Vector3D;
 import flash.utils.ByteArray;
-import flash.utils.Endian;
+    import flash.utils.CompressionAlgorithm;
+    import flash.utils.Endian;
 
     /**
 	 * 
@@ -71,13 +72,19 @@ import flash.utils.Endian;
 		{
 			var _dataType				:int;
 			var _exportType				:String;	
-			
-			try{
-				ByteArray(_value).inflate();
-			}catch(_e:*)
-			{
-				
-			}
+
+            if(ByteArray(_value).readUnsignedByte() == 0x5D){
+                ByteArray(_value).position = 0;
+                ByteArray(_value).uncompress(CompressionAlgorithm.LZMA);
+            }else{
+                ByteArray(_value).position = 0;
+                try{
+                    ByteArray(_value).inflate();
+                }catch(_e:*)
+                {
+                }
+            }
+
 			
 			_value.position				= 0;
 			_value.endian				= Endian.LITTLE_ENDIAN;
