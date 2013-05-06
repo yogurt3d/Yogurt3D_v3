@@ -35,6 +35,8 @@ public final class DeviceStreamManager
 
         private var m_textures:Dictionary;
 
+        private var m_cullMode:String = "";
+
 		public function DeviceStreamManager(enforcer:SingletonEnforcer)
 		{
 			m_contextBufferAllocation = new Dictionary();
@@ -107,8 +109,6 @@ public final class DeviceStreamManager
             m_textures[5] = null;
             m_textures[6] = null;
             m_textures[7] = null;
-
-
 		}
 		/*public function cleanVertexBuffers(device:Context3D):void{
 			if( m_contextBufferAllocation[device] > -1 )
@@ -140,6 +140,13 @@ public final class DeviceStreamManager
                 m_textures[index] = texture;
             }
 		}
+        [Inline]
+        public function setCullMode( _device:Context3D, cullMode:String):void{
+            if( m_cullMode != cullMode ){
+                _device.setCulling(cullMode);
+                m_cullMode = cullMode;
+            }
+        }
 	}
 }
 internal class SingletonEnforcer {}
