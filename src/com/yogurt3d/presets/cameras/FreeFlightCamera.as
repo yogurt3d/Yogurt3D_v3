@@ -48,7 +48,9 @@ import flash.events.MouseEvent;
 		
 		private var m_viewport:DisplayObject;
 
-		public function FreeFlightCamera(_viewport:DisplayObject, _initInternals:Boolean=true)
+        public var speed:Number;
+
+		public function FreeFlightCamera(_viewport:DisplayObject, _speed:Number = 5, _initInternals:Boolean=true)
 		{
 			super(_initInternals);
 			
@@ -71,7 +73,7 @@ import flash.events.MouseEvent;
                 _viewport.addEventListener(MouseEvent.MOUSE_MOVE, 	onMouseMoveEvent );
                 _viewport.addEventListener(MouseEvent.MOUSE_WHEEL, 	onMouseWheelEvent );
             }
-
+            speed = _speed;
 
 			
 			m_viewport = _viewport;
@@ -82,19 +84,19 @@ import flash.events.MouseEvent;
 		public function updateWithTimeInfo():void{
 			if( m_leftKey  )
 			{
-				moveLocalX( -5  );
+				moveLocalX( -speed  );
 			}
 			if( m_rightKey )
 			{
-				moveLocalX( 5  );
+				moveLocalX( speed  );
 			}
 			if( m_downKey )
 			{
-				moveLocalZ(5  );
+				moveLocalZ(speed  );
 			}
 			if( m_upKey  )
 			{
-				moveLocalZ( -5  );
+				moveLocalZ( -speed  );
 			}
 		}
 
