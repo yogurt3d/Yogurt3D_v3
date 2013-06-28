@@ -20,6 +20,7 @@ package com.yogurt3d.core.material.pass
 {
     import com.yogurt3d.YOGURT3D_INTERNAL;
     import com.yogurt3d.core.geoms.IMesh;
+    import com.yogurt3d.core.geoms.SkeletalAnimatedMesh;
     import com.yogurt3d.core.geoms.SkinnedSubMesh;
     import com.yogurt3d.core.geoms.SubMesh;
     import com.yogurt3d.core.managers.DeviceStreamManager;
@@ -241,6 +242,15 @@ package com.yogurt3d.core.material.pass
             {
                 // Move to VertexStreamManager START
                 var subMesh:SubMesh = mesh.subMeshList[submeshindex];
+
+                var _skinnedsubmesh:SkinnedSubMesh = subMesh as SkinnedSubMesh
+                if(_skinnedsubmesh != null) {
+                    for(var boneIndex:int = 0; boneIndex < _skinnedsubmesh.originalBoneIndex.length; boneIndex++) {
+                        var originalBoneIndex:uint = _skinnedsubmesh.originalBoneIndex[boneIndex];
+                        _device.setProgramConstantsFromVector(Context3DProgramType.VERTEX, gen.VC["BoneMatrices"].index + (boneIndex * 3), SkeletalAnimatedMesh(_object.geometry).bones[originalBoneIndex].transformationMatrix.rawData, 3);
+                    }
+                }
+
                 m_vsManager.markVertex(_device);
                 if( m_vertexInput.YOGURT3D_INTERNAL::m_vertexpos )
                 {
@@ -491,26 +501,115 @@ package com.yogurt3d.core.material.pass
 
             gen.createVC("ViewProjection",4);
 
+            var code:String = "//*****VERTEX SHADER*****//\n";
+
+            if(isSkeletal){
+                var vt1:IRegister = gen.createVT("vt1", 4);
+                var vt2:IRegister = gen.createVT("vt2", 4);
+                var vt3:IRegister = gen.createVT("vt3", 4);
+                var vt4:IRegister = gen.createVT("boneResult", 4);
+                var vt5:IRegister = gen.createVT("vt5", 4);
+                var vt6:IRegister = gen.createVT("vt6", 4);
+
+                gen.createVC("BoneMatrices", 4);
+
+                var posVec3:Array = [vt3.x, vt3.y, vt3.z, vt3.w];
+                var posVec2:Array = [vt2.x, vt2.y, vt2.z, vt2.w];
+
+                code += [
+
+                    gen.code("mov", vt2, "va" + (input.boneData.index + 1)),
+                    gen.code("mov", vt2, input.boneData), // bone Indices
+
+                    gen.code("mov", vt3, "va" + (input.boneData.index + 3)),
+                    gen.code("mov", vt3, "va" + (input.boneData.index + 2)) // bone Weight
+
+                ].join("\n") + "\n";
+
+                for(var i:int = 0; i < 8; i++) {
+                    code += gen.code("mul", vt1, posVec3[ i % 4 ], "vc[" + posVec2[ i % 4 ] + "+" + gen.VC["BoneMatrices"].index + "]") + "\n";
+
+                    if(i == 0) {
+                        code += gen.code("mov", vt4, vt1) + "\n";
+                    } else {
+                        code += gen.code("add", vt4, vt1, vt4) + "\n";
+                    }
+
+                    code += gen.code("mul", vt1, posVec3[ i % 4 ], "vc[" + posVec2[ i % 4 ] + "+" + (gen.VC["BoneMatrices"].index + 1) + "]") + "\n";
+
+                    if(i == 0) {
+                        code += gen.code("mov", vt5, vt1) + "\n";
+                    } else {
+                        code += gen.code("add", vt5, vt1, vt5) + "\n";
+                    }
+
+                    code += gen.code("mul", vt1, posVec3[ i % 4 ], "vc[" + posVec2[ i % 4 ] + "+" + (gen.VC["BoneMatrices"].index + 2) + "]") + "\n";
+
+                    if(i == 0) {
+                        code += gen.code("mov", vt6, vt1) + "\n";
+                    } else {
+                        code += gen.code("add", vt6, vt1, vt6) + "\n";
+                    }
+
+                    if(i == 3) {
+                        code += [
+                            gen.code("mov", vt2, "va" + (input.boneData.index + int(( i + 1 ) / 4))),
+                            gen.code("mov", vt3, "va" + (input.boneData.index + 2 + int(( i + 1 ) / 4))),
+                        ].join("\n") + "\n";
+                    }
+                }
+
+                code += "\n";
+
+                gen.destroyVT("vt1");
+                gen.destroyVT("vt2");
+                gen.destroyVT("vt3");
+                gen.destroyVT("vt5");
+                gen.destroyVT("vt6");
+
+                var worldPos:IRegister = gen.createVT("worldPos", 4);
+                var normalTemp:IRegister = gen.createVT("normTemp", 3);
+
+                code += [
+                    "//Calculate world pos",
+                    gen.code("m34", worldPos.xyz, input.vertexpos, vt4),
+                    gen.code("mov", worldPos.w, input.vertexpos.w),
+                    gen.code("m44", worldPos, worldPos, gen.VC["Model"]),
+
+                    "//Screen Pos",
+                    gen.code("m44", "op", worldPos, gen.VC["ViewProjection"]),
+                ].join("\n");
+
+                if( out.normal){
+                    code += [
+                        "//Calculate normals",
+                        gen.code("m33", normalTemp, input.normal.xyz, vt4),
+                        gen.code("m33", normalTemp, normalTemp, gen.VC["Model"]),
+                        gen.code("nrm", normalTemp, normalTemp),
+                        gen.code("mov", out.normal.xyz, normalTemp),
+                        gen.code("mov", out.normal.w, input.normal.w)
+
+                    ].join("\n");
+                }
+            }
+
             var vertex:String = vertexFunction(input,out, gen);
 
-            var code:String = "//*****VERTEX SHADER*****//\n";
-            code += "// calculate world pos\n";
-            code += gen.code("m44",worldPos, input.vertexpos, gen.VC["Model"])+ "\n";
-            // add skeletal animation here
+            if(!isSkeletal){
+                code += "// calculate world pos\n";
+                code += gen.code("m44",worldPos, input.vertexpos, gen.VC["Model"])+ "\n";
+                // add skeletal animation here
 
-            if( out.normal)
-            {
-                code += "\n// calculate normal\n";
-                code += gen.code("m33",out.normal.xyz, input.normal, gen.VC["Model"])+ "\n";
-                code += gen.code("mov",out.normal.w, input.normal.w)+ "\n";
+                if( out.normal)
+                {
+                    code += "\n// calculate normal\n";
+                    code += gen.code("m33",out.normal.xyz, input.normal, gen.VC["Model"])+ "\n";
+                    code += gen.code("mov",out.normal.w, input.normal.w)+ "\n";
+                }
             }
 
             code += vertex;
 
-            if( out.normal)
-            {
-                code += "\n//move normal to varying\n";
-            }
             if( out.vertexPosition )
             {
                 code += "\n// move vertexpos to varying\n";
@@ -540,7 +639,9 @@ package com.yogurt3d.core.material.pass
 //            trace("[Pass]VERTEX SHADER");
 //            trace(code);
 //            trace("[Pass]END VERTEX SHADER");
-
+            //trace("VERTEX FUNCTION");
+			//trace(gen.printCode( code ));
+			//trace("---------------------------");
             return ShaderUtils.vertexAssambler.assemble(Context3DProgramType.VERTEX, code, false );
         }
 
