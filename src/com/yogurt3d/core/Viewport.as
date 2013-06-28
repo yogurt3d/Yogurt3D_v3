@@ -441,6 +441,11 @@ public class Viewport extends Sprite implements IEngineObject
 		}
 		
 		public function dispose():void{
+            try{
+                m_device.dispose();
+            }catch(e:*){
+                // Gotcha!
+            }
 			removeEventListener(Event.ADDED_TO_STAGE, onAddedToStage );
 			removeEventListener(Event.REMOVED_FROM_STAGE, onRemovedFromStage );
 			
