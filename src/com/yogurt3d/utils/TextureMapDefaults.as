@@ -101,7 +101,7 @@ public class TextureMapDefaults
 		public static function get WHITE():TextureMap{
 			if( m_white == null )
 			{
-				m_white = new TextureMap(new BitmapData(1, 1, false, 0xFFFFFF));
+				m_white = new TextureMap(new BitmapData(1, 1, false, 0xFFFFFFFF));
 			//	m_white.mipmap = true;
 			}
 			return m_white;

@@ -101,8 +101,10 @@ import flash.geom.Vector3D;
 			var _event:MouseEvent3D = new MouseEvent3D(type, bubbles, cancelable);
 			_event.m_intersection 	= m_intersection;
 			_event.triangle 		= triangle;
-			_event.u 				= u;
-			_event.v				= v;
+            _event.u 				= u;
+            _event.v				= v;
+            _event.x 				= x;
+            _event.y				= y;
 			_event.target3d 		= target3d;
 			_event.currentTarget3d 	= currentTarget3d;
 			_event.camera 			= camera;
@@ -146,7 +148,9 @@ import flash.geom.Vector3D;
 			if( vec )
 			{
 				m_intersection = vec;
-			}
+			}else{
+                trace("No no no no", target3d.userID, target3d.systemID);
+            }
 		}
 		/**
 		 * 3D coordinate of the mouse

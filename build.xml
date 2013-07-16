@@ -2,7 +2,7 @@
 <project name="y3d" default="main" basedir=".">
 	
 
-	<property name="FLEX_HOME" value="C:/Program Files (x86)/Adobe/Adobe Flash Builder 4/sdks/4.5.1" />
+	<property name="FLEX_HOME" value="C:\Program Files\Adobe\Adobe Flash Builder 4.7 (64 Bit)\sdks\4.6.0" />
 	<property name="flex_frameworks_libs_dir" value="${FLEX_HOME}/frameworks/libs"/> 
 	<property name="YOGURT3D_VERSION" value="v2.1_008" />
 	

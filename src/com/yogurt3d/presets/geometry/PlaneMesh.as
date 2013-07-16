@@ -94,8 +94,8 @@ import com.yogurt3d.core.managers.IDManager;
 
 			for (yi = 0; yi <= _hSegments; ++yi) {
 				for (xi = 0; xi <= _vSegments; ++xi) {
-					_uvt[numUV++] = clamp( xi/_vSegments, 0.05, 0.95 );
-					_uvt[numUV++] = clamp( yi/_hSegments, 0.05, 0.95 );
+					_uvt[numUV++] = clamp( xi/_vSegments, 0.01, 0.99 );
+					_uvt[numUV++] = clamp( yi/_hSegments, 0.01, 0.99 );
 				}
 			}
 			var subMesh:SubMesh = new SubMesh();

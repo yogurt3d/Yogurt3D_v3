@@ -1,4 +1,4 @@
-/*
+ /*
 * IRenderableManager.as
 * This file is part of Yogurt3D Flash Rendering Engine 
 *

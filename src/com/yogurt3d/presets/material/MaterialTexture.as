@@ -44,31 +44,31 @@ public class MaterialTexture extends MaterialBase{
             var temp2:IRegister = gen.createFT( "temp2",4);
 			var str:String = 
 				["\n\n//****SurfaceFunction START****/",
-                    gen.tex( temp, surfaceInput.uvMain, getConstant("colorMap"), "2d", "wrap", "linear", (texture as TextureMap).mipmap, false, false, getConstant("opacity").y),
-                    gen.tex( temp2, surfaceInput.uvSecond, getConstant("lightMap"), "2d", "wrap", "linear", (lightMap as TextureMap).mipmap, false, false, getConstant("opacity").y),
-					gen.code("mul", temp, temp, temp2),
-				//	gen.code("mov", temp.w, getConstant("opacity").x),
-                    gen.code("mul", temp.w, temp.w, getConstant("opacity").x),
-					gen.code("mov",surfaceOutput.Albedo, temp.xyz),
-					gen.code("mov",surfaceOutput.Alpha, temp.w),
+                    gen.tex( temp, surfaceInput.uvMain, getConstant("colorMap"), "2d", "wrap", "linear", (texture as TextureMap).mipmap, false, false, getConstant("opacity").y ),
+                    gen.tex( temp2, surfaceInput.uvSecond, getConstant("lightMap"), "2d", "wrap", "linear", false, false, false, getConstant("opacity").y ),
+					gen.code( "mul", temp, temp, temp2 ),
+				//	gen.code( "mov", temp.w, getConstant("opacity").x),
+                    gen.code( "mul", temp.w, temp.w, getConstant("opacity").x ),
+					gen.code( "mov",surfaceOutput.Albedo, temp.xyz ),
+					gen.code( "mov",surfaceOutput.Alpha, temp.w ),
 					"\n\n//****SurfaceFunction END****/"
 				].join("\n");
 
-            gen.destroyFT("temp1");
-            gen.destroyFT("temp2");
+            gen.destroyFT( "temp1" );
+            gen.destroyFT( "temp2" );
 			return str;
 		}
 		
 		public function get opacity():Number{
-			return getConstantVec("opacity")[0];
+			return getConstantVec( "opacity" )[0];
 		}
 		
 		public function set opacity( value:Number ):void{
-			getConstantVec("opacity")[0] = value;
+			getConstantVec( "opacity" )[0] = value;
 		}
 
         public function get texture():ITexture {
-            return getConstantTex("colorMap");
+            return getConstantTex( "colorMap" );
         }
 
         public function set texture(value:ITexture):void{
@@ -80,7 +80,7 @@ public class MaterialTexture extends MaterialBase{
             }
         }
         public function get lightMap():ITexture {
-            return getConstantTex("lightMap");
+            return getConstantTex( "lightMap" );
         }
 
         public function set lightMap(value:ITexture):void{

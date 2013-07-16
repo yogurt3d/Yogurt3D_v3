@@ -58,8 +58,16 @@ public function removeController(name:String):IController{
 	return comp;
 }
 public function removeAllController():void{
-	for( var name:String in m_controllerDict )
-	{
-		removeController(name);
-	}
+    for( var name:String in m_controllerDict )
+    {
+        removeController(name);
+    }
+}
+public function getAllControllers():Array{
+    var arr:Array = [];
+    for( var name:String in m_controllerDict )
+    {
+        arr.push(getController(name));
+    }
+    return arr;
 }

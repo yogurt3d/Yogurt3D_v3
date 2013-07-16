@@ -28,5 +28,6 @@ public interface IControllableObject
 		function hasController(name:String)										:Boolean;
 		function removeController(name:String)									:IController;
 		function removeAllController()											:void;
+        function getAllControllers()                                            :Array
 	}
 }

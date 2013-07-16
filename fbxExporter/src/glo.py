@@ -1,0 +1,12 @@
+FBXName = ''
+FBXPath = ''
+outputFolder =  ''
+y3d = False
+yoa = False
+s = '/'
+bone2Parent = {}
+bone2Matrix = {}
+bone2Params = {}
+RootBoneName = ""
+node2Child = {} # maps each Node in the Scene Graph to its Children. 
+animFlag = 0
