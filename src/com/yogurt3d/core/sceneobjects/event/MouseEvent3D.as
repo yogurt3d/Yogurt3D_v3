@@ -37,15 +37,19 @@ import flash.geom.Vector3D;
 	{
 		use namespace YOGURT3D_INTERNAL;
 		
-		public static var MOUSE_UP		: String = "mouseUp";
-		public static var MOUSE_DOWN	: String = "mouseDown";
-		public static var MOUSE_MOVE	: String = "mouseMove";
-		public static var MOUSE_OVER	: String = "mouseOver";
-		public static var MOUSE_OUT		: String = "mouseOut";
-		public static var CLICK			: String = "click";
-		public static var DOUBLE_CLICK	: String = "doucleClick";
+		public static var MOUSE_UP		    : String = "mouseUp";
+		public static var MOUSE_DOWN	    : String = "mouseDown";
+		public static var MOUSE_MOVE	    : String = "mouseMove";
+		public static var MOUSE_OVER	    : String = "mouseOver";
+		public static var MOUSE_OUT		    : String = "mouseOut";
+		public static var CLICK			    : String = "click";
+		public static var DOUBLE_CLICK	    : String = "doubleClick";
+        public static var RIGHT_CLICK	    : String = "rightClick";
+        public static var RIGHT_MOUSE_DOWN	: String = "rightMouseDown";
+        public static var RIGHT_MOUSE_UP	: String = "rightMouseDown";
 		
 		private var m_intersection 		: Vector3D;
+
 		
 		/**
 		 * Triangle index which mouse is interacting

@@ -77,6 +77,12 @@ package com.yogurt3d.core.managers {
             m_viewport.addEventListener(MouseEvent.DOUBLE_CLICK, onDoubleClick);
             m_viewport.addEventListener(MouseEvent.ROLL_OUT, onRollOut);
             m_viewport.addEventListener(MouseEvent.ROLL_OVER, onRollOver);
+
+            m_viewport.addEventListener(MouseEvent.RIGHT_CLICK, onRightClick);
+            m_viewport.addEventListener(MouseEvent.RIGHT_MOUSE_DOWN, onRightDown);
+            m_viewport.addEventListener(MouseEvent.RIGHT_MOUSE_UP, onRightUp);
+
+
             m_viewport.doubleClickEnabled = true;
         }
 
@@ -94,6 +100,60 @@ package com.yogurt3d.core.managers {
             m_viewport.removeEventListener(MouseEvent.MOUSE_UP, onUp);
             m_viewport.removeEventListener(MouseEvent.MOUSE_MOVE, onMove);
             m_viewport.removeEventListener(MouseEvent.DOUBLE_CLICK, onDoubleClick);
+
+            m_viewport.removeEventListener(MouseEvent.RIGHT_CLICK, onRightClick);
+            m_viewport.removeEventListener(MouseEvent.RIGHT_MOUSE_DOWN, onRightDown);
+            m_viewport.removeEventListener(MouseEvent.RIGHT_MOUSE_UP, onRightUp);
+        }
+
+        private function onRightClick(_e:MouseEvent):void{
+
+            if(m_currentObject != null && m_currentObject.onMouseRightClick && m_currentObject.onMouseRightClick.numListeners > 0) {
+                var event:MouseEvent3D = new MouseEvent3D(MouseEvent3D.RIGHT_CLICK);
+                event.target3d = m_currentObject;
+                event.currentTarget3d = m_currentObject;
+                event.intersection = m_currentIntersection;
+                event.x = m_pickRenderer.mouseCoordX;
+                event.y = m_pickRenderer.mouseCoordY;
+                event.camera = m_lastCamera;
+                event.viewport = m_viewport;
+
+                trace("[Pick Manager] Mouse Right Clicked", m_currentObject);
+                m_currentObject.onMouseRightClick.dispatch(event);
+            }
+        }
+
+        private function onRightDown(_e:MouseEvent):void{
+
+            if(m_currentObject != null && m_currentObject.onMouseRightDown && m_currentObject.onMouseRightDown.numListeners > 0) {
+                var event:MouseEvent3D = new MouseEvent3D(MouseEvent3D.RIGHT_MOUSE_DOWN);
+                event.target3d = m_currentObject;
+                event.currentTarget3d = m_currentObject;
+                event.intersection = m_currentIntersection;
+                event.x = m_pickRenderer.mouseCoordX;
+                event.y = m_pickRenderer.mouseCoordY;
+                event.camera = m_lastCamera;
+                event.viewport = m_viewport;
+
+                trace("[Pick Manager] Mouse Right Down", m_currentObject);
+                m_currentObject.onMouseRightDown.dispatch(event);
+            }
+        }
+
+        private function onRightUp(_e:MouseEvent):void{
+            if(m_currentObject != null && m_currentObject.onMouseRightUp && m_currentObject.onMouseRightUp.numListeners > 0) {
+                var event:MouseEvent3D = new MouseEvent3D(MouseEvent3D.RIGHT_MOUSE_UP);
+                event.target3d = m_currentObject;
+                event.currentTarget3d = m_currentObject;
+                event.intersection = m_currentIntersection;
+                event.x = m_pickRenderer.mouseCoordX;
+                event.y = m_pickRenderer.mouseCoordY;
+                event.camera = m_lastCamera;
+                event.viewport = m_viewport;
+
+                trace("[Pick Manager] Mouse Right Up", m_currentObject);
+                m_currentObject.onMouseRightUp.dispatch(event);
+            }
         }
 
         private function onDown(_e:MouseEvent):void {

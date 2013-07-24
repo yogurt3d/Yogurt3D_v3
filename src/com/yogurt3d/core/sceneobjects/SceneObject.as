@@ -94,6 +94,12 @@ import org.osflash.signals.Signal;
 		YOGURT3D_INTERNAL var m_onMouseClick					: Signal;
 		
 		YOGURT3D_INTERNAL var m_onMouseDoubleClick				: Signal;
+
+        YOGURT3D_INTERNAL var m_onMouseRightClick				: Signal;
+
+        YOGURT3D_INTERNAL var m_onMouseRightUp  				: Signal;
+
+        YOGURT3D_INTERNAL var m_onMouseRightDown				: Signal;
 		
 		YOGURT3D_INTERNAL var m_onAddedToScene   				: Signal;
 		
@@ -309,11 +315,33 @@ import org.osflash.signals.Signal;
 		 * @see com.yogurt3d.core.sceneobjects.interfaces.SceneObject#onMouseDoubleClick
 		 */	
 		public function get onMouseDoubleClick():Signal{	return YOGURT3D_INTERNAL::m_onMouseDoubleClick;}
+
+        /**
+         * @inheritDoc
+         * @return
+         * @see com.yogurt3d.core.sceneobjects.interfaces.SceneObject#onMouseRightClick
+         */
+        public function get onMouseRightClick():Signal{	return YOGURT3D_INTERNAL::m_onMouseRightClick;}
+
+        /**
+         * @inheritDoc
+         * @return
+         * @see com.yogurt3d.core.sceneobjects.interfaces.SceneObject#onMouseRightUp
+         */
+        public function get onMouseRightUp():Signal{	return YOGURT3D_INTERNAL::m_onMouseRightUp;}
+
+        /**
+         * @inheritDoc
+         * @return
+         * @see com.yogurt3d.core.sceneobjects.interfaces.SceneObject#onMouseRightDown
+         */
+        public function get onMouseRightDown():Signal{	return YOGURT3D_INTERNAL::m_onMouseRightDown;}
+
 		/**
 		 * @inheritDoc 
 		 * @return 
 		 * @see com.yogurt3d.core.sceneobjects.interfaces.SceneObject#onStaticChanged
-		 */	
+		 */
 		public function get onStaticChanged():Signal{	return m_onStaticChanged;}
 		/**
 		 * @inheritDoc 
@@ -491,6 +519,9 @@ import org.osflash.signals.Signal;
 				_value.onMouseOut.add( $eventJump );
 				_value.onMouseOver.add( $eventJump );
 				_value.onMouseUp.add( $eventJump );
+                _value.m_onMouseRightClick.add( $eventJump );
+                _value.m_onMouseRightUp.add( $eventJump );
+                _value.m_onMouseRightDown.add( $eventJump );
 			}
 			
 			if( m_useHandCursor )
@@ -725,12 +756,15 @@ import org.osflash.signals.Signal;
 			m_transformation		= new Transformation(this);
 			
 			m_onMouseClick			= new Signal(MouseEvent3D);
-			m_onMouseDoubleClick		= new Signal(MouseEvent3D);
+			m_onMouseDoubleClick	= new Signal(MouseEvent3D);
 			m_onMouseDown			= new Signal(MouseEvent3D);
 			m_onMouseMove			= new Signal(MouseEvent3D);
 			m_onMouseOut			= new Signal(MouseEvent3D);
 			m_onMouseOver			= new Signal(MouseEvent3D);
-			m_onMouseUp			= new Signal(MouseEvent3D);
+			m_onMouseUp			    = new Signal(MouseEvent3D);
+            m_onMouseRightClick	    = new Signal(MouseEvent3D);
+            m_onMouseRightDown	    = new Signal(MouseEvent3D);
+            m_onMouseRightUp	    = new Signal(MouseEvent3D);
 			
 			m_onRemovedFromScene		= new Signal( SceneObject, Scene3D );
 			m_onAddedToScene		= new Signal( SceneObject, Scene3D );
@@ -817,6 +851,18 @@ import org.osflash.signals.Signal;
 			if( m_onMouseUp )
 				m_onMouseUp.removeAll();
 			m_onMouseUp = null;
+
+            if( m_onMouseRightClick )
+                m_onMouseRightClick.removeAll();
+            m_onMouseRightClick = null;
+
+            if( m_onMouseRightUp )
+                m_onMouseRightUp.removeAll();
+            m_onMouseRightUp = null;
+
+            if( m_onMouseRightDown )
+                m_onMouseRightDown.removeAll();
+            m_onMouseRightDown = null;
 			
 			super.dispose();
 		}

@@ -19,7 +19,6 @@
 package com.yogurt3d.presets.setup
 {
 import com.yogurt3d.YOGURT3D_INTERNAL;
-import com.yogurt3d.core.Scene;
 import com.yogurt3d.core.Scene3D;
 import com.yogurt3d.presets.cameras.TargetCamera;
 
@@ -44,7 +43,7 @@ public class TargetSetup extends SetupBase
 				viewport.height = _parent.height;
 			}
 			
-			YOGURT3D_INTERNAL::scene = new Scene();
+			YOGURT3D_INTERNAL::scene = new Scene3D();
 			
 			YOGURT3D_INTERNAL::camera = new TargetCamera(viewport);
 			
