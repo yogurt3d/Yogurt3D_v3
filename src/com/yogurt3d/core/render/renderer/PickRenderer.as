@@ -28,11 +28,13 @@ import com.yogurt3d.core.geoms.SubMesh;
 import com.yogurt3d.core.managers.DeviceStreamManager;
 import com.yogurt3d.core.managers.MaterialManager;
 import com.yogurt3d.core.material.Y3DProgram;
+import com.yogurt3d.core.material.enum.EBlendMode;
 import com.yogurt3d.core.objects.EngineObject;
 import com.yogurt3d.core.render.renderqueue.RenderQueue;
 import com.yogurt3d.core.render.renderqueue.RenderQueueNode;
 import com.yogurt3d.core.sceneobjects.SceneObjectRenderable;
 import com.yogurt3d.core.sceneobjects.camera.Camera3D;
+import com.yogurt3d.core.volumes.AxisAlignedBoundingBox;
 import com.yogurt3d.utils.MatrixUtils;
 
 import flash.display.BitmapData;
@@ -78,6 +80,8 @@ import flash.geom.Vector3D;
 		private var m_lastHit						:SceneObjectRenderable;
 		private var m_localHitPosition				:Vector3D;
 		private var m_viewport						:Viewport;
+
+        private var m_scissorRect:Rectangle = new Rectangle( 0,0,1,1 );
 		
 		public function PickRenderer(_viewport:Viewport, _initInternals:Boolean=true)
 		{
@@ -137,7 +141,9 @@ import flash.geom.Vector3D;
 		}
 	
 		public function render( device:Context3D, _scene:Scene3D=null, _camera:Camera3D=null, rect:Rectangle=null, excludeList:Array = null ):void
-		{		
+		{
+            var vec:Vector.<Number> = MatrixUtils.RAW_DATA;
+
 			var _renderableObject:SceneObjectRenderable;
 			var _mesh:IMesh;
 			var _vertexBuffer:VertexBuffer3D;
@@ -172,11 +178,11 @@ import flash.geom.Vector3D;
 			// clean buffer
 			
 			device.clear(0,0,0,0);
-			device.setScissorRectangle( new Rectangle( 0,0,1,1 ) );
+			device.setScissorRectangle( m_scissorRect );
             vsManager.setCullMode(device, Context3DTriangleFace.FRONT );
 			
 			// disable blending
-			device.setBlendFactors( "one", "zero");
+            EBlendMode.NORMAL.setToDevice(device);
 			device.setColorMask( true, true, true, true);
 			device.setDepthTest( true, Context3DCompareMode.LESS );
 			
@@ -207,13 +213,12 @@ import flash.geom.Vector3D;
 				
 				// set the selection index to objects' position on the renderable set plus one
 				var selectionIndex:uint = i + 1;
-				
+				vec[0] = (((selectionIndex) % 32) << 3) / 255.0;
+                vec[1] = (((selectionIndex>>5) % 32) << 3) / 255.0;
+                vec[2] = (((selectionIndex>>10) % 32) << 3) / 255.0;
+                vec[3] = 1;
 				// split the selection index into 4 floating points
-				device.setProgramConstantsFromVector( Context3DProgramType.FRAGMENT, shader.gen.FC["SIndex"].index, Vector.<Number>([
-					(((selectionIndex) % 32) << 3) / 255.0, 
-					(((selectionIndex>>5) % 32) << 3) / 255.0, 
-					(((selectionIndex>>10) % 32) << 3) / 255.0, 1
-				]), 1 );
+				device.setProgramConstantsFromVector( Context3DProgramType.FRAGMENT, shader.gen.FC["SIndex"].index, vec, 1 );
 				
 				// for each submesh 
 				submeshlen = _renderableObject.geometry.subMeshList.length;
@@ -251,12 +256,14 @@ import flash.geom.Vector3D;
 						
 						//normal
 						vsManager.setStream( device,  shader.vertexInput.normal.index, _submesh.getNormalBufferByContext3D(device),0, Context3DVertexBufferFormat.FLOAT_3);
-						
+
+
 						for( boneIndex = 0; boneIndex < SkinnedSubMesh(_submesh).originalBoneIndex.length; boneIndex++)
 						{	
 							originalBoneIndex = SkinnedSubMesh(_submesh).originalBoneIndex[boneIndex];
-							m_tempMatrix.copyFrom( SkeletalAnimatedMesh(_renderableObject.geometry).bones[originalBoneIndex].transformationMatrix );
-							device.setProgramConstantsFromVector( Context3DProgramType.VERTEX, shader.gen.VC["BoneMatrices"].index + (boneIndex*3), m_tempMatrix.rawData, 3 );
+
+							SkeletalAnimatedMesh(_renderableObject.geometry).bones[originalBoneIndex].transformationMatrix.copyRawDataTo(vec);
+							device.setProgramConstantsFromVector( Context3DProgramType.VERTEX, shader.gen.VC["BoneMatrices"].index + (boneIndex*3), vec, 3 );
 							vsManager.sweepVertex(device);
 						}
 						
@@ -311,20 +318,20 @@ import flash.geom.Vector3D;
 				for( subMeshIndex = 0; subMeshIndex < submeshlen; subMeshIndex++ )
 				{
 					_submesh = _renderableObject.geometry.subMeshList[subMeshIndex];
-					
+					var axis:AxisAlignedBoundingBox = _submesh.axisAlignedBoundingBox;
 					//_submesh.axisAlignedBoundingBox.update( new Matrix3D() );
 					
 					if( subMeshIndex == 0 )
 					{
-						max.copyFrom( _submesh.axisAlignedBoundingBox.maxGlobal );
-						min.copyFrom(_submesh.axisAlignedBoundingBox.minGlobal);
+						max.copyFrom( axis.maxGlobal );
+						min.copyFrom( axis.minGlobal);
 					}else{
-						if( _submesh.axisAlignedBoundingBox.maxGlobal.x > max.x )	{max.x = _submesh.axisAlignedBoundingBox.maxGlobal.x}
-						if( _submesh.axisAlignedBoundingBox.maxGlobal.y > max.y )	{max.y = _submesh.axisAlignedBoundingBox.maxGlobal.y}
-						if( _submesh.axisAlignedBoundingBox.maxGlobal.z > max.z )	{max.z = _submesh.axisAlignedBoundingBox.maxGlobal.z}
-						if( _submesh.axisAlignedBoundingBox.minGlobal.x < min.x )	{min.x = _submesh.axisAlignedBoundingBox.minGlobal.x}
-						if( _submesh.axisAlignedBoundingBox.minGlobal.y < min.y )	{min.y = _submesh.axisAlignedBoundingBox.minGlobal.y}
-						if( _submesh.axisAlignedBoundingBox.minGlobal.z < min.z )	{min.z = _submesh.axisAlignedBoundingBox.minGlobal.z}
+						if( axis.maxGlobal.x > max.x )	{max.x = axis.maxGlobal.x}
+						if( axis.maxGlobal.y > max.y )	{max.y = axis.maxGlobal.y}
+						if( axis.maxGlobal.z > max.z )	{max.z = axis.maxGlobal.z}
+						if( axis.minGlobal.x < min.x )	{min.x = axis.minGlobal.x}
+						if( axis.minGlobal.y < min.y )	{min.y = axis.minGlobal.y}
+						if( axis.minGlobal.z < min.z )	{min.z = axis.minGlobal.z}
 					}
 				}
 				

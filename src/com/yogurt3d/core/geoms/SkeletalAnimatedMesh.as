@@ -45,6 +45,7 @@ use namespace YOGURT3D_INTERNAL;
 		YOGURT3D_INTERNAL var m_boundingSphere	:BoundingSphere;
 		
 		YOGURT3D_INTERNAL var m_controller		:IController;
+        private var m_type:String;
 		
 		public function SkeletalAnimatedMesh(base:SkeletalAnimatedMeshBase)
 		{
@@ -78,7 +79,7 @@ use namespace YOGURT3D_INTERNAL;
 		}
 		
 		public function get type():String{
-			return "SkeletalAnimatedGPUMesh_" + m_bones.length;
+			return m_type;
 		}
 		
 		public function get bones():Vector.<Bone>
@@ -89,6 +90,7 @@ use namespace YOGURT3D_INTERNAL;
 		public function set bones(value:Vector.<Bone>):void
 		{
 			m_bones = value;
+            m_type = "SkeletalAnimatedGPUMesh_" + m_bones.length;
 		}
 				
 		public function get triangleCount():int
@@ -155,6 +157,7 @@ use namespace YOGURT3D_INTERNAL;
 					}
 				}
 			}
+            m_type = "SkeletalAnimatedGPUMesh_" + m_bones.length;
 		}
 	}
 }

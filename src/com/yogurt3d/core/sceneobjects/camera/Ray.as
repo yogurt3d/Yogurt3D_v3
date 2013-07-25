@@ -147,7 +147,7 @@ public class Ray
 			var testDistance:Number = -1 ;
 			
 			var _sorgb:Matrix3D = new Matrix3D() ;
-			_sorgb.copyFrom(_so.transformation.matrixGlobal.clone()) ;
+			_sorgb.copyFrom(_so.transformation.matrixGlobal) ;
 			
 			_sorgb.invert() ;
 			

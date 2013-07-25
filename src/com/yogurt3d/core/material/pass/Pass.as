@@ -45,9 +45,12 @@ package com.yogurt3d.core.material.pass
     import com.yogurt3d.utils.ShaderUtils;
 
     import flash.display3D.Context3D;
-    import flash.display3D.Context3DProgramType;
-    import flash.display3D.Context3DVertexBufferFormat;
-    import flash.display3D.VertexBuffer3D;
+import flash.display3D.Context3DMipFilter;
+import flash.display3D.Context3DProgramType;
+import flash.display3D.Context3DTextureFilter;
+import flash.display3D.Context3DVertexBufferFormat;
+import flash.display3D.Context3DWrapMode;
+import flash.display3D.VertexBuffer3D;
     import flash.geom.Matrix3D;
     import flash.utils.ByteArray;
     import flash.utils.Dictionary;
@@ -298,6 +301,7 @@ package com.yogurt3d.core.material.pass
 
             device.setProgramConstantsFromMatrix(Context3DProgramType.VERTEX, gen.VC["Model"].index, _object.transformation.matrixGlobal, true );
             device.setProgramConstantsFromMatrix(Context3DProgramType.VERTEX, gen.VC["ViewProjection"].index, m_currentCamera.viewProjectionMatrix, true );
+
             m_vsManager.markTexture(device);
             uploadConstants(device);
             m_vsManager.sweepTexture(device);
@@ -330,8 +334,7 @@ package com.yogurt3d.core.material.pass
                 }else if( value is TextureConstant )
                 {
                     var texConst:TextureConstant = value as TextureConstant;
-                    m_vsManager.setTexture(device, texConst.register.index, texConst.texture.getTextureForDevice(device) );
-                    //device.setTextureAt(texConst.register.index, texConst.texture.getTextureForDevice(device) );
+                    m_vsManager.setTexture(device, texConst.register.index, texConst.texture );
                 }else if( value is VectorFunctionConstant )
                 {
                     device.setProgramConstantsFromVector( value.type.value, value.register.index, VectorFunctionConstant(value).callFunction(m_currentLight, m_currentCamera) );

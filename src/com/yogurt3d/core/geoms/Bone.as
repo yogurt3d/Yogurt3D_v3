@@ -255,8 +255,8 @@ use namespace YOGURT3D_INTERNAL;
 			if( m_dirty )
 			{
 				var _parentScale:Vector3D = parentBone.getDerivedScale();
-				var _derivedTranslation:Vector3D = parentBone.getDerivedOrientation().multiplyVector( 
-					new Vector3D(   
+				var _derivedTranslation:Vector3D = parentBone.getDerivedOrientation().multiplyVector(
+					new Vector3D(
 						_parentScale.x * translation.x,
 						_parentScale.y * translation.y,
 						_parentScale.z * translation.z
@@ -325,8 +325,8 @@ use namespace YOGURT3D_INTERNAL;
 					// binding pose bone space, and then transform to current
 					// derived bone space.
 					var _locTranslate:Vector3D = getDerivedPosition().add(
-						_locRotate.multiplyVector( 
-							new Vector3D(   
+						_locRotate.multiplyVector(
+							new Vector3D(
 								locScale.x * invTranslation.x,
 								locScale.y * invTranslation.y,
 								locScale.z * invTranslation.z
