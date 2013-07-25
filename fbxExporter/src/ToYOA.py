@@ -4,6 +4,7 @@ from FbxCommon import *
 import glo
 import defs
 
+
 SIGNED_INT = 'i'
 UNSIGNED_INT = 'I'
 SIGNED_SHORT = 'h'
@@ -64,7 +65,10 @@ def ToYOA(lSdkManager, lScene):
     for a in range(1):
         # print "AnimationStack: Stack #", a + 1, "/", nbAnimStack
         lAnimStack = lScene.GetSrcObject(FbxAnimStack.ClassId, a)
-        AnimationStack(lAnimStack, fps, lScene)
+        yoaFileName  = AnimationStack(lAnimStack, fps, lScene)
+        defs.LZMACompression(yoaFileName, glo.outputFolder + "/" + glo.FBXName + '.yoa')
+
+
         
 
 def AnimationStack(pAnimStack, fps, pScene):
@@ -85,7 +89,8 @@ def AnimationStack(pAnimStack, fps, pScene):
         print "\n.......................\n  frame no =", f, "/", frameCount - 1, "\n.......................\n"
         lTime.SetSecondDouble(f / fps)
         TraverseChildren(pScene.GetRootNode(), pScene, lTime, pYoaFile, yoaFileName)
-
+    pYoaFile.close()
+    return yoaFileName;
 
 
 def TraverseChildren(pNode, pScene, lTime, pYoaFile, yoaFileName):
@@ -102,7 +107,7 @@ def TraverseChildren(pNode, pScene, lTime, pYoaFile, yoaFileName):
 def WriteHeader(frameCount, fps):
     from array import array
     
-    yoaFileName = glo.outputFolder + "/" + glo.FBXName + '.yoa'
+    yoaFileName = glo.outputFolder + "/" + glo.FBXName + '_uncompressed.yoa'
     pYoaFile = open(yoaFileName, 'wb')
     
     array(UNSIGNED_SHORT, [8]).tofile(pYoaFile)           # (=len("Yogurt3D"))

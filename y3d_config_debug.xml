@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <flex-config>
-   <compiler locale="en_US" swf-version="16">
+   <compiler locale="en_US" swf-version="20">
 		<define>
 			<name>Y3DCONFIG::TRACE</name>
 			<value>true</value>

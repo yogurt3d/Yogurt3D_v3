@@ -233,7 +233,7 @@ import org.osflash.signals.Signal;
 		 * 
 		 */
 		public function get globalPosition():Vector3D{
-			return matrixGlobal.position.clone();
+			return matrixGlobal.position;
 		}
 		
 		public function globalToLocal(vector_1:Vector3D, vector_2:Vector3D):void

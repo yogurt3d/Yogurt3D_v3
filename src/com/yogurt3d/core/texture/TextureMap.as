@@ -366,6 +366,9 @@ use namespace YOGURT3D_INTERNAL;
 		 * 
 		 */
 		public function getTextureForDevice(_context3D:Context3D):TextureBase{
+            if(disposed){
+                throw new Error("This texture has been disposed");
+            }
 			if( m_readyToUpload == false )
 			{
 				return null;
@@ -463,7 +466,7 @@ use namespace YOGURT3D_INTERNAL;
 				//m_bitmapData.dispose();
 				m_bitmapData = null;
 			}
-			
+
 			super.dispose();
 		}
 		

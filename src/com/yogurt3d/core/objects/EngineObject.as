@@ -30,7 +30,8 @@ import avmplus.getQualifiedClassName;
 	{
 		include "../../../../../includes/ControllableObject.as";
 		include "../../../../../includes/IdentifiableObject.as";
-		
+
+    public var disposed:Boolean = false;
 		
 		/**
 		 * 
@@ -86,6 +87,7 @@ import avmplus.getQualifiedClassName;
 		 * */
 		public function dispose():void
 		{
+            disposed = true;
 			IDManager.removeObject(this);
             removeAllController();
 		}

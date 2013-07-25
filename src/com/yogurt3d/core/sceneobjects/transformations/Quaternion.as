@@ -113,17 +113,30 @@ import flash.geom.Vector3D;
 				w * _Z + z * _W + x * _Y - y * _X
 			);
 		}
-		
+
 		public function multiplyVector( _vector:Vector3D ):Vector3D{
 			// nVidia SDK implementation
-			var uv:Vector3D, uuv:Vector3D;
-			var qvec:Vector3D = new Vector3D(m_x, m_y, m_z);
-			uv = qvec.crossProduct(_vector);
-			uuv = qvec.crossProduct(uv);
-			uv.scaleBy( 2.0 * w );
-			uuv.scaleBy( 2.0 );
-			
-			return _vector.add(uv).add(uuv);
+			var uuv:Vector3D;
+//            vector.x = Ay*Bz - By*Az;
+//            vector.y = Bx*Az - Ax*Bz;
+//            vector.z = Ax*By - Ay*Bx;
+
+            var uv_x:Number =  m_y*_vector.z - _vector.y*m_z;
+            var uv_y:Number = _vector.x*m_z - m_x*_vector.z;
+            var uv_z:Number = m_x*_vector.y - m_y*_vector.x;
+
+
+            _vector.x = (m_y*uv_z - uv_y*m_z)*2 + uv_x * 2.0 * w + _vector.x;
+            _vector.y = (uv_x*m_z - m_x*uv_z)*2 + uv_y * 2.0 * w + _vector.y;
+            _vector.z = (m_x*uv_y - m_y*uv_x)*2 + uv_z * 2.0 * w + _vector.z;
+            //var qvec:Vector3D = new Vector3D(m_x, m_y, m_z);
+			//uv = qvec.crossProduct(_vector);
+			//uuv = qvec.crossProduct(uv);
+			//uv.scaleBy( 2.0 * w );
+//            uuv.x += _vector.x+ uv_x;
+//            uuv.y += _vector.y+ uv_y;
+//            uuv.z += _vector.z+ uv_z;
+			return _vector;
 		}
 		
 		public function multiplyScalar( _scalar:Number, _qua:Quaternion = null ):Quaternion{

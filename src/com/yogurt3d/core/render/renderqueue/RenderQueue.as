@@ -79,7 +79,7 @@ public class RenderQueue extends EngineObject
 		public function addRenderable( scnObj:SceneObjectRenderable ):void{
 			if(scnObj == null || scnObj.visible == false || scnObj.material == null ) return;
 			
-			if( !m_renderLayerSubQueueIndex.hasOwnProperty(scnObj.renderLayer ) )
+			if( m_renderLayerSubQueueIndex[scnObj.renderLayer] == null )
 			{
 				addSubRenderQueue(new SubRenderQueue(), scnObj.renderLayer);
 				//trace("if 1: addSubRenderQueue");
