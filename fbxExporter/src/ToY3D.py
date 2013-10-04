@@ -31,7 +31,7 @@ def ToY3D(lSdkManager, lScene):
     lResult = LoadScene(lSdkManager, lScene, path)
         
     
-    #DisplayHierarchy(lScene)
+    DisplayHierarchy(lScene)
 
     lNode = lScene.GetRootNode()
     EvaluateBoneMap(lNode, lNode)

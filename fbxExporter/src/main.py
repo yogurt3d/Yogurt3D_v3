@@ -10,7 +10,7 @@ Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 
 Install the following Libraries and modules for python 2.6:
 		Python26  (then update PATH C:\Python26;C:\Python26\Scripts;)
-		Python FBX SDK (add teh following to sýte-packages: FbxCommon.py, fbx.pyd, sip.pyd)
+		Python FBX SDK (add teh following to sï¿½te-packages: FbxCommon.py, fbx.pyd, sip.pyd)
 		easy_install (to help with installation of modules)
 		pylzma
 		psd_tools
@@ -82,14 +82,14 @@ def main():
     
 
     glo.FBXName = os.path.basename(fileName) # "Female_Body_nbAnimLayer=2.fbx"
-    print "File Name: ", glo.FBXName, "\n"
+    print "File Name: ", glo.FBXName
     glo.FBXPath = string.replace(fileName, glo.FBXName, "") # '/Users/ozkansafak/Source Code/YogurtTech/fbx_to_y3d/fbx'
    
     fileName, fileExtension = os.path.splitext(glo.FBXName)
 
     glo.outputFolder =  glo.FBXPath + fileName
-    print "File Path: ", glo.FBXPath, "\n"
-    print "Output folder: ", glo.outputFolder
+    print "File Path: ", glo.FBXPath
+    print "Output folder: ", glo.outputFolder, "\n"
 
     sys.stdout.flush()
     
@@ -100,7 +100,7 @@ def main():
         
     if glo.yoa == True:
         ToYOA(lSdkManager, lScene)
-    
+
     if os.path.exists( glo.outputFolder + '.fbm'): # the Texture Files Folder
         import shutil
         shutil.rmtree( glo.outputFolder + '.fbm')

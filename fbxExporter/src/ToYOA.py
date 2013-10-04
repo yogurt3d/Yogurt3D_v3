@@ -52,21 +52,21 @@ def ToYOA(lSdkManager, lScene):
         print " Aborting ..."
         sys.exit(0)
         
-    if nbAnimStack > 1:
-        print "\n nbAnimStack =", nbAnimStack 
-        print " ToYOA.py doesn't admit more than 1 AnimStacks."
-        print " Aborting ..."
-        sys.exit(0)
+    # if nbAnimStack > 1:
+    #     print "\n nbAnimStack =", nbAnimStack 
+    #     print " ToYOA.py doesn't admit more than 1 AnimStacks."
+    #     print " Aborting ..."
+    #     sys.exit(0)
     
     lAnimStack = lScene.GetSrcObject(FbxAnimStack.ClassId, 0)  
     #lAnimLayer = lAnimStack.GetSrcObject(FbxAnimLayer.ClassId) # (FbxAnimLayer.ClassId, 7) ??
     #nbAnimLayers = lAnimStack.GetSrcObjectCount(FbxAnimLayer.ClassId)
     #print "nbAnimLayers", nbAnimLayers
-    for a in range(1):
+    for a in range(nbAnimStack):
         # print "AnimationStack: Stack #", a + 1, "/", nbAnimStack
         lAnimStack = lScene.GetSrcObject(FbxAnimStack.ClassId, a)
         yoaFileName  = AnimationStack(lAnimStack, fps, lScene)
-        defs.LZMACompression(yoaFileName, glo.outputFolder + "/" + glo.FBXName + '.yoa')
+        defs.LZMACompression(yoaFileName, glo.outputFolder + "/" + glo.FBXName +'('+str(a)+').yoa')
 
 
         
@@ -146,7 +146,11 @@ def WriteYoa(pScene, pNode, pTime, pYoaFile, yoaFileName):
     """WriteYoa() is called by TraverseChildren() for each FbxSkeleton pNode."""
     from array import array
     
-    lMatrix = pNode.EvaluateGlobalTransform(pTime, FbxNode.eSourcePivot, False, True)
+    mySceneEvaluator = pScene.GetEvaluator();
+
+    lMatrix = mySceneEvaluator.GetNodeGlobalTransform(pNode, pTime);
+
+    #lMatrix = pNode.EvaluateGlobalTransform(pTime, FbxNode.eSourcePivot, False, True)
     """   Compute parentMatrix   """
     #print "RootBoneName: ", glo.RootBoneName 
     if pNode.GetName() == glo.RootBoneName: 
@@ -159,17 +163,19 @@ def WriteYoa(pScene, pNode, pTime, pYoaFile, yoaFileName):
         while not isinstance(parentBone.GetNodeAttribute(), FbxSkeleton):
             parentBone = parentBone.GetParent()
             
-        parentMatrix = parentBone.EvaluateGlobalTransform(pTime, FbxNode.eSourcePivot, False, True)
+        parentMatrix = mySceneEvaluator.GetNodeGlobalTransform(parentBone, pTime); #parentBone.EvaluateGlobalTransform(pTime, FbxNode.eSourcePivot, False, True)
     
     lMatrix = parentMatrix.Inverse() * lMatrix
-    
+
     MT = [lMatrix.GetT()[0], lMatrix.GetT()[1], lMatrix.GetT()[2]] 
     MQ = [lMatrix.GetQ()[3], lMatrix.GetQ()[0], lMatrix.GetQ()[1], lMatrix.GetQ()[2]]
     MS = [lMatrix.GetS()[0], lMatrix.GetS()[1], lMatrix.GetS()[2]]
     
-    #print "pNode.GetName() ", pNode.GetName()
-    #print "      MT", MT
-    #print "      MQ", MQ
+    if pNode.GetName() == "Mouth_R_03":
+        print "pNode.GetName() ", pNode.GetName(), pTime.GetSecondDouble()
+        print "      MT", MT
+        #print "      MQ", MQ
+        #print "      MS", MS
     
     MT_array = array(FLOAT, MT)
     MQ_array = array(FLOAT, MQ)
