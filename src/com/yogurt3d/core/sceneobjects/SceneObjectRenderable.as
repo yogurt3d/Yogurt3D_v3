@@ -14,8 +14,9 @@ import com.yogurt3d.utils.MatrixUtils;
 
 import flash.geom.Matrix3D;
 import flash.geom.Utils3D;
+    import flash.geom.Vector3D;
 
-public class SceneObjectRenderable extends SceneObject
+    public class SceneObjectRenderable extends SceneObject
 	{
 		use namespace YOGURT3D_INTERNAL;
 		
@@ -38,10 +39,11 @@ public class SceneObjectRenderable extends SceneObject
 		private			  var m_material			:MaterialBase;
 		
 		
-		public function SceneObjectRenderable(_initInternals:Boolean = true)
+		public function SceneObjectRenderable(geometry:IMesh=null, material:MaterialBase=null, _initInternals:Boolean = true)
 		{
+            this.geometry = geometry;
+            this.material = material;
 			super(_initInternals);
-			
 		}
 		
 
@@ -219,9 +221,13 @@ public class SceneObjectRenderable extends SceneObject
 		{
 			if(!m_aabb)
 			{
+                if(geometry){
 				//AxisAlignedBoundingBox(geomBox.m_minInitial, geomBox.m_maxInitial, transformation); geometry.axisAlignedBoundingBox.clone() as AxisAlignedBoundingBox
 				m_aabb = new AxisAlignedBoundingBox(geometry.axisAlignedBoundingBox.m_minInitial.clone(), geometry.axisAlignedBoundingBox.m_maxInitial.clone(), transformation);;
-			}
+			}else{
+                    m_aabb=new AxisAlignedBoundingBox(new Vector3D(),new Vector3D());
+                }
+            }
 			return m_aabb;
 		}
 		public override function get cumulativeAxisAlignedBoundingBox():AxisAlignedBoundingBox
