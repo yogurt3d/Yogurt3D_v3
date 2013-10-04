@@ -61,5 +61,8 @@ public class RenderTextureTargetBase extends RenderTargetBase implements ITextur
 		{
 			return m_context3DMap[ device ];
 		}
+        public function get dirty():Boolean{
+            return true;
+        }
 	}
 }
