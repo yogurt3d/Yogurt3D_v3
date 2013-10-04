@@ -50,9 +50,9 @@ public final class DeviceStreamManager
 
 		public function DeviceStreamManager(enforcer:SingletonEnforcer)
 		{
-			m_contextBufferAllocation = new Dictionary();
-			m_contextSamplerAllocation = new Dictionary();
-            m_textures = new Dictionary();
+			m_contextBufferAllocation = new Dictionary(true);
+			m_contextSamplerAllocation = new Dictionary(true);
+            m_textures = new Dictionary(true);
 		}
 		
 		public static function get instance():DeviceStreamManager{
@@ -97,36 +97,36 @@ public final class DeviceStreamManager
 			while( m_contextSamplerAllocation[device] < m_lastMarkS && m_lastMarkS > 0 )
 			{
 				device.setTextureAt( --m_lastMarkS, null );
-                m_textures[m_lastMarkS] = null;
+                m_textures[device][m_lastMarkS] = null;
 			}
 		}
 		
 		[Inline]
 		public function clearAllTextures( device:Context3D ):void{
-            if(m_textures[0]!=null){
+            if(m_textures[device][0]!=null){
 			    device.setTextureAt( 0, null );
-                m_textures[0] = null;}
-            if(m_textures[1]!=null){
+                m_textures[device][0] = null;}
+            if(m_textures[device][1]!=null){
 			    device.setTextureAt( 1, null );
-                m_textures[1] = null;}
-            if(m_textures[2]!=null){
+                m_textures[device][1] = null;}
+            if(m_textures[device][2]!=null){
 			    device.setTextureAt( 2, null );
-                m_textures[2] = null;}
-            if(m_textures[3]!=null){
+                m_textures[device][2] = null;}
+            if(m_textures[device][3]!=null){
 			    device.setTextureAt( 3, null );
-                m_textures[3] = null;}
-            if(m_textures[4]!=null){
+                m_textures[device][3] = null;}
+            if(m_textures[device][4]!=null){
 			    device.setTextureAt( 4, null );
-                m_textures[4] = null;}
-            if(m_textures[5]!=null){
+                m_textures[device][4] = null;}
+            if(m_textures[device][5]!=null){
 			    device.setTextureAt( 5, null );
-                m_textures[5] = null;}
-            if(m_textures[6]!=null){
+                m_textures[device][5] = null;}
+            if(m_textures[device][6]!=null){
 			    device.setTextureAt( 6, null );
-                m_textures[6] = null;}
-            if(m_textures[7]!=null){
+                m_textures[device][6] = null;}
+            if(m_textures[device][7]!=null){
 			    device.setTextureAt( 7, null );
-                m_textures[7] = null;}
+                m_textures[device][7] = null;}
 
             m_contextSamplerAllocation[device] = -1;
 
@@ -142,24 +142,27 @@ public final class DeviceStreamManager
 			}
 		}*/
 		[Inline]
-		public function setStream( _context3d:Context3D, index:uint, buffer:VertexBuffer3D, bufferOffset:uint = 0, format:String = "float4" ):void{
-			if(m_contextBufferAllocation[_context3d] < index+1 )
+		public function setStream( device:Context3D, index:uint, buffer:VertexBuffer3D, bufferOffset:uint = 0, format:String = "float4" ):void{
+			if(m_contextBufferAllocation[device] < index+1 )
 			{
-				m_contextBufferAllocation[_context3d] = index+1;
+				m_contextBufferAllocation[device] = index+1;
 			}
-			_context3d.setVertexBufferAt( index, buffer, bufferOffset, format );
+            device.setVertexBufferAt( index, buffer, bufferOffset, format );
 		}
 		
 		[Inline]
-		public function setTexture( device:Context3D, index:uint, texture:ITexture ):void{
+		public function setTexture( device:Context3D, index:uint, texture:ITexture, wrapMode:String = "repeat" ):void{
 			if(m_contextSamplerAllocation[device] < index+1 )
 			{
 				m_contextSamplerAllocation[device] = index+1;
 			}
-            if( m_textures[index] != texture){
+            if(m_textures[device] == null){
+                m_textures[device] = new Dictionary();
+            }
+            if( m_textures[device][index] != texture || texture.dirty){
                 device.setTextureAt( index, texture.getTextureForDevice(device) );
-                device.setSamplerStateAt(index,(texture is CubeTextureMap)?Context3DWrapMode.CLAMP:Context3DWrapMode.REPEAT,Context3DTextureFilter.LINEAR,(texture is TextureMap && TextureMap(texture).mipmap)?Context3DMipFilter.MIPLINEAR:Context3DMipFilter.MIPNONE);
-                m_textures[index] = texture;
+                device.setSamplerStateAt(index,(texture is CubeTextureMap)?Context3DWrapMode.CLAMP:wrapMode,Context3DTextureFilter.LINEAR,(texture is TextureMap && TextureMap(texture).mipmap)?Context3DMipFilter.MIPLINEAR:Context3DMipFilter.MIPNONE);
+                m_textures[device][index] = texture;
             }
         }
         [Inline]
