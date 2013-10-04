@@ -37,7 +37,8 @@ import flash.events.ErrorEvent;
 import flash.events.Event;
 import flash.geom.Matrix3D;
 import flash.geom.Point;
-import flash.text.TextField;
+    import flash.profiler.Telemetry;
+    import flash.text.TextField;
 
 import org.osflash.signals.PrioritySignal;
 
@@ -135,7 +136,8 @@ public class Viewport extends Sprite implements IEngineObject
 			m_autoResize = value;
 			if( isDeviceCreated )
 			{
-				stage.addEventListener( Event.RESIZE, onParentResize );
+                stage.addEventListener( Event.RESIZE, onParentResize );
+
 				onParentResize( null );
 			}
 		}
@@ -295,7 +297,7 @@ public class Viewport extends Sprite implements IEngineObject
 			
 			if( m_autoResize )
 			{
-				parent.addEventListener( Event.RESIZE, onParentResize );
+                parent.addEventListener( Event.RESIZE, onParentResize );
 				onParentResize( null );
 			}
 		}
@@ -365,7 +367,11 @@ public class Viewport extends Sprite implements IEngineObject
 			Y3DCONFIG::RENDER_LOOP_TRACE{
 				trace("\t[Viewport][update] start [w:", width, ", h:", height, "]");
 			}
-			
+            if(Telemetry.connected){
+                var marker:Number = Telemetry.spanMarker;
+            }
+
+
 			var global:Point = this.localToGlobal(new Point());
 			
 			if( stage.stage3Ds[ m_viewportID ].y != global.y || stage.stage3Ds[ m_viewportID ].x != global.x )
@@ -386,6 +392,10 @@ public class Viewport extends Sprite implements IEngineObject
 			
 			m_currentRenderTarget.render();
 			scene.postRender();
+
+            if(Telemetry.connected){
+                Telemetry.sendSpanMetric("Viewport Render", marker);
+            }
 
 			Y3DCONFIG::RENDER_LOOP_TRACE{
 				trace("\t[Viewport][update] end");
