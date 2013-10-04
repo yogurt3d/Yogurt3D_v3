@@ -84,9 +84,9 @@ use namespace YOGURT3D_INTERNAL;
 			
 			// phase 1  
 			// build bone partitions  
-			var x1:Number,x2:Number,x3:Number;
-			var y1:Number,y2:Number,y3:Number;
-			var z1:Number,z2:Number,z3:Number;
+//			var x1:Number,x2:Number,x3:Number;
+//			var y1:Number,y2:Number,y3:Number;
+//			var z1:Number,z2:Number,z3:Number;
 			var isAdded:Boolean = false;
 			var vertices:Vector.<Number>, indices:Vector.<uint>;
 			var partition:SkinnedSubMesh;
@@ -102,37 +102,38 @@ use namespace YOGURT3D_INTERNAL;
 			var _triangleIndice1:uint, _triangleIndice2:uint, _triangleIndice3:uint;
 			var tIndex:uint, partitionLength:uint;
 			var iBonePartition:uint = 0, _triangleIndex:uint = 0;
-			
-			
+
+            indices = new Vector.<uint>(3,true);
+            vertices = new Vector.<Number>(9);
 			for( ; _triangleIndex < _triangleCount; _triangleIndex++ ){
-				
-				vertices = new Vector.<Number>();
-				indices = new Vector.<uint>();
+
+
+                vertices.length = 0;
 				
 				tIndex = _triangleIndex * 3;
-				
-				_triangleIndice1 = _meshIndices[ tIndex + 0 ];
-				_triangleIndice2 = _meshIndices[ tIndex + 1 ];
-				_triangleIndice3 = _meshIndices[ tIndex + 2 ];
-				indices.push(_triangleIndice1, _triangleIndice2, _triangleIndice3);
+
+                indices[0] = _triangleIndice1 = _meshIndices[ tIndex /*+ 0*/ ];
+                indices[1] = _triangleIndice2 = _meshIndices[ tIndex + 1 ];
+                indices[2] = _triangleIndice3 = _meshIndices[ tIndex + 2 ];
+				//indices.push(_triangleIndice1, _triangleIndice2, _triangleIndice3);
 				
 				_triangleIndice1 = _triangleIndice1 * 3;
 				_triangleIndice2 = _triangleIndice2 * 3;
 				_triangleIndice3 = _triangleIndice3 * 3;
-				
-				x1 = gpuVertices[_triangleIndice1 + 0];
-				y1 = gpuVertices[_triangleIndice1 + 1];
-				z1 = gpuVertices[_triangleIndice1 + 2];
-				
-				x2 = gpuVertices[_triangleIndice2 + 0];
-				y2 = gpuVertices[_triangleIndice2 + 1];
-				z2 = gpuVertices[_triangleIndice2 + 2];
-				
-				x3 = gpuVertices[_triangleIndice3 + 0];
-				y3 = gpuVertices[_triangleIndice3 + 1];
-				z3 = gpuVertices[_triangleIndice3 + 2];
-				
-				vertices.push(x1,y1,z1,x2,y2,z2,x3,y3,z3);
+
+                vertices[0] = gpuVertices[_triangleIndice1 /*+ 0*/];
+                vertices[1] = gpuVertices[_triangleIndice1 + 1];
+                vertices[2] = gpuVertices[_triangleIndice1 + 2];
+
+                vertices[3] = gpuVertices[_triangleIndice2 /*+ 0*/];
+                vertices[4] = gpuVertices[_triangleIndice2 + 1];
+                vertices[5] = gpuVertices[_triangleIndice2 + 2];
+
+                vertices[6] = gpuVertices[_triangleIndice3 /*+ 0*/];
+                vertices[7] = gpuVertices[_triangleIndice3 + 1];
+                vertices[8] = gpuVertices[_triangleIndice3 + 2];
+
+				//vertices.push(x1,y1,z1,x2,y2,z2,x3,y3,z3);
 				
 				isAdded = false;
 				
@@ -184,7 +185,7 @@ use namespace YOGURT3D_INTERNAL;
 				// push related bones
 				bIndex 	= base.originalBoneIndex;
 				bLen 	= bIndex.length;
-				
+
 				for(b = 0; b < bLen; b++){
 					ind = bIndex[b];
 					boneClone = bones[ind];
@@ -223,8 +224,8 @@ use namespace YOGURT3D_INTERNAL;
 						nTangents.push(tangents[vIndex * 3], tangents[vIndex * 3 + 1], tangents[vIndex * 3 + 2]);
 					}	
 				}
-				
-				updateWeightTable(base);
+
+                base.updateWeightTable();
 				
 				totalBones += base.bones.length;
 				totalMIndices += base.indices.length;
@@ -256,73 +257,6 @@ use namespace YOGURT3D_INTERNAL;
 			
 		}
 		
-		private final function updateWeightTable(_subMesh:SkinnedSubMesh):void{
-			
-			_subMesh.boneWeights = new Vector.<Number>();
-			_subMesh.boneIndies = new Vector.<Number>();
-			var boneWeights: Vector.<Number> = _subMesh.boneWeights;
-			var boneIndies: Vector.<Number> = _subMesh.boneIndies;
-			var vertexList:Vector.<uint> = _subMesh.vertexList;
-			var bones: Vector.<Bone> = _subMesh.bones;
-			var vertexCount:uint = _subMesh.vertexCount;
-			
-			var vertexIndex:int, index:uint, boneIndex:int;
-			var boneList:Array, weightList:Array;
-			var boneIndiceIndex:int, bone:Bone;
-			var bLen:uint = bones.length;
-			var vLen:uint = vertexList.length;
-			
-			if( vertexList.length != 0 )
-			{
-				for( vertexIndex = 0; vertexIndex < vLen; vertexIndex++ ){
-					boneList = [-1,-1,-1,-1, -1,-1,-1,-1];
-					weightList = [0,0,0,0, 0,0,0,0];
-					index = 0;
-					for( boneIndex = 0; boneIndex < bLen; boneIndex++ ){
-						bone = bones[boneIndex];
-						boneIndiceIndex = bone.indices.indexOf( vertexList[vertexIndex] );
-						
-						if( boneIndiceIndex > -1 ){
-							boneList[index] = boneIndex * 3 ;
-							weightList[index] = bone.weights[ boneIndiceIndex ];
-							index++;
-						}
-						
-					}
-					boneWeights.push(weightList[0],weightList[1],weightList[2],weightList[3],
-						weightList[4],weightList[5],weightList[6],weightList[7]);
-					boneIndies.push(boneList[0],boneList[1],boneList[2],boneList[3],
-						boneList[4],boneList[5],boneList[6],boneList[7]);
-					
-				}
-			}else{
-				
-				for( vertexIndex = 0; vertexIndex < vertexCount; vertexIndex++ )
-				{
-					boneList = [-1,-1,-1,-1,-1,-1,-1,-1];
-					weightList = [0,0,0,0,0,0,0,0];
-					index = 0;
-					for( boneIndex = 0; boneIndex < bLen; boneIndex++ )
-					{
-						bone = bones[boneIndex];
-						boneIndiceIndex = bone.indices.indexOf( vertexIndex );
-						if( boneIndiceIndex > -1 )
-						{
-							boneList[index] = boneIndex * 3 ;
-							weightList[index] = bone.weights[ boneIndiceIndex ];
-							index++;
-						}
-					}
-					boneWeights.push(weightList[0],weightList[1],weightList[2],weightList[3],
-						weightList[4],weightList[5],weightList[6],weightList[7]);
-					boneIndies.push(boneList[0],boneList[1],boneList[2],boneList[3],
-						boneList[4],boneList[5],boneList[6],boneList[7]);
-				}
-			}
-			
-			
-		}
-		
 		/**
 		 * adds a primitive to the bone partition builder.  <br/>
 		 * returns true if primitive was successfully added.   <br/>
@@ -339,7 +273,7 @@ use namespace YOGURT3D_INTERNAL;
 			var bone:Bone, bones:Vector.<uint>;
 			var bCount:uint, needToAdd:Boolean;
 			var boneIndex:uint, originalBoneIndex:Vector.<uint> = _subMesh.originalBoneIndex;
-			
+
 			for ( var iVertex:uint = 0; iVertex < len; iVertex++ )  
 			{ 
 				indice = _indices[iVertex];
@@ -388,13 +322,16 @@ use namespace YOGURT3D_INTERNAL;
 			for ( iVertex = 0; iVertex < _verticesCount; iVertex++ )  
 			{  
 				vInd = iVertex * 3;
-				var vert:Vector.<Number> = _vertices.slice(vInd, vInd + 3);
-				addVertex(_subMesh, vert, _indices[iVertex] );  
+                tempV3[0] = _vertices[vInd];
+                tempV3[1] = _vertices[vInd+1];
+                tempV3[2] = _vertices[vInd+2];
+				//var vert:Vector.<Number> = _vertices.slice(vInd, vInd + 3);
+				addVertex(_subMesh, tempV3, _indices[iVertex] );
 			}  
 			
 			return true;
 		}
-		
+		private static const tempV3:Vector.<Number> = new Vector.<Number>(3,true);
 		/**
 		 * given the index of an un-partitioned bone, returns the index of the same bone in this partition.   <br/>
 		 * this is used to remap the bone indices in an un-partitioned vertex to make it into a partitioned vertex.   <br/>
@@ -442,7 +379,7 @@ use namespace YOGURT3D_INTERNAL;
 				indices.push( index ); 
 				vlen = _vertice.length;
 				for(var k:uint = 0; k < vlen; k++)
-					vertices.push(_vertice[k]);  
+					vertices.push(_vertice[k]);
 				
 				indicesMap[_vertexIndex] =  index;  
 			}
