@@ -43,5 +43,8 @@ public class RenderCubeTexture extends RenderTextureTargetBase
 			
 		//	trace("[RenderCubeTexture][render] end");
 		}
+        public override function get dirty():Boolean{
+            return true;
+        }
 	}
 }
