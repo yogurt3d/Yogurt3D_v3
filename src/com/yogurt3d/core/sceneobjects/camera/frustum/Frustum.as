@@ -287,7 +287,8 @@ import flash.geom.Vector3D;
 			temp.copyFrom( transformation.matrixGlobal );
 			temp.invert();
 			temp.append( m_projectionMatrix );
-			var _rawData			:Vector.<Number>	= temp.rawData;
+			var _rawData			:Vector.<Number>	= MatrixUtils.RAW_DATA;
+            temp.copyRawDataTo(_rawData);
 			
 			var raw0:Number = _rawData[0];
 			var raw1:Number = _rawData[1];
