@@ -67,5 +67,8 @@ public class RenderDepthTexture extends RenderTextureTargetBase
 			}
 			return getTextureForDevice(device);
 		}
+        public override function get dirty():Boolean{
+            return true;
+        }
 	}
 }
