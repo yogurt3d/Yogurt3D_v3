@@ -135,8 +135,9 @@ import org.osflash.signals.Signal;
 		public function invalidate():void {
 			m_isLocalDirty 		= true;
 			m_isGlobalDirty 	= true;	
-			
-			m_onChange.dispatch( this );
+
+            if(m_onChange.numListeners)
+			    m_onChange.dispatch( this );
 			
 			invalidateChildren();	
 		}		
@@ -155,7 +156,8 @@ import org.osflash.signals.Signal;
 			for( var i:int; i < _childrenCount; i++ )
 			{
 				_children[i].transformation.m_isGlobalDirty = true;
-				_children[i].transformation.m_onChange.dispatch( _children[i].transformation );
+                if(_children[i].transformation.m_onChange.numListeners)
+				    _children[i].transformation.m_onChange.dispatch( _children[i].transformation );
 				
 				_children[i].transformation.invalidateChildren();
 			}				
@@ -514,15 +516,10 @@ import org.osflash.signals.Signal;
 			_tempMatrix.identity();
 			_tempMatrix.position = matrixGlobal.position;
 			_tempMatrix.pointAt( _target, _at || MathUtils.AT_VECTOR, _up || MathUtils.UP_VECTOR );
-			var _rot : Vector3D = _tempMatrix.decompose(Orientation3D.QUATERNION)[1];
-			
-			var m_quaternion:Quaternion = new Quaternion();
-			
-			m_quaternion.setTo( _rot.w, _rot.x, _rot.y, _rot.z );
-			
-			m_quaternion.toEuler(m_rotation);
-			
-			invalidate();
+			var _rot : Vector3D = _tempMatrix.decompose(Orientation3D.EULER_ANGLES)[1];
+            _rot.scaleBy( MathUtils.RAD_TO_DEG );
+
+            setRotation(_rot.x,_rot.y,_rot.z);
 		}
 		
 		/**
@@ -542,15 +539,10 @@ import org.osflash.signals.Signal;
 			_tempMatrix.identity();
 			_tempMatrix.position = matrixLocal.position;
 			_tempMatrix.pointAt( _target, _at || MathUtils.AT_VECTOR, _up || MathUtils.UP_VECTOR );
-			var _rot : Vector3D = _tempMatrix.decompose(Orientation3D.QUATERNION)[1];
-			
-			var m_quaternion:Quaternion = new Quaternion();
-			
-			m_quaternion.setTo( _rot.w, _rot.x, _rot.y, _rot.z );
-			
-			m_quaternion.toEuler(m_rotation);
-			
-			invalidate();
+            var _rot : Vector3D = _tempMatrix.decompose(Orientation3D.EULER_ANGLES)[1];
+            _rot.scaleBy( MathUtils.RAD_TO_DEG );
+
+            setRotation(_rot.x,_rot.y,_rot.z);
 		}
 		
 		/**
