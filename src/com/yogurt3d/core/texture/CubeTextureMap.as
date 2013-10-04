@@ -62,6 +62,9 @@ public class CubeTextureMap extends TextureMapBase
 			m_faces = new Vector.<Object>(6);
 			m_mipEnabled = _mipEnabled;
 		}
+        public override function get dirty():Boolean{
+            return m_dirty;
+        }
 		
 		public function setFromCompressedByteArray( byte:ByteArray ):void
 		{

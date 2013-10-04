@@ -108,6 +108,9 @@ use namespace YOGURT3D_INTERNAL;
 				m_type = UNKNOWN
 			}
 		}
+        public function get dirty():Boolean{
+            return m_dirty;
+        }
 		
 		public function get transparent():Boolean
 		{

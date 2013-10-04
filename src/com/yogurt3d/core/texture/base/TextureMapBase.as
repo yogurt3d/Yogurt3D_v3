@@ -79,6 +79,9 @@ public class TextureMapBase implements ITexture
 		{
 			return m_context3DMap[ context ];
 		}
+        public function get dirty():Boolean{
+            return false;
+        }
 		
 		public function dispose():void{
 			for each( var _texture:TextureBase in m_context3DMap )
