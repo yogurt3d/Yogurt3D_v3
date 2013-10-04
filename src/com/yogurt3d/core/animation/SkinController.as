@@ -38,11 +38,11 @@ use namespace YOGURT3D_INTERNAL;
 	/**
 	 * This Event is dispatched when a loop ends. This event is not triggered on infinite loops. 
 	 */	
-	[Event(name="endOfLoop", type="com.yogurt3d.core.events.AnimationEvent")]
+	[Event(name="endOfLoop", type="com.yogurt3d.core.animation.event.AnimationEvent")]
 	/**
 	 * This Event is dispatched when an animation ends.
 	 */
-	[Event(name="endOfAnimation", type="com.yogurt3d.core.events.AnimationEvent")]
+	[Event(name="endOfAnimation", type="com.yogurt3d.core.animation.event.AnimationEvent")]
 	/**
 	 * This event is triggered if the player reaches a marked frame. 
 	 * @example 
@@ -50,7 +50,7 @@ use namespace YOGURT3D_INTERNAL;
 	 * controller.addFrameEventListener( AnimationEvent.FRAME, function( _e:AnimationEvent):void{ trace( _e.frame )}, 40 );
 	 * </listing> 
 	 */	
-	[Event(name="frame", type="com.yogurt3d.core.events.AnimationEvent")]
+	[Event(name="frame", type="com.yogurt3d.core.animation.event.AnimationEvent")]
 	
 	/**
 	 * Default controllor for SkeletalAnimatedMesh files<br/>
