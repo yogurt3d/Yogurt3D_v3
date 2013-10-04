@@ -24,12 +24,13 @@ import flash.display3D.textures.TextureBase;
 public interface ITexture
 	{
 		/**
-		 * This method is called by the renderer to fetch the Texture object. 
+		 * This method is called by the renderers to fetch the Texture object.
 		 * @param _context3D
 		 * @return Returns the texture object
 		 * 
 		 * @see flash.display3D.textures.TextureBase
 		 */
 		function getTextureForDevice(device:Context3D):TextureBase;
+        function get dirty():Boolean;
 	}
 }
