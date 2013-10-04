@@ -23,8 +23,9 @@ import com.yogurt3d.core.managers.IDManager;
 import com.yogurt3d.core.objects.EngineObject;
 import com.yogurt3d.core.objects.IEngineObject;
 import com.yogurt3d.core.sceneobjects.transformations.Transformation;
+    import com.yogurt3d.utils.MatrixUtils;
 
-import flash.geom.Vector3D;
+    import flash.geom.Vector3D;
 
 use namespace YOGURT3D_INTERNAL;
 	/**
@@ -225,7 +226,7 @@ use namespace YOGURT3D_INTERNAL;
 			var tempCe:Vector3D;
 			var tempHa:Vector3D;
 			var tempSi:Vector3D;
-			var raw:Vector.<Number>;
+			var raw:Vector.<Number> = MatrixUtils.RAW_DATA;
 			
 			if(!m_centerInitial)
 			{
@@ -256,7 +257,7 @@ use namespace YOGURT3D_INTERNAL;
 				tempCe = m_centerGlobal;
 				tempHa = m_halfSizeGlobal;
 				tempSi = m_sizeGlobal;
-				raw = m_sceneObjectTransformation.matrixGlobal.rawData;
+                m_sceneObjectTransformation.matrixGlobal.copyRawDataTo(raw);
 				m_centerHalfDirtyGlobal = false;
 			}else
 			{
@@ -281,7 +282,7 @@ use namespace YOGURT3D_INTERNAL;
 				tempCe = m_centerLocal;
 				tempHa = m_halfSizeLocal;
 				tempSi = m_sizeLocal;
-				raw = m_sceneObjectTransformation.matrixLocal.rawData;
+                m_sceneObjectTransformation.matrixLocal.copyRawDataTo(raw);
 				m_centerHalfDirtyLocal = false;
 			}
 				
@@ -328,7 +329,7 @@ use namespace YOGURT3D_INTERNAL;
 			// if center and half-size already updated (not dirty) use it 
 			var tempMin:Vector3D;
 			var tempMax:Vector3D;
-			var raw:Vector.<Number>;
+			var raw:Vector.<Number> = MatrixUtils.RAW_DATA;
 			if(_updateGlobally)
 			{
 				if(!m_centerHalfDirtyGlobal)
@@ -341,7 +342,7 @@ use namespace YOGURT3D_INTERNAL;
 				
 				tempMin = m_minGlobal;
 				tempMax = m_maxGlobal;
-			    raw = m_sceneObjectTransformation.matrixGlobal.rawData;
+			    m_sceneObjectTransformation.matrixGlobal.copyRawDataTo(raw);
 				m_minMaxDirtyGlobal = false;
 				
 			}else
@@ -356,7 +357,7 @@ use namespace YOGURT3D_INTERNAL;
 				
 				tempMin = m_minLocal;
 				tempMax = m_maxLocal;
-				raw = m_sceneObjectTransformation.matrixLocal.rawData;
+				m_sceneObjectTransformation.matrixLocal.copyRawDataTo(raw);
 				m_minMaxDirtyLocal = false;
 			}
 			
