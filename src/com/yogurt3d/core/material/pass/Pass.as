@@ -29,9 +29,11 @@ package com.yogurt3d.core.material.pass
     import com.yogurt3d.core.material.Y3DProgram;
     import com.yogurt3d.core.material.agalgen.AGALGEN;
     import com.yogurt3d.core.material.agalgen.IRegister;
-    import com.yogurt3d.core.material.enum.ERegisterShaderType;
+import com.yogurt3d.core.material.enum.EBlendMode;
+import com.yogurt3d.core.material.enum.ERegisterShaderType;
     import com.yogurt3d.core.material.parameters.FragmentInput;
-    import com.yogurt3d.core.material.parameters.LightInput;
+import com.yogurt3d.core.material.parameters.LightInput;
+import com.yogurt3d.core.material.parameters.LightInput;
     import com.yogurt3d.core.material.parameters.ShaderParameters;
     import com.yogurt3d.core.material.parameters.SurfaceOutput;
     import com.yogurt3d.core.material.parameters.VertexInput;
@@ -657,50 +659,53 @@ import flash.display3D.VertexBuffer3D;
                 result += "mov " + _surfaceOutput.YOGURT3D_INTERNAL::m_normal + " " + FragmentInput(m_vertexOutput).normal + "\n";
                 result += "nrm " + _surfaceOutput.YOGURT3D_INTERNAL::m_normal.xyz + " " + _surfaceOutput.YOGURT3D_INTERNAL::m_normal.xyz + "\n"
             }
-            var lightInput:LightInput = LightInput(_surfaceOutput);
-            if( lightInput && lightInput.YOGURT3D_INTERNAL::m_lightColor )
+            if(_surfaceOutput is LightInput)
             {
-                var lightColorFC:IRegister = createConstantFromVectorFunction(
-                        ERegisterShaderType.FRAGMENT,
-                        "lightColor",
-                        function():Vector.<Number>{
-                            return m_currentLight.color.getColorVectorRaw();
-                        },
-                        lightInput.YOGURT3D_INTERNAL::m_lightColor
-                );
-                result += "//Assigned lightColor to "+ lightColorFC + "\n";
-            }
-            if( lightInput&& lightInput.YOGURT3D_INTERNAL::m_lightDir )
-            {
-                result += "// Calculate lightDirection ("+lightInput.YOGURT3D_INTERNAL::m_lightDir+")\n";
-                if( _light && _light.type == ELightType.DIRECTIONAL )
+                var _lightInput:LightInput = LightInput(_surfaceOutput);
+                if(_lightInput.YOGURT3D_INTERNAL::m_lightColor )
                 {
-                    var lightDirectionFC:IRegister = createConstantFromVectorFunction(
+                    var lightColorFC:IRegister = createConstantFromVectorFunction(
                             ERegisterShaderType.FRAGMENT,
-                            "lightDirectionConstant",
+                            "lightColor",
                             function():Vector.<Number>{
-                                return m_currentLight.directionVector;
-                            }
+                                return m_currentLight.color.getColorVectorRaw();
+                            },
+                            _lightInput.YOGURT3D_INTERNAL::m_lightColor
                     );
-                    result += "//Assigned lightDirection to "+ lightDirectionFC + "\n";
-                    result += "mov " + lightInput.YOGURT3D_INTERNAL::m_lightDir + " " + lightDirectionFC.xyz + "\n";
+                    result += "//Assigned lightColor to "+ lightColorFC + "\n";
                 }
-            }
-            if( lightInput&&lightInput.YOGURT3D_INTERNAL::m_viewDir )
-            {
-                result += "// Calculate viewDirection ("+lightInput.YOGURT3D_INTERNAL::m_viewDir+")\n\n";
-                result += "sub "+ lightInput.YOGURT3D_INTERNAL::m_viewDir + " " + gen.FC["cameraPos"] + " " + FragmentInput(m_vertexOutput).worldPos + "\n";
-                result += "nrm"+ " "+ lightInput.YOGURT3D_INTERNAL::m_viewDir+ " "+ lightInput.YOGURT3D_INTERNAL::m_viewDir;
-            }
-            if( lightInput&&lightInput.YOGURT3D_INTERNAL::m_atteniation )
-            {
-                result += "// Calculate atteniation ("+lightInput.YOGURT3D_INTERNAL::m_atteniation+")\n";
-                if( _light && _light.type == ELightType.DIRECTIONAL )
+                if( _lightInput.YOGURT3D_INTERNAL::m_lightDir )
                 {
-                    result += "// Directional Light Attenuation = 1\n";
-                    createConstantFromVector(ERegisterShaderType.FRAGMENT, "half", Vector.<Number>([1,2,0.5,255]) );
+                    result += "// Calculate lightDirection ("+_lightInput.YOGURT3D_INTERNAL::m_lightDir+")\n";
+                    if( _light && _light.type == ELightType.DIRECTIONAL )
+                    {
+                        var lightDirectionFC:IRegister = createConstantFromVectorFunction(
+                                ERegisterShaderType.FRAGMENT,
+                                "lightDirectionConstant",
+                                function():Vector.<Number>{
+                                    return m_currentLight.directionVector;
+                                }
+                        );
+                        result += "//Assigned lightDirection to "+ lightDirectionFC + "\n";
+                        result += "mov " + _lightInput.YOGURT3D_INTERNAL::m_lightDir + " " + lightDirectionFC.xyz + "\n";
+                    }
+                }
+                if( _lightInput.YOGURT3D_INTERNAL::m_viewDir )
+                {
+                    result += "// Calculate viewDirection ("+_lightInput.YOGURT3D_INTERNAL::m_viewDir+")\n\n";
+                    result += "sub "+ _lightInput.YOGURT3D_INTERNAL::m_viewDir + " " + gen.FC["cameraPos"] + " " + FragmentInput(m_vertexOutput).worldPos + "\n";
+                    result += "nrm"+ " "+ _lightInput.YOGURT3D_INTERNAL::m_viewDir+ " "+ _lightInput.YOGURT3D_INTERNAL::m_viewDir;
+                }
+                if(_lightInput.YOGURT3D_INTERNAL::m_atteniation )
+                {
+                    result += "// Calculate atteniation ("+_lightInput.YOGURT3D_INTERNAL::m_atteniation+")\n";
+                    if( _light && _light.type == ELightType.DIRECTIONAL )
+                    {
+                        result += "// Directional Light Attenuation = 1\n";
+                        createConstantFromVector(ERegisterShaderType.FRAGMENT, "half", Vector.<Number>([1,2,0.5,255]) );
 
-                    result += "mov " + lightInput.YOGURT3D_INTERNAL::m_atteniation + " " + getConstant("half").x + "\n";
+                        result += "mov " + _lightInput.YOGURT3D_INTERNAL::m_atteniation + " " + getConstant("half").x + "\n";
+                    }
                 }
             }
 
