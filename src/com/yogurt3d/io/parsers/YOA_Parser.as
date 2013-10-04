@@ -27,6 +27,7 @@ import flash.geom.Matrix3D;
 import flash.geom.Orientation3D;
 import flash.geom.Vector3D;
 import flash.utils.ByteArray;
+import flash.utils.CompressionAlgorithm;
 import flash.utils.Endian;
 
 /**
@@ -52,13 +53,17 @@ import flash.utils.Endian;
 			if(_data is ByteArray)
 			{
 				ByteArray(_data).endian		= Endian.LITTLE_ENDIAN;
-				ByteArray(_data).position = 0;
-				try{
-					ByteArray(_data).inflate();
-				}catch(_e:*)
-				{
-					
-				}
+                if(ByteArray(_data).readUnsignedByte() == 0x5D){
+                    ByteArray(_data).position = 0;
+                    ByteArray(_data).uncompress(CompressionAlgorithm.LZMA);
+                }else{
+                    ByteArray(_data).position = 0;
+                    try{
+                        ByteArray(_data).inflate();
+                    }catch(_e:*)
+                    {
+                    }
+                }
 				var short:uint = ByteArray(_data).readUnsignedShort();
 				ByteArray(_data).position = 0;
 				if( short != 8 )
@@ -117,7 +122,6 @@ import flash.utils.Endian;
 						new Quaternion(_value.readFloat(),_value.readFloat(),_value.readFloat(),_value.readFloat()),
 						new Vector3D(_value.readFloat(),_value.readFloat(),_value.readFloat()) 
 					);
-					
 				}
 			}
 			_animData.frameRate = _frameRate;
