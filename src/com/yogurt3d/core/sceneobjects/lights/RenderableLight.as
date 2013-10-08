@@ -39,6 +39,8 @@ import com.yogurt3d.utils.MathUtils;
 		public function RenderableLight(_type:ELightType, _color:Color=null, _radius:Number = 0.2, _initInternals:Boolean=true)
 		{
 			super( _type, _color, 1 );
+            if(_color==null)
+                _color=Color.WHITE;
 			
 			if( _type == ELightType.POINT )
 			{
