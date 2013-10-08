@@ -36,12 +36,12 @@ package com.yogurt3d.core.managers {
 
         public static function registerObject(sceneObject:IEngineObject, script:IController):void {
             if (sceneObject is SceneObject) {
-                sceneObject.injector.map(SceneObject).softly().toValue(sceneObject);
+                sceneObject.injector.map(SceneObject).toValue(sceneObject);
             } else if (sceneObject is EngineObject) {
-                sceneObject.injector.map(EngineObject).softly().toValue(sceneObject);
+                sceneObject.injector.map(EngineObject).toValue(sceneObject);
             }
 
-            sceneObject.injector.map(Object(sceneObject).constructor).softly().toValue(sceneObject);
+            sceneObject.injector.map(Object(sceneObject).constructor).toValue(sceneObject);
 
             sceneObject.injector.injectInto(script);
 
