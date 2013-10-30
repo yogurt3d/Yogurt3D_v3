@@ -182,29 +182,29 @@ def GetMeshList(pMesh, nodeName):
 
 # .............................................................
     """ O(N . logN) sort-routine"""
-    indices = range(len(vertexList))#SortVertexList(vertexList)
+    indices = SortVertexList(vertexList)
 
     inverseMap = []
     for i in xrange(len(indices)):
         inverseMap.append(0)
 
 
-    # normalSorted = []
-    # vertexSorted = []
-    #
-    # for i in indices:
-    #     normalSorted.append(normalList[i])
-    #     vertexSorted.append(vertexList[i])
-    #
-    #     for l in xrange(len(uvList)):
-    #         uvSorted[l].append(uvList[l][i * 2])
-    #         uvSorted[l].append(uvList[l][i * 2 + 1])
-    #
-    #
-    #
-    # uvList = uvSorted
-    # normalList = normalSorted
-    # vertexList = vertexSorted
+    normalSorted = []
+    vertexSorted = []
+    
+    for i in indices:
+        normalSorted.append(normalList[i])
+        vertexSorted.append(vertexList[i])
+    
+        for l in xrange(len(uvList)):
+            uvSorted[l].append(uvList[l][i * 2])
+            uvSorted[l].append(uvList[l][i * 2 + 1])
+    
+    
+    
+    uvList = uvSorted
+    normalList = normalSorted
+    vertexList = vertexSorted
 
     # .............................................................
     ### Now evaluate indexList
@@ -244,8 +244,8 @@ def GetMeshList(pMesh, nodeName):
 
             for l in xrange(len(uvList)):
                 if \
-                                    uvList[l][i * 2] != uvList[l][j * 2] or \
-                                    uvList[l][i * 2 + 1] != uvList[l][j * 2 + 1]:
+                    uvList[l][i * 2] != uvList[l][j * 2] or \
+                    uvList[l][i * 2 + 1] != uvList[l][j * 2 + 1]:
                     isUvSame = False
                     break
 
@@ -299,24 +299,31 @@ def GetMeshList(pMesh, nodeName):
         if indexList[i] == ind1:
             vertexConsolidated.append(vertexList[i])
             normalConsolidated.append(normalList[i])
-            i2 = i * 2
-            for l in xrange(len(uvList)):
-                uvConsolidated[l].append(uvList[l][i2])
-                uvConsolidated[l].append(uvList[l][i2 + 1])
             ind = indexList[i]
             ind1 = ind + 1
+    
+    for l in xrange(len(uvList)):
+        ind = indexList[0]
+        ind1 = ind + 1
+        for i in xrange(1, N):
+            if indexList[i] == ind1:
+                i2 = i * 2
+                uvConsolidated[l].append(uvList[l][i2])
+                uvConsolidated[l].append(uvList[l][i2 + 1])
+                ind = indexList[i]
+                ind1 = ind + 1
 
     """Below algorithm runs O(N^2 . logN)
         :(
     """
-    # idummy =[]
-    # for i in xrange(len(indices)):
-    #     inverseMap[indices[i]] = i
-    #
-    # for i in xrange(len(indices)):
-    #     idummy.append(indexList[inverseMap[i]])
-    #
-    # indexList = idummy
+    idummy =[]
+    for i in xrange(len(indices)):
+        inverseMap[indices[i]] = i
+    
+    for i in xrange(len(indices)):
+        idummy.append(indexList[inverseMap[i]])
+    
+    indexList = idummy
     # print "var indexList:Array = ", indexList
     #
     # for l in xrange(len(uvConsolidated)):
@@ -437,6 +444,7 @@ def WriteY3dBone(boneName, pY3dUncompressedFile):
 
     if lIndexCount != 0:
         lIndices_array = array(SIGNED_INT, lIndices)
+        print "Bone IndiceCount: ", len(lIndices_array), boneName
         lIndices_array.tofile(pY3dUncompressedFile)                     # _bone.indices
 
         lWeights_array = array(FLOAT, lWeights)
@@ -470,6 +478,7 @@ def WriteY3dMesh(y3dUncompressedFileName, pMesh, pY3dUncompressedFile, vertex1by
     normal_array = array(FLOAT, normal1by3N)
     index_array = array(SIGNED_INT, index)
     vertex_array.tofile(pY3dUncompressedFile)
+    print "Vertex Count: ", len(vertex_array) / 3
     for l in xrange(len(uv_array)):
         uv_array[l].tofile(pY3dUncompressedFile)
 
@@ -515,20 +524,20 @@ def WeightsCorrector(pMesh, lIndices, lWeights, vertex1by3N, lControlPoints, eps
     """
 
     """ O(N .lIndices)"""
-
     """
-    lControlPoints = pMesh.GetControlPoints()
+    #lControlPoints = pMesh.GetControlPoints()
     cWeights = []
     cIndices = []
     for i in xrange(len(lIndices)):
+        vec = lControlPoints[lIndices[i]]
         for k in xrange(len(vertex1by3N) / 3):
-            vec = lControlPoints[lIndices[i]]
+            
             k3 = k * 3
             a = abs(vec[0] - vertex1by3N[k3])
-            b = abs(vec[1] - vertex1by3N[k3 + 1])
-            c = abs(vec[2] - vertex1by3N[k3 + 2])
+            a += abs(vec[1] - vertex1by3N[k3 + 1])
+            a += abs(vec[2] - vertex1by3N[k3 + 2])
             
-            if (a + b + c) / 3 < .00000001:
+            if a / 3 < .00000001:
                 cIndices.append(k)
                 cWeights.append(lWeights[i])
                 
@@ -640,7 +649,7 @@ def ComputeNodeWeightsAndIndices(pMesh, vertex1by3N):
 
         lIndices = lCluster.GetControlPointIndices(); # print "Safak: lIndices = _bone.indices  ", lIndices
         lWeights = lCluster.GetControlPointWeights(); # print "Safak: lWeights = _bone.weights  ", lWeights ,"\n\n"
-
+        print "         IndiceCount: ", len(lIndices)
         if lCluster.GetLink():
             boneName = lCluster.GetLink().GetName()
             # print "Safak: boneName ", boneName
