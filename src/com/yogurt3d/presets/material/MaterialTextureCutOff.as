@@ -58,8 +58,8 @@ public class MaterialTextureCutOff extends MaterialBase{
             var temp2:IRegister = gen.createFT( "temp2",4);
 			var str:String = 
 				["\n\n//****SurfaceFunction START****/",
-                    gen.tex( temp, surfaceInput.uvMain, getConstant("colorMap"), "2d", "wrap", "linear", (texture as TextureMap).mipmap, false, true, getConstant("opacity").y),
-                    gen.tex( temp2, surfaceInput.uvSecond, getConstant("lightMap"), "2d", "wrap", "linear", (lightMap as TextureMap).mipmap, false, true, getConstant("opacity").y),
+                    gen.tex( temp, surfaceInput.uvMain, getConstant("colorMap"), "2d", "wrap", "linear", (texture as TextureMap).mipmap, true, true, getConstant("opacity").y),
+                    gen.tex( temp2, surfaceInput.uvSecond, getConstant("lightMap"), "2d", "wrap", "linear", (lightMap as TextureMap).mipmap, true, true, getConstant("opacity").y),
 					gen.code("mul", temp, temp, temp2),
 				//	gen.code("mov", temp.w, getConstant("opacity").x),
                     gen.code("mul", temp.w, temp.w, getConstant("opacity").x),
