@@ -44,6 +44,7 @@ import com.yogurt3d.core.material.parameters.LightInput;
     import com.yogurt3d.core.sceneobjects.lights.Light;
     import com.yogurt3d.core.texture.ITexture;
     import com.yogurt3d.utils.Color;
+    import com.yogurt3d.utils.MatrixUtils;
     import com.yogurt3d.utils.ShaderUtils;
 
     import flash.display3D.Context3D;
@@ -248,14 +249,16 @@ import flash.display3D.VertexBuffer3D;
                 // Move to VertexStreamManager START
                 var subMesh:SubMesh = mesh.subMeshList[submeshindex];
 
-                var _skinnedsubmesh:SkinnedSubMesh = subMesh as SkinnedSubMesh
-                if(_skinnedsubmesh != null) {
-                    for(var boneIndex:int = 0; boneIndex < _skinnedsubmesh.originalBoneIndex.length; boneIndex++) {
-                        var originalBoneIndex:uint = _skinnedsubmesh.originalBoneIndex[boneIndex];
-                        _device.setProgramConstantsFromVector(Context3DProgramType.VERTEX, gen.VC["BoneMatrices"].index + (boneIndex * 3), SkeletalAnimatedMesh(_object.geometry).bones[originalBoneIndex].transformationMatrix.rawData, 3);
+                if(subMesh is SkinnedSubMesh){
+                    var _skinnedsubmesh:SkinnedSubMesh = subMesh as SkinnedSubMesh
+                    if(_skinnedsubmesh != null) {
+                        for(var boneIndex:int = 0; boneIndex < _skinnedsubmesh.originalBoneIndex.length; boneIndex++) {
+                            var originalBoneIndex:uint = _skinnedsubmesh.originalBoneIndex[boneIndex];
+                            SkeletalAnimatedMesh(_object.geometry).bones[originalBoneIndex].transformationMatrix.copyRawDataTo(MatrixUtils.RAW_DATA);
+                            _device.setProgramConstantsFromVector(Context3DProgramType.VERTEX, gen.VC["BoneMatrices"].index + (boneIndex * 3), MatrixUtils.RAW_DATA, 3);
+                        }
                     }
                 }
-
                 m_vsManager.markVertex(_device);
                 if( m_vertexInput.YOGURT3D_INTERNAL::m_vertexpos )
                 {
@@ -523,10 +526,10 @@ import flash.display3D.VertexBuffer3D;
 
                 code += [
 
-                    gen.code("mov", vt2, "va" + (input.boneData.index + 1)),
+                    //gen.code("mov", vt2, "va" + (input.boneData.index + 1)),
                     gen.code("mov", vt2, input.boneData), // bone Indices
 
-                    gen.code("mov", vt3, "va" + (input.boneData.index + 3)),
+                    //gen.code("mov", vt3, "va" + (input.boneData.index + 3)),
                     gen.code("mov", vt3, "va" + (input.boneData.index + 2)) // bone Weight
 
                 ].join("\n") + "\n";
