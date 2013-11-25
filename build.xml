@@ -34,15 +34,33 @@
 			<include-sources dir="${basedir}/src" includes="**/*.as **/*.mxml"/>
 			<arg line="-library-path+=${basedir}/libs" />
 		</compc>
-		
-		<echo message="Compiling ${ant.project.name}_${YOGURT3D_VERSION}_release.swc"/>
-		
-		<compc fork="true" output="${basedir}/bin/${ant.project.name}_${YOGURT3D_VERSION}_release.swc">
-			<arg line="-load-config+=y3d_config_release.xml"   /> 
-			<source-path path-element="${basedir}/src"/>
-			<include-sources dir="${basedir}/src" includes="**/*.as **/*.mxml"/>
-			<arg line="-library-path+=${basedir}/libs" />
-		</compc>
+
+        <echo message="Compiling ${ant.project.name}_${YOGURT3D_VERSION}_release.swc"/>
+
+        <compc fork="true" output="${basedir}/bin/${ant.project.name}_${YOGURT3D_VERSION}_release.swc">
+            <arg line="-load-config+=y3d_config_release.xml"   />
+            <source-path path-element="${basedir}/src"/>
+            <include-sources dir="${basedir}/src" includes="**/*.as **/*.mxml"/>
+            <arg line="-library-path+=${basedir}/libs" />
+        </compc>
+
+        <echo message="Compiling ${ant.project.name}_${YOGURT3D_VERSION}_debug_mobile.swc"/>
+
+        <compc fork="true" output="${basedir}/bin/${ant.project.name}_${YOGURT3D_VERSION}_debug_mobile.swc">
+            <arg line="-load-config+=y3d_config_debug_mobile.xml"   />
+            <source-path path-element="${basedir}/src"/>
+            <include-sources dir="${basedir}/src" includes="**/*.as **/*.mxml"/>
+            <arg line="-library-path+=${basedir}/libs" />
+        </compc>
+
+        <echo message="Compiling ${ant.project.name}_${YOGURT3D_VERSION}_release_mobile.swc"/>
+
+        <compc fork="true" output="${basedir}/bin/${ant.project.name}_${YOGURT3D_VERSION}_release_mobile.swc">
+            <arg line="-load-config+=y3d_config_release_mobile.xml"   />
+            <source-path path-element="${basedir}/src"/>
+            <include-sources dir="${basedir}/src" includes="**/*.as **/*.mxml"/>
+            <arg line="-library-path+=${basedir}/libs" />
+        </compc>
 		
 	</target>
 

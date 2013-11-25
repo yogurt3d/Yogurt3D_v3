@@ -1,17 +1,17 @@
 <?xml version="1.0"?>
 <flex-config>
    <compiler locale="en_US" swf-version="20">
-   		<define>
+		<define>
 			<name>Y3DCONFIG::TRACE</name>
-			<value>false</value>
+			<value>true</value>
 		</define>
 		<define>
 			<name>Y3DCONFIG::DEBUG</name>
-			<value>false</value>
+			<value>true</value>
 		</define>
        <define>
            <name>Y3DCONFIG::MOBILE</name>
-           <value>false</value>
+           <value>true</value>
        </define>
 		<define>
 			<name>Y3DCONFIG::RELEASE</name>

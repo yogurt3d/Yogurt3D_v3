@@ -9,6 +9,10 @@
 			<name>Y3DCONFIG::DEBUG</name>
 			<value>true</value>
 		</define>
+       <define>
+           <name>Y3DCONFIG::MOBILE</name>
+           <value>false</value>
+       </define>
 		<define>
 			<name>Y3DCONFIG::RELEASE</name>
 			<value>!Y3DCONFIG::DEBUG</value>
