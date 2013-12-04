@@ -56,7 +56,7 @@ import flash.geom.Vector3D;
  	 * @author Yogurt3D Engine Core Team
  	 * @company Yogurt3D Corp.
  	 **/
-	public class HardwarePickRenderer extends EngineObject implements IRenderer
+	public class HardwarePickRenderer extends EngineObject implements IRenderer, IPickRenderer
 	{
 		private static var m_materialManager		:MaterialManager 	  = MaterialManager.instance;
 		private var vsManager						:DeviceStreamManager  = DeviceStreamManager.instance;	

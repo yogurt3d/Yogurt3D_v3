@@ -20,7 +20,9 @@ package com.yogurt3d.core.managers {
     import com.yogurt3d.YOGURT3D_INTERNAL;
     import com.yogurt3d.core.Scene3D;
     import com.yogurt3d.core.Viewport;
-    import com.yogurt3d.core.render.renderer.PickRenderer;
+    import com.yogurt3d.core.render.renderer.HardwarePickRenderer;
+    import com.yogurt3d.core.render.renderer.IPickRenderer;
+    import com.yogurt3d.core.render.renderer.SoftwarePickRenderer;
     import com.yogurt3d.core.sceneobjects.SceneObjectRenderable;
     import com.yogurt3d.core.sceneobjects.camera.Camera3D;
     import com.yogurt3d.core.sceneobjects.event.MouseEvent3D;
@@ -44,7 +46,7 @@ package com.yogurt3d.core.managers {
 
         public var updateTime:uint = 66;
 
-        private var m_pickRenderer:PickRenderer;
+        private var m_pickRenderer:IPickRenderer;
 
         private var m_viewport:Viewport;
 
@@ -66,7 +68,13 @@ package com.yogurt3d.core.managers {
             }
 
             if(!m_pickRenderer) {
-                m_pickRenderer = new PickRenderer(_viewport);
+                if(Y3DCONFIG::MOBILE)
+                {
+                    m_pickRenderer = new SoftwarePickRenderer(_viewport);
+                }else{
+                    m_pickRenderer = new HardwarePickRenderer(_viewport);
+                }
+
             }
 
             m_viewport = _viewport;
