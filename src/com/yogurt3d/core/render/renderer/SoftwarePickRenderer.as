@@ -56,7 +56,7 @@ import flash.geom.Vector3D;
  	 * @author Yogurt3D Engine Core Team
  	 * @company Yogurt3D Corp.
  	 **/
-	public class PickRenderer extends EngineObject implements IRenderer
+	public class SoftwarePickRenderer extends EngineObject implements IRenderer
 	{
 		private static var m_materialManager		:MaterialManager 	  = MaterialManager.instance;
 		private var vsManager						:DeviceStreamManager  = DeviceStreamManager.instance;	
@@ -83,7 +83,7 @@ import flash.geom.Vector3D;
 
         private var m_scissorRect:Rectangle = new Rectangle( 0,0,1,1 );
 		
-		public function PickRenderer(_viewport:Viewport, _initInternals:Boolean=true)
+		public function SoftwarePickRenderer(_viewport:Viewport, _initInternals:Boolean=true)
 		{
 			super(_initInternals);
 			m_viewport = _viewport;
