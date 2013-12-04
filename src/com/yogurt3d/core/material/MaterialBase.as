@@ -222,6 +222,7 @@ public class MaterialBase
 		public function render(_object:SceneObjectRenderable, 
 							   _lights:Vector.<Light>, _device:Context3D, _camera:Camera3D):void
 		{
+            if(_object.geometry==null) return;
 			if(_lights){
 				m_basePass.render(_object, _lights[0], _device,_camera);
 				//m_directionalPass.render(_object, _lights[1], _device,_camera);
